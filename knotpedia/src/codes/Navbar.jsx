@@ -7,14 +7,15 @@ const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-left">
-        <img src="/assets/logo.png" className="navbar-logo" alt="Knotpedia Logo" />
+        <a href="/"><img src="/assets/logo.png" className="navbar-logo" alt="Knotpedia Logo" /></a>
         <button className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>☰</button>
       </div>
       <ul className={`navbar-links ${menuOpen ? "mobile show" : ""}`}>
-        <li><a href="#">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li className="dropdown">
           <a href="#">Explore Knots</a>
           <ul className="dropdown-menu">
+            <li><a href="#">All Knots</a></li>
             <li><a href="#">Knots by Activity</a></li>
             <li><a href="#">Knots by Type</a></li>
             <li><a href="#">Knots by Difficulty</a></li>

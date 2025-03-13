@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #fff;
+    background-color: #EFEFF0;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
@@ -16,8 +16,9 @@
   }
   
   .navbar-logo {
-    width: 200px;
+    width: 250px;
     max-width: 100%;
+    padding-top: 0.7rem;
   }
   
   /* Navbar links (desktop) */
@@ -52,6 +53,8 @@
     text-decoration: none;
     padding: 0.5rem;
     transition: color 0.3s ease;
+    padding-right: 20px;
+
   }
   
   .navbar-links a:hover {
@@ -69,6 +72,7 @@
     display: none;
     position: absolute;
     background: white;
+    width: 250px;
     list-style: none;
     padding: 0.5rem;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -83,7 +87,7 @@
   }
   
   .dropdown-menu li a {
-    color: black;
+    color: #6F1D1B;
   }
   
   /* Hamburger menu */
