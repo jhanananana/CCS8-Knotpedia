@@ -1,16 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
+import Navbar from "./codes/Navbar";
+import Footer from "./codes/Footer";
+import "./codes/Navbar.css";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          CCS 8 - KNOTPEDIA
-        </p>
-      </header>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-grow p-4">{/* Main content goes here */}</main>
+      <Footer />
     </div>
   );
-}
+};
 
 export default App;
