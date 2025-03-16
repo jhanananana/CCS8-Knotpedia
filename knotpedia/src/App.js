@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./codes/Homepage.jsx";
+import ContactUs from "./codes/ContactUs.jsx";
 
 const App = () => {
   return (
@@ -9,6 +10,7 @@ const App = () => {
           {/* Main content goes here */}
           <Routes>
             <Route path="/" element={<Homepage />} />
+            <Route path="/contactus" element={<ContactUs />} /> {/* Add Contact Us route */}
           </Routes>
         </main>
       </div>
