@@ -1,0 +1,91 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .breadcrumb {
+    font-size: 14px;
+    color: gray;
+  }
+  
+  .breadcrumb a {
+    color: blue;
+    text-decoration: none;
+  }
+  
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+  
+  .about-section {
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .about-title {
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .highlight {
+    color: #007bff;
+  }
+  
+  .mission-vision {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .mission, .vision {
+    flex: 1;
+    padding: 10px;
+  }
+  
+  .mission-title {
+    color: #007bff;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .vision-title {
+    color: #dc3545;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .policy-cards {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .card {
+    flex: 1;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .blue {
+    color: #007bff;
+  }
+  
+  .red {
+    color: #dc3545;
+  }
+  
+  .border-blue {
+    border-color: #007bff !important;
+  }
+  

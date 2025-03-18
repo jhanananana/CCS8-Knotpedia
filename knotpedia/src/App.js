@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./codes/Homepage.jsx";
 import ContactUs from "./codes/ContactUs.jsx";
-
+import AboutUs from "./codes/AboutUs.jsx";
 const App = () => {
   return (
     <BrowserRouter>
@@ -11,7 +11,9 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/contactus" element={<ContactUs />} /> {/* Add Contact Us route */}
+            <Route path="/aboutus" element={<AboutUs />} />
           </Routes>
+
         </main>
       </div>
     </BrowserRouter>
