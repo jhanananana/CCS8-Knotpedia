@@ -31,10 +31,12 @@
     font-weight: bold;
   }
   
-  .highlight {
-    color: #007bff;
+  .AboutUshighlight {
+    color: #2A4552;
   }
-  
+  .AboutUshighlight-pedia {
+  color:#B54D49;
+}
   .mission-vision {
     display: flex;
     gap: 20px;
@@ -47,13 +49,13 @@
   }
   
   .mission-title {
-    color: #007bff;
+    color: #2A4552;
     font-size: 20px;
     font-weight: bold;
   }
   
   .vision-title {
-    color: #dc3545;
+    color: #B54D49;
     font-size: 20px;
     font-weight: bold;
   }
@@ -78,7 +80,7 @@
   }
   
   .blue {
-    color: #007bff;
+    color: #2A4552;
   }
   
   .red {

@@ -1,16 +1,21 @@
 import React from "react";
 import "./AboutUs.css";
-
+//import Footer from "./Footer.jsx";
+import Navbar from "./Navbar";
+import Footer from "./Footer.jsx";
 const AboutUs = () => {
   return (
-    <div className="container">
+    <div className="flex flex-col min-h-screen">
       {/* Breadcrumb */}
-      <nav className="breadcrumb"> <a href="/">Home</a> &gt; About Us</nav>
+      <Navbar />
+      <nav className="breadcrumb">
+      <a href="/Homepage">Home</a> &gt; About Us
+      </nav>
 
       {/* About Section */}
       <div className="about-section">
         <h2 className="about-title">
-          About <span className="highlight">Knotpedia</span>
+          About <span ><p className="AboutUshighlight">Knot</p><p className="AboutUshighlight-pedia">pedia</p></span>
         </h2>
         <p>
           At <strong>Knotpedia</strong>, we're dedicated to making knot-tying accessible for everyone. Our platform offers easy-to-follow guides and tutorials for all skill levels, from beginners to experts.
@@ -51,6 +56,7 @@ const AboutUs = () => {
           <p>Learn how we handle your data securely.</p>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 };
