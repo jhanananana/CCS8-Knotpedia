@@ -1,5 +1,5 @@
 .POPPINS-ABOUTUS{
-  font-family: 'Poppins ';
+  font-family: 'Poppins' ;
 }
 .container {
     max-width: 900px;
@@ -23,19 +23,24 @@
   }
   
   .about-section {
-    background-color: #f8f8f8;
-    padding: 20px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    background-color: #eee;
+  background-size: cover;
+  background-position: center;
+  color: black;
+  padding: 4.5rem;
+  margin: 20px;
+  text-align: left;
   }
   
   .about-title {
-    font-size: 24px;
+ 
+    font-size:55px;
     font-weight: bold;
   }
   
   .AboutUshighlight {
-    color: #2A4552;
+    
+    color: #0D6287;
   }
   .AboutUshighlight-pedia {
   color:#B54D49;
@@ -73,7 +78,13 @@
     margin: auto;
     padding: 0 5rem;
   }
-  
+  .title-card{
+    font-size: 28px;;
+  }
+  .questBig{
+    font-size: 36px;
+    color:#2A4552;
+  }
   .card {
     width: 250px;
   height: 350px;

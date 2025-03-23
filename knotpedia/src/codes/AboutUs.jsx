@@ -48,7 +48,7 @@ const AboutUs = () => {
       <div className="policy-cards">
                   
         <div className="card">
-          <h4 className="blue">Frequently Asked Questions</h4>
+          <h4 className="blue title-card">Frequently Asked <p className="questBig">Questions</p></h4>
           <p>Find answers to common questions.</p>
         </div>
         <div className="card border-blue">
