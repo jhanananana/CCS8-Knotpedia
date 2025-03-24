@@ -126,7 +126,7 @@ const ContactUs = () => {
       <main className="content-container">
         
         {/* Page Header Section */}                                                                                   
-        <header className="header">
+        <header className="contact-header">
           <h1><span className="blue-text">Contact</span> Us</h1>
           <p>We'd love to hear from you! Whether you need help with a knot tutorial, have a 
           suggestion for new content, or want to report an issue, the <strong>Knotpedia</strong> team is here to 

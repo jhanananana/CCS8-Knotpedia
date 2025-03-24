@@ -1,26 +1,40 @@
-.header {
-  background-color: #eee;
+.home-header {
+  background-image: url('/public/assets/home-header.png');
   background-size: cover;
   background-position: center;
   color: black;
-  padding: 4.5rem;
-  margin: 20px;
+  margin: 0rem 0rem;
+  padding: 8rem 5rem;
   text-align: left;
 }
 
+.text-space {
+  padding: 0 10%;
+}
+
+a {
+  text-decoration: none;
+}
+
 h1 {
-  font-size: 2.5rem;
   font-family: 'Poppins Bold';
   margin-bottom: 16px;
+  line-height: 1.3;
+  font-size: 32px;
 }
 
 p {
   font-size: 1.125rem;
-  color: #616161;
+  color: #202020;
+}
+
+.p-width {
+  width: 70%;
 }
 
 .section-features {
   text-align: center;
+  margin: 5rem 0px;
 }
 
 .blue-text {
@@ -45,10 +59,13 @@ p {
 }
 
 .button.blue {
+  color: white;
   background-color: #2A4552;
 }
 
 .button.blue:hover {
+  color: white;
+
   background-color: #0D6287;
 }
 
@@ -62,27 +79,48 @@ p {
   padding: 0 5rem;
 }
 
+.box-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Adjust spacing between icon and text */
+}
+
+.icon img {
+  width: 24px;
+  /* Adjust as needed */
+  height: 24px;
+}
+
 .box {
-  width: 250px;
-  height: 350px;
+  width: 200px;
+  height: 230px;
   background-color: #f9f9f9;
   border: 1px solid #E4E4E4;
-  border-radius: 10%;
+  border-radius: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: left;
   padding: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 20px auto;
+  margin: 0px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
 .box .icon {
-  width: 100px;
-  height: 100px;
+  width: 3.2rem;
+  height: 3.2rem;
   border-radius: 50%;
   overflow: hidden;
   margin-bottom: 1rem;
+  background-color: transparent;
+  padding: 5px;
+  border: 3px solid white;
 }
 
 .box .icon img {
@@ -95,13 +133,13 @@ p {
   font-size: 1.5rem;
   font-family: 'Poppins Bold';
   margin-bottom: 0.5rem;
-  color: #2A4552;
+  color: #ffffff;
   text-align: left;
 }
 
 .box .sub-text {
   font-size: 1rem;
-  color: #666;
+  color: #e6e6e6;
   text-align: left;
 }
 
@@ -112,3 +150,110 @@ p {
 .big-text {
   font-size: 1.7rem;
 }
+
+/* Featured Knots */
+.featured-knots {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+
+.knots-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  /* 4 per row (desktop) */
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Tablet: 2 knots per row */
+@media (max-width: 1024px) {
+  .knots-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .home-header {
+    padding: 4rem 2rem;
+    margin: 0px;
+  }
+}
+
+/* Mobile: 1 knot per row */
+@media (max-width: 600px) {
+  .knots-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  .button {
+    font-size: 1rem;
+  }
+
+  .home-header {
+    padding: 1.5rem;
+    margin: 0px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+  .small-text {
+    font-size: 1.2rem;
+  }
+  .big-text {
+    padding-top: -20px;
+    font-size: 1.4rem;
+  }
+}
+
+.knot-card {
+  background: white;
+  border-radius: 20px;
+  text-align: left;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  border: 2px solid #eee;
+}
+
+.knot-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 20px 20px 0px 0px;
+}
+
+.knot-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'Poppins Bold';
+  margin: 10px 0px -5px 0px;
+  color: #0D6287;
+  padding: 0 1rem;
+}
+
+.knot-description {
+  color: #353535;
+  margin: 1rem;
+  padding: 0px;
+  font-size: 1rem;
+}
+
+.button.red {
+  background-color: #b54d49;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 0px 1rem 1rem;
+  transition: 0.3s;
+}
+
+.button.red:hover {
+  background-color: #922b2b;
+}
+
+/* Carousel */

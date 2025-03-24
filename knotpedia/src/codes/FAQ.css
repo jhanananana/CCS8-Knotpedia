@@ -1,11 +1,6 @@
 /* FAQ.css */
 
-.faq-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    font-family: Arial, sans-serif;
-  }
+
   .FAQ-header h1 {
     font-size: 32px;
     margin-bottom: 10px;

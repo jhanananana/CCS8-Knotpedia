@@ -10,6 +10,7 @@
     margin-left: 60px; /* Adjust this value as needed */
     font-size: 14px;
     color: #555;
+    
   }
   
   .breadcrumb a {
@@ -18,23 +19,22 @@
   }
   
   .breadcrumb a:hover {
-    text-decoration: underline;
+    text-decoration: #ff7878;
   }
   
   /* Header */
-  .header {
+  .contact-header {
     /* background-image: url('/assets/header.jpg'); Background image */
     background-color: #eee;
     background-size: cover; /* Cover the entire div */
     background-position: center; /* Center the image */
     color: black; /* Text color */
     padding: 4.5rem; /* Equivalent to py-20 px-8 */
-    margin: 20px; /* Equivalent to mx-4 */
+    margin: 10px; /* Equivalent to mx-4 */
     text-align: left; /* Center text */
   }
   
   h1 {
-    font-size: 32px;
     font-weight: bold;
     margin-bottom: 16px;
   }
