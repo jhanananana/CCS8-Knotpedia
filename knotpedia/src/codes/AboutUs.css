@@ -10,15 +10,6 @@
     color: gray;
   }
   
-  .breadcrumb a {
-    color: blue;
-    text-decoration: none;
-  }
-  
-  .breadcrumb a:hover {
-    text-decoration: underline;
-  }
-  
   .about-section {
     background-color: #f8f8f8;
     padding: 20px;
