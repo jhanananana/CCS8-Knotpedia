@@ -7,15 +7,15 @@
 
   /* breadcrumb*/
   .breadcrumb {
-    margin-left: 60px; /* Adjust this value as needed */
-    font-size: 14px;
-    color: #555;
+    margin-left: 2rem; /* Adjust this value as needed */
+    color: #202;
+    padding-top: 2rem;
     
   }
   
   .breadcrumb a {
     color: #0D6287; /* Link color */
-    text-decoration: none;
+    text-decoration: underline;
   }
   
   .breadcrumb a:hover {

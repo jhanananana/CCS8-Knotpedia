@@ -1,0 +1,133 @@
+.allknots-header {
+    background-image: url('/public/assets/home-header.png');
+    background-size: cover;
+    background-position: center;
+    color: black;
+    margin: 0rem 0rem;
+    padding: 8rem 5rem;
+    text-align: left;
+  }
+
+  .search-container {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Adjust space between text and search bar */
+    margin: 20px auto;
+    max-width: 100%; /* Adjust width as needed */
+    background-color: #5192A5;
+    padding: 0.2rem 4rem;
+    border-radius: 100px;
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'Poppins Bold';
+}
+
+.search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 400px; /* Adjust width */
+    padding: 15px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 40px 12px 15px; /* Space for icon */
+    border: 2px solid #ccc;
+    border-radius: 50px; /* Rounded */
+    font-size: 16px;
+    font-family: 'Poppins';
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+.search-bar input:focus {
+    box-shadow: 0px 0px 8px rgba(112, 112, 112, 0.3);
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: #777;
+    cursor: pointer;
+}
+
+/* Alphabetical Filter */
+.letter-filter {
+    background-color: #eee;
+    border-radius: 20px;
+    padding: 1rem;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.letter-main {
+    color: #0d6287;
+    font-family: 'Poppins Bold';
+    font-size: 1rem;
+    text-align: left;
+}
+
+.letter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.letter-btn {
+    font-family: 'Poppins Bold';
+    color: rgb(41, 41, 41);
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.letter-btn:hover {
+    color: #0d6287;
+    text-decoration: underline;
+}
+
+.pagination button.active {
+    background-color: #B54D49;
+    color: white;
+    border-color: #B54D49;
+}
+
+.pagination button.active:hover {
+    background-color: #922b2b;
+    border-color: #922b2b;
+}
+
+.pagination button {
+    border: 2px solid #B54D49;
+    color: #B54D49;
+    padding: 0.6rem 1.3rem;
+    font-family: 'Poppins Bold';
+    background-color: transparent;
+    border-radius: 10px;
+    margin: 0.2rem;
+    font-size: 1rem;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.pagination button:hover {
+    background-color: #B54D49;
+    color: white;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    margin: 10px auto;
+}

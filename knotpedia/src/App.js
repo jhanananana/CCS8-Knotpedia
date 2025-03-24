@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./codes/Homepage.jsx";
 import ContactUs from "./codes/ContactUs.jsx";
 import AboutUs from "./codes/AboutUs.jsx";
+import AllKnots from "./codes/AllKnots.jsx";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -9,11 +11,22 @@ const App = () => {
         <main className="flex-grow p-4">
           {/* Main content goes here */}
           <Routes>
-            <Route path="/" element={<Homepage />} />
-            {/* <Route path="/contactus" element={<ContactUs />} /> Add Contact Us route */}
-          
-            <Route path="/contactus" element={<ContactUs />} /> {/* Add Contact Us route */}
-            <Route path="/aboutus" element={<AboutUs />} /> {/* Add Contact Us route */}
+            <Route path="/" element={<Homepage />} />          
+            <Route path="/contactus" element={<ContactUs />} /> {/* */}
+            <Route path="/aboutus" element={<AboutUs />} /> {/* */}
+            {/* <Route path="/sitemap" element={<SiteMap />} /> */}
+            {/* <Route path="/FAQs" element={<FAQs />} />  */}
+            {/* <Route path="/termsandconditions" element={<TermsConditions />} /> */}
+            {/* <Route path="/privacypolicy" element={<PrivacyPolicy />} /> */}
+
+            <Route path="/allknots" element={<AllKnots />} /> 
+            {/* <Route path="/knotsbytype" element={<KnotsByType />} />  */}
+            {/* <Route path="/knotsbydifficulty" element={<KnotsByDifficulty />} />  */}
+            {/* <Route path="/knotsbyactivity" element={<KnotsByActivity />} /> */}
+
+            {/* <Route path="/history" element={<History />} /> */}
+            {/* <Route path="/safety" element={<Safety />} />*/}
+
           </Routes>
 
         </main>
