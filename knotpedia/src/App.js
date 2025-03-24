@@ -3,6 +3,7 @@ import Homepage from "./codes/Homepage.jsx";
 import ContactUs from "./codes/ContactUs.jsx";
 import AboutUs from "./codes/AboutUs.jsx";
 import AllKnots from "./codes/AllKnots.jsx";
+import FAQ from "./codes/FAQ.jsx";
 
 const App = () => {
   return (
@@ -15,7 +16,7 @@ const App = () => {
             <Route path="/contactus" element={<ContactUs />} /> {/* */}
             <Route path="/aboutus" element={<AboutUs />} /> {/* */}
             {/* <Route path="/sitemap" element={<SiteMap />} /> */}
-            {/* <Route path="/FAQs" element={<FAQs />} />  */}
+            <Route path="/FAQ" element={<FAQ />} /> 
             {/* <Route path="/termsandconditions" element={<TermsConditions />} /> */}
             {/* <Route path="/privacypolicy" element={<PrivacyPolicy />} /> */}
 
@@ -26,7 +27,6 @@ const App = () => {
 
             {/* <Route path="/history" element={<History />} /> */}
             {/* <Route path="/safety" element={<Safety />} />*/}
-
           </Routes>
 
         </main>
