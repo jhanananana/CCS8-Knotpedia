@@ -10,11 +10,11 @@ const AboutUs = () => {
       <Navbar />
       <div className="POPPINS-ABOUTUS">
         {/* Breadcrumb */}
-
-        <main className="content-container">
           <nav className="breadcrumb">
             <a href="/Homepage">Home</a> &gt; About Us
           </nav>
+        <main className="content-container">
+         
 
           {/* About Section */}
           <div className="about-section">
@@ -55,10 +55,10 @@ const AboutUs = () => {
               <h4 className="blue title-card">Frequently Asked Questions (FAQs)</h4>
               <p>Find answers to common questions.</p>
             </div>
-            <a href="/TermsAndConditions"><div className="card" style={{ backgroundColor: '#5192A5' }}>
+            <div className="card" style={{ backgroundColor: '#5192A5' }}><a href="/TermsAndConditions">
               <h4 className="blue">Terms & Conditions</h4>
-              <p>Understand our site's rules and policies.</p>
-           </div> </a>
+              <p>Understand our site's rules and policies.</p></a>
+           </div> 
             <div className="card" style={{ backgroundColor: '#b54d49' }}>
               <h4 className="red">Privacy Policy</h4>
               <p>Learn how we handle your data securely.</p>

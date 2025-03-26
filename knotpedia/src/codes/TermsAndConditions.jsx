@@ -10,14 +10,14 @@ const TermsAndConditions = () => {
       <Navbar />
       <div className="terms-POPPINS">
         {/* Breadcrumb */}
-    <nav className="breadcrumb">
-            <a href="/Homepage">Home</a> &gt;<a href="/AboutUs">  About Us</a> &gt; Terms And Conditions
+    <nav className="breadcrumb-terms">
+            <a href="/Homepage">Home</a> &gt;<a href="/AboutUs">  About Us</a> &gt; <b>Terms And Conditions</b>
           </nav>
 
 
  <div className="Header-terms">
       <h1 className="terms-title">
-        <strong></strong>Terms & <span>Conditions</span>
+        <strong className="Termsname-Title">Terms & </strong><span>Conditions</span>
       </h1>
       <p className="terms-text">
         By using Knotpedia, you agree to our guidelines on content usage, liability,
@@ -49,7 +49,7 @@ const TermsAndConditions = () => {
           <h2>3. Suggestions, Not Submissions</h2>
           <ul className="terms-list">
             <li>Knotpedia does not accept user-submitted content, including tutorials, images, or videos.</li>
-            <li>However, we welcome suggestions for new knots or improvements. If you have an idea, you can submit it through our <a href="/faqs">FAQs</a> page.</li>
+            <li>However, we welcome suggestions for new knots or improvements. If you have an idea, you can submit it through our <a href="/FAQ">FAQs</a> page.</li>
           </ul>
         </section>
 
