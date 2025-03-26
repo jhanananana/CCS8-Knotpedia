@@ -12,13 +12,13 @@
     display: flex;
     align-items: center;
     gap: 15px; /* Adjust space between text and search bar */
-    margin: 20px auto;
+    margin: 5px auto;
     max-width: 100%; /* Adjust width as needed */
-    background-color: #5192A5;
+    background-color: #0d6287;
     padding: 0.2rem 4rem;
     border-radius: 100px;
     color: white;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-family: 'Poppins Bold';
 }
 
@@ -40,18 +40,26 @@
     transition: 0.3s ease-in-out;
 }
 
+.clear-icon {
+    position: absolute;
+    right: 40px; /* Adjust to keep space from search icon */
+    cursor: pointer;
+    transform: translateY(-165%);
+    width: 22px;
+}
+
 .search-bar input:focus {
     box-shadow: 0px 0px 8px rgba(112, 112, 112, 0.3);
 }
 
-.search-icon {
+.search-icon img{
     position: absolute;
-    right: 15px;
+    right: 0px;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 20px;
     color: #777;
     cursor: pointer;
+    width: 30px;
 }
 
 /* Alphabetical Filter */
@@ -64,7 +72,7 @@
     justify-content: left;
     flex-wrap: wrap;
     gap: 10px;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .letter-main {
@@ -130,4 +138,24 @@
     align-items: center;
     padding: 20px;
     margin: 10px auto;
+}
+
+.filter-container {
+    display: flex;  /* Aligns items in one row */
+    align-items: center;  /* Vertically centers items */
+    gap: 10px;  /* Adds space between elements */
+    padding: 1rem;
+    font-family: 'Poppins';
+    flex-wrap: wrap; /* Ensures responsiveness if the screen is small */
+}
+
+.filter-container select {
+    border: 2px solid #5192A5;
+    padding: 0.5rem 1rem;
+    color: #5192A5;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 5px;
+    width: 180px;
+    padding-right: 30px;
 }

@@ -1,6 +1,6 @@
 /* Main container */
 .content-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
   }
@@ -10,7 +10,7 @@
     margin-left: 2rem; /* Adjust this value as needed */
     color: #202;
     padding-top: 2rem;
-    
+
   }
   
   .breadcrumb a {
@@ -18,31 +18,21 @@
     text-decoration: underline;
   }
   
-  .breadcrumb a:hover {
-    text-decoration: #ff7878;
-  }
-  
   /* Header */
   .contact-header {
     /* background-image: url('/assets/header.jpg'); Background image */
-    background-color: #eee;
+    background-color: #0D6287;
     background-size: cover; /* Cover the entire div */
     background-position: center; /* Center the image */
     color: black; /* Text color */
     padding: 4.5rem; /* Equivalent to py-20 px-8 */
-    margin: 10px; /* Equivalent to mx-4 */
     text-align: left; /* Center text */
+    margin: 10px 0;
   }
-  
-  h1 {
-    font-weight: bold;
-    margin-bottom: 16px;
-  }
-  
+ 
   .blue-text {
     color: #0D6287;
   }
-
   
   /* Two-column layout */
   .two-column-layout {
@@ -65,43 +55,45 @@
   .section-title {
     font-size: 24px;
     font-weight: bold;
-    margin-bottom: 24px;
+    margin-bottom: 14px;
     color: #333;
+    font-family: 'Poppins Bold';
   }
   
   .info-item {
     display: flex;
-    margin-bottom: 20px;
+    margin-bottom: 0px;
   }
   
   .icon-box {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     background-color: transparent;
     border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-right: 16px;
+    margin-top: 23px;
+
   }
 
-  
-  
   .info-content {
     flex: 1;
   }
   
   .info-label {
-    font-weight: 500;
-    margin-bottom: 5px;
     color: #333;
+    margin-bottom: -15px;
   }
   
   .info-value {
-    color: #5192a5;
+    font-weight: bold;
+    color: #0d6287;
   }
 
   .info-value1{
+    font-weight: bold;
     color:#2a4552
   }
   
@@ -148,7 +140,6 @@
     width: 100%;  
     height: 100%;  
     object-fit: contain;  
-    padding: 8px; 
   }
 
   .social-icon {
@@ -175,15 +166,17 @@
   }
   
   .message-form {
-    background-color: #f2f2f2;
+    background-color: #eee;
     border-radius: 8px;
-    padding: 30px;
+    padding: 10px 30px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
   
   .form-title {
     font-size: 24px;
     color: #0D6287;
     margin-bottom: 8px;
+    font-family: 'Poppins Bold';
   }
   
   .form-subtitle {
@@ -200,6 +193,8 @@
     display: block;
     margin-bottom: 8px;
     font-weight: 500;
+    font-weight: bold;
+
   }
   
   .required {
@@ -213,6 +208,7 @@
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
+    font-family: 'Poppins';
   }
   
   .submit-button {
@@ -225,6 +221,8 @@
     cursor: pointer;
     display: block;
     margin: 0 auto;
+    font-family: 'Poppins Bold';
+    font-weight: bold;
     transition: background-color 0.3s;
   }
   
