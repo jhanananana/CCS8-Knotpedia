@@ -15,17 +15,17 @@ const TermsAndConditions = () => {
           </nav>
 
 
-
- 
-    <div className="terms-container">
-        <div className="Header-terms">
+ <div className="Header-terms">
       <h1 className="terms-title">
-        Terms & <span>Conditions</span>
+        <strong></strong>Terms & <span>Conditions</span>
       </h1>
       <p className="terms-text">
         By using Knotpedia, you agree to our guidelines on content usage, liability,
         and external links. Read our full terms here.
       </p></div>
+ 
+    <div className="terms-container">
+       
       
       <div className="space-y-4">
         <div className="terms-spacemargin">
