@@ -2,10 +2,11 @@
   background-image: url('/public/assets/home-header.png');
   background-size: cover;
   background-position: center;
-  color: black;
+  color: white;
   margin: 0rem 0rem;
-  padding: 9rem 5rem;
+  padding: 10rem 5rem;
   text-align: left;
+  border-radius: 0px 0px 0px 100px;
 }
 
 .text-space {
@@ -23,9 +24,9 @@ h1 {
   font-size: 32px;
 }
 
-p {
-  font-size: 1.125rem;
-  color: #202020;
+.home-header p {
+  font-size: 1.1rem;
+  color: white;
 }
 
 .p-width {
@@ -34,11 +35,12 @@ p {
 
 .section-features {
   text-align: center;
-  margin: 5rem 0px;
+  margin: 3rem 0px;
+  padding: 0 1.5rem;
 }
 
 .blue-text {
-  color: #0D6287;
+  color: #0d6287;
 }
 
 .red-text {
@@ -65,9 +67,9 @@ p {
 
 .button.blue:hover {
   color: white;
-
   background-color: #0D6287;
 }
+
 
 .box-container {
   display: flex;
@@ -75,7 +77,7 @@ p {
   gap: 20px;
   flex-wrap: wrap;
   max-width: 950px;
-  margin: auto;
+  margin: 60px auto;
   padding: 0 5rem;
 }
 
@@ -109,7 +111,7 @@ p {
 
 .box:hover {
   transform: scale(1.05);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.4);
 }
 
 .box .icon {
@@ -139,7 +141,7 @@ p {
 
 .box .sub-text {
   font-size: 1rem;
-  color: #e6e6e6;
+  color: white;
   text-align: left;
 }
 
@@ -155,8 +157,9 @@ p {
 .featured-knots {
   text-align: center;
   padding: 2rem 0;
-}
+  border-radius: 0px 100px 0px 0px;
 
+}
 
 .knots-container {
   display: grid;
@@ -171,9 +174,40 @@ p {
   .knots-container {
     grid-template-columns: repeat(4, 1fr);
   }
+
   .home-header {
-    padding: 4rem 2rem;
-    margin: 0px;
+    padding: 3.5rem 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .home-header p {
+    font-size: 0.95rem;
+  }
+
+  .box {
+    width: 180px;
+    height: 210px;
+    padding: 0.8rem;
+  }
+
+  .button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.5rem;
+  }
+
+  .knot-card {
+    border-radius: 16px;
+  }
+
+  .knot-name {
+    font-size: 1.1rem;
+  }
+
+  .knot-description {
+    font-size: 0.9rem;
   }
 }
 
@@ -183,42 +217,89 @@ p {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .box {
-    width: 100%;
-  }
-
-  p {
-    font-size: 1rem;
-  }
-
-  .button {
-    font-size: 1rem;
-  }
-
   .home-header {
-    padding: 1.5rem;
-    margin: 0px;
+    padding: 4rem 1.2rem 1.2rem 1.2rem;
   }
 
   h1 {
     font-size: 1.5rem;
   }
-  .small-text {
+
+  .home-header p {
+    font-size: 1rem;
+  }
+
+  .box {
+    width: 100%;
+    height: auto;
+    padding: 0.7rem;
+  }
+
+  .section-features {
+    padding: 0rem 1rem;
+  }
+  
+  .box .main-text {
     font-size: 1.2rem;
   }
-  .big-text {
-    padding-top: -20px;
-    font-size: 1.4rem;
+
+  .box .sub-text {
+    font-size: 0.9rem;
+  }
+
+  .button {
+    font-size: 0.9rem;
+    padding: 0.5rem 1.2rem;
+  }
+
+  .knot-card {
+    border-radius: 14px;
+  }
+
+  .kmnot-nae {
+    font-size: 1rem;
+  }
+
+  .knot-description {
+    font-size: 0.85rem;
+  }
+
+  .home-search-bar {
+    max-width: 100%;
+    padding-top: 30px;
+  }
+
+  .home-search-bar input {
+    font-size: 14px;
+    padding: 10px 35px 10px 12px;
+  }
+
+  .home-clear-icon {
+    width: 18px;
+    right: 35px;
+  }
+
+  .home-search-icon img {
+    width: 25px;
   }
 }
+
 
 .knot-card {
   background: white;
   border-radius: 20px;
   text-align: left;
-  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
   border: 2px solid #eee;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
+
+.knot-card:hover {
+  /* transform: scale(1.05); */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  background-color: #f0f8ff; /* Light blue tint for better contrast */
+}
+
 
 .knot-image img {
   width: 100%;
@@ -231,7 +312,7 @@ p {
   font-weight: bold;
   font-family: 'Poppins Bold';
   margin: 10px 0px -5px 0px;
-  color: #0D6287;
+  color: rgb(36, 36, 36);
   padding: 0 1rem;
 }
 
@@ -242,18 +323,70 @@ p {
   font-size: 1rem;
 }
 
+.knot-card:hover .knot-name {
+  color: #0D6287;
+}
+
+.knot-card:hover .knot-description {
+  color: #555;
+}
+
+.knot-card:focus-within {
+  outline: 3px solid #0D6287; /* Focus indicator for accessibility */
+}
+
 .button.red {
   background-color: #b54d49;
   color: white;
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
+  padding: 0.7rem 2rem;
+  border-radius: 30px;
   cursor: pointer;
   margin: 0px 1rem 1rem;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 .button.red:hover {
-  background-color: #922b2b;
+  color: #b54d49;
+  background-color: white;
 }
 
-/* Carousel */
+.home-clear-icon {
+  position: absolute;
+  right: 40px; /* Adjust to keep space from search icon */
+  cursor: pointer;
+  transform: translateY(-165%);
+  width: 22px;
+}
+
+.home-search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* Adjust width */
+  padding-top: 40px;
+}
+
+.home-search-bar input {
+  width: 100%;
+  padding: 12px 40px 12px 15px; /* Space for icon */
+  border: 2px solid #ccc;
+  border-radius: 50px; /* Rounded */
+  font-size: 16px;
+  font-family: 'Poppins';
+  outline: none;
+  transition: 0.3s ease-in-out;
+}
+
+.home-search-bar input:focus {
+  border-color: #5192A5;
+  box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6); /* Brighter glow */
+}
+
+.home-search-icon img{
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(20%);
+  color: #777;
+  cursor: pointer;
+  width: 30px;
+}

@@ -4,36 +4,24 @@
     margin: 0 auto;
     padding: 20px;
   }
-
-  /* breadcrumb*/
-  .breadcrumb {
-    margin-left: 2rem; /* Adjust this value as needed */
-    color: #202;
-    padding-top: 2rem;
-
-  }
-  
-  .breadcrumb a {
-    color: #0D6287; /* Link color */
-    text-decoration: underline;
-  }
   
   /* Header */
   .contact-header {
-    /* background-image: url('/assets/header.jpg'); Background image */
-    background-color: #f5f5f5;
-    background-size: cover; /* Cover the entire div */
-    background-position: center; /* Center the image */
-    color: black; /* Text color */
-    padding: 4.5rem; /* Equivalent to py-20 px-8 */
-    text-align: left; /* Center text */
-    margin: 10px 0;
-  }
- 
-  .blue-text {
-    color: #0D6287;
-  }
-  
+    background-image: url('/public/assets/allknots-header.png');
+    background-image: url('/public/assets/allknots-header.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 12rem 0rem 8rem 0rem;
+    text-align: left;
+    position: relative;
+}
+
+  .contact-header .p-width {
+    color: white;
+    margin: 0px auto;
+}
+
   /* Two-column layout */
   .two-column-layout {
     display: flex;
@@ -48,7 +36,7 @@
   }
   
   /* Left column */
-  .left-column {
+  .contact-left-column {
     flex: 1;
   }
   
@@ -161,7 +149,7 @@
   
   
   /* Right column */
-  .right-column {
+  .contact-right-column {
     flex: 1;
   }
   

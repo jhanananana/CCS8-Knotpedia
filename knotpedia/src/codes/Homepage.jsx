@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 
 const Homepage = () => {
     const [knots, setKnots] = useState([]);
+    const [searchTerm, setSearchTerm] = useState("");
 
     useEffect(() => {
         const fetchKnots = async () => {
@@ -28,6 +29,10 @@ const Homepage = () => {
         fetchKnots();
     }, []);
 
+    const filteredKnots = knots.filter(knot => 
+        knot.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div>
             <Navbar />
@@ -35,8 +40,8 @@ const Homepage = () => {
             {/* Header Section */}
             <header className="home-header">
                 <div className="text-space">
-                    <h1 style={{ fontSize: '40px' }}>
-                        The <span className="blue-text">Ultimate</span> <span className="red-text">Knot</span> Guide
+                    <h1 style={{ fontSize: '50px' }}>
+                        The Ultimate Knot Guide
                     </h1>
                     <p className="p-width">
                         Explore <b>Knotpedia</b>, your go-to resource for learning and mastering
@@ -44,7 +49,22 @@ const Homepage = () => {
                         practical uses for various knots in everyday life, survival,
                         and specialized fields.
                     </p>
-                    <button className="button blue">View All Knots</button>
+                    <div>
+                        <div className="home-search-bar">
+                            <input 
+                                type="text" 
+                                placeholder="Search for a knot..." 
+                                value={searchTerm} 
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                            />
+                            {searchTerm && (
+                                <span className="home-clear-icon" onClick={() => setSearchTerm("")}>✖</span>
+                            )}
+                            <span className="home-search-icon">
+                                <img src="/assets/search.png" alt="Search" />
+                            </span>
+                        </div>
+                    </div>
                 </div>
             </header>
 
@@ -54,7 +74,8 @@ const Homepage = () => {
                     <h1>
                         Begin Your <span className="blue-text">Knot</span> <span className="red-text">Journey</span>
                     </h1>
-
+                    <p>Master the art of tying with confidence by exploring a variety 
+                        of knots suited for different needs.</p>
                     <div className="box-container" >
                         <a href="/activity" className="box" style={{ backgroundColor: "#0d6287" }}>
                             <div className="icon">
@@ -92,9 +113,10 @@ const Homepage = () => {
                 </section>
 
                 {/* Featured Knots Section */}
-                <section className="featured-knots" style={{ backgroundColor: '#5192A5' }}>
-                    <h1 style={{ color: 'white' }}>Featured Knots</h1>
-                    <button className="button blue">View All Knots</button>
+                <section className="featured-knots" style={{ backgroundColor: '#b54d49' }}>
+                    <h1 style={{ color: 'white' }}>Must-Know Knots</h1>
+                    <p style={{ color: 'white' }}>These are the essential knots that everyone should learn for 
+                    daily tasks, outdoor adventures, and emergency situations. </p>
                     <div className="content-container" >
                         <div className="knots-container">
                             {knots.map((knot) => (
@@ -142,6 +164,7 @@ const Homepage = () => {
                             ))}
                         </div>
                     </div>
+                    <button className="button blue">View All Knots</button>
                 </section>
             </div>
             {/* </main> */}

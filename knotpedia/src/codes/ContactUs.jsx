@@ -107,36 +107,35 @@ const ContactUs = () => {
       return () => clearTimeout(timer);
     }
   }, [submitStatus.submitted]);
-  
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation bar component */}
       <Navbar />
 
-      {/* Breadcrumb */}
-      <nav className="breadcrumb">
-        <a href="/">Home</a> &gt; Contact Us
-      </nav>
+      {/* Page Header Section */}
+      <header className="contact-header">
+        <h1 className="p-width">
+          Contact Us
+        </h1>
+        <p className="p-width">
+          We'd love to hear from you! Whether you need help with a knot
+          tutorial, have a suggestion for new content, or want to report an
+          issue, the <strong>Knotpedia</strong> team is here to assist you.
+        </p>
+      </header>
 
       <main className="content-container">
-        {/* Page Header Section */}
-        <header className="contact-header">
-          <h1>
-            <span className="blue-text">Contact</span> Us
-          </h1>
-          <p>
-            We'd love to hear from you! Whether you need help with a knot
-            tutorial, have a suggestion for new content, or want to report an
-            issue, the <strong>Knotpedia</strong> team is here to assist you.
-          </p>
-        </header>
-
+        {/* Breadcrumb */}
+        <nav className="breadcrumb">
+          <a href="/">Home</a> &gt; Contact Us
+        </nav>
         {/* Main Content - Two Column Layout */}
         <div className="two-column-layout">
           {/* Left Column - Contact Information */}
-          <div className="left-column">
+          <div className="contact-left-column">
             <h2 className="section-title">Contact Information</h2>
-
+            <hr />
             {/* Phone Number Information */}
             <div className="info-item">
               <div className="icon-box">
@@ -214,7 +213,7 @@ const ContactUs = () => {
           </div>
 
           {/* Right Column - Contact Form */}
-          <div className="right-column">
+          <div className="contact-right-column">
             <div className="message-form">
               <h2 className="form-title">Send us a message!</h2>
               <p className="form-subtitle">
@@ -225,9 +224,8 @@ const ContactUs = () => {
               {/* Status Message */}
               {submitStatus.submitted && (
                 <div
-                  className={`status-message ${
-                    submitStatus.success ? "success" : "error"
-                  }`}
+                  className={`status-message ${submitStatus.success ? "success" : "error"
+                    }`}
                 >
                   {submitStatus.message}
                 </div>

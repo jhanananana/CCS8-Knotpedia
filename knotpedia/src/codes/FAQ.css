@@ -101,23 +101,8 @@
   background-color: #2c5282;
 }
 
-.breadcrumb {
-  margin-bottom: 20px;
-  font-size: 14px;
-}
-.breadcrumb a {
-  color: #333;
-  text-decoration: none;
-}
-.breadcrumb a:hover {
-  text-decoration: underline;
-}
 .red-text {
   color: #a64452;
-}
-
-.blue-text {
-  color: #2a4552;
 }
 
 .B-Main-Container {

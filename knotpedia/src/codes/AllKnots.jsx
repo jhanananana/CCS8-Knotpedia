@@ -37,112 +37,113 @@ const AllKnots = () => {
 
     const indexOfLastKnot = currentPage * knotsPerPage;
     const indexOfFirstKnot = indexOfLastKnot - knotsPerPage;
-    const currentKnots = knots.slice(indexOfFirstKnot, indexOfLastKnot);
+    const currentKnots = knots.length
+        ? Array(6).fill(knots[0]) // Duplicate the first knot 6 times
+        : [];
 
     const totalPages = Math.ceil(knots.length / knotsPerPage);
 
     return (
         <div>
             <Navbar />
+
+            <header className="allknots-header">
+                <h1 className="p-width">Complete Knot List</h1>
+                <p className="p-width">
+                    Browse our complete list of knots, including step-by-step guides,
+                    practical uses, and detailed explanations for various applications.
+                </p>
+            </header>
+
             <div className="content-container">
-                <header className="allknots-header">
-                    <h1 style={{ fontSize: '40px' }}>
-                        Complete <span className="blue-text">Knot List</span>
-                    </h1>
-                    <p className="p-width">
-                        Browse our complete list of knots, including step-by-step guides,
-                        practical uses, and detailed explanations for various applications.
-                    </p>
-                </header>
-
-                {/* SEARCH BAR */}
-                <div className="search-container">
-                    Search for a knot
-                    <div className="search-bar">
-                        <input
-                            type="text"
-                            placeholder="I'm looking for..."
-                            value={searchText}
-                            onChange={(e) => setSearchText(e.target.value)}
-                        />
-                        {searchText && (
-                            <span onClick={handleClearSearch}>
-                                <img className="clear-icon" src="/assets/clear.png" alt="Clear Search" />
-                            </span>
-                        )}
-                        <span className="search-icon">
-                            <img src="/assets/search.png" alt="Search" />
-                        </span>
-                    </div>
-                </div>
-
-                <div className="letter-filter">
-                    <span className="letter-main">Alphabetical Filter:</span>
-                    <div className="letter-buttons">
-                        {Array.from({ length: 26 }, (_, i) => (
-                            <button key={i} className="letter-btn">
-                                {String.fromCharCode(65 + i)}
-                            </button>
-                        ))}
-                    </div>
-                </div>
-
-                <div className="filter-container">
-                    <span className="letter-main">Filter By</span>
-                    <select value={activityFilter} onChange={(e) => setActivityFilter(e.target.value)}>
-                        <option value="">Activity</option>
-                        <option value="Climbing">Climbing</option>
-                        <option value="Fishing">Fishing</option>
-                    </select>
-                    <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
-                        <option value="">Type</option>
-                        <option value="Loop">Loop</option>
-                        <option value="Hitch">Hitch</option>
-                    </select>
-                    <select value={difficultyFilter} onChange={(e) => setDifficultyFilter(e.target.value)}>
-                        <option value="">Difficulty</option>
-                        <option value="Easy">Easy</option>
-                        <option value="Intermediate">Intermediate</option>
-                        <option value="Hard">Hard</option>
-                    </select>
-                    <button className="blue button">Match Filter</button>
-                </div>
-
-
-                <p>Showing {Math.min(indexOfFirstKnot + 1, knots.length)}-{Math.min(indexOfLastKnot, knots.length)} of {knots.length} knots</p>
-
-                <div className="knots-container">
-                    {currentKnots.map((knot) => (
-                        <a href={`/knot/${knot.id}`} className="knot-card" key={knot.id}>
-                            <div className="knot-image">
-                                <img src={knot.image} alt={knot.name} />
+                {/* Breadcrumb */}
+                <nav className="breadcrumb">
+                    <a href="/">Home</a> &gt; All Knots
+                </nav>
+                <div className="main-container">
+                    {/* LEFT COLUMN (FILTERS + ALPHABETICAL FILTER) */}
+                    <aside className="allknots-left-column">
+                        <div className="letter-filter">
+                            <span className="letter-main">Alphabetical Filter:</span>
+                            <div className="letter-buttons">
+                                <button className="letter-btn">All</button>
+                                {Array.from({ length: 26 }, (_, i) => (
+                                    <button key={i} className="letter-btn">
+                                        {String.fromCharCode(65 + i)}
+                                    </button>
+                                ))}
                             </div>
-                            <h3 className="knot-name">{knot.name}</h3>
-                            <p className="knot-description">{knot.description}</p>
-                            <button className="button red">View Knot</button>
-                        </a>
-                    ))}
-                </div>
+                        </div>
+                        <hr />
+                        <div className="filter-container">
+                            <span className="letter-main">Sort By</span>
+                            <select value={activityFilter} onChange={(e) => setActivityFilter(e.target.value)}>
+                                <option value="">Name, A-Z</option>
+                                <option value="Climbing">Name, Z-A</option>
+                            </select>
+                        </div>
+                        <hr />
+                        <div className="filter-container">
+                            <span className="letter-main">Filter By</span>
+                            <select value={activityFilter} onChange={(e) => setActivityFilter(e.target.value)}>
+                                <option value="">Activity</option>
+                                <option value="Climbing">Climbing</option>
+                                <option value="Fishing">Fishing</option>
+                            </select>
+                            <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value)}>
+                                <option value="">Type</option>
+                                <option value="Loop">Loop</option>
+                                <option value="Hitch">Hitch</option>
+                            </select>
+                            <select value={difficultyFilter} onChange={(e) => setDifficultyFilter(e.target.value)}>
+                                <option value="">Difficulty</option>
+                                <option value="Easy">Easy</option>
+                                <option value="Intermediate">Intermediate</option>
+                                <option value="Hard">Hard</option>
+                            </select>
+                            <button className="blue button">Match Filter</button>
+                        </div>
+                    </aside>
 
-                {/* PAGINATION */}
-                <div className="pagination">
-                    <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
-                        Previous
-                    </button>
-                    {[...Array(totalPages)].map((_, i) => (
-                        <button
-                            key={i}
-                            className={currentPage === i + 1 ? "active" : ""}
-                            onClick={() => setCurrentPage(i + 1)}
-                        >
-                            {i + 1}
-                        </button>
-                    ))}
-                    <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
-                        Next
-                    </button>
+                    {/* RIGHT COLUMN (KNOT DISPLAY) */}
+                    <section className="allknots-right-column">
+                        <p>Showing <b>{Math.min(indexOfFirstKnot + 1, knots.length)}-{Math.min(indexOfLastKnot, knots.length)}</b> of {knots.length} knots</p>
+
+                        <div className="knots-container">
+                            {currentKnots.map((knot) => (
+                                <a href={`/knot/${knot.id}`} className="knot-card" key={knot.id}>
+                                    <div className="knot-image">
+                                        <img src={knot.image} alt={knot.name} />
+                                    </div>
+                                    <h3 className="knot-name">{knot.name}</h3>
+                                    <p className="knot-description">{knot.description}</p>
+                                    <button className="button red">View Knot</button>
+                                </a>
+                            ))}
+                        </div>
+
+                        {/* PAGINATION */}
+                        <div className="pagination">
+                            <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>
+                                Previous
+                            </button>
+                            {[...Array(totalPages)].map((_, i) => (
+                                <button
+                                    key={i}
+                                    className={currentPage === i + 1 ? "active" : ""}
+                                    onClick={() => setCurrentPage(i + 1)}
+                                >
+                                    {i + 1}
+                                </button>
+                            ))}
+                            <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>
+                                Next
+                            </button>
+                        </div>
+                    </section>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 };
