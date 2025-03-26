@@ -97,7 +97,7 @@ const FAQ = () => {
       <div className="B1-Main-Container">
         <div className="left-content-container">
           <h1>
-            <span className="blue-text">In what way can we </span>
+            <span className="blue-text2">In what way can we </span>
             <span className="red-text">help?</span>
           </h1>
           <p>Feel free to reach us with your inquiries!</p>

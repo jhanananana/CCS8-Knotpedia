@@ -122,7 +122,7 @@ const ContactUs = () => {
         {/* Page Header Section */}
         <header className="contact-header">
           <h1>
-            <span className="blue-text">Contact</span> Us
+            <span className="blue-text1">Contact</span> Us
           </h1>
           <p>
             We'd love to hear from you! Whether you need help with a knot
