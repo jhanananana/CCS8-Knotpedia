@@ -7,6 +7,14 @@
     padding: 9rem 5rem;
     text-align: left;
   }
+  .Header-terms{
+    background-color: #f5f5f5;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+
+  }
   .terms-POPPINS{
     font-family: 'Poppins' ;
   }
