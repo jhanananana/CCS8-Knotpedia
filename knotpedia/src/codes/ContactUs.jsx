@@ -107,8 +107,7 @@ const ContactUs = () => {
       return () => clearTimeout(timer);
     }
   }, [submitStatus.submitted]);
-
-  /*Main Page Content*/
+  
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation bar component */}
@@ -195,7 +194,7 @@ const ContactUs = () => {
 
             {/* Social Media Section */}
             <div className="social-section">
-              <h2 className="section-title">Social Media</h2>
+              <h2 className="section-title">Social Media<hr /></h2>
               <div className="social-icons">
                 {/* TODO:kulang pa icons */}
                 <div className="social-icon">
@@ -289,6 +288,7 @@ const ContactUs = () => {
                     value={formData.message}
                     onChange={handleChange}
                     required
+                    placeholder="Your message here"
                   ></textarea>
                 </div>
 
@@ -305,7 +305,6 @@ const ContactUs = () => {
           </div>
         </div>
       </main>
-
       <Footer />
     </div>
   );
