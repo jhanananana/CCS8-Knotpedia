@@ -4,6 +4,7 @@ import ContactUs from "./codes/ContactUs.jsx";
 import AboutUs from "./codes/AboutUs.jsx";
 import AllKnots from "./codes/AllKnots.jsx";
 import FAQ from "./codes/FAQ.jsx";
+import TermsAndConditions from "./codes/TermsAndConditions.jsx";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
             <Route path="/aboutus" element={<AboutUs />} /> {/* */}
             {/* <Route path="/sitemap" element={<SiteMap />} /> */}
             <Route path="/FAQ" element={<FAQ />} /> 
+            <Route path="/termsandconditions" element={<TermsAndConditions/>} />
             {/* <Route path="/termsandconditions" element={<TermsConditions />} /> */}
             {/* <Route path="/privacypolicy" element={<PrivacyPolicy />} /> */}
 

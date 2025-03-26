@@ -1,0 +1,66 @@
+.terms-h {
+    background-color: #F2F2F2;
+    background-size: cover;
+    background-position: center;
+    color: black;
+    margin: 0rem 0rem;
+    padding: 9rem 5rem;
+    text-align: left;
+  }
+  .terms-POPPINS{
+    font-family: 'Poppins' ;
+  }
+  .terms-container {
+    
+    margin: 0 auto;
+    padding: 24px;
+    background: white;
+   
+    border-radius: 8px;
+  }
+  .terms-spacemargin {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 1140px;
+    background: white;
+   
+    border-radius: 8px;
+  }
+  .terms-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .terms-title span {
+    color: #dc2626; /* Red color for 'Conditions' */
+  }
+  
+  .terms-text {
+    text-align: center;
+    color: #4b5563; /* Gray-600 */
+    margin-bottom: 20px;
+  }
+  
+  .terms-section {
+    margin-bottom: 20px;
+  }
+  
+  .terms-section h2 {
+    color: #2563eb; /* Blue-600 */
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  .terms-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #374151; /* Gray-700 */
+  }
+  
+  .terms-list a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+  
