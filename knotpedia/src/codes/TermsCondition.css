@@ -8,35 +8,40 @@
     text-align: left;
   }
   .terms-POPPINS{
-    font-family: 'Poppins ' ;
+    font-family: 'Poppins';
   }
  .Header-terms {
     width: 100vw; /* Ensure it takes the full viewport width */
     background-color: #f2f2f2; /* Light gray background */
     padding: 40px 0; /* Padding only top and bottom */
     text-align: center;
+    
 }
 
 
+.terms-container {
+    max-width: 1000px; /* Keep the text centered */
     margin: 0 auto;
-    padding: 24px;
+    padding: 10px;
     background: white;
    
-    border-radius: 8px;
-  }
-  .terms-spacemargin {
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 1140px;
+}
+
+
+.terms-spacemargin {
+    max-width: 1134px; /* Ensure text stays within a readable width */
+    margin: 10px auto;
+    padding: 10px;
     background: white;
-   
     border-radius: 8px;
-  }
+}
+
   .terms-title {
     text-align: center;
-    font-size: 24px;
+    font-size: 55px;
     font-weight: bold;
     margin-bottom: 10px;
+    font-family: 'Poppins' ;
   }
   
   .terms-title span {
@@ -56,12 +61,14 @@
   .terms-section h2 {
     color: #0D6287; /* Blue-600 */
     font-weight: 600;
+    font-size:25px;
     margin-bottom: 5px;
   }
   
   .terms-list {
     list-style-type: disc;
-    padding-left: 20px;
+    padding-left: 10px;
+    font-size:25px;
     color: #374151; /* Gray-700 */
   }
   
