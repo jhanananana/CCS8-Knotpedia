@@ -5,7 +5,7 @@ import AboutUs from "./codes/AboutUs.jsx";
 import AllKnots from "./codes/AllKnots.jsx";
 import FAQ from "./codes/FAQ.jsx";
 import TermsAndConditions from "./codes/TermsAndConditions.jsx";
-
+import PrivacyPolicy from "./codes/PrivacyPolicy.jsx";
 const App = () => {
   return (
     <BrowserRouter>
@@ -20,7 +20,7 @@ const App = () => {
             <Route path="/FAQ" element={<FAQ />} /> 
             <Route path="/termsandconditions" element={<TermsAndConditions/>} />
             {/* <Route path="/termsandconditions" element={<TermsConditions />} /> */}
-            {/* <Route path="/privacypolicy" element={<PrivacyPolicy />} /> */}
+            <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
 
             <Route path="/allknots" element={<AllKnots />} /> 
             {/* <Route path="/knotsbytype" element={<KnotsByType />} />  */}

@@ -59,9 +59,9 @@ const AboutUs = () => {
               <h4 className="blue">Terms & Conditions</h4>
               <p>Understand our site's rules and policies.</p></a>
            </div> 
-            <div className="card" style={{ backgroundColor: '#b54d49' }}>
+            <div className="card" style={{ backgroundColor: '#b54d49' }}><a href="/PrivacyPolicy">
               <h4 className="red">Privacy Policy</h4>
-              <p>Learn how we handle your data securely.</p>
+              <p>Learn how we handle your data securely.</p></a>
             </div>
           </div>
         

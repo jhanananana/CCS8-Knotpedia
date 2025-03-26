@@ -1,0 +1,74 @@
+
+  .breadcrumb-policy{font-size:15px;
+margin:1.5%;}
+  .policy-POPPINS{
+    font-family: 'Poppins';
+  }
+ .Header-policy {
+    width: 100vw; /* Ensure it takes the full viewport width */
+    background-color: #f2f2f2; /* Light gray background */
+    padding: 40px 0; /* Padding only top and bottom */
+    text-align: center;
+    
+}
+
+
+.policy-container {
+    max-width: 1000px; /* Keep the text centered */
+    margin: 0 auto;
+    padding: 10px;
+    background: white;
+   
+}
+
+
+.policy-spacemargin {
+    max-width: 1134px; /* Ensure text stays within a readable width */
+    margin: 10px auto;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+}
+
+  .policy-title {
+    text-align: center;
+    font-size: 55px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Poppins' ;
+  }
+  
+  .policy-title span {
+    color: #B54D49; /* Red color for 'Conditions' */
+  }
+  
+  .policy-text {
+    text-align: center;
+    color: #4b5563; /* Gray-600 */
+    font-size:24px;
+    margin-bottom: 20px;
+  }
+  
+  .policy-section {
+    margin-bottom: 20px;
+  }
+  
+  .policy-section h2 {
+    color: #0D6287; /* Blue-600 */
+    font-weight: 600;
+    font-size:25px;
+    margin-bottom: 5px;
+  }
+  
+  .policy-list {
+    list-style-type: disc;
+    padding-left: 10px;
+    font-size:25px;
+    color: #374151; /* Gray-700 */
+  }
+  
+  .policy-list a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+  
