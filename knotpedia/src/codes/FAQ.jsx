@@ -79,14 +79,14 @@ const FAQ = () => {
       </header>
 
       <div className="B-Main-Container">
-        <FAQService
+        <FAQService.QuestionList
           title="General Questions"
           questions={generalQuestions}
           visibleAnswers={visibleAnswers}
           toggleAnswer={toggleAnswer}
         />
 
-        <FAQService
+        <FAQService.QuestionList
           title="Technical & Contact"
           questions={technicalQuestions}
           visibleAnswers={visibleAnswers}
@@ -105,46 +105,7 @@ const FAQ = () => {
         </div>
 
         <div className="right-form-container">
-          <form className="contact-form">
-            <div className="form-group">
-              <label htmlFor="name">
-                Name <span className="required">*</span>
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Enter your name"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">
-                Email Address <span className="required">*</span>
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Enter your email"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <label htmlFor="question">
-                Write your question <span className="required">*</span>
-              </label>
-              <textarea
-                id="question"
-                name="question"
-                placeholder="Type your message here"
-                required
-              ></textarea>
-            </div>
-            <button type="submit" className="submit-btn">
-              Submit
-            </button>
-          </form>
+          <FAQService.FormComponent />
         </div>
       </div>
 

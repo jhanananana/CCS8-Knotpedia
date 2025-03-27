@@ -4,19 +4,6 @@
     margin: 0 auto;
     padding: 20px;
   }
-
-  /* breadcrumb*/
-  .breadcrumb {
-    margin-left: 2rem; /* Adjust this value as needed */
-    color: #202;
-    padding-top: 2rem;
-
-  }
-  
-  .breadcrumb a {
-    color: #0D6287; /* Link color */
-    text-decoration: underline;
-  }
   
   /* Header */
   .contact-header {
@@ -48,7 +35,7 @@
   }
   
   /* Left column */
-  .left-column {
+  .contact-left-column {
     flex: 1;
   }
   
@@ -161,7 +148,7 @@
   
   
   /* Right column */
-  .right-column {
+  .contact-right-column {
     flex: 1;
   }
   

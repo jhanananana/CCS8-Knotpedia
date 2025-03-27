@@ -4,7 +4,8 @@ import ContactUs from "./codes/ContactUs.jsx";
 import AboutUs from "./codes/AboutUs.jsx";
 import AllKnots from "./codes/AllKnots.jsx";
 import FAQ from "./codes/FAQ.jsx";
-
+import TermsAndConditions from "./codes/TermsAndConditions.jsx";
+import PrivacyPolicy from "./codes/PrivacyPolicy.jsx";
 const App = () => {
   return (
     <BrowserRouter>
@@ -12,13 +13,14 @@ const App = () => {
         <main className="flex-grow p-4">
           {/* Main content goes here */}
           <Routes>
-            <Route path="/" element={<Homepage />} />          
+            <Route path="/homepage" element={<Homepage />} />          
             <Route path="/contactus" element={<ContactUs />} /> {/* */}
             <Route path="/aboutus" element={<AboutUs />} /> {/* */}
             {/* <Route path="/sitemap" element={<SiteMap />} /> */}
             <Route path="/FAQ" element={<FAQ />} /> 
+            <Route path="/termsandconditions" element={<TermsAndConditions/>} />
             {/* <Route path="/termsandconditions" element={<TermsConditions />} /> */}
-            {/* <Route path="/privacypolicy" element={<PrivacyPolicy />} /> */}
+            <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
 
             <Route path="/allknots" element={<AllKnots />} /> 
             {/* <Route path="/knotsbytype" element={<KnotsByType />} />  */}

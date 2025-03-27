@@ -1,0 +1,83 @@
+.terms-h {
+    background-color: #F2F2F2;
+    background-size: cover;
+    background-position: center;
+    color: black;
+   
+    padding: 9rem 5rem;
+    text-align: left;
+  }
+  
+  .breadcrumb-terms{font-size:15px;
+margin:1.5%;}
+  .terms-POPPINS{
+    font-family: 'Poppins';
+  }
+ .Header-terms {
+    width: 100vw; /* Ensure it takes the full viewport width */
+    background-color: #f2f2f2; /* Light gray background */
+    padding: 40px 0; /* Padding only top and bottom */
+    text-align: center;
+    
+}
+
+
+.terms-container {
+    max-width: 1000px; /* Keep the text centered */
+    margin: 0 auto;
+    padding: 10px;
+    background: white;
+   
+}
+
+
+.terms-spacemargin {
+    max-width: 1134px; /* Ensure text stays within a readable width */
+    margin: 10px auto;
+    padding: 10px;
+    background: white;
+    border-radius: 8px;
+}
+
+  .terms-title {
+    text-align: center;
+    font-size: 55px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-family: 'Poppins' ;
+  }
+  
+  .terms-title span {
+    color: #B54D49; /* Red color for 'Conditions' */
+  }
+  
+  .terms-text {
+    text-align: center;
+    color: #4b5563; /* Gray-600 */
+    font-size:24px;
+    margin-bottom: 20px;
+  }
+  
+  .terms-section {
+    margin-bottom: 20px;
+  }
+  
+  .terms-section h2 {
+    color: #0D6287; /* Blue-600 */
+    font-weight: 600;
+    font-size:25px;
+    margin-bottom: 5px;
+  }
+  
+  .terms-list {
+    list-style-type: disc;
+    padding-left: 10px;
+    font-size:25px;
+    color: #374151; /* Gray-700 */
+  }
+  
+  .terms-list a {
+    color: #2563eb;
+    text-decoration: underline;
+  }
+  
