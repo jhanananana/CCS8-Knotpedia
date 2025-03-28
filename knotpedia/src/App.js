@@ -13,7 +13,7 @@ const App = () => {
         <main className="flex-grow p-4">
           {/* Main content goes here */}
           <Routes>
-            <Route path="/homepage" element={<Homepage />} />          
+            <Route path="/" element={<Homepage />} />          
             <Route path="/contactus" element={<ContactUs />} /> {/* */}
             <Route path="/aboutus" element={<AboutUs />} /> {/* */}
             {/* <Route path="/sitemap" element={<SiteMap />} /> */}

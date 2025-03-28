@@ -126,18 +126,7 @@ const ContactUs = () => {
       </header>
 
       <main className="content-container">
-        {/* Page Header Section */}
-        <header className="contact-header">
-          <h1>
-            <span className="blue-text1">Contact</span> Us
-          </h1>
-          <p>
-            We'd love to hear from you! Whether you need help with a knot
-            tutorial, have a suggestion for new content, or want to report an
-            issue, the <strong>Knotpedia</strong> team is here to assist you.
-          </p>
-        </header>
-
+        
         {/* Main Content - Two Column Layout */}
         <div className="two-column-layout">
           {/* Left Column - Contact Information */}
@@ -304,7 +293,7 @@ const ContactUs = () => {
                   className="submit-button"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Submitting..." : "Submit"}
+                  {isSubmitting ? "Submitting..." : "Submit Message"}
                 </button>
               </form>
             </div>

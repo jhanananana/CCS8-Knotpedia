@@ -32,11 +32,10 @@ margin:1.5%;}
 
   .policy-title {
     text-align: center;
-    font-size: 55px;
     font-weight: bold;
     margin-bottom: 10px;
-    font-family: 'Poppins' ;
-  }
+    font-family: 'Poppins Bold';
+  } 
   
   .policy-title span {
     color: #B54D49; /* Red color for 'Conditions' */
@@ -44,8 +43,8 @@ margin:1.5%;}
   
   .policy-text {
     text-align: center;
-    color: #4b5563; /* Gray-600 */
-    font-size:24px;
+    color: #202;
+    /* Gray-600 */
     margin-bottom: 20px;
   }
   
@@ -54,17 +53,15 @@ margin:1.5%;}
   }
   
   .policy-section h2 {
-    color: #0D6287; /* Blue-600 */
-    font-weight: 600;
-    font-size:25px;
+    color: #0D6287;
+    /* Blue-600 */
     margin-bottom: 5px;
+    font-family: 'Poppins Bold';
   }
-  
   .policy-list {
     list-style-type: disc;
     padding-left: 10px;
-    font-size:25px;
-    color: #374151; /* Gray-700 */
+    color: #202; /* Gray-700 */
   }
   
   .policy-list a {

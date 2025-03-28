@@ -4,7 +4,6 @@ import { app } from "../firebase.js";
 // Initialize Firestore
 const db = getFirestore(app);
 
-
 const ContactFormService = {
   
    /* Submit contact form data to Firestore

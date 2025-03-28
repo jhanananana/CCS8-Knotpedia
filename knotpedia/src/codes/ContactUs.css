@@ -7,20 +7,21 @@
   
   /* Header */
   .contact-header {
-    /* background-image: url('/assets/header.jpg'); Background image */
+    background-image: url('/public/assets/home-header.png');
     background-color: #f5f5f5;
     background-size: cover; /* Cover the entire div */
     background-position: center; /* Center the image */
-    color: black; /* Text color */
-    padding: 4.5rem; /* Equivalent to py-20 px-8 */
+    color:white; /* Text color */
+    padding: 12rem 0rem 8rem 0rem;
     text-align: left; /* Center text */
     margin: 10px 0;
   }
  
-  .blue-text1 {
-    color: #0D6287;
-  }
-  
+  .contact-header .p-width {
+    color: white;
+    margin: 10px auto;
+}
+
   /* Two-column layout */
   .two-column-layout {
     display: flex;
@@ -153,10 +154,10 @@
   }
   
   .message-form {
-    background-color: #eee;
+    background-color: #ffffff;
     border-radius: 8px;
     padding: 10px 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
   }
   
   .form-title {
@@ -174,12 +175,12 @@
   .form-group {
     margin-bottom: 20px;
     margin-right: 30px;
+
   }
   
   .form-group label {
     display: block;
     margin-bottom: 8px;
-    font-weight: 500;
     font-weight: bold;
 
   }
@@ -194,8 +195,8 @@
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px;
     font-family: 'Poppins';
+    background-color: #eee;
   }
   
   .submit-button {
@@ -210,6 +211,7 @@
     margin: 0 auto;
     font-family: 'Poppins Bold';
     font-weight: bold;
+    width: 100%;
     transition: background-color 0.3s;
   }
   
