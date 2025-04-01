@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Homepage from "./codes/Homepage.jsx";
 import ContactUs from "./codes/ContactUs.jsx";
 import AboutUs from "./codes/AboutUs.jsx";
+import Terminology from "./codes/Terminology.jsx";
 import AllKnots from "./codes/AllKnots.jsx";
 import FAQ from "./codes/FAQ.jsx";
 import TermsAndConditions from "./codes/TermsAndConditions.jsx";
@@ -16,9 +17,10 @@ const App = () => {
             <Route path="/" element={<Homepage />} />          
             <Route path="/contactus" element={<ContactUs />} /> {/* */}
             <Route path="/aboutus" element={<AboutUs />} /> {/* */}
+            <Route path="/Terminology" element={<Terminology/>} /> 
             {/* <Route path="/sitemap" element={<SiteMap />} /> */}
             <Route path="/FAQ" element={<FAQ />} /> 
-            <Route path="/termsandconditions" element={<TermsAndConditions/>} />
+            <Route path="/termsandconditions" element={<TermsAndConditions />} />
             {/* <Route path="/termsandconditions" element={<TermsConditions />} /> */}
             <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
 

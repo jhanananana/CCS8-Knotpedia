@@ -1,0 +1,145 @@
+.Terminology-header {
+    background-image: url('/public/assets/home-header.png');
+    background-color: #f5f5f5;
+    background-size: cover; /* Cover the entire div */
+    background-position: center; /* Center the image */
+    color: white; /* Text color */
+    padding: 12rem 0rem 8rem 0rem;
+    text-align: left; /* Center text */
+    margin: 10px 0;
+  }
+  
+  .Terminology-header .p-width {
+    color: white;
+    margin: 10px auto;
+  }
+  
+  .glossary-container {
+    max-width: 900px;
+    margin: 10px auto; /* Ensures it is centered on the page */
+    padding: 20px;
+  }
+  
+  .glossary-container h2 {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  .glossary-container p {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .search-bar {
+    display: flex;
+    justify-content: center; /* Centers the search bar */
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+  }
+  
+  .search-bar input {
+    padding: 10px;
+    font-size: 16px;
+    width: 300px; /* Adjust this to your desired width */
+    border-radius: 20px;
+    border: 1px solid #ccc;
+  }
+  
+  .search-bar .search-btn {
+    background-color: #2c5282;
+    border: none;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: white;
+    margin-left: 10px; /* Adjust the space between the input and icon */
+    height: 36px; /* Adjust to match input field height */
+    width: 36px;
+  }
+  
+  .search-bar .search-btn:focus {
+    outline: none;
+  }
+  
+  .search-bar .search-icon {
+    font-size: 20px;
+  }
+  
+  .alphabetical-filter {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .alphabetical-filter span {
+    font-weight: 500;
+    font-size: 16px;
+  }
+  
+  .alphabetical-filter .filter-btn {
+    margin: 5px; /* Reduced margin between buttons */
+    padding: 6px 12px; /* Reduced padding */
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 14px; /* Reduced font size */
+  }
+  
+  .alphabetical-filter .filter-btn.active {
+    background-color: #a64452;
+    color: white;
+  }
+  
+  .pagination {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-btn {
+    padding: 6px 12px; /* Reduced padding */
+    margin: 0 5px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px; /* Reduced font size */
+  }
+  
+  .pagination-btn:hover {
+    background-color: #ddd;
+  }
+  
+  /* Mobile responsiveness */
+  @media (max-width: 768px) {
+    .search-bar input {
+      width: 80%; /* Adjust input width on smaller screens */
+    }
+  
+    .alphabetical-filter {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .alphabetical-filter .filter-btn {
+      margin: 5px; /* Spacing between buttons */
+      padding: 8px 12px;
+      font-size: 14px;
+    }
+  
+    .pagination {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .pagination-btn {
+      margin: 5px;
+      padding: 7px 9px;
+      font-size: 5px;
+    }
+  }
