@@ -1,0 +1,118 @@
+.POPPINS-ABOUTUS {
+  font-family: 'Poppins';
+}
+
+.about-header {
+  background-image: url('/public/assets/home-header.png');
+  background-color: #f5f5f5;
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 12rem 0 8rem 0;
+  text-align: left;
+  margin: 10px 0;
+}
+
+.about-title {
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.about-header .p-width {
+  color: white;
+  margin: 10px auto;
+}
+
+.AboutUshighlight {
+  color: #0D6287;
+}
+
+.AboutUshighlight-pedia {
+  color: #B54D49;
+}
+
+.mission-vision {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.mission, .vision {
+  flex: 1;
+  /* background-color: #eee; */
+  height: 350px;
+  min-width: 300px; /* Prevents collapsing on smaller screens */
+  text-align: left;
+  border-radius: 10px;
+}
+
+.mission-vision-photo {
+  width: 100%;
+  height: 100%;
+}
+
+.policy-cards {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  max-width: 950px;
+  margin: auto;
+  padding: 0 5rem;
+}
+
+.title-card {
+  font-size: 28px;
+}
+
+.questBig {
+  font-size: 36px;
+  color: #2A4552;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  text-align: left;
+  border: 2px solid #eee;
+  width: 250px;
+  height: auto;
+  padding: 1rem;
+  box-shadow: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'Poppins Bold';
+  margin: 10px 0 -5px 0;
+  color: white;
+  padding: 0 1rem;
+}
+
+.card p {
+  color: white;
+  margin: 1rem;
+  padding: 0;
+  font-size: 1rem;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.blue {
+  color: #2A4552;
+}
+
+.red {
+  color: #dc3545;
+}
+
+.border-blue {
+  border-color: #007bff !important;
+}
