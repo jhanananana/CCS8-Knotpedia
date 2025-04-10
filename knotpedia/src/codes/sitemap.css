@@ -1,8 +1,8 @@
-.POPPINS-ABOUTUS {
+.POPPINS-sitemap {
   font-family: 'Poppins';
 }
 
-.about-header {
+.sitemap-header {
   background-image: url('/public/assets/home-header.png');
   background-color: #f5f5f5;
   background-size: cover;
@@ -13,21 +13,21 @@
   margin: 10px 0;
 }
 
-.about-title {
+.sitemap-title {
   font-size: 55px;
   font-weight: bold;
 }
 
-.about-header .p-width {
+.sitemap-header .p-width {
   color: white;
   margin: 10px auto;
 }
 
-.AboutUshighlight {
+.sitemap-highlight {
   color: #0D6287;
 }
 
-.AboutUshighlight-pedia {
+.sitemap-highlight-pedia {
   color: #B54D49;
 }
 
@@ -53,7 +53,7 @@
   height: 100%;
 }
 
-.policy-cards {
+.sitemap-policy-cards {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -63,16 +63,16 @@
   padding: 0 5rem;
 }
 
-.title-card {
+.sitemap-title-card {
   font-size: 28px;
 }
 
-.questBig {
+.sitemap-questBig {
   font-size: 36px;
   color: #2A4552;
 }
 
-.card {
+.sitemap-card {
   background: white;
   border-radius: 20px;
   text-align: left;
@@ -84,7 +84,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.card h4 {
+.sitemap-card h4 {
   font-size: 1.2rem;
   font-weight: bold;
   font-family: 'Poppins Bold';
@@ -93,26 +93,26 @@
   padding: 0 1rem;
 }
 
-.card p {
+.sitemap-card p {
   color: white;
   margin: 1rem;
   padding: 0;
   font-size: 1rem;
 }
 
-.card:hover {
+.sitemap-card:hover {
   transform: scale(1.05);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-.blue {
+.sitemap-blue {
   color: #2A4552;
 }
 
-.red {
+.sitemap-red {
   color: #dc3545;
 }
 
-.border-blue {
+.sitemap-border-blue {
   border-color: #007bff !important;
 }
