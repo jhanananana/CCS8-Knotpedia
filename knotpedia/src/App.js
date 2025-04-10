@@ -7,7 +7,7 @@ import AllKnots from "./codes/AllKnots.jsx";
 import FAQ from "./codes/FAQ.jsx";
 import TermsAndConditions from "./codes/TermsAndConditions.jsx";
 import PrivacyPolicy from "./codes/PrivacyPolicy.jsx";
-import Sitemap from "./codes/Sitemap.jsx";
+//import Sitemap from "./codes/itemap.jsx";
 const App = () => {
   return (
     <BrowserRouter>
@@ -19,7 +19,7 @@ const App = () => {
             <Route path="/contactus" element={<ContactUs />} /> {/* */}
             <Route path="/aboutus" element={<AboutUs />} /> {/* */}
             <Route path="/Terminology" element={<Terminology/>} /> 
-             <Route path="/Sitemap" element={<Sitemap />} /> 
+             {/*<Route path="/Sitemap" element={<Sitemap />} /> */}
             <Route path="/FAQ" element={<FAQ />} /> 
             <Route path="/termsandconditions" element={<TermsAndConditions />} />
             {/* <Route path="/termsandconditions" element={<TermsConditions />} /> */}
