@@ -60,6 +60,8 @@
   flex-wrap: wrap;
   max-width: 950px;
   margin: auto;
+  margin-top:3vw;
+  margin-bottom:3vw;
   padding: 0 5rem;
 }
 

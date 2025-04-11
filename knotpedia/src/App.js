@@ -7,7 +7,7 @@ import AllKnots from "./codes/AllKnots.jsx";
 import FAQ from "./codes/FAQ.jsx";
 import TermsAndConditions from "./codes/TermsAndConditions.jsx";
 import PrivacyPolicy from "./codes/PrivacyPolicy.jsx";
-//import Sitemap from "./codes/itemap.jsx";
+import Sitemap from "./codes/Sitemap.jsx";
 const App = () => {
   return (
     <BrowserRouter>

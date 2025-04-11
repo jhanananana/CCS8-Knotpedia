@@ -17,13 +17,9 @@ const Sitemap = () => {
         </div>
 
         <main className="sitemap-content-container">
-          {/* Breadcrumb */}
-          <nav className="sitemap-breadcrumb">
-            <a href="/">Home</a> &gt; Site Map
-          </nav>
-
-          <hr></hr><br></br>
-          <h1 style={{ textAlign: "center" }}>Cards for sitemap</h1>
+       
+        
+      
           {/* Policy Cards */}
           <div className="sitemap-policy-cards">
 
@@ -35,10 +31,10 @@ const Sitemap = () => {
          
                 <h4 className="sitemap-blue sitemap-title-card">Knotpedia </h4>
                 <ul>
-                <li>Home</li>
-                <li>About Us</li>
-                <li>Contact Us</li>
-                <li>Explore Knots</li>
+               <a href="/Homepage"> <li>Home</li></a>
+               <a href="/AboutUs"><li>About Us</li></a> 
+                <a href="/ContactUs"><li>Contact Us</li></a>
+                <a href="/"><li>Explore Knots</li></a>
                 </ul>
            
             </div>
@@ -47,9 +43,9 @@ const Sitemap = () => {
           
                 <h4 className="sitemap-blue">Legal</h4>
                 <ul>
-                <li>FAQ</li>
-                <li>Terms And Conditions</li>
-                <li>Privacy Policy</li>
+                <a href="/FAQ"> <li>FAQ</li></a>
+                <a href="/TermsAndConditions"><li>Terms And Conditions</li></a>
+                <a href="/PrivacyPolicy"><li>Privacy Policy</li></a>
                 </ul>
            
             </div>
