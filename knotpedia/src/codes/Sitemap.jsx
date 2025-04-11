@@ -10,7 +10,7 @@ const Sitemap = () => {
       <div className="POPPINS-sitemap">
         {/* About Section */}
         <div className="sitemap-header">
-          <h1 className="p-width"><b>Knot</b><b>Pedia</b> Site Map</h1>
+          <h1 className="p-width site-title"><b className="sitemapknot">Knot</b><b className="sitemappedia">Pedia</b> Site Map</h1>
           <p className="p-width">
           Looking for something specific? Explore our sitemap to easily navigate all our pages.
           </p>
@@ -24,14 +24,14 @@ const Sitemap = () => {
           <div className="sitemap-policy-cards">
 
 
-            <div className="sitemap-card" style={{ backgroundColor: "#0d6287" }}>
+            <div className="sitemap-card" style={{ backgroundColor: "#F2F2F2" }}>
               {/* <div className="icon">
                 <img src="/assets/home-difficulty.png" alt="Difficulty Icon" />
               </div> */}
          
-                <h4 className="sitemap-blue sitemap-title-card">Knotpedia </h4>
+                <h4 className=" sitemap-title-card">Knotpedia </h4>
                 <ul>
-               <a href="/Homepage"> <li>Home</li></a>
+               <a href="/"> <li>Home</li></a>
                <a href="/AboutUs"><li>About Us</li></a> 
                 <a href="/ContactUs"><li>Contact Us</li></a>
                 <a href="/"><li>Explore Knots</li></a>
@@ -39,7 +39,7 @@ const Sitemap = () => {
            
             </div>
 
-            <div className="card" style={{ backgroundColor: "#5192A5" }}>
+            <div className="sitemap-card" style={{ backgroundColor: "#F2F2F2" }}>
           
                 <h4 className="sitemap-blue">Legal</h4>
                 <ul>
@@ -50,7 +50,7 @@ const Sitemap = () => {
            
             </div>
 
-            <div className="sitemap-card" style={{ backgroundColor: "#b54d49" }}>
+            <div className="sitemap-card" style={{ backgroundColor: "#F2F2F2" }}>
        
                 <h4 className="sitemap-red">Social Media</h4>
                 <ul>
@@ -60,7 +60,7 @@ const Sitemap = () => {
                 </ul>
             
             </div>
-            <div className="sitemap-card" style={{ backgroundColor: "#b54d49" }}>
+            <div className="sitemap-card" style={{ backgroundColor: "#F2F2F2" }}>
             
                 <h4 className="sitemap-red">Social Media</h4>
                 <ul>
@@ -71,7 +71,7 @@ const Sitemap = () => {
               
             </div>
 
-            <div className="sitemap-card" style={{ backgroundColor: "#b54d49" }}>
+            <div className="sitemap-card" style={{ backgroundColor: "#F2F2F2" }}>
             
             <h4 className="sitemap-red">Explore Knots</h4>
             <ul>
@@ -82,7 +82,7 @@ const Sitemap = () => {
           
            </div>
 
-           <div className="sitemap-card" style={{ backgroundColor: "#b54d49" }}>
+           <div className="sitemap-card" style={{ backgroundColor: "#F2F2F2" }}>
             
             <h4 className="sitemap-red"> Knots by Activity</h4>
             <ul>
@@ -94,7 +94,7 @@ const Sitemap = () => {
             </ul>
           
            </div>
-           <div className="sitemap-card" style={{ backgroundColor: "#b54d49" }}>
+           <div className="sitemap-card" style={{ backgroundColor: "#F2F2F2" }}>
             
             <h4 className="sitemap-red"> Knots by Type</h4>
             <ul>
@@ -106,7 +106,7 @@ const Sitemap = () => {
             </ul>
           
            </div>
-           <div className="sitemap-card" style={{ backgroundColor: "#b54d49" }}>
+           <div className="sitemap-card" style={{ backgroundColor: "#F2F2F2" }}>
             
             <h4 className="sitemap-red"> Knots by Difficulty</h4>
             <ul>

@@ -56,42 +56,66 @@
 .sitemap-policy-cards {
   display: flex;
   justify-content: center;
-  gap: 20px;
   flex-wrap: wrap;
-  max-width: 950px;
-  margin: auto;
-  margin-top:3vw;
-  margin-bottom:3vw;
-  padding: 0 5rem;
+  gap: 2rem;
+  padding: 2rem;
+  margin: 0 auto;
+  max-width: 1200px;
 }
+@media (max-width: 600px) {
+  .sitemap-card {
+    width: 100%;
+    
+  }
+}
+
 
 .sitemap-title-card {
   font-size: 28px;
+ 
 }
 
 .sitemap-questBig {
   font-size: 36px;
   color: #2A4552;
 }
+.sitemapknot{
+
+  color: #5192A5;
+}
+.sitemappedia{
+
+  color: #B54D49;
+}
+.site-title{
+  font-size:50px;
+
+}
 
 .sitemap-card {
-  background: white;
-  border-radius: 20px;
+ 
+  border-radius: 30px;
   text-align: left;
-  border: 2px solid #eee;
-  width: 250px;
+  border: 1px solid #848689;
+  width: 350px;
   height: auto;
   padding: 1rem;
   box-shadow: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.sitemap-card li{
+font-size:30px;
 
+}
+.sitemap-card li:hover{
+  color:white;
+}
 .sitemap-card h4 {
-  font-size: 1.2rem;
+  font-size: 2.2rem;
   font-weight: bold;
   font-family: 'Poppins Bold';
   margin: 10px 0 -5px 0;
-  color: white;
+  color: #B54D49;
   padding: 0 1rem;
 }
 
