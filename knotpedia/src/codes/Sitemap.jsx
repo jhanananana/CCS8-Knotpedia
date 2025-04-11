@@ -23,7 +23,7 @@ const Sitemap = () => {
           </nav>
 
           <hr></hr><br></br>
-          <h1 style={{ textAlign: "center" }}>Title or something</h1>
+          <h1 style={{ textAlign: "center" }}>Cards for sitemap</h1>
           {/* Policy Cards */}
           <div className="sitemap-policy-cards">
 
