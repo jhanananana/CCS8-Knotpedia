@@ -29,54 +29,59 @@ const Homepage = () => {
         fetchKnots();
     }, []);
 
-    const filteredKnots = knots.filter(knot => 
+    const filteredKnots = knots.filter(knot =>
         knot.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     return (
         <div>
             <Navbar />
-            {/* <main className="content-container"> */}
-            {/* Header Section */}
             <header className="home-header">
-                <div className="text-space">
-                    <h1 style={{ fontSize: '50px' }}>
-                        The Ultimate Knot Guide
-                    </h1>
-                    <p className="p-width">
-                        Explore <b>Knotpedia</b>, your go-to resource for learning and mastering
-                        knots. Discover detailed guides, step-by-step tutorials, and
-                        practical uses for various knots in everyday life, survival,
-                        and specialized fields.
-                    </p>
-                    <div>
-                        <div className="home-search-bar">
-                            <input 
-                                type="text" 
-                                placeholder="Search for a knot..." 
-                                value={searchTerm} 
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                            />
-                            {searchTerm && (
-                                <span className="home-clear-icon" onClick={() => setSearchTerm("")}>✖</span>
-                            )}
-                            <span className="home-search-icon">
-                                <img src="/assets/search.png" alt="Search" />
-                            </span>
+                <div className="container">
+                    <div className="content-wrapper">
+                        <div className="text-space">
+                            <h1 style={{ fontSize: '50px' }}>
+                                The Ultimate Knot Guide
+                            </h1>
+                            <p className="p-width">
+                                Explore <b>Knotpedia</b>, your go-to resource for learning and mastering
+                                knots. Discover detailed guides, step-by-step tutorials, and
+                                practical uses for various knots in everyday life, survival,
+                                and specialized fields.
+                            </p>
+                            <div className="home-search-bar">
+                                <input
+                                    type="text"
+                                    placeholder="Search for a knot..."
+                                    value={searchTerm}
+                                    onChange={(e) => setSearchTerm(e.target.value)}
+                                />
+                                {searchTerm && (
+                                    <span className="home-clear-icon" onClick={() => setSearchTerm("")}>✖</span>
+                                )}
+                                <span className="home-search-icon">
+                                    <img src="/assets/search.png" alt="Search" />
+                                </span>
+                            </div>
+                        </div>
+                        <div className="video-container">
+                            <video controls>
+                                <source src="path-to-your-video.mp4" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
                         </div>
                     </div>
                 </div>
             </header>
 
-            {/* Feature Section */}
-            <div className="" >
+            <div>
                 <section className="section-features">
                     <h1>
                         Begin Your <span className="blue-text">Knot</span> <span className="red-text">Journey</span>
                     </h1>
-                    <p>Master the art of tying with confidence by exploring a variety 
+                    <p>Master the art of tying with confidence by exploring a variety
                         of knots suited for different needs.</p>
-                    <div className="box-container" >
+                    <div className="box-container">
                         <a href="/activity" className="box" style={{ backgroundColor: "#0d6287" }}>
                             <div className="icon">
                                 <img src="/assets/home-activity.png" alt="Activity Icon" />
@@ -112,46 +117,12 @@ const Homepage = () => {
                     </div>
                 </section>
 
-                {/* Featured Knots Section */}
                 <section className="featured-knots" style={{ backgroundColor: '#b54d49' }}>
                     <h1 style={{ color: 'white' }}>Must-Know Knots</h1>
-                    <p style={{ color: 'white' }}>These are the essential knots that everyone should learn for 
-                    daily tasks, outdoor adventures, and emergency situations. </p>
-                    <div className="content-container" >
+                    <p style={{ color: 'white' }}>These are the essential knots that everyone should learn for
+                        daily tasks, outdoor adventures, and emergency situations. </p>
+                    <div className="content-container">
                         <div className="knots-container">
-                            {knots.map((knot) => (
-                                <a href={`/knot/${knot.id}`} className="knot-card" key={knot.id}>
-                                    <div className="knot-image">
-                                        <img src={knot.image} alt={knot.name} />
-                                    </div>
-                                    <h3 className="knot-name">{knot.name}</h3>
-                                    <p className="knot-description">{knot.description}</p>
-                                    <button className="button red">View Knot</button>
-                                </a>
-                            ))}
-
-                            {knots.map((knot) => (
-                                <a href={`/knot/${knot.id}`} className="knot-card" key={knot.id}>
-                                    <div className="knot-image">
-                                        <img src={knot.image} alt={knot.name} />
-                                    </div>
-                                    <h3 className="knot-name">{knot.name}</h3>
-                                    <p className="knot-description">{knot.description}</p>
-                                    <button className="button red">View Knot</button>
-                                </a>
-                            ))}
-
-                            {knots.map((knot) => (
-                                <a href={`/knot/${knot.id}`} className="knot-card" key={knot.id}>
-                                    <div className="knot-image">
-                                        <img src={knot.image} alt={knot.name} />
-                                    </div>
-                                    <h3 className="knot-name">{knot.name}</h3>
-                                    <p className="knot-description">{knot.description}</p>
-                                    <button className="button red">View Knot</button>
-                                </a>
-                            ))}
-
                             {knots.map((knot) => (
                                 <a href={`/knot/${knot.id}`} className="knot-card" key={knot.id}>
                                     <div className="knot-image">
@@ -167,7 +138,6 @@ const Homepage = () => {
                     <button className="button blue">View All Knots</button>
                 </section>
             </div>
-            {/* </main> */}
             <Footer />
         </div>
     );
