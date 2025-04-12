@@ -5,19 +5,21 @@ import Footer from "./Footer.jsx";
 
 const AboutUs = () => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div>
       <Navbar />
       <div className="POPPINS-ABOUTUS">
         {/* About Section */}
         <div className="about-header">
+        <div className="container">
           <h1 className="p-width">About Knotpedia</h1>
           <p className="p-width">
             At <strong>Knotpedia</strong>, we're dedicated to making knot-tying accessible for everyone. Our platform offers easy-to-follow guides and tutorials for all skill levels, from beginners to experts.
             Whether for outdoor activities or everyday use, we aim to help you master knots with confidence.
           </p>
+          </div>
         </div>
 
-        <main className="content-container">
+        <main className="container">
           {/* Breadcrumb */}
           <nav className="breadcrumb">
             <a href="/">Home</a> &gt; About Us

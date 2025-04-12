@@ -109,23 +109,24 @@ const ContactUs = () => {
   }, [submitStatus.submitted]);
 
   return (
-    <div className="flex flex-col min-h-screen">
-      {/* Navigation bar component */}
+    <div>
       <Navbar />
 
       {/* Page Header Section */}
       <header className="contact-header">
-        <h1 className="p-width">
-          Contact Us
-        </h1>
-        <p className="p-width">
-          We'd love to hear from you! Whether you need help with a knot
-          tutorial, have a suggestion for new content, or want to report an
-          issue, the <strong>Knotpedia</strong> team is here to assist you.
-        </p>
+        <div className="container">
+            <h1 className="p-width">
+              Contact Us
+            </h1>
+            <p className="p-width">
+              We'd love to hear from you! Whether you need help with a knot
+              tutorial, have a suggestion for new content, or want to report an
+              issue, the <strong>Knotpedia</strong> team is here to assist you.
+            </p>
+          </div>
       </header>
 
-      <main className="content-container">
+      <main className="container">
         
         {/* Main Content - Two Column Layout */}
         <div className="two-column-layout">

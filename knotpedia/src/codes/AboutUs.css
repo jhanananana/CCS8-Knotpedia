@@ -10,7 +10,8 @@
   color: white;
   padding: 12rem 0 8rem 0;
   text-align: left;
-  margin: 10px 0;
+  border-radius: 3rem 3rem 0rem 0rem;
+  margin-bottom: 3rem;
 }
 
 .about-title {

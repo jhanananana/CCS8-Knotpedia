@@ -4,7 +4,7 @@ import "./Homepage.css";
 import { db } from "../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Homepage = () => {
     const navigate = useNavigate();
@@ -84,61 +84,61 @@ const Homepage = () => {
                     <p>Master the art of tying with confidence by exploring a variety
                         of knots suited for different needs.</p>
                     <div className="box-container">
-                        <a href="/activity" className="box" style={{ backgroundColor: "#0d6287" }}>
+                        <a href="/activity" className="box activity" style={{ backgroundColor: "#0d6287" }}>
                             <div className="icon">
                                 <img src="/assets/home-activity.png" alt="Activity Icon" />
                             </div>
                             <div className="main-text">
-                                <span className="small-text">Knots by</span><br />
-                                <span className="big-text">Activity</span>
+                                <span className="big-text">Knots by Activity</span>
                             </div>
                             <div className="sub-text">Find the perfect knot for any task!</div>
+
                         </a>
 
-                        <a href="/type" className="box" style={{ backgroundColor: "#5192A5" }}>
+                        <a href="/type" className="box activity" style={{ backgroundColor: "#5192A5" }}>
                             <div className="icon">
                                 <img src="/assets/home-type.png" alt="Type Icon" />
                             </div>
                             <div className="main-text">
-                                <span className="small-text">Knots by</span><br />
-                                <span className="big-text">Type</span>
+                                <span className="big-text">Knots by Type</span>
                             </div>
                             <div className="sub-text">Explore knots by category.</div>
                         </a>
 
-                        <a href="/difficulty" className="box" style={{ backgroundColor: "#b54d49" }}>
+                        <a href="/difficulty" className="box activity" style={{ backgroundColor: "#b54d49" }}>
                             <div className="icon">
                                 <img src="/assets/home-difficulty.png" alt="Difficulty Icon" />
                             </div>
                             <div className="main-text">
-                                <span className="small-text">Knots by</span><br />
-                                <span className="big-text">Difficulty</span>
+                                <span className="big-text">Knots by Difficulty</span>
                             </div>
                             <div className="sub-text">Discover knots from beginner to expert.</div>
                         </a>
                     </div>
                 </section>
 
-                <section className="featured-knots" style={{ backgroundColor: '#b54d49' }}>
+                <section className="featured-knots">
                     <h1 style={{ color: 'white' }}>Must-Know Knots</h1>
                     <p style={{ color: 'white' }}>These are the essential knots that everyone should learn for
                         daily tasks, outdoor adventures, and emergency situations. </p>
-                    <div className="content-container">
+                    <div className="container">
                         <div className="knots-container">
                             {knots.map((knot) => (
-                              <Link
-                              to={`/KnotChosen/${knot.id}`}
-                              state={{ knot }} // Pass knot data via state
-                              className="knot-card"
-                              key={knot.id}
-                          >
-                              <div className="knot-image">
-                                  <img src={knot.image} alt={knot.name} />
-                              </div>
-                              <h3 className="knot-name">{knot.name}</h3>
-                              <p className="knot-description">{knot.description}</p>
-                              <button className="button red">View Knot</button>
-                          </Link>
+                                <Link
+                                    to={`/KnotChosen/${knot.id}`}
+                                    state={{ knot }} // Pass knot data via state
+                                    className="knot-card"
+                                    key={knot.id}
+                                >
+                                    <div className="knot-image">
+                                        <img src={knot.image} alt={knot.name} />
+                                    </div>
+                                    <h3 className="knot-name">{knot.name}</h3>
+                                    <p className="featured-knot-description">{knot.description}</p>
+                                    <div>
+                                        <button className="button red">View Knot</button>
+                                    </div>
+                                </Link>
                             ))}
                         </div>
                     </div>

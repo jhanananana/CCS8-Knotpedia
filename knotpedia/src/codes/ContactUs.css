@@ -1,10 +1,10 @@
 /* Main container */
-.content-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-  }
   
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
   /* Header */
   .contact-header {
     background-image: url('/public/assets/home-header.png');
@@ -13,8 +13,9 @@
     background-position: center; /* Center the image */
     color:white; /* Text color */
     padding: 12rem 0rem 8rem 0rem;
+    border-radius: 3rem 3rem 0rem 0rem;
     text-align: left; /* Center text */
-    margin: 10px 0;
+    margin-bottom: 3rem;
   }
  
   .contact-header .p-width {

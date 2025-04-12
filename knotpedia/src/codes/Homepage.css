@@ -16,7 +16,8 @@
   align-items: center;
   position: relative;
   flex-direction: row; /* Ensure items are aligned horizontally */
-  flex-wrap: wrap; /* Allow wrapping if space is too tight */
+  flex-wrap: wrap;
+  border-radius: 3rem 3rem 0rem 0rem;
 }
 
 .content-wrapper {
@@ -24,16 +25,16 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  padding: 0 1.5rem;
 }
 
 .text-space {
-  width: 50%; /* Adjust text section width */
-  padding-left: 20px; /* Give space between text and video */
+  width: 50%; 
+  padding-left: 20px;
 }
 
 .video-container {
   width: 50%; /* Adjust video container width */
+  margin-left: 1rem;
   height: auto;
 }
 
@@ -42,8 +43,6 @@
   height: auto;
   border-radius: 10px;
 }
-
-
 
 a {
   text-decoration: none;
@@ -62,7 +61,7 @@ h1 {
 }
 
 .p-width {
-  width: 70%;
+  width: 100%;
 }
 
 .section-features {
@@ -127,18 +126,22 @@ h1 {
 }
 
 .box {
-  width: 200px;
-  height: 230px;
-  background-color: #f9f9f9;
-  border: 1px solid #E4E4E4;
+  width: 250px;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  /* background-color: #f9f9f9; */
   border-radius: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: left;
   padding: 1rem;
   margin: 0px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.activity {
+  background-image: url('/public/assets/home-header.png');
 }
 
 .box:hover {
@@ -154,7 +157,7 @@ h1 {
   margin-bottom: 1rem;
   background-color: transparent;
   padding: 5px;
-  border: 3px solid white;
+  border: 2px solid white;
 }
 
 .box .icon img {
@@ -164,9 +167,8 @@ h1 {
 }
 
 .box .main-text {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-family: 'Poppins Bold';
-  margin-bottom: 0.5rem;
   color: #ffffff;
   text-align: left;
 }
@@ -177,10 +179,6 @@ h1 {
   text-align: left;
 }
 
-.small-text {
-  font-size: 1.3rem;
-}
-
 .big-text {
   font-size: 1.7rem;
 }
@@ -189,66 +187,162 @@ h1 {
 .featured-knots {
   text-align: center;
   padding: 2rem 0;
+  margin: 2rem;
+  background-color: #b54d49;
+  border-radius: 2rem;
 }
 
 .knots-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* 4 per row (desktop) */
+  grid-template-columns: repeat(5, 1fr);
   gap: 15px;
-  justify-content: center;
+  margin-bottom: 1.5rem;
+  justify-content: left;
 }
 
-/* Tablet: 2 knots per row */
-@media (max-width: 1024px) {
-  .knots-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.knot-card {
+  background: white;
+  border-radius: 20px;
+  text-align: left;
+  border: 2px solid #eee;
+  overflow: hidden;
+  justify-content: space-between;
+  height: 100%; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
 
-  .home-header {
-    padding: 3.5rem 1.5rem;
-  }
+.knot-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  background-color: #f0f8ff; /* Light blue tint for better contrast */
+}
 
-  h1 {
-    font-size: 1.8rem;
-  }
+.knot-image img {
+  width: 100%;
+  height: auto;
+}
 
-  .home-header p {
-    font-size: 0.95rem;
-  }
+.knot-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'Poppins Bold';
+  margin: 10px 0px -5px 0px;
+  color: rgb(36, 36, 36);
+  padding: 0 1rem;
+}
 
-  .box {
-    width: 180px;
-    height: 210px;
-    padding: 0.8rem;
-  }
+.featured-knot-description {
+  color: #353535;
+  margin: 1rem;
+  padding: 0px;
+  font-size: 1rem;
+  height: 80px;
+  text-align: left;
+}
 
-  .button {
-    font-size: 0.95rem;
-    padding: 0.6rem 1.5rem;
-  }
+.knot-card:hover .knot-name {
+  color: #0D6287;
+}
 
-  .knot-card {
-    border-radius: 16px;
-  }
+.knot-card:hover .knot-description {
+  color: #555;
+}
 
-  .knot-name {
-    font-size: 1.1rem;
-  }
+.knot-card:focus-within {
+  outline: 3px solid #0D6287; /* Focus indicator for accessibility */
+}
 
-  .knot-description {
-    font-size: 0.9rem;
-  }
+.knot-card .button.red {
+  margin-top: auto; /* Pushes to the bottom */
+  align-self: flex-start; /* optional: left-aligned */
+}
+
+.button.red {
+  background-color: #b54d49;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 0px 1rem 1rem;
+  transition: 0.2s;
+  margin-top: auto;
+  align-self: stretch; 
+}
+
+.button.red:hover {
+  color: #b54d49;
+  background-color: white;
+}
+
+.home-clear-icon {
+  position: absolute;
+  right: 40px; /* Adjust to keep space from search icon */
+  cursor: pointer;
+  transform: translateY(-165%);
+  width: 22px;
+}
+
+.home-search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 400px; /* Adjust width */
+  padding-top: 40px;
+}
+
+.home-search-bar input {
+  width: 100%;
+  padding: 12px 40px 12px 15px; /* Space for icon */
+  border: 2px solid #ccc;
+  border-radius: 50px; /* Rounded */
+  font-size: 16px;
+  font-family: 'Poppins';
+  outline: none;
+  transition: 0.3s ease-in-out;
+}
+
+.home-search-bar input:focus {
+  border-color: #5192A5;
+  box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6); /* Brighter glow */
+}
+
+.home-search-icon img{
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  transform: translateY(20%);
+  color: #777;
+  cursor: pointer;
+  width: 30px;
 }
 
 /* Mobile: 1 knot per row */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .knots-container {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: repeat(1, 1fr); /* 1 column */
+    padding: 0;
+    box-sizing: border-box;
   }
 
   .home-header {
-    padding: 4rem 1.2rem 1.2rem 1.2rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 0rem;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 0;
+  }
+
+  .p-width {
+    width: 100%;
+  }
+  
+  .text-space, .video-container {
+    width: 100%;
   }
 
   h1 {
@@ -296,7 +390,6 @@ h1 {
 
   .home-search-bar {
     max-width: 100%;
-    padding-top: 30px;
   }
 
   .home-search-bar input {
@@ -314,108 +407,64 @@ h1 {
   }
 }
 
-
-.knot-card {
-  background: white;
-  border-radius: 20px;
-  text-align: left;
-  border: 2px solid #eee;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
-.knot-card:hover {
-  /* transform: scale(1.05); */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-  background-color: #f0f8ff; /* Light blue tint for better contrast */
-}
+/* Tablet: 2 knots per row */
+@media (max-width: 1024px) {
+  .knots-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
 
 
-.knot-image img {
-  width: 100%;
-  height: auto;
-}
+  .home-header {
+    padding: 2.5rem 1rem;
+  }
 
-.knot-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-family: 'Poppins Bold';
-  margin: 10px 0px -5px 0px;
-  color: rgb(36, 36, 36);
-  padding: 0 1rem;
-}
+  .content-wrapper {
+    align-items: left;
+    text-align: left;
+    padding: 0;
+  }
 
-.knot-description {
-  color: #353535;
-  margin: 1rem;
-  padding: 0px;
-  font-size: 1rem;
-}
+  .text-space {
+    width: 100%;
+  }
 
-.knot-card:hover .knot-name {
-  color: #0D6287;
-}
+  
+  .video-container{
+    width: 100%;
+    padding: 1rem 2rem 0px;
+  }
 
-.knot-card:hover .knot-description {
-  color: #555;
-}
+  h1 {
+    font-size: 1.8rem;
+  }
 
-.knot-card:focus-within {
-  outline: 3px solid #0D6287; /* Focus indicator for accessibility */
-}
+  .box {
+    width: 180px;
+    height: 210px;
+    padding: 1.8rem;
+  }
 
-.button.red {
-  background-color: #b54d49;
-  color: white;
-  padding: 0.7rem 2rem;
-  border-radius: 30px;
-  cursor: pointer;
-  margin: 0px 1rem 1rem;
-  transition: 0.2s;
-}
+  .button {
+    font-size: 0.95rem;
+    padding: 0.6rem 1.5rem;
+  }
 
-.button.red:hover {
-  color: #b54d49;
-  background-color: white;
-}
+  .knot-card {
+    border-radius: 16px;
+  }
 
-.home-clear-icon {
-  position: absolute;
-  right: 40px; /* Adjust to keep space from search icon */
-  cursor: pointer;
-  transform: translateY(-165%);
-  width: 22px;
-}
+  .knot-name {
+    font-size: 1.1rem;
+  }
 
-.home-search-bar {
-  position: relative;
-  width: 100%;
-  max-width: 400px; /* Adjust width */
-  padding-top: 40px;
-}
+  .knot-description {
+    font-size: 0.9rem;
+  }
 
-.home-search-bar input {
-  width: 100%;
-  padding: 12px 40px 12px 15px; /* Space for icon */
-  border: 2px solid #ccc;
-  border-radius: 50px; /* Rounded */
-  font-size: 16px;
-  font-family: 'Poppins';
-  outline: none;
-  transition: 0.3s ease-in-out;
-}
-
-.home-search-bar input:focus {
-  border-color: #5192A5;
-  box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6); /* Brighter glow */
-}
-
-.home-search-icon img{
-  position: absolute;
-  right: 0px;
-  top: 50%;
-  transform: translateY(20%);
-  color: #777;
-  cursor: pointer;
-  width: 30px;
+  .home-search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 80%; /* Adjust width */
+    padding-top: 0px;
+  }
 }

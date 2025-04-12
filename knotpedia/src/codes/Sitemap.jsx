@@ -10,16 +10,16 @@ const Sitemap = () => {
       <div className="POPPINS-sitemap">
         {/* About Section */}
         <div className="sitemap-header">
+        <div className="container">
           <h1 className="p-width site-title"><b >KnotPedia Site Map</b> </h1>
           <p className="p-width">
           Looking for something specific? Explore our sitemap to easily navigate all our pages.
           </p>
+          </div>
         </div>
 
         <main className="sitemap-content-container">
        
-        
-      
           {/* Policy Cards */}
           <div className="sitemap-policy-cards">
 
