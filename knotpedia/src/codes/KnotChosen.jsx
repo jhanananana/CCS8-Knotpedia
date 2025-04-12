@@ -45,7 +45,12 @@ const KnotChosen = () => {
   }
   
 
-  const steps = knot?.steps ? Object.entries(knot.steps) : [];
+  
+  const steps = knot?.steps? Object.entries(knot.steps).sort(([a], [b]) =>
+     a.localeCompare(b, undefined, { numeric: true })
+    )
+  : [];
+
 
   return (
     <>
@@ -81,8 +86,8 @@ const KnotChosen = () => {
               {steps.map(([stepKey, step], index) => (
                 <div key={stepKey} className="step">
                   <h3>{stepKey}</h3>
-                  <p>{step.description}{step.image}{step.image}</p>
-                  <img src={step.image} alt={step.description || `Step ${index + 1}`} />
+                  <p>{step.description}</p>
+                  <img src={step.image} alt={step.description || `Step ${index+1}`} />
                 </div>
               ))}
             </div>
