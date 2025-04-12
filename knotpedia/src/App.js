@@ -7,6 +7,8 @@ import AllKnots from "./codes/AllKnots.jsx";
 import FAQ from "./codes/FAQ.jsx";
 import TermsAndConditions from "./codes/TermsAndConditions.jsx";
 import PrivacyPolicy from "./codes/PrivacyPolicy.jsx";
+import Sitemap from "./codes/Sitemap.jsx";
+import KnotChosen from "./codes/KnotChosen.jsx";
 const App = () => {
   return (
     <BrowserRouter>
@@ -18,7 +20,7 @@ const App = () => {
             <Route path="/contactus" element={<ContactUs />} /> {/* */}
             <Route path="/aboutus" element={<AboutUs />} /> {/* */}
             <Route path="/Terminology" element={<Terminology/>} /> 
-            {/* <Route path="/sitemap" element={<SiteMap />} /> */}
+             <Route path="/Sitemap" element={<Sitemap />} /> 
             <Route path="/FAQ" element={<FAQ />} /> 
             <Route path="/termsandconditions" element={<TermsAndConditions />} />
             {/* <Route path="/termsandconditions" element={<TermsConditions />} /> */}
@@ -28,7 +30,8 @@ const App = () => {
             {/* <Route path="/knotsbytype" element={<KnotsByType />} />  */}
             {/* <Route path="/knotsbydifficulty" element={<KnotsByDifficulty />} />  */}
             {/* <Route path="/knotsbyactivity" element={<KnotsByActivity />} /> */}
-
+            
+            <Route path="/KnotChosen" element={<KnotChosen />} />
             {/* <Route path="/history" element={<History />} /> */}
             {/* <Route path="/safety" element={<Safety />} />*/}
           </Routes>

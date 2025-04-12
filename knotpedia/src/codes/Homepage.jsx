@@ -4,8 +4,10 @@ import "./Homepage.css";
 import { db } from "../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
+    const navigate = useNavigate();
     const [knots, setKnots] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
 
