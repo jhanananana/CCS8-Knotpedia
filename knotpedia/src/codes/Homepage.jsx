@@ -4,7 +4,7 @@ import "./Homepage.css";
 import { db } from "../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,Link } from "react-router-dom";
 
 const Homepage = () => {
     const navigate = useNavigate();
@@ -126,14 +126,19 @@ const Homepage = () => {
                     <div className="content-container">
                         <div className="knots-container">
                             {knots.map((knot) => (
-                                <a href={`/knot/${knot.id}`} className="knot-card" key={knot.id}>
-                                    <div className="knot-image">
-                                        <img src={knot.image} alt={knot.name} />
-                                    </div>
-                                    <h3 className="knot-name">{knot.name}</h3>
-                                    <p className="knot-description">{knot.description}</p>
-                                    <button className="button red">View Knot</button>
-                                </a>
+                              <Link
+                              to={`/KnotChosen/${knot.id}`}
+                              state={{ knot }} // Pass knot data via state
+                              className="knot-card"
+                              key={knot.id}
+                          >
+                              <div className="knot-image">
+                                  <img src={knot.image} alt={knot.name} />
+                              </div>
+                              <h3 className="knot-name">{knot.name}</h3>
+                              <p className="knot-description">{knot.description}</p>
+                              <button className="button red">View Knot</button>
+                          </Link>
                             ))}
                         </div>
                     </div>
