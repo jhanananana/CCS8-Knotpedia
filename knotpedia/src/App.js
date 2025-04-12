@@ -31,7 +31,7 @@ const App = () => {
             {/* <Route path="/knotsbydifficulty" element={<KnotsByDifficulty />} />  */}
             {/* <Route path="/knotsbyactivity" element={<KnotsByActivity />} /> */}
             
-            <Route path="/KnotChosen/:id" element={<KnotChosen />} />
+            <Route path="/KnotChosen" element={<KnotChosen />} />
             {/* <Route path="/history" element={<History />} /> */}
             {/* <Route path="/safety" element={<Safety />} />*/}
           </Routes>
