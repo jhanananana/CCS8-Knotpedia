@@ -111,10 +111,6 @@ const Navbar = () => {
             Preferences
           </Link>
         </li>
-        <li><Link to="/ContactUs" className={location.pathname === "/ContactUs" ? "active" : ""}>Contact Us</Link></li>
-        <li><Link to="/AboutUs" className={location.pathname === "/AboutUs" ? "active" : ""}>About Us</Link></li>
-        <li><Link to="/Sitemap" className={location.pathname === "/Sitemap" ? "active" : ""}>Site Map</Link></li>
-        <li><Link to="/Preferences" className={location.pathname === "/Preferences" ? "active" : ""}>Preferences</Link></li>
       </ul>
     </nav>
   );
