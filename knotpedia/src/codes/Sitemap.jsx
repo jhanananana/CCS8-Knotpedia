@@ -31,10 +31,10 @@ const Sitemap = () => {
          
                 <h4 className=" sitemap-title-card">Knotpedia </h4>
                 <ul>
-               <a href="/"> <li>Home</li></a>
-               <a href="/AboutUs"><li>About Us</li></a> 
-                <a href="/ContactUs"><li>Contact Us</li></a>
-                <a href="/"><li>Explore Knots</li></a>
+               <a href="/"> <li className=" siteColor">Home</li></a>
+               <a href="/AboutUs"><li className="siteColor">About Us</li></a> 
+                <a href="/ContactUs"><li className="siteColor">Contact Us</li></a>
+                <a href="/"><li className="siteColor">Explore Knots</li></a>
                 </ul>
            
             </div>
@@ -43,9 +43,9 @@ const Sitemap = () => {
           
                 <h4 className="sitemap-blue">Legal</h4>
                 <ul>
-                <a href="/FAQ"> <li>FAQ</li></a>
-                <a href="/TermsAndConditions"><li>Terms And Conditions</li></a>
-                <a href="/PrivacyPolicy"><li>Privacy Policy</li></a>
+                <a href="/FAQ"> <li className="siteColor">FAQ</li></a>
+                <a href="/TermsAndConditions"><li className="siteColor">Terms And Conditions</li></a>
+                <a href="/PrivacyPolicy"><li className="siteColor">Privacy Policy</li></a>
                 </ul>
            
             </div>
@@ -54,9 +54,9 @@ const Sitemap = () => {
        
                 <h4 className="sitemap-red">Social Media</h4>
                 <ul>
-                <li>Facebook</li>
-                <li>Instagram</li>
-                <li>Youtube</li>
+                <li className="siteColor">Facebook</li>
+                <li className="siteColor">Instagram</li>
+                <li className="siteColor">Youtube</li>
                 </ul>
             
             </div>
@@ -64,9 +64,9 @@ const Sitemap = () => {
             
                 <h4 className="sitemap-red">Social Media</h4>
                 <ul>
-                <li>Facebook</li>
-                <li>Instagram</li>
-                <li>Youtube</li>
+                <li className="siteColor">Facebook</li>
+                <li className="siteColor">Instagram</li>
+                <li className="siteColor">Youtube</li>
                 </ul>
               
             </div>
@@ -75,9 +75,9 @@ const Sitemap = () => {
             
             <h4 className="sitemap-red">Explore Knots</h4>
             <ul>
-               <li>Knots by Activity</li>
-               <li>Knots by type</li>
-               <li>Knots by Difficulty</li>
+               <li className="siteColor">Knots by Activity</li>
+               <li className="siteColor">Knots by type</li>
+               <li className="siteColor">Knots by Difficulty</li>
             </ul>
           
            </div>
@@ -86,11 +86,11 @@ const Sitemap = () => {
             
             <h4 className="sitemap-red"> Knots by Activity</h4>
             <ul>
-               <li>Arborist</li>
-               <li>Boating</li>
-               <li>Climbing</li>
-               <li>Fishing</li>
-               <li>Horse and Farm</li>
+               <li className="siteColor">Arborist</li>
+               <li className="siteColor">Boating</li>
+               <li className="siteColor">Climbing</li>
+               <li className="siteColor">Fishing</li>
+               <li className="siteColor">Horse and Farm</li>
             </ul>
           
            </div>
@@ -98,11 +98,11 @@ const Sitemap = () => {
             
             <h4 className="sitemap-red"> Knots by Type</h4>
             <ul>
-               <li>Basic</li>
-               <li>Bends</li>
-               <li>End Loop</li>
-               <li>Hitches</li>
-               <li>Maps</li>
+               <li className="siteColor">Basic</li>
+               <li className="siteColor">Bends</li>
+               <li className="siteColor">End Loop</li>
+               <li className="siteColor">Hitches</li>
+               <li className="siteColor">Maps</li>
             </ul>
           
            </div>
@@ -110,9 +110,9 @@ const Sitemap = () => {
             
             <h4 className="sitemap-red"> Knots by Difficulty</h4>
             <ul>
-               <li>Easy</li>
-               <li>Medium</li>
-               <li>Hard</li>
+               <li className="siteColor">Easy</li>
+               <li className="siteColor">Medium</li>
+               <li className="siteColor">Hard</li>
             </ul>
           
            </div>
