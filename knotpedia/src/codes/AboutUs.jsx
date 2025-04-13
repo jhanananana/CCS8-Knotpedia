@@ -9,7 +9,7 @@ const AboutUs = () => {
       <Navbar />
       <div className="POPPINS-ABOUTUS">
         {/* About Section */}
-        <div className="about-header">
+        <div className="about header">
         <div className="container">
           <h1 className="p-width">About Knotpedia</h1>
           <p className="p-width">

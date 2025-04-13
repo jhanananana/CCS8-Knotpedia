@@ -111,9 +111,8 @@ const ContactUs = () => {
   return (
     <div>
       <Navbar />
-
       {/* Page Header Section */}
-      <header className="contact-header">
+      <header className="contact header">
         <div className="container">
             <h1 className="p-width">
               Contact Us

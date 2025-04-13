@@ -1,6 +1,7 @@
 import Navbar from "./Navbar.jsx";
 import Footer from "./Footer.jsx";
 import "./Homepage.css";
+import BackToTop from './BackToTop';
 import { db } from "../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
@@ -38,12 +39,12 @@ const Homepage = () => {
     return (
         <div>
             <Navbar />
-            <header className="home-header">
+            <header className="home header" >
                 <div className="container">
                     <div className="content-wrapper">
                         <div className="text-space">
-                            <h1 style={{ fontSize: '50px' }}>
-                                The Ultimate Knot Guide
+                            <h1>
+                                The <span className="blue-text">Ultimate</span> <span className="red-text">Knot</span> Guide
                             </h1>
                             <p className="p-width">
                                 Explore <b>Knotpedia</b>, your go-to resource for learning and mastering
@@ -52,18 +53,21 @@ const Homepage = () => {
                                 and specialized fields.
                             </p>
                             <div className="home-search-bar">
-                                <input
-                                    type="text"
-                                    placeholder="Search for a knot..."
-                                    value={searchTerm}
-                                    onChange={(e) => setSearchTerm(e.target.value)}
-                                />
-                                {searchTerm && (
-                                    <span className="home-clear-icon" onClick={() => setSearchTerm("")}>✖</span>
-                                )}
-                                <span className="home-search-icon">
-                                    <img src="/assets/search.png" alt="Search" />
-                                </span>
+                                <div className="search-wrapper">
+                                    <input
+                                        type="text"
+                                        placeholder="Search for a knot..."
+                                        value={searchTerm}
+                                        onChange={(e) => setSearchTerm(e.target.value)}
+                                    />
+                                    {searchTerm && (
+                                        <span className="home-clear-icon" onClick={() => setSearchTerm("")}>✖</span>
+                                    )}
+                                    <button className="home-search-button">
+                                        <img src="/assets/search.png" alt="Search" />
+                                    </button>
+                                </div>
+
                             </div>
                         </div>
                         <div className="video-container">
@@ -84,7 +88,7 @@ const Homepage = () => {
                     <p>Master the art of tying with confidence by exploring a variety
                         of knots suited for different needs.</p>
                     <div className="box-container">
-                        <a href="/activity" className="box activity" style={{ backgroundColor: "#0d6287" }}>
+                        <a href="/activity" className="box" style={{ backgroundColor: "#0d6287" }}>
                             <div className="icon">
                                 <img src="/assets/home-activity.png" alt="Activity Icon" />
                             </div>
@@ -95,7 +99,7 @@ const Homepage = () => {
 
                         </a>
 
-                        <a href="/type" className="box activity" style={{ backgroundColor: "#5192A5" }}>
+                        <a href="/type" className="box" style={{ backgroundColor: "#5192A5" }}>
                             <div className="icon">
                                 <img src="/assets/home-type.png" alt="Type Icon" />
                             </div>
@@ -105,7 +109,7 @@ const Homepage = () => {
                             <div className="sub-text">Explore knots by category.</div>
                         </a>
 
-                        <a href="/difficulty" className="box activity" style={{ backgroundColor: "#b54d49" }}>
+                        <a href="/difficulty" className="box" style={{ backgroundColor: "#b54d49" }}>
                             <div className="icon">
                                 <img src="/assets/home-difficulty.png" alt="Difficulty Icon" />
                             </div>
@@ -135,7 +139,7 @@ const Homepage = () => {
                                     </div>
                                     <h3 className="knot-name">{knot.name}</h3>
                                     <p className="featured-knot-description">{knot.description}</p>
-                                    <div>
+                                    <div className="button-container">
                                         <button className="button red">View Knot</button>
                                     </div>
                                 </Link>
@@ -146,6 +150,7 @@ const Homepage = () => {
                 </section>
             </div>
             <Footer />
+            <BackToTop />
         </div>
     );
 };

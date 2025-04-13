@@ -8,6 +8,7 @@ import FAQ from "./codes/FAQ.jsx";
 import TermsAndConditions from "./codes/TermsAndConditions.jsx";
 import PrivacyPolicy from "./codes/PrivacyPolicy.jsx";
 import Sitemap from "./codes/Sitemap.jsx";
+
 import KnotChosen from "./codes/KnotChosen.jsx";
 const App = () => {
   return (
