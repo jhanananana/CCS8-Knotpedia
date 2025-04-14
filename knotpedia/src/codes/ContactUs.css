@@ -1,34 +1,28 @@
 /* Main container */
-.content-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 20px;
-  }
   
-  /* Header */
-  .contact-header {
-    background-image: url('/public/assets/home-header.png');
-    background-color: #f5f5f5;
-    background-size: cover; /* Cover the entire div */
-    background-position: center; /* Center the image */
-    color:white; /* Text color */
-    padding: 12rem 0rem 8rem 0rem;
-    text-align: left; /* Center text */
-    margin: 10px 0;
-  }
- 
-  .contact-header .p-width {
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.contact {
+  background-image: url('/public/assets/home-header.png');
+  height: 200px;
+}
+
+.contact .p-width {
     color: white;
     margin: 10px auto;
 }
 
 /*=========================================*/
   /* Two-column layout */
-  .two-column-layout {
+.two-column-layout {
     display: flex;
     gap: 30px;
     margin-bottom: 40px;
-  }
+}
   
   @media (max-width: 768px) {
     .two-column-layout {

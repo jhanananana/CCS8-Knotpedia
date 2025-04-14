@@ -1,16 +1,53 @@
-.home-header {
-  background-image: url('/public/assets/home-header.png');
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header {
   background-size: cover;
   background-position: center;
-  color: white;
-  margin: 0rem 0rem;
-  padding: 10rem 5rem;
-  text-align: left;
-  border-radius: 0px 0px 0px 100px;
+  color: #202020;
+  margin: 0 auto;
+  padding: 5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  flex-direction: row; /* Ensure items are aligned horizontally */
+  flex-wrap: wrap;
+  /* border-radius: 3rem 3rem 0rem 0rem; */
+}
+
+.home {
+  background-image: url('/public/assets/home-header.png');
+}
+
+.container h1 {
+  font-size: 3rem;
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
 }
 
 .text-space {
-  padding: 0 10%;
+  width: 50%; 
+  padding-left: 20px;
+}
+
+.video-container {
+  width: 50%; 
+  padding-left: 20px;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
 }
 
 a {
@@ -20,17 +57,17 @@ a {
 h1 {
   font-family: 'Poppins Bold';
   margin-bottom: 16px;
-  line-height: 1.3;
+  line-height: 1.1;
   font-size: 32px;
 }
 
-.home-header p {
-  font-size: 1.1rem;
-  color: white;
+.home p {
+  font-size: 1rem;
+  color: #202;
 }
 
 .p-width {
-  width: 70%;
+  width: 100%;
 }
 
 .section-features {
@@ -95,15 +132,14 @@ h1 {
 }
 
 .box {
-  width: 200px;
-  height: 230px;
-  background-color: #f9f9f9;
-  border: 1px solid #E4E4E4;
+  width: 250px;
+  height: 250px;
+  background-size: cover;
+  background-position: center;
+  /* background-color: #f9f9f9; */
   border-radius: 20px;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
-  align-items: left;
   padding: 1rem;
   margin: 0px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -118,11 +154,10 @@ h1 {
   width: 3.2rem;
   height: 3.2rem;
   border-radius: 50%;
-  overflow: hidden;
   margin-bottom: 1rem;
   background-color: transparent;
   padding: 5px;
-  border: 3px solid white;
+  border: 2px solid white;
 }
 
 .box .icon img {
@@ -132,9 +167,8 @@ h1 {
 }
 
 .box .main-text {
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-family: 'Poppins Bold';
-  margin-bottom: 0.5rem;
   color: #ffffff;
   text-align: left;
 }
@@ -145,10 +179,6 @@ h1 {
   text-align: left;
 }
 
-.small-text {
-  font-size: 1.3rem;
-}
-
 .big-text {
   font-size: 1.7rem;
 }
@@ -156,76 +186,230 @@ h1 {
 /* Featured Knots */
 .featured-knots {
   text-align: center;
-  padding: 2rem 0;
-  border-radius: 0px 100px 0px 0px;
-
+  padding: 2rem 2rem;
+  margin: 2rem;
+  background-color: #b54d49;
+  border-radius: 2rem;
 }
 
 .knots-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  /* 4 per row (desktop) */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
+  margin-bottom: 1.5rem;
+  margin-top: 2rem;
+  justify-content: left;
+}
+
+.knot-card {
+  background: white;
+  border-radius: 20px;
+  text-align: left;
+  border: 2px solid #eee;
+  overflow: hidden;
+  justify-content: space-between;
+  height: 100%; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.knot-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.knot-image img {
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.knot-image {
+  overflow: hidden;
+}
+
+.button-container {
+  height: 3.5rem;
+}
+
+.knot-card:hover .knot-image img {
+  transform: scale(1.1);
+}
+
+.knot-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: 'Poppins Bold';
+  margin: 10px 0px -5px 0px;
+  color: rgb(36, 36, 36);
+  padding: 0 1rem;
+  height: 40px;
+}
+
+.featured-knot-description {
+  color: #353535;
+  margin: 1.5rem 1rem;
+  padding: 0px;
+  font-size: 1rem;
+  height: 70px;
+  text-align: left;
+}
+
+.knot-card:hover .knot-name {
+  color: #0D6287;
+}
+
+.knot-card:hover .knot-description {
+  color: #555;
+}
+
+.knot-card:focus-within {
+  outline: 3px solid #0D6287; /* Focus indicator for accessibility */
+}
+
+.knot-card .button.red {
+  margin-top: auto; /* Pushes to the bottom */
+  align-self: flex-start; /* optional: left-aligned */
+}
+
+.button.red {
+  background-color: #b54d49;
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  cursor: pointer;
+  margin: 0px 1rem 1rem;
+  transition: 0.2s;
+  margin-top: auto;
+  align-self: stretch; 
+}
+
+.button.red:hover {
+  background-color: #6F1D1B;
+}
+
+.home-clear-icon {
+  position: absolute;
+  right: 40px; /* Adjust to keep space from search icon */
+  cursor: pointer;
+  transform: translateY(-165%);
+  width: 22px;
+}
+
+.home-search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.search-wrapper input {
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 100px;
+  border: 2px solid #ccc;
+}
+
+.home-clear-icon {
+  position: absolute;
+  top: 5%;
+  right: rem;
+  transform: translateX(25%);
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #888;
+  width: 20px;
+  height: 20px;
+  padding: 9px;
+  border-radius: 100%;
+}
+
+.home-search-button {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 
-/* Tablet: 2 knots per row */
-@media (max-width: 1024px) {
-  .knots-container {
-    grid-template-columns: repeat(4, 1fr);
-  }
+.home-search-bar input {
+  width: 100%;
+  padding: 12px 0px 12px 15px;
+  border: 2px solid #ccc;
+  border-radius: 50px; /* Rounded */
+  font-size: 16px;
+  font-family: 'Poppins';
+  outline: none;
+  transition: 0.3s ease-in-out;
+}
 
-  .home-header {
-    padding: 3.5rem 1.5rem;
-  }
+.home-search-bar input:focus {
+  border-color: #5192A5;
+  box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6); /* Brighter glow */
+}
 
-  h1 {
-    font-size: 1.8rem;
-  }
-
-  .home-header p {
-    font-size: 0.95rem;
-  }
-
-  .box {
-    width: 180px;
-    height: 210px;
-    padding: 0.8rem;
-  }
-
-  .button {
-    font-size: 0.95rem;
-    padding: 0.6rem 1.5rem;
-  }
-
-  .knot-card {
-    border-radius: 16px;
-  }
-
-  .knot-name {
-    font-size: 1.1rem;
-  }
-
-  .knot-description {
-    font-size: 0.9rem;
-  }
+.home-search-button img {
+  width: 20px;
+  height: 20px;
+  padding: 9px;
+  border-radius: 100%;
+  transform: translateX(40%);
+  background-color: #0D6287;
 }
 
 /* Mobile: 1 knot per row */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .knots-container {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    /* grid-template-columns: repeat(1, 1fr);  */
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  .home-header {
-    padding: 4rem 1.2rem 1.2rem 1.2rem;
+  .featured-knot-description {
+    display: none;
+  }
+
+  .home {
+    flex-direction: column;
+    align-items: center;
+    padding: 0rem;
+  }
+
+  .content-wrapper {
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 0;
+  }
+
+  .p-width {
+    width: 100%;
+  }
+  
+  .text-space, .video-container {
+    width: 100%;
   }
 
   h1 {
     font-size: 1.5rem;
   }
 
-  .home-header p {
+  .home p {
+    color: #202;
     font-size: 1rem;
   }
 
@@ -252,12 +436,17 @@ h1 {
     padding: 0.5rem 1.2rem;
   }
 
+  .button-container {
+    margin: 3rem 0px -0.5rem 0px;
+  }
+
   .knot-card {
     border-radius: 14px;
   }
 
-  .kmnot-nae {
-    font-size: 1rem;
+  .knot-name {
+    font-size: 1.1rem;
+    height: 10px;
   }
 
   .knot-description {
@@ -265,13 +454,12 @@ h1 {
   }
 
   .home-search-bar {
-    max-width: 100%;
-    padding-top: 30px;
+    margin-bottom: 1rem;
+    max-width: 95%;
   }
 
   .home-search-bar input {
     font-size: 14px;
-    padding: 10px 35px 10px 12px;
   }
 
   .home-clear-icon {
@@ -282,111 +470,4 @@ h1 {
   .home-search-icon img {
     width: 25px;
   }
-}
-
-
-.knot-card {
-  background: white;
-  border-radius: 20px;
-  text-align: left;
-  border: 2px solid #eee;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
-.knot-card:hover {
-  /* transform: scale(1.05); */
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-  background-color: #f0f8ff; /* Light blue tint for better contrast */
-}
-
-
-.knot-image img {
-  width: 100%;
-  height: auto;
-  border-radius: 20px 20px 0px 0px;
-}
-
-.knot-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  font-family: 'Poppins Bold';
-  margin: 10px 0px -5px 0px;
-  color: rgb(36, 36, 36);
-  padding: 0 1rem;
-}
-
-.knot-description {
-  color: #353535;
-  margin: 1rem;
-  padding: 0px;
-  font-size: 1rem;
-}
-
-.knot-card:hover .knot-name {
-  color: #0D6287;
-}
-
-.knot-card:hover .knot-description {
-  color: #555;
-}
-
-.knot-card:focus-within {
-  outline: 3px solid #0D6287; /* Focus indicator for accessibility */
-}
-
-.button.red {
-  background-color: #b54d49;
-  color: white;
-  padding: 0.7rem 2rem;
-  border-radius: 30px;
-  cursor: pointer;
-  margin: 0px 1rem 1rem;
-  transition: 0.2s;
-}
-
-.button.red:hover {
-  color: #b54d49;
-  background-color: white;
-}
-
-.home-clear-icon {
-  position: absolute;
-  right: 40px; /* Adjust to keep space from search icon */
-  cursor: pointer;
-  transform: translateY(-165%);
-  width: 22px;
-}
-
-.home-search-bar {
-  position: relative;
-  width: 100%;
-  max-width: 400px; /* Adjust width */
-  padding-top: 40px;
-}
-
-.home-search-bar input {
-  width: 100%;
-  padding: 12px 40px 12px 15px; /* Space for icon */
-  border: 2px solid #ccc;
-  border-radius: 50px; /* Rounded */
-  font-size: 16px;
-  font-family: 'Poppins';
-  outline: none;
-  transition: 0.3s ease-in-out;
-}
-
-.home-search-bar input:focus {
-  border-color: #5192A5;
-  box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6); /* Brighter glow */
-}
-
-.home-search-icon img{
-  position: absolute;
-  right: 0px;
-  top: 50%;
-  transform: translateY(20%);
-  color: #777;
-  cursor: pointer;
-  width: 30px;
 }
