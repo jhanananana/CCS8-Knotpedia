@@ -19,6 +19,22 @@
   /* border-radius: 3rem 3rem 0rem 0rem; */
 }
 
+.subHeader {
+  padding: 3.5rem;
+  color: white;
+  background-color: rgb(221, 221, 221);
+  text-align: center;
+}
+
+.redCover {
+  background-color: #B54D49;
+}
+
+.blueCover {
+  background-color: #0D6287;
+}
+
+
 .home {
   background-image: url('/public/assets/home-header.png');
 }

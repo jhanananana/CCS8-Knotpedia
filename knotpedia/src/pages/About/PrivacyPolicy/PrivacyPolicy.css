@@ -1,0 +1,38 @@
+.policy-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+  background: white;
+}
+
+
+.policy-spacemargin {
+  max-width: 1134px;
+  margin: 10px auto;
+  padding: 10px;
+  background: white;
+  border-radius: 8px;
+}
+
+.policy-section {
+  margin-bottom: 20px;
+}
+
+.policy-section h2 {
+  color: #0D6287;
+  /* Blue-600 */
+  margin-bottom: 5px;
+  font-family: 'Poppins Bold';
+}
+
+.policy-list {
+  list-style-type: disc;
+  padding-left: 10px;
+  color: #202;
+  /* Gray-700 */
+}
+
+.policy-list a {
+  color: #2563eb;
+  text-decoration: underline;
+}

@@ -311,10 +311,32 @@
 /* Breadcrumbs */
   .breadcrumb {
     color: #202;
-    padding: 10px 0px;
+    padding: 1.5rem 0;
+    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
   }
   
   .breadcrumb a {
     color: #0D6287; /* Link color */
+    text-decoration: none;
+    margin: 0 0.6rem;
+  }
+
+  .breadcrumb a:hover {
     text-decoration: underline;
+  }
+
+  .breadcrumb img {
+    width: 1.2rem;
+    margin-right: 1rem;
+  }
+
+  .breadcrumb .home-breadcrumb {
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .breadcrumb .active {
+    margin: 0 0.8rem;
   }

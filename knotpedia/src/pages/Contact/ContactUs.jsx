@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Footer from "./Footer.jsx";
-import Navbar from "./Navbar";
+import Footer from "../Components/Footer.jsx";
+import Navbar from "../Components/Navbar.jsx";
 import "./ContactUs.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import ContactFormService from "./ContactFormService"; // Import the form service
+import ContactFormService from "./ContactFormService.jsx"; // Import the form service
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
@@ -112,26 +112,35 @@ const ContactUs = () => {
   }, []);
 
 
-  
+
   return (
     <div>
       <Navbar />
       {/* Page Header Section */}
-      <header className="contact header">
+      <header className="subHeader blueCover">
         <div className="container">
-            <h1 className="p-width">
-              Contact Us
-            </h1>
-            <p className="p-width">
-              We'd love to hear from you! Whether you need help with a knot
-              tutorial, have a suggestion for new content, or want to report an
-              issue, the <strong>Knotpedia</strong> team is here to assist you.
-            </p>
-          </div>
+          <h1>
+            Contact Us
+          </h1>
+          <p>
+            We'd love to hear from you! Whether you need help with a knot
+            tutorial, have a suggestion for new content, or want to report an
+            issue, the <strong>Knotpedia</strong> team is here to assist you.
+          </p>
+        </div>
       </header>
 
       <main className="container">
-        
+        {/* Breadcrumb */}
+        <nav className="breadcrumb">
+          <a href="/" className="breadcrumb-link">
+            <img src="/assets/home-icon.png" alt="Home Icon" />
+            <span>Home</span>
+          </a>
+          &gt;
+          <span className="active">Contact Us</span>
+        </nav>
+
         {/* Main Content - Two Column Layout */}
         <div className="two-column-layout">
           {/* Left Column - Contact Information */}
@@ -230,9 +239,8 @@ const ContactUs = () => {
               {/* Status Message */}
               {submitStatus.submitted && (
                 <div
-                  className={`status-message ${
-                    submitStatus.success ? "success" : "error"
-                  }`}
+                  className={`status-message ${submitStatus.success ? "success" : "error"
+                    }`}
                 >
                   {submitStatus.message}
                 </div>

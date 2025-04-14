@@ -1,7 +1,7 @@
 import React from "react";
 import "./AboutUs.css";
-import Navbar from "./Navbar.jsx";
-import Footer from "./Footer.jsx";
+import Navbar from "../Components/Navbar.jsx";
+import Footer from "../Components/Footer.jsx";
 
 const AboutUs = () => {
   return (
@@ -9,21 +9,25 @@ const AboutUs = () => {
       <Navbar />
       <div className="POPPINS-ABOUTUS">
         {/* About Section */}
-        <div className="about header">
-        <div className="container">
-          <h1 className="p-width">About Knotpedia</h1>
-          <p className="p-width">
-            At <strong>Knotpedia</strong>, we're dedicated to making knot-tying accessible for everyone. Our platform offers easy-to-follow guides and tutorials for all skill levels, from beginners to experts.
-            Whether for outdoor activities or everyday use, we aim to help you master knots with confidence.
-          </p>
+        <div className="subHeader redCover">
+          <div className="container">
+            <h1>About Knotpedia</h1>
+            <p>
+              At <strong>Knotpedia</strong>, we're dedicated to making knot-tying accessible for everyone.
+            </p>
           </div>
         </div>
 
         <main className="container">
-          {/* Breadcrumb */}
-          <nav className="breadcrumb">
-            <a href="/">Home</a> &gt; About Us
-          </nav>
+        {/* Breadcrumb */}
+        <nav className="breadcrumb">
+          <a href="/" className="breadcrumb-link">
+            <img src="/assets/home-icon.png" alt="Home Icon" />
+            <span>Home</span>
+          </a>
+          &gt;
+          <span className="active">About Us</span>
+        </nav>
 
           {/* Mission & Vision */}
           <div className="mission-vision">

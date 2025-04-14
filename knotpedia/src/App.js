@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Homepage from "./codes/Homepage.jsx";
-import ContactUs from "./codes/ContactUs.jsx";
-import AboutUs from "./codes/AboutUs.jsx";
-import Terminology from "./codes/Terminology.jsx";
-import AllKnots from "./codes/AllKnots.jsx";
-import FAQ from "./codes/FAQ.jsx";
-import TermsAndConditions from "./codes/TermsAndConditions.jsx";
-import PrivacyPolicy from "./codes/PrivacyPolicy.jsx";
-import Sitemap from "./codes/Sitemap.jsx";
+import Homepage from "./pages/Home/Homepage.jsx";
+import ContactUs from "./pages/Contact/ContactUs.jsx";
+import AboutUs from "./pages/About/AboutUs.jsx";
+import Terminology from "./pages/Terminology/Terminology.jsx";
+import AllKnots from "./pages/Categories/All/AllKnots.jsx";
+import FAQ from "./pages/About/FAQs/FAQ.jsx";
+import TermsAndConditions from "./pages/About/TermsAndConditions/TermsAndConditions.jsx";
+import PrivacyPolicy from "./pages/About/PrivacyPolicy/PrivacyPolicy.jsx";
+import Sitemap from "./pages/Sitemap/Sitemap.jsx";
+import KnotChosen from "./pages/Tutorial/KnotChosen.jsx";
 
-import KnotChosen from "./codes/KnotChosen.jsx";
 const App = () => {
   return (
     <BrowserRouter>

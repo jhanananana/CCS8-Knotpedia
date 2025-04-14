@@ -2,18 +2,10 @@
   font-family: 'Poppins';
 }
 
-.about {
-  background-image: url('/public/assets/home-header.png');
-}
 
 .about-title {
   font-size: 55px;
   font-weight: bold;
-}
-
-.about .p-width {
-  color: white;
-  margin: 10px auto;
 }
 
 .AboutUshighlight {

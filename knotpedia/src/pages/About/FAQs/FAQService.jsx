@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
-import { app } from "../firebase.js";
-
+import { app } from "../../../firebase.js";
+import "../../Components/Tooltips.css";
 // Initialize Firestore
 const db = getFirestore(app);
 
@@ -38,7 +38,7 @@ const FAQService = {
       // Add document to Firestore collection
       const docRef = await addDoc(collection(db, "faq_inquiries"), {
         firstname: formData.firstname,
-        middlename: formData.middlename,  
+        // middlename: formData.middlename,  
         lastname: formData.lastname,
         email: formData.email,
         message: formData.message,
@@ -65,8 +65,8 @@ const FAQService = {
   FormComponent: () => {
     // State for form data
     const [formData, setFormData] = useState({
-     firstname: "",
-      middlename: "", 
+      firstname: "",
+      // middlename: "", 
       lastname: "",
       email: "",
       message: "",
@@ -110,7 +110,7 @@ const FAQService = {
       if (result.success) {
         setFormData({
           firstname: "",
-          middlename: "", 
+          // middlename: "", 
           lastname: "",
           email: "",
           message: "",
@@ -139,9 +139,8 @@ const FAQService = {
         {/* Status Message */}
         {submitStatus.submitted && (
           <div
-            className={`status-message ${
-              submitStatus.success ? "success" : "error"
-            }`}
+            className={`status-message ${submitStatus.success ? "success" : "error"
+              }`}
           >
             {submitStatus.message}
           </div>
@@ -159,20 +158,6 @@ const FAQService = {
               value={formData.firstname}
               onChange={handleChange}
               placeholder="Enter your first name"
-              required
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="middlename">
-              Middle Name <span className="required">*</span>
-            </label>
-            <input
-              type="text"
-              id="middlename"
-              value={formData.middlename}
-              onChange={handleChange}
-              placeholder="Enter your middle name"
               required
             />
           </div>
@@ -206,9 +191,12 @@ const FAQService = {
           </div>
 
           <div className="form-group">
-            <label htmlFor="message">
-              Write your question <span className="required">*</span>
+            <label htmlFor="message" className="tooltip">
+              Write your question
+              <span className="required">*</span>
+              <span className="tooltiptext">This is required</span>
             </label>
+
             <textarea
               id="message"
               value={formData.message}

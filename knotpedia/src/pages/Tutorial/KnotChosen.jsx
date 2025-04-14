@@ -1,11 +1,11 @@
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
-import Navbar from "./Navbar";
-import Footer from "./Footer";
+import Navbar from "../Components/Navbar";
+import Footer from "../Components/Footer";
 import "./KnotChosen.css";
 import { useEffect } from "react";
 import { getDocs, collection } from "firebase/firestore";
-import { db } from "../firebase"; // Adjust to your firebase config
+import { db } from "../../firebase"; // Adjust to your firebase config
 
 const KnotChosen = () => {
   const location = useLocation();

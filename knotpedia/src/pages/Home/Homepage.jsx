@@ -1,8 +1,8 @@
-import Navbar from "./Navbar.jsx";
-import Footer from "./Footer.jsx";
+import Navbar from "../Components/Navbar.jsx";
+import Footer from "../Components/Footer.jsx";
 import "./Homepage.css";
-import BackToTop from './BackToTop';
-import { db } from "../firebase.js";
+import BackToTop from '../Components/BackToTop.jsx';
+import { db } from "../../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
