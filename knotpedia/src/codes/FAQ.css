@@ -162,7 +162,8 @@
 
 .right-form-container {
   width: 50%;
-  background: #f8f8f8;
+  background: white;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
   padding: 20px;
   margin-right: 50px;
   border-radius: 12px;

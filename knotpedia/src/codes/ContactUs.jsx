@@ -5,14 +5,15 @@ import "./ContactUs.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import ContactFormService from "./ContactFormService"; // Import the form service
-
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
 const ContactUs = () => {
   // State for form fields
   const [formData, setFormData] = useState({
-    name: "",
+    firstname: "",
+    middlename: "",
+    lastname: "",
     email: "",
     subject: "",
     message: "",
@@ -55,7 +56,9 @@ const ContactUs = () => {
     // Reset form if successful
     if (result.success) {
       setFormData({
-        name: "",
+        firstname: "",
+        middlename: "",
+        lastname: "",
         email: "",
         subject: "",
         message: "",
@@ -65,8 +68,22 @@ const ContactUs = () => {
     setIsSubmitting(false);
   };
 
+  // Reset status message after 5 seconds
   useEffect(() => {
-    // Default icon issue fix
+    if (submitStatus.submitted) {
+      const timer = setTimeout(() => {
+        setSubmitStatus((prevState) => ({
+          ...prevState,
+          submitted: false,
+        }));
+      }, 5000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus.submitted]);
+
+  // Initialize Leaflet map
+  useEffect(() => {
     let DefaultIcon = L.icon({
       iconUrl: icon,
       shadowUrl: iconShadow,
@@ -94,20 +111,8 @@ const ContactUs = () => {
     }
   }, []);
 
-  // Reset status message after 5 seconds
-  useEffect(() => {
-    if (submitStatus.submitted) {
-      const timer = setTimeout(() => {
-        setSubmitStatus((prevState) => ({
-          ...prevState,
-          submitted: false,
-        }));
-      }, 5000);
 
-      return () => clearTimeout(timer);
-    }
-  }, [submitStatus.submitted]);
-
+  
   return (
     <div className="flex flex-col min-h-screen">
       {/* Navigation bar component */}
@@ -115,9 +120,7 @@ const ContactUs = () => {
 
       {/* Page Header Section */}
       <header className="contact-header">
-        <h1 className="p-width">
-          Contact Us
-        </h1>
+        <h1 className="p-width">Contact Us</h1>
         <p className="p-width">
           We'd love to hear from you! Whether you need help with a knot
           tutorial, have a suggestion for new content, or want to report an
@@ -126,13 +129,13 @@ const ContactUs = () => {
       </header>
 
       <main className="content-container">
-        
         {/* Main Content - Two Column Layout */}
         <div className="two-column-layout">
           {/* Left Column - Contact Information */}
           <div className="contact-left-column">
             <h2 className="section-title">Contact Information</h2>
             <hr />
+
             {/* Phone Number Information */}
             <div className="info-item">
               <div className="icon-box">
@@ -190,7 +193,10 @@ const ContactUs = () => {
 
             {/* Social Media Section */}
             <div className="social-section">
-              <h2 className="section-title">Social Media<hr /></h2>
+              <h2 className="section-title">
+                Social Media
+                <hr />
+              </h2>
               <div className="social-icons">
                 {/* TODO:kulang pa icons */}
                 <div className="social-icon">
@@ -221,8 +227,9 @@ const ContactUs = () => {
               {/* Status Message */}
               {submitStatus.submitted && (
                 <div
-                  className={`status-message ${submitStatus.success ? "success" : "error"
-                    }`}
+                  className={`status-message ${
+                    submitStatus.success ? "success" : "error"
+                  }`}
                 >
                   {submitStatus.message}
                 </div>
@@ -230,18 +237,46 @@ const ContactUs = () => {
 
               {/* Contact Form */}
               <form onSubmit={handleSubmit}>
-                {/* Name Field */}
-                <div className="form-group">
-                  <label htmlFor="name">
-                    Name <span className="required">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                  />
+                {/* Name Fields - Wrapped in a container */}
+                <div className="form-group name-fields">
+                  <div className="name-field">
+                    <label htmlFor="firstname">
+                      First Name <span className="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="firstname"
+                      value={formData.firstname}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="name-field">
+                    <label htmlFor="middlename">
+                      Middle Name <span className="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="middlename"
+                      value={formData.middlename}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+
+                  <div className="name-field">
+                    <label htmlFor="lastname">
+                      Last Name <span className="required">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="lastname"
+                      value={formData.lastname}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
                 </div>
 
                 {/* Email Field */}
@@ -255,6 +290,7 @@ const ContactUs = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    placeholder="sample@gmail.com"
                   />
                 </div>
 
@@ -269,6 +305,7 @@ const ContactUs = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     required
+                    placeholder="purpose of your message"
                   />
                 </div>
 

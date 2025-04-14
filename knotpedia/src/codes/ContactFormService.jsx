@@ -14,7 +14,9 @@ const ContactFormService = {
     try {
       /*Automatically adds document to the firestore firebase collection */
       const docRef = await addDoc(collection(db, "contacts"), {
-        name: formData.name,
+        firstname: formData.firstname,
+        middlename: formData.middlename,
+        lastname: formData.lastname,
         email: formData.email,
         subject: formData.subject,
         message: formData.message,

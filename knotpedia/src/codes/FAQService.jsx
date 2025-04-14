@@ -17,10 +17,12 @@ const FAQService = {
               <div className="faq-question" onClick={() => toggleAnswer(q.id)}>
                 <div className="question-text">{q.question}</div>
                 <div className="toggle-icon">
-                  {visibleAnswers[q.id] ? '-' : '+'}
+                  {visibleAnswers[q.id] ? "-" : "+"}
                 </div>
               </div>
-              <div className={`faq-answer ${visibleAnswers[q.id] ? 'show' : ''}`}>
+              <div
+                className={`faq-answer ${visibleAnswers[q.id] ? "show" : ""}`}
+              >
                 {q.answer}
               </div>
             </div>
@@ -35,23 +37,26 @@ const FAQService = {
     try {
       // Add document to Firestore collection
       const docRef = await addDoc(collection(db, "faq_inquiries"), {
-        name: formData.name,
+        firstname: formData.firstname,
+        middlename: formData.middlename,  
+        lastname: formData.lastname,
         email: formData.email,
         message: formData.message,
-        createdAt: new Date()
+        createdAt: new Date(),
       });
-      
+
       return {
         success: true,
         docRef: docRef,
-        message: "Thank you! Your inquiry has been submitted successfully."
+        message: "Thank you! Your inquiry has been submitted successfully.",
       };
     } catch (error) {
       console.error("Error submitting FAQ form:", error);
       return {
         success: false,
         error: error,
-        message: "Sorry, there was an error sending your message. Please try again."
+        message:
+          "Sorry, there was an error sending your message. Please try again.",
       };
     }
   },
@@ -60,7 +65,9 @@ const FAQService = {
   FormComponent: () => {
     // State for form data
     const [formData, setFormData] = useState({
-      name: "",
+     firstname: "",
+      middlename: "", 
+      lastname: "",
       email: "",
       message: "",
     });
@@ -102,7 +109,9 @@ const FAQService = {
       // Reset form if successful
       if (result.success) {
         setFormData({
-          name: "",
+          firstname: "",
+          middlename: "", 
+          lastname: "",
           email: "",
           message: "",
         });
@@ -141,18 +150,47 @@ const FAQService = {
         {/* Form */}
         <form onSubmit={handleSubmit} className="contact-form">
           <div className="form-group">
-            <label htmlFor="name">
-              Name <span className="required">*</span>
+            <label htmlFor="firstname">
+              First Name <span className="required">*</span>
             </label>
             <input
               type="text"
-              id="name"
-              value={formData.name}
+              id="firstname"
+              value={formData.firstname}
               onChange={handleChange}
-              placeholder="Enter your name"
+              placeholder="Enter your first name"
               required
             />
           </div>
+
+          <div className="form-group">
+            <label htmlFor="middlename">
+              Middle Name <span className="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="middlename"
+              value={formData.middlename}
+              onChange={handleChange}
+              placeholder="Enter your middle name"
+              required
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="lastname">
+              Last Name <span className="required">*</span>
+            </label>
+            <input
+              type="text"
+              id="lastname"
+              value={formData.lastname}
+              onChange={handleChange}
+              placeholder="Enter your last name"
+              required
+            />
+          </div>
+
           <div className="form-group">
             <label htmlFor="email">
               Email Address <span className="required">*</span>
@@ -166,6 +204,7 @@ const FAQService = {
               required
             />
           </div>
+
           <div className="form-group">
             <label htmlFor="message">
               Write your question <span className="required">*</span>
@@ -178,17 +217,14 @@ const FAQService = {
               required
             ></textarea>
           </div>
-          <button 
-            type="submit" 
-            className="submit-btn"
-            disabled={isSubmitting}
-          >
+
+          <button type="submit" className="submit-btn" disabled={isSubmitting}>
             {isSubmitting ? "Submitting..." : "Submit"}
           </button>
         </form>
       </>
     );
-  }
+  },
 };
 
 export default FAQService;
