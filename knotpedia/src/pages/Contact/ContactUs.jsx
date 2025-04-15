@@ -12,7 +12,6 @@ const ContactUs = () => {
   // State for form fields
   const [formData, setFormData] = useState({
     firstname: "",
-    middlename: "",
     lastname: "",
     email: "",
     subject: "",
@@ -57,7 +56,6 @@ const ContactUs = () => {
     if (result.success) {
       setFormData({
         firstname: "",
-        middlename: "",
         lastname: "",
         email: "",
         subject: "",
@@ -111,17 +109,13 @@ const ContactUs = () => {
     }
   }, []);
 
-
-
   return (
     <div>
       <Navbar />
       {/* Page Header Section */}
       <header className="subHeader blueCover">
         <div className="container">
-          <h1>
-            Contact Us
-          </h1>
+          <h1>Contact Us</h1>
           <p>
             We'd love to hear from you! Whether you need help with a knot
             tutorial, have a suggestion for new content, or want to report an
@@ -239,8 +233,9 @@ const ContactUs = () => {
               {/* Status Message */}
               {submitStatus.submitted && (
                 <div
-                  className={`status-message ${submitStatus.success ? "success" : "error"
-                    }`}
+                  className={`status-message ${
+                    submitStatus.success ? "success" : "error"
+                  }`}
                 >
                   {submitStatus.message}
                 </div>
@@ -250,7 +245,7 @@ const ContactUs = () => {
               <form onSubmit={handleSubmit}>
                 {/* Name Fields - Wrapped in a container */}
                 <div className="form-group name-fields">
-                  <div className="name-field">
+                  <div className="name-field-firstname">
                     <label htmlFor="firstname">
                       First Name <span className="required">*</span>
                     </label>
@@ -263,20 +258,7 @@ const ContactUs = () => {
                     />
                   </div>
 
-                  <div className="name-field">
-                    <label htmlFor="middlename">
-                      Middle Name <span className="required">*</span>
-                    </label>
-                    <input
-                      type="text"
-                      id="middlename"
-                      value={formData.middlename}
-                      onChange={handleChange}
-                      required
-                    />
-                  </div>
-
-                  <div className="name-field">
+                  <div className="name-field-lastname">
                     <label htmlFor="lastname">
                       Last Name <span className="required">*</span>
                     </label>
