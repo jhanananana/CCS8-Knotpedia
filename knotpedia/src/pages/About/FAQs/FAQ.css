@@ -258,26 +258,121 @@
   }
 }
 
-/* When the screen size is smaller than 600px, further adjustments for very small screens */
-@media screen and (max-width: 600px) {
-  .FAQ-header h1 {
-    font-size: 28px; 
+
+
+
+
+
+
+
+
+/* When the screen size is smaller than 900px */
+@media screen and (max-width: 900px) {
+  .B1-Main-Container {
+    flex-direction: column; /* Stack all elements vertically */
+    align-items: center; /* Center content */
+    padding: 10px;
   }
 
-  .FAQ-header p {
-    font-size: 14px; /*NEW: Reduces font size for description */
+  .faq-sidebar,
+  .right-form-container {
+    width: 100%;  /* Make the sidebar and form take full width */
+    margin: 0;
+    margin-bottom: 20px; /* Space between sidebar and form */
+  }
+
+  .faq-sidebar {
+    margin-bottom: 20px; /* Add space below the sidebar */
+  }
+
+  .form-container {
+    order: 2;  /* Move form below FAQ section */
+    width: 100%;  /* Make the form container take full width */
+    margin-top: 20px;  /* Add some margin on top of the form */
+  }
+
+  .faq-content {
+    order: 1;  /* Keep FAQ content above the form */
+  }
+
+  .faq-sidebar button {
+    font-size: 0.9rem;
   }
 
   .left-content-container h1 {
-    font-size: 18px; /*NEW: Reduces font size for "In what way can we help?" */
-  }
-
-  .image-placeholder {
-    height: 120px; /*NEW: Reduces image height for smaller screens */
+    font-size: 20px;
   }
 
   .submit-btn {
-    font-size: 14px; /*NEW: Reduces font size for submit button */
-    padding: 10px; /*NEW: Reduces padding for submit button */
+    font-size: 14px; /* Adjust submit button font size */
+    padding: 12px;   /* Adjust padding for mobile */
   }
+}
+
+/* When the screen size is smaller than 600px */
+@media screen and (max-width: 600px) {
+  .FAQ-header h1 {
+    font-size: 22px;
+  }
+
+  .FAQ-header p {
+    font-size: 14px;
+  }
+
+  .left-content-container h1 {
+    font-size: 18px;
+  }
+
+  .image-placeholder {
+    height: 120px;
+  }
+
+  .submit-btn {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+
+
+/*FOR THE POP-UP*/
+/* NEW: Popup Style */
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  width: 300px;
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 1000; /* Make sure it's above other elements */
+}
+
+.popup-content {
+  background-color: white;
+  padding: 15px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.popup p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.close-popup {
+  background-color: #a64452;
+  color: white;
+  padding: 10px;
+  border-radius: 25px;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.close-popup:hover {
+  background-color: #6f1d1b;
 }

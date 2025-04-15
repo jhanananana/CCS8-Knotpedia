@@ -146,9 +146,10 @@
 
 /* Flexbox layout for name fields */
 .name-fields {
-  display: flex;
-  gap: 15px; /* Space between input fields */
-  margin-bottom: 20px; /* Space between this row and the next field */
+  display: flex; /* Align fields side by side */
+  gap: 20px; /* Space between First Name and Last Name fields */
+  margin-bottom: 20px; /* Space below the name fields */
+  justify-content: space-between; /* Ensure fields are spaced evenly */
 }
 
 .name-fields .form-group {
@@ -178,6 +179,36 @@
 }
 
 
+.name-field-firstname,
+.name-field-lastname {
+  flex: 1; /* Each input field takes equal space */
+  margin-bottom: 0; /* Remove bottom margin */
+  
+}
+
+.name-field-firstname input,
+.name-field-lastname input {
+  width: 100%; /* Take up the full width of the container */
+  max-width: 250px; /* Set a max width for the inputs */
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: 'Poppins';
+  background-color: #eee;
+}
+
+/* For smaller screens (below 768px), stack fields vertically */
+@media (max-width: 768px) {
+  .name-fields {
+    flex-direction: column; /* Stack the fields vertically */
+  }
+
+  .name-field-firstname,
+  .name-field-lastname {
+    width: 100%; /* Ensure full width on smaller screens */
+    max-width: none; /* Remove max-width to allow full width */
+  }
+}
 
 
   /*=========================================*/

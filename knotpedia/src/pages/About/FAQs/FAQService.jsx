@@ -35,10 +35,8 @@ const FAQService = {
   // NEW: Form submission service
   submitFAQForm: async (formData) => {
     try {
-      // Add document to Firestore collection
       const docRef = await addDoc(collection(db, "faq_inquiries"), {
         firstname: formData.firstname,
-        // middlename: formData.middlename,  
         lastname: formData.lastname,
         email: formData.email,
         message: formData.message,
@@ -61,28 +59,27 @@ const FAQService = {
     }
   },
 
-  // NEW: Form component with submission logic
+  // NEW: Form component with submission logic and success popup
   FormComponent: () => {
-    // State for form data
     const [formData, setFormData] = useState({
       firstname: "",
-      // middlename: "", 
       lastname: "",
       email: "",
       message: "",
     });
 
-    // State for form submission status
     const [submitStatus, setSubmitStatus] = useState({
       submitted: false,
       success: false,
       message: "",
     });
 
-    // State for submission loading
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    // Handle input changes
+    // NEW: Manage popup visibility and message
+    const [isPopupVisible, setIsPopupVisible] = useState(false); 
+    const [popupMessage, setPopupMessage] = useState('');
+
     const handleChange = (e) => {
       const { id, value } = e.target;
       setFormData((prevState) => ({
@@ -91,26 +88,30 @@ const FAQService = {
       }));
     };
 
-    // Handle form submission
     const handleSubmit = async (e) => {
       e.preventDefault();
       setIsSubmitting(true);
 
-      // Submit form using the service method
       const result = await FAQService.submitFAQForm(formData);
 
-      // Update submission status
       setSubmitStatus({
         submitted: true,
         success: result.success,
         message: result.message,
       });
 
-      // Reset form if successful
+      // NEW: Show success or error popup
+      if (result.success) {
+        setPopupMessage("Your inquiry has been submitted successfully!");
+      } else {
+        setPopupMessage("There was an error. Please try again!");
+      }
+
+      setIsPopupVisible(true); 
+
       if (result.success) {
         setFormData({
           firstname: "",
-          // middlename: "", 
           lastname: "",
           email: "",
           message: "",
@@ -120,14 +121,11 @@ const FAQService = {
       setIsSubmitting(false);
     };
 
-    // Reset status message after 5 seconds
+    // NEW: Close the popup after submission
     React.useEffect(() => {
       if (submitStatus.submitted) {
         const timer = setTimeout(() => {
-          setSubmitStatus((prevState) => ({
-            ...prevState,
-            submitted: false,
-          }));
+          setIsPopupVisible(false);
         }, 5000);
 
         return () => clearTimeout(timer);
@@ -136,17 +134,22 @@ const FAQService = {
 
     return (
       <>
-        {/* Status Message */}
-        {submitStatus.submitted && (
-          <div
-            className={`status-message ${submitStatus.success ? "success" : "error"
-              }`}
-          >
-            {submitStatus.message}
-          </div>
+        {/* Popup for success or error message */}
+        
+        {isPopupVisible && (
+          <div className="popup"> 
+            <div className="popup-content"> 
+              <p>{popupMessage}</p> 
+              <button
+                onClick={() => setIsPopupVisible(false)} 
+                className="close-popup" 
+              >
+                Close
+              </button> 
+            </div> 
+          </div> 
         )}
 
-        {/* Form */}
         <form onSubmit={handleSubmit} className="contact-form">
           <div className="form-group">
             <label htmlFor="firstname">
@@ -191,12 +194,9 @@ const FAQService = {
           </div>
 
           <div className="form-group">
-            <label htmlFor="message" className="tooltip">
-              Write your question
-              <span className="required">*</span>
-              <span className="tooltiptext">This is required</span>
+            <label htmlFor="message">
+              Write your question <span className="required">*</span>
             </label>
-
             <textarea
               id="message"
               value={formData.message}
