@@ -167,7 +167,6 @@ h3 {
   background-color: #0D6287;
 }
 
-
 .box-container {
   display: flex;
   justify-content: center;
@@ -196,7 +195,6 @@ h3 {
   height: 250px;
   background-size: cover;
   background-position: center;
-  /* background-color: #f9f9f9; */
   border-radius: 20px;
   display: flex;
   flex-direction: column;

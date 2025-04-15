@@ -1,43 +1,3 @@
-.POPPINS-ABOUTUS {
-  font-family: 'Poppins';
-}
-
-
-.about-title {
-  font-size: 55px;
-  font-weight: bold;
-}
-
-.AboutUshighlight {
-  color: #0D6287;
-}
-
-.AboutUshighlight-pedia {
-  color: #B54D49;
-}
-
-.mission-vision {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-  margin-bottom: 20px;
-  flex-wrap: wrap; /* Ensures responsiveness */
-}
-
-.mission, .vision {
-  flex: 1;
-  /* background-color: #eee; */
-  height: 350px;
-  min-width: 300px; /* Prevents collapsing on smaller screens */
-  text-align: left;
-  border-radius: 10px;
-}
-
-.mission-vision-photo {
-  width: 100%;
-  height: 100%;
-}
-
 .policy-cards {
   display: flex;
   justify-content: center;
@@ -45,16 +5,58 @@
   flex-wrap: wrap;
   max-width: 950px;
   margin: auto;
-  padding: 0 5rem;
+  padding: 0 2rem; /* reduced for smaller screens */
 }
 
-.title-card {
-  font-size: 28px;
+.card-container {
+  margin: 2.5rem 0px;
 }
 
-.questBig {
-  font-size: 36px;
-  color: #2A4552;
+.about-container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0rem;
+}
+
+.mission {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5rem;
+  text-align: left;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.box-content {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.box-title {
+  text-align: left;
+  font-size: 2rem;
+}
+
+.about-container img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.box-desc {
+  line-height: 1.8;
+  max-width: 700px;
+}
+
+.blue-text {
+  color: #0d6287;
+}
+
+.red-text {
+  color: #b54d49;
 }
 
 .card {
@@ -100,4 +102,26 @@
 
 .border-blue {
   border-color: #007bff !important;
+}
+
+/* Responsive Layout for Mobile Devices */
+@media (max-width: 768px) {
+  .mission {
+    flex-direction: column;
+    text-align: left;
+    flex-wrap: wrap;
+    gap: 2rem;
+    padding: 0 1rem;
+  }
+
+  .about-container img {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .box-desc {
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
 }
