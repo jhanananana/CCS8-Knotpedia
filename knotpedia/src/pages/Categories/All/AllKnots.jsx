@@ -160,8 +160,9 @@ const AllKnots = () => {
                     {/* RIGHT COLUMN (KNOT DISPLAY) */}
                     <section className="allknots-right-column">
                         {currentKnots.length === 0 ? (
-                            <p style={{ fontFamily: 'Poppins Bold', fontSize: '1.2rem', color: '#555' }}>
-                                No knots found.
+                            <p className="empty-message">
+                                <b>No exact matches found</b><br></br>
+                                Please try again.
                             </p>
                         ) : (
                             <div className="allknots-container">
