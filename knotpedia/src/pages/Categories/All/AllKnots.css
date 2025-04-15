@@ -16,115 +16,261 @@
     transform: translateX(-50%);
 }
 
+.results-and-search {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+}
+
+.results-info {
+    font-size: 1.1rem;
+    font-family: 'Poppins';
+    color: #0d6287;
+}
+
 .search-bar {
     position: relative;
     display: flex;
     align-items: center;
+    max-width: 300px;
     width: 100%;
-    max-width: 400px;
-    padding: 15px;
 }
 
 .search-bar input {
     width: 100%;
-    padding: 12px 40px 12px 15px;
+    padding: 10px 35px 10px 15px;
+    border-radius: 30px;
     border: 2px solid #ccc;
-    border-radius: 50px;
     font-size: 16px;
     font-family: 'Poppins';
-    outline: none;
-    transition: 0.3s ease-in-out;
 }
 
-.search-bar input:focus {
-    box-shadow: 0px 0px 8px rgba(112, 112, 112, 0.3);
-}
-
-.search-icon img,
-.clear-icon {
+.knot-search-button {
     position: absolute;
-    cursor: pointer;
-    width: 22px;
-}
-
-.search-icon img {
-    right: 0px;
+    right: 0.5rem;
     top: 50%;
     transform: translateY(-50%);
-    color: #777;
-    width: 30px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.knot-search-button img {
+    width: 20px;
+    height: 20px;
+    padding: 9px;
+    border-radius: 100%;
+    transform: translateX(5%);
+    background-color: #0D6287;
 }
 
 .clear-icon {
+    position: absolute;
     right: 40px;
-    transform: translateY(-165%);
+    width: 18px;
+    cursor: pointer;
+    top: 50%;
+    transform: translateY(-50%);
 }
-
 
 .allknots-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);     
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 15px;
     margin-bottom: 1.5rem;
     margin-top: 2rem;
     justify-content: left;
 }
 
+.allknots-container.large {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.allknots-container.medium {
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.allknots-container.small {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.knots-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.knots-card {
+    background: white;
+    border-radius: 20px;
+    text-align: left;
+    border: 2px solid #eee;
+    overflow: hidden;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.knots-image img {
+    width: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.knots-image {
+    overflow: hidden;
+}
+
+.knots-card:hover .knots-image img {
+    transform: scale(1.1);
+}
+
+.knots-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    font-family: 'Poppins Bold';
+    margin: 10px 0px -5px 0px;
+    color: rgb(36, 36, 36);
+    padding: 0 1rem;
+    height: 40px;
+}
+
+.knots-card:hover .knots-name {
+    color: #0D6287;
+}
+
+.knots-description {
+    color: #353535;
+    margin: 1.5rem 1rem;
+    padding: 0px;
+    font-size: 1rem;
+    height: 70px;
+    text-align: left;
+}
+
+.knots-card:hover .knots-description {
+    color: #555;
+}
+
+.knots-card:focus-within {
+    outline: 3px solid #0D6287;
+    /* Focus indicator for accessibility */
+}
+
+.knots-card .button.red {
+    margin-top: auto;
+    /* Pushes to the bottom */
+    align-self: flex-start;
+    /* optional: left-aligned */
+}
+
+.horizontal-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    margin: 1rem 0;
+    color: #424242;
+    /* background-color: #eee; */
+    margin-bottom: 1px solid red;
+    padding: 1.5rem;
+    border-radius: 20px;
+}
+
+.horizontal-filters select {
+    font-family: 'Poppins';
+    padding: 0.5rem;
+    border-radius: 6px;
+    font-size: 1rem;
+    width: 15%;
+}
+
+.horizontal-filters button {
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    font-size: 1rem;
+}
+
+.horizontal-filters select:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.dropbtn {
+    padding: 16px;
+    font-size: 16px;
+    border: 1px solid #555555; 
+    background-color: white;
+    cursor: pointer;
+    display: flex;
+    font-family: 'Poppins';
+    align-items: center;
+    justify-content: space-between; 
+    width: 200px; 
+}
+
+.dropbtn .chevron {
+    margin-left: 10px; 
+    font-size: 12px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border: 1px solid #ccc; /* Add border to dropdown */
+    font-family: 'Poppins';
+}
+
+.dropdown-content a {
+    padding: 12px 16px;
+    display: block;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline */
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd; /* Add hover effect */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #eee;
+}
+
+.dropdown:hover .dropbtn .chevron {
+    transform: rotate(180deg); /* Rotate chevron when dropdown is active */
+}
+
 .allknots-description {
     text-align: left;
     color: #353535;
-    margin: 1rem 1rem;
+    margin: 0 1rem;
     height: 20%;
+    border: 1px solid red;
 }
 
-/* Alphabetical Filter */
-.letter-filter {
-    background-color: #eee;
-    border-radius: 20px;
-    padding: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 5px;
-}
-
-.letter-main {
-    color: #2e2e2e;
-    font-family: 'Poppins Bold';
-    font-size: 1.1rem;
-    text-align: left;
-}
-
-.letter-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-}
-
-.letter-btn {
-    font-family: 'Poppins Bold';
-    color: #0d6287;
-    border: 2px solid #7fbad3;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: 0.1s;
-    width: 30px;
-    padding: 1px;
-    background-color: #a4d1df;
-}
-
-.letter-btn:hover {
-    background-color: #ffffff;
-}
-
-.letter-btn.active {
-    background-color: #007bff;
-    color: white;
-    font-weight: bold;
-}
-
-/* Pagination */
 .pagination {
     display: flex;
     justify-content: center;
@@ -146,11 +292,7 @@
     cursor: pointer;
 }
 
-.pagination button:hover {
-    background-color: #B54D49;
-    color: white;
-}
-
+.pagination button:hover,
 .pagination button.active {
     background-color: #B54D49;
     color: white;
@@ -162,7 +304,6 @@
     border-color: #922b2b;
 }
 
-/* Filters */
 .filter-container {
     display: flex;
     align-items: center;
@@ -183,7 +324,6 @@
     padding-right: 30px;
 }
 
-/* Layout */
 .main-container {
     display: flex;
     align-items: flex-start;
@@ -206,4 +346,98 @@
 
 .empty-message {
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .search-container {
+        position: relative;
+        bottom: 0;
+        transform: none;
+        padding: 0.5rem 1rem;
+    }
+
+    .search-bar {
+        max-width: 250px;
+    }
+
+    .allknots-container {
+        grid-template-columns: repeat(2, 1fr); /* Display 2 items per row */
+    }
+
+    .pagination button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    .horizontal-filters select {
+        width: 40%;
+    }
+
+    .main-container {
+        flex-direction: column;
+    }
+
+    .allknots-left-column {
+        flex: none;
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .allknots-right-column {
+        flex: none;
+        width: 100%;
+    }
+
+    .allknots-container.large {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    
+    .allknots-container.small {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .search-container {
+        flex-direction: column;
+        padding: 0.5rem 1rem;
+        bottom: 10px;
+    }
+
+    .search-bar input {
+        padding: 8px 20px;
+    }
+
+    .allknots-container {
+        grid-template-columns: 1fr; /* Display 1 item per row */
+    }
+    
+    .allknots-container.large {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    .allknots-container.small {
+        grid-template-columns: repeat(2, 1fr);
+
+    }
+
+    .allknots-container .knots-description {
+        display: none;
+    }
+
+    .allknots-container .knots-name {
+        font-size: 1.1rem;
+    }
+
+    .horizontal-filters select {
+        width: 80%;
+    }
+
+    .pagination button {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+    }
+
+
 }
