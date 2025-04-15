@@ -8,12 +8,7 @@
 }
 
 .breadcrumb-terms {
-
   margin-top: 5.5%;
-}
-
-.terms-POPPINS {
-  font-family: 'Poppins';
 }
 
 .Header-terms {
@@ -29,40 +24,46 @@
 
 .terms-container {
   max-width: 1000px;
-  /* Keep the text centered */
   margin: 0 auto;
   padding: 10px;
   background: white;
 }
 
-.terms-spacemargin {
-  max-width: 1134px;
-  /* Ensure text stays within a readable width */
-  margin: 10px auto;
-  padding: 10px;
+.text-Container {
+  max-width: 100%;
+  margin: 0rem auto 3rem auto;
+  padding: 2rem 7rem 2rem 7rem;
   background: white;
-  border-radius: 8px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.terms-section {
-  margin-bottom: 20px;
+.sectionText {
+  margin-bottom: 3rem;
 }
 
-.terms-section h2 {
-  color: #0D6287;
-  /* Blue-600 */
-  margin-bottom: 5px;
-  font-family: 'Poppins Bold';
+.sectionText h3 {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ddd;
 }
 
-.terms-list {
+.red {
+  color: #b54d49;
+
+}
+.blue {
+  color: #0d6287;
+}
+
+.list {
   list-style-type: disc;
   padding-left: 10px;
-  color: #202;
+  margin-left: 3rem;
+  color: black;
   /* Gray-700 */
 }
 
-.terms-list a {
+.list a {
   color: #2563eb;
   text-decoration: underline;
 }

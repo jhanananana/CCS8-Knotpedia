@@ -1,9 +1,7 @@
 import React from "react";
-import "./PrivacyPolicy.css";
-//import Footer from "./Footer.jsx";
 import Navbar from "../../Components/Navbar.jsx";
 import Footer from "../../Components/Footer.jsx";
-
+import "./PrivacyPolicy.css";
 const PrivacyPolicy = () => {
   return (
 
@@ -33,34 +31,34 @@ const PrivacyPolicy = () => {
           </nav>
 
           <div className="space-y-4">
-            <div className="policy-spacemargin">
-              <section className="policy-section">
-                <h2>1. Information We Collect</h2>
-                <ul className="policy-list">
+            <div className="text-Container">
+              <section className="sectionText blue">
+                <h3>1. Information We Collect</h3>
+                <ul className="list">
                   <li>Emails: If you contact us with a suggestion or question, we collect your email address to respond to your inquiry.</li>
                 </ul>
               </section>
 
-              <section className="policy-section">
-                <h2>2. How We Use Your Information</h2>
-                <ul className="policy-list">
+              <section className="sectionText blue">
+                <h3>2. How We Use Your Information</h3>
+                <ul className="list">
                   <li>To respond to your suggestions or questions.</li>
                   <li>To analyze website traffic and improve our content.</li>
                   <li>We do not sell, rent, or share your personal information with third parties.</li>
                 </ul>
               </section>
 
-              <section className="policy-section">
-                <h2>3. Data Security</h2>
-                <ul className="policy-list">
+              <section className="sectionText blue">
+                <h3>3. Data Security</h3>
+                <ul className="list">
                   <li>We take reasonable measures to protect any collected information.
                     However, no online platform is 100% secure.</li>
                 </ul>
               </section>
 
-              <section className="policy-section">
-                <h2>4. Changes to These policy</h2>
-                <ul className="policy-list">
+              <section className="sectionText blue">
+                <h3>4. Changes to These policy</h3>
+                <ul className="list">
                   <li>We may update this policy as needed.
                     Continued use of Knotpedia after updates means you accept the revised policy.</li>
                 </ul>

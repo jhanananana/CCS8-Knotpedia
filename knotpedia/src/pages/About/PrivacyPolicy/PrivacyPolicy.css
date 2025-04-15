@@ -1,38 +1,69 @@
-.policy-container {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 10px;
-  background: white;
-}
-
-
-.policy-spacemargin {
-  max-width: 1134px;
-  margin: 10px auto;
-  padding: 10px;
-  background: white;
-  border-radius: 8px;
-}
-
-.policy-section {
-  margin-bottom: 20px;
-}
-
-.policy-section h2 {
-  color: #0D6287;
-  /* Blue-600 */
-  margin-bottom: 5px;
-  font-family: 'Poppins Bold';
-}
-
-.policy-list {
-  list-style-type: disc;
-  padding-left: 10px;
-  color: #202;
-  /* Gray-700 */
-}
-
-.policy-list a {
-  color: #2563eb;
-  text-decoration: underline;
-}
+.terms-h {
+    background-color: #F2F2F2;
+    background-size: cover;
+    background-position: center;
+    color: black;
+    padding: 9rem 5rem;
+    text-align: left;
+  }
+  
+  .breadcrumb-terms {
+    margin-top: 5.5%;
+  }
+  
+  .Header-terms {
+    width: 100vw;
+    /* Ensure it takes the full viewport width */
+    background-color: #f2f2f2;
+    /* Light gray background */
+    padding: 40px 0;
+    /* Padding only top and bottom */
+    text-align: center;
+  
+  }
+  
+  .terms-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+    background: white;
+  }
+  
+  .text-Container {
+    max-width: 100%;
+    margin: 0rem auto 3rem auto;
+    padding: 2rem 7rem 2rem 7rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .sectionText {
+    margin-bottom: 3rem;
+  }
+  
+  .sectionText h3 {
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .red {
+    color: #b54d49;
+  
+  }
+  .blue {
+    color: #0d6287;
+  }
+  
+  .list {
+    list-style-type: disc;
+    padding-left: 10px;
+    margin-left: 3rem;
+    color: black;
+    /* Gray-700 */
+  }
+  
+  .list a {
+    color: #2563eb;
+    text-decoration: underline;
+  }

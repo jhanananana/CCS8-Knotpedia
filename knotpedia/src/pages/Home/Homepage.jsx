@@ -46,7 +46,7 @@ const Homepage = () => {
                             <h1>
                                 The <span className="blue-text">Ultimate</span> <span className="red-text">Knot</span> Guide
                             </h1>
-                            <p className="p-width">
+                            <p>
                                 Explore <b>Knotpedia</b>, your go-to resource for learning and mastering
                                 knots. Discover detailed guides, step-by-step tutorials, and
                                 practical uses for various knots in everyday life, survival,
@@ -80,25 +80,14 @@ const Homepage = () => {
                 </div>
             </header>
 
-            <div>
-                <section className="section-features">
-                    <h1>
-                        Begin Your <span className="blue-text">Knot</span> <span className="red-text">Journey</span>
-                    </h1>
-                    <p>Master the art of tying with confidence by exploring a variety
-                        of knots suited for different needs.</p>
-                    <div className="box-container">
-                        <a href="/activity" className="box" style={{ backgroundColor: "#0d6287" }}>
-                            <div className="icon">
-                                <img src="/assets/home-activity.png" alt="Activity Icon" />
-                            </div>
-                            <div className="main-text">
-                                <span className="big-text">Knots by Activity</span>
-                            </div>
-                            <div className="sub-text">Find the perfect knot for any task!</div>
-
-                        </a>
-
+            <div className="container">
+                <section className="section-features flex-align-start">
+                    <div className="text-column">
+                    <span className="title-tag blueBg">Categories</span>
+                        <h2>Begin Your <span className="blue-text">Knot</span> <span className="red-text">Journey</span></h2>
+                        <p>Master the art of tying with confidence by exploring a variety of knots suited for different needs.</p>
+                    </div>
+                    <div className="box-column">
                         <a href="/type" className="box" style={{ backgroundColor: "#5192A5" }}>
                             <div className="icon">
                                 <img src="/assets/home-type.png" alt="Type Icon" />
@@ -108,47 +97,48 @@ const Homepage = () => {
                             </div>
                             <div className="sub-text">Explore knots by category.</div>
                         </a>
-
-                        <a href="/difficulty" className="box" style={{ backgroundColor: "#b54d49" }}>
+                        <a href="/activity" className="box" style={{ backgroundColor: "#0d6287" }}>
                             <div className="icon">
-                                <img src="/assets/home-difficulty.png" alt="Difficulty Icon" />
+                                <img src="/assets/home-activity.png" alt="Activity Icon" />
                             </div>
                             <div className="main-text">
-                                <span className="big-text">Knots by Difficulty</span>
+                                <span className="big-text">Knots by Activity</span>
                             </div>
-                            <div className="sub-text">Discover knots from beginner to expert.</div>
+                            <div className="sub-text">Find the perfect knot for any task!</div>
                         </a>
-                    </div>
-                </section>
 
-                <section className="featured-knots">
-                    <h1 style={{ color: 'white' }}>Must-Know Knots</h1>
-                    <p style={{ color: 'white' }}>These are the essential knots that everyone should learn for
-                        daily tasks, outdoor adventures, and emergency situations. </p>
-                    <div className="container">
-                        <div className="knots-container">
-                            {knots.map((knot) => (
-                                <Link
-                                    to={`/KnotChosen/${knot.id}`}
-                                    state={{ knot }} // Pass knot data via state
-                                    className="knot-card"
-                                    key={knot.id}
-                                >
-                                    <div className="knot-image">
-                                        <img src={knot.image} alt={knot.name} />
-                                    </div>
-                                    <h3 className="knot-name">{knot.name}</h3>
-                                    <p className="featured-knot-description">{knot.description}</p>
-                                    <div className="button-container">
-                                        <button className="button red">View Knot</button>
-                                    </div>
-                                </Link>
-                            ))}
-                        </div>
                     </div>
-                    <button className="button blue">View All Knots</button>
                 </section>
             </div>
+
+            <section className="featured-knots">
+            <span className="title-tag redBg">FEATURED</span>
+                <h2 style={{ color: 'white' }}>Must-Know Knots</h2>
+                <p style={{ color: 'white' }}>These are the essential knots that everyone should learn for
+                    daily tasks, outdoor adventures, and emergency situations. </p>
+                <div className="container">
+                    <div className="knots-container">
+                        {knots.map((knot) => (
+                            <Link
+                                to={`/KnotChosen/${knot.id}`}
+                                state={{ knot }} // Pass knot data via state
+                                className="knot-card"
+                                key={knot.id}
+                            >
+                                <div className="knot-image">
+                                    <img src={knot.image} alt={knot.name} />
+                                </div>
+                                <h3 className="knot-name">{knot.name}</h3>
+                                <p className="featured-knot-description">{knot.description}</p>
+                                <div className="button-container">
+                                    <button className="button red">View Knot</button>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+                <a href="/AllKnots/"><button className="button blue">View All Knots</button> </a>
+            </section>
             <Footer />
             <BackToTop />
         </div>
