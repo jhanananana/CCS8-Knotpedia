@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { app } from "../../../firebase.js";
-import "../../Components/Tooltips.css";
+// Removed the tooltip import since we're replacing that functionality
+// import "../../Components/Tooltips.css";
+
 // Initialize Firestore
 const db = getFirestore(app);
 
@@ -32,7 +34,7 @@ const FAQService = {
     );
   },
 
-  // NEW: Form submission service
+  // Form submission service
   submitFAQForm: async (formData) => {
     try {
       const docRef = await addDoc(collection(db, "faq_inquiries"), {
@@ -59,9 +61,17 @@ const FAQService = {
     }
   },
 
-  // NEW: Form component with submission logic and success popup
+  // Modified FormComponent with directly handled validation
   FormComponent: () => {
     const [formData, setFormData] = useState({
+      firstname: "",
+      lastname: "",
+      email: "",
+      message: "",
+    });
+
+    // Error state tracking
+    const [errors, setErrors] = useState({
       firstname: "",
       lastname: "",
       email: "",
@@ -75,9 +85,7 @@ const FAQService = {
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
-
-    // NEW: Manage popup visibility and message
-    const [isPopupVisible, setIsPopupVisible] = useState(false); 
+    const [isPopupVisible, setIsPopupVisible] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
 
     const handleChange = (e) => {
@@ -86,10 +94,58 @@ const FAQService = {
         ...prevState,
         [id]: value,
       }));
+      
+      // Clear error when user starts typing
+      if (errors[id]) {
+        setErrors(prev => ({
+          ...prev,
+          [id]: ""
+        }));
+      }
     };
 
+    const validateForm = () => {
+      let valid = true;
+      const newErrors = { ...errors };
+      
+      // Field validation
+      if (!formData.firstname.trim()) {
+        newErrors.firstname = "Required";
+        valid = false;
+      }
+      
+      if (!formData.lastname.trim()) {
+        newErrors.lastname = "Required";
+        valid = false;
+      }
+      
+      if (!formData.email.trim()) {
+        newErrors.email = "Required";
+        valid = false;
+      } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+        newErrors.email = "Invalid email";
+        valid = false;
+      }
+      
+      if (!formData.message.trim()) {
+        newErrors.message = "Required";
+        valid = false;
+      }
+      
+      setErrors(newErrors);
+      return valid;
+    };
+
+    // Modified form submission handler
     const handleSubmit = async (e) => {
       e.preventDefault();
+      
+      // Validate form before submission
+      if (!validateForm()) {
+        // Prevent default form validation tooltips
+        return false;
+      }
+      
       setIsSubmitting(true);
 
       const result = await FAQService.submitFAQForm(formData);
@@ -100,28 +156,22 @@ const FAQService = {
         message: result.message,
       });
 
-      // NEW: Show success or error popup
       if (result.success) {
         setPopupMessage("Your inquiry has been submitted successfully!");
-      } else {
-        setPopupMessage("There was an error. Please try again!");
-      }
-
-      setIsPopupVisible(true); 
-
-      if (result.success) {
         setFormData({
           firstname: "",
           lastname: "",
           email: "",
           message: "",
         });
+      } else {
+        setPopupMessage("There was an error. Please try again!");
       }
 
+      setIsPopupVisible(true);
       setIsSubmitting(false);
     };
 
-    // NEW: Close the popup after submission
     React.useEffect(() => {
       if (submitStatus.submitted) {
         const timer = setTimeout(() => {
@@ -134,26 +184,26 @@ const FAQService = {
 
     return (
       <>
-        {/* Popup for success or error message */}
-        
         {isPopupVisible && (
-          <div className="popup"> 
-            <div className="popup-content"> 
-              <p>{popupMessage}</p> 
+          <div className="popup">
+            <div className="popup-content">
+              <p>{popupMessage}</p>
               <button
-                onClick={() => setIsPopupVisible(false)} 
-                className="close-popup" 
+                onClick={() => setIsPopupVisible(false)}
+                className="close-popup"
               >
                 Close
-              </button> 
-            </div> 
-          </div> 
+              </button>
+            </div>
+          </div>
         )}
 
-        <form onSubmit={handleSubmit} className="contact-form">
+        {/* Important: removed the default HTML5 validation by removing the 'required' attribute */}
+        <form onSubmit={handleSubmit} className="contact-form" noValidate>
           <div className="form-group">
             <label htmlFor="firstname">
               First Name <span className="required">*</span>
+              {errors.firstname && <span className="inline-error">{errors.firstname}</span>}
             </label>
             <input
               type="text"
@@ -161,13 +211,14 @@ const FAQService = {
               value={formData.firstname}
               onChange={handleChange}
               placeholder="Enter your first name"
-              required
+              className={errors.firstname ? "input-error" : ""}
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="lastname">
               Last Name <span className="required">*</span>
+              {errors.lastname && <span className="inline-error">{errors.lastname}</span>}
             </label>
             <input
               type="text"
@@ -175,13 +226,14 @@ const FAQService = {
               value={formData.lastname}
               onChange={handleChange}
               placeholder="Enter your last name"
-              required
+              className={errors.lastname ? "input-error" : ""}
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="email">
               Email Address <span className="required">*</span>
+              {errors.email && <span className="inline-error">{errors.email}</span>}
             </label>
             <input
               type="email"
@@ -189,20 +241,21 @@ const FAQService = {
               value={formData.email}
               onChange={handleChange}
               placeholder="Enter your email"
-              required
+              className={errors.email ? "input-error" : ""}
             />
           </div>
 
           <div className="form-group">
             <label htmlFor="message">
               Write your question <span className="required">*</span>
+              {errors.message && <span className="inline-error">{errors.message}</span>}
             </label>
             <textarea
               id="message"
               value={formData.message}
               onChange={handleChange}
               placeholder="Type your message here"
-              required
+              className={errors.message ? "input-error" : ""}
             ></textarea>
           </div>
 

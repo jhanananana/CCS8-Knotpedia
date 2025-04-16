@@ -234,107 +234,6 @@
   background-color: #6f1d1b;
 }
 
-
-@media screen and (max-width: 900px) {
-  .B1-Main-Container {
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-  }
-
-  .left-content-container,
-  .right-form-container {
-    width: 100%; 
-    margin: 0; 
-    margin-bottom: 20px;
-  }
-
-  .left-content-container h1 {
-    font-size: 20px;
-  }
-
-  .right-form-container {
-    margin-right: 0; 
-  }
-}
-
-
-
-
-
-
-
-
-
-/* When the screen size is smaller than 900px */
-@media screen and (max-width: 900px) {
-  .B1-Main-Container {
-    flex-direction: column; /* Stack all elements vertically */
-    align-items: center; /* Center content */
-    padding: 10px;
-  }
-
-  .faq-sidebar,
-  .right-form-container {
-    width: 100%;  /* Make the sidebar and form take full width */
-    margin: 0;
-    margin-bottom: 20px; /* Space between sidebar and form */
-  }
-
-  .faq-sidebar {
-    margin-bottom: 20px; /* Add space below the sidebar */
-  }
-
-  .form-container {
-    order: 2;  /* Move form below FAQ section */
-    width: 100%;  /* Make the form container take full width */
-    margin-top: 20px;  /* Add some margin on top of the form */
-  }
-
-  .faq-content {
-    order: 1;  /* Keep FAQ content above the form */
-  }
-
-  .faq-sidebar button {
-    font-size: 0.9rem;
-  }
-
-  .left-content-container h1 {
-    font-size: 20px;
-  }
-
-  .submit-btn {
-    font-size: 14px; /* Adjust submit button font size */
-    padding: 12px;   /* Adjust padding for mobile */
-  }
-}
-
-/* When the screen size is smaller than 600px */
-@media screen and (max-width: 600px) {
-  .FAQ-header h1 {
-    font-size: 22px;
-  }
-
-  .FAQ-header p {
-    font-size: 14px;
-  }
-
-  .left-content-container h1 {
-    font-size: 18px;
-  }
-
-  .image-placeholder {
-    height: 120px;
-  }
-
-  .submit-btn {
-    font-size: 14px;
-    padding: 12px;
-  }
-}
-
-
-
 /*FOR THE POP-UP*/
 /* NEW: Popup Style */
 .popup {
@@ -375,4 +274,160 @@
 
 .close-popup:hover {
   background-color: #6f1d1b;
+}
+
+/* Inline error message styling */
+.inline-error {
+  color: #d32f2f;
+  font-style: italic;
+  font-size: 0.8rem;
+  margin-left: 8px;
+  display: inline-block;
+}
+
+/* Input field styling when there's an error */
+.input-error {
+  border: 1px solid #d32f2f !important;
+  background-color: rgba(211, 47, 47, 0.05);
+}
+
+/* This will hide any tooltips that might be generated */
+.tooltip, 
+[data-tooltip], 
+.form-group [data-tooltip],
+.form-group .tooltip {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+/* UPDATED RESPONSIVE STYLES */
+/* When the screen size is smaller than 900px */
+@media screen and (max-width: 900px) {
+  .question-container {
+    flex-direction: column; /* Stack elements vertically */
+    width: 100%;
+  }
+
+  .faq-sidebar {
+    flex-direction: row; /* Make sidebar buttons horizontal */
+    width: 100%;
+    margin-right: 0;
+    padding: 1rem 0.5rem;
+    overflow-x: auto; /* Allow horizontal scrolling if needed */
+    gap: 5px;
+  }
+
+  .faq-sidebar button {
+    width: auto; /* Allow buttons to size based on content */
+    min-width: 100px;
+    white-space: nowrap;
+  }
+
+  .faq-content {
+    width: 100%;
+    order: 2; /* Show content after sidebar */
+    margin-top: 1rem;
+  }
+
+  .form-container {
+    width: 100%;
+    margin: 1.5rem auto; /* Changed to center it */
+    padding: 10px 15px; /* Added horizontal padding */
+    order: 3; /* Show form after content */
+    max-width: 500px; /* Limit the maximum width */
+  }
+
+  .right-form-container {
+    width: 100%;
+    margin: 0 auto; /* Center the form container */
+    padding: 20px; /* Slightly increased padding */
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Add centering for form title and subtitle */
+  .form-title, .form-subtitle {
+    text-align: center;
+  }
+  
+  /* Center the h3 heading if it exists */
+  .right-form-container h3 {
+    text-align: center;
+  }
+  
+  .B1-Main-Container {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .left-content-container,
+  .right-form-container {
+    width: 100%; 
+    margin: 0 auto; /* Center these containers too */
+    margin-bottom: 20px;
+  }
+
+  .left-content-container h1 {
+    font-size: 20px;
+  }
+}
+
+/* When the screen size is smaller than 600px */
+@media screen and (max-width: 600px) {
+  .faq-sidebar {
+    flex-wrap: wrap; /* Allow buttons to wrap if needed */
+    justify-content: center;
+  }
+  
+  .faq-sidebar button {
+    min-width: 80px;
+    font-size: 0.85rem;
+    padding: 8px 10px;
+  }
+
+  .faq-question {
+    padding: 12px 15px;
+  }
+
+  .question-text {
+    font-size: 0.9rem;
+  }
+
+  .FAQ-header h1 {
+    font-size: 22px;
+  }
+
+  .FAQ-header p {
+    font-size: 14px;
+  }
+
+  .left-content-container h1 {
+    font-size: 18px;
+  }
+
+  .image-placeholder {
+    height: 120px;
+  }
+  
+  .popup {
+    width: 90%;
+    max-width: 280px;
+  }
+  
+  /* Make form elements more touch-friendly */
+  .form-group input, 
+  .form-group textarea {
+    padding: 12px;
+    font-size: 16px; /* Better font size for mobile inputs */
+  }
+  
+  .submit-btn {
+    padding: 12px;
+    font-size: 16px;
+  }
+  
+  .form-container {
+    max-width: 95%; /* Make it take up most of the width but still have some margin */
+  }
 }
