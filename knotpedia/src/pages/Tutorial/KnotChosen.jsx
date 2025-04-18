@@ -55,9 +55,19 @@ const KnotChosen = () => {
   return (
     <>
       <Navbar />
+      <div className="subHeader-knot redCover-knot">
+          <div className="container">
+            <h1>{knot.name}</h1>
+            <p>
+            {knot.description}
+            </p>
+          </div>
+        </div>
+       <img className="imgheadknot" src={knot.image} ></img>
       <div className="knot-container">
-        <h1 className="knot-title">{knot.name}</h1>
-        <p className="knot-description">{knot.description}</p>
+    
+        <h1 className="knot-title"></h1>
+        <p className="knot-description"></p>
 
         <div className="tab-buttons">
           <button
@@ -80,11 +90,11 @@ const KnotChosen = () => {
           </button>
         </div>
 
-        <div className="tab-content">
+        <div className="ktab-content">
           {activeTab === "tutorial" && (
-            <div className="tutorial-content">
+            <div className="ktutorial-content">
               {steps.map(([stepKey, step], index) => (
-                <div key={stepKey} className="step">
+                <div key={stepKey} className="kstep">
                   <h3>{stepKey}</h3>
                   <p>{step.description}</p>
                   <img src={step.image} alt={step.description || `Step ${index+1}`} />
