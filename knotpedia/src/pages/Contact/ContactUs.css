@@ -138,76 +138,65 @@
     object-fit: contain;  
     padding: 8px; 
   }
-  
 
 
-
-/* Flexbox layout for name fields */
+/* Name fields layout */
 .name-fields {
-  display: flex; /* Align fields side by side */
-  gap: 20px; /* Space between First Name and Last Name fields */
-  margin-bottom: 20px; /* Space below the name fields */
-  justify-content: space-between; /* Ensure fields are spaced evenly */
+  display: flex;
+  gap: 30px; /* Increased space between first name and last name */
+  width: 100%;
+  margin-right: 0; /* Remove right margin to align with form borders */
+  padding-right: 30px; /* Add padding instead to match other form elements */
 }
 
 .name-fields .form-group {
-  flex: 1; /* Each input takes equal space */
-  margin-bottom: 0; /* Remove bottom margin for name fields */
+  flex: 1;
+  margin-right: 0;
 }
 
+/* Make sure inputs take the full width of their containers */
 .name-fields .form-group input {
-  width: 100%; /* Ensures inputs take full width of their container */
-  padding: 12px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-family: 'Poppins';
-  background-color: #eee;
+  width: 100%;
 }
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+  .name-fields {
+    flex-direction: column;
+    gap: 20px;
+    padding-right: 0;
+  }
+}
+/* UPDATED NAME FIELDS SECTION - END */
 
 /* Ensuring other fields stay in column layout */
 .form-group {
   margin-bottom: 20px;
+  margin-right: 30px;
 }
-
-/* For smaller screens (below 768px) to stack name fields vertically */
-@media (max-width: 768px) {
-  .name-fields {
-    flex-direction: column; /* Stack name fields on small screens */
-  }
-}
-
-
-.name-field-firstname,
-.name-field-lastname {
-  flex: 1; /* Each input field takes equal space */
-  margin-bottom: 0; /* Remove bottom margin */
   
+.form-group label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: bold;
 }
-
-.name-field-firstname input,
-.name-field-lastname input {
-  width: 100%; /* Take up the full width of the container */
-  max-width: 250px; /* Set a max width for the inputs */
+  
+.required {
+  color: #ff0000;
+  margin-right: 5px;
+}
+  
+.form-group input,
+.form-group textarea {
+  width: 100%;
   padding: 12px;
   border: 1px solid #ddd;
   border-radius: 4px;
   font-family: 'Poppins';
   background-color: #eee;
 }
-
-/* For smaller screens (below 768px), stack fields vertically */
-@media (max-width: 768px) {
-  .name-fields {
-    flex-direction: column; /* Stack the fields vertically */
-  }
-
-  .name-field-firstname,
-  .name-field-lastname {
-    width: 100%; /* Ensure full width on smaller screens */
-    max-width: none; /* Remove max-width to allow full width */
-  }
-}
-
 
   /*=========================================*/
   /* Right column */
@@ -215,7 +204,6 @@
     flex: 1;
   }
   
-
   .message-form {
     background-color: #ffffff;
     border-radius: 8px;
@@ -233,33 +221,6 @@
   .form-subtitle {
     color: #666;
     margin-bottom: 24px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-    margin-right: 30px;
-
-  }
-  
-  .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-
-  }
-  
-  .required {
-    color: #ff0000;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-family: 'Poppins';
-    background-color: #eee;
   }
   
   .submit-button {
@@ -329,5 +290,30 @@
   border: 1px solid #f5c6cb;
 }
 
+/* Error message styling - NEW ADDITIONS */
+.error-text {
+  color: #ff0000;
+  font-style: italic;
+  font-size: 14px;
+  margin-left: 8px;
+  display: inline-block;
+}
 
+.input-error {
+  border-color: #ff0000 !important;
+  background-color: #fff2f2 !important;
+}
 
+/* Make sure the input labels have enough space for error text */
+.form-group label {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-group label .required {
+  color: #ff0000;
+  margin-right: 5px;
+}

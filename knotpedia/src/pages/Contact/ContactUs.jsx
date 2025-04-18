@@ -18,6 +18,18 @@ const ContactUs = () => {
     message: "",
   });
 
+  // State for form errors - new addition
+  const [formErrors, setFormErrors] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    subject: "",
+    message: "",
+  });
+
+  // Track if form has been submitted at least once
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   // State for form submission status
   const [submitStatus, setSubmitStatus] = useState({
     submitted: false,
@@ -35,11 +47,58 @@ const ContactUs = () => {
       ...prevState,
       [id]: value,
     }));
+    
+    // Clear error for this field when user starts typing
+    if (formSubmitted) {
+      validateField(id, value);
+    }
+  };
+
+  // Validate a single field
+  const validateField = (id, value) => {
+    let error = "";
+    
+    if (!value.trim()) {
+      error = "Required";
+    } else if (id === "email" && !/\S+@\S+\.\S+/.test(value)) {
+      error = "Invalid email";
+    }
+    
+    setFormErrors(prev => ({
+      ...prev,
+      [id]: error
+    }));
+    
+    return !error;
+  };
+  
+  // Validate all form fields
+  const validateForm = () => {
+    const errors = {};
+    let isValid = true;
+    
+    // Validate each field
+    Object.keys(formData).forEach(key => {
+      const value = formData[key];
+      const fieldIsValid = validateField(key, value);
+      if (!fieldIsValid) isValid = false;
+    });
+    
+    return isValid;
   };
 
   // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setFormSubmitted(true);
+    
+    // Validate all fields before submission
+    const isValid = validateForm();
+    
+    if (!isValid) {
+      return;
+    }
+    
     setIsSubmitting(true);
 
     // Use the service to submit the form
@@ -61,6 +120,14 @@ const ContactUs = () => {
         subject: "",
         message: "",
       });
+      setFormErrors({
+        firstname: "",
+        lastname: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+      setFormSubmitted(false);
     }
 
     setIsSubmitting(false);
@@ -241,33 +308,37 @@ const ContactUs = () => {
                 </div>
               )}
 
-              {/* Contact Form */}
-              <form onSubmit={handleSubmit}>
+              {/* Contact Form - Added noValidate attribute */}
+              <form onSubmit={handleSubmit} noValidate>
                 {/* Name Fields - Wrapped in a container */}
-                <div className="form-group name-fields">
-                  <div className="name-field-firstname">
+                <div className="name-fields">
+                  <div className="form-group">
                     <label htmlFor="firstname">
                       First Name <span className="required">*</span>
+                      {formErrors.firstname && <span className="error-text">{formErrors.firstname}</span>}
                     </label>
                     <input
                       type="text"
                       id="firstname"
                       value={formData.firstname}
                       onChange={handleChange}
-                      required
+                      className={formErrors.firstname ? "input-error" : ""}
+                      // required attribute removed
                     />
                   </div>
 
-                  <div className="name-field-lastname">
+                  <div className="form-group">
                     <label htmlFor="lastname">
                       Last Name <span className="required">*</span>
+                      {formErrors.lastname && <span className="error-text">{formErrors.lastname}</span>}
                     </label>
                     <input
                       type="text"
                       id="lastname"
                       value={formData.lastname}
                       onChange={handleChange}
-                      required
+                      className={formErrors.lastname ? "input-error" : ""}
+                      // required attribute removed
                     />
                   </div>
                 </div>
@@ -276,13 +347,15 @@ const ContactUs = () => {
                 <div className="form-group">
                   <label htmlFor="email">
                     Email Address <span className="required">*</span>
+                    {formErrors.email && <span className="error-text">{formErrors.email}</span>}
                   </label>
                   <input
                     type="email"
                     id="email"
                     value={formData.email}
                     onChange={handleChange}
-                    required
+                    className={formErrors.email ? "input-error" : ""}
+                    // required attribute removed
                     placeholder="sample@gmail.com"
                   />
                 </div>
@@ -291,13 +364,15 @@ const ContactUs = () => {
                 <div className="form-group">
                   <label htmlFor="subject">
                     Subject <span className="required">*</span>
+                    {formErrors.subject && <span className="error-text">{formErrors.subject}</span>}
                   </label>
                   <input
                     type="text"
                     id="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    required
+                    className={formErrors.subject ? "input-error" : ""}
+                    // required attribute removed
                     placeholder="purpose of your message"
                   />
                 </div>
@@ -306,13 +381,15 @@ const ContactUs = () => {
                 <div className="form-group">
                   <label htmlFor="message">
                     Message <span className="required">*</span>
+                    {formErrors.message && <span className="error-text">{formErrors.message}</span>}
                   </label>
                   <textarea
                     id="message"
                     rows="5"
                     value={formData.message}
                     onChange={handleChange}
-                    required
+                    className={formErrors.message ? "input-error" : ""}
+                    // required attribute removed
                     placeholder="Your message here"
                   ></textarea>
                 </div>
