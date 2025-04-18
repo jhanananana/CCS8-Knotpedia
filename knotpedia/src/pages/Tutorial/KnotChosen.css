@@ -2,6 +2,15 @@
     padding: 1.5rem;
     max-width: 64rem;
     margin: 0 auto;
+    font-family: 'Poppins';
+  }
+  .subHeader-knot {
+    padding: 3.5rem;
+    color: white;
+    text-align: center;
+  }
+  .redCover-knot {
+    background-color: #2A4552;
   }
   
   .knot-title {
