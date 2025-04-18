@@ -32,9 +32,17 @@ const Homepage = () => {
         fetchKnots();
     }, []);
 
-    const filteredKnots = knots.filter(knot =>
-        knot.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const handleSearch = () => {
+        if (searchTerm) {
+            navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
+        }
+    };
+
+    const handleKeyPress = (e) => {
+        if (e.key === "Enter" && searchTerm) {
+            handleSearch();
+        }
+    };
 
     return (
         <div>
@@ -59,15 +67,18 @@ const Homepage = () => {
                                         placeholder="Search for a knot..."
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
+                                        onKeyPress={handleKeyPress} // Add the key press handler here
                                     />
                                     {searchTerm && (
                                         <span className="home-clear-icon" onClick={() => setSearchTerm("")}>✖</span>
                                     )}
-                                    <button className="home-search-button">
+                                    <button
+                                        className="home-search-button"
+                                        onClick={handleSearch} // Use the search handler here
+                                    >
                                         <img src="/assets/search.png" alt="Search" />
                                     </button>
                                 </div>
-
                             </div>
                         </div>
                         <div className="video-container">
@@ -83,7 +94,7 @@ const Homepage = () => {
             <div className="container">
                 <section className="section-features flex-align-start">
                     <div className="text-column">
-                    <span className="title-tag blueBg">Categories</span>
+                        <span className="title-tag blueBg">Categories</span>
                         <h2>Begin Your <span className="blue-text">Knot</span> <span className="red-text">Journey</span></h2>
                         <p>Master the art of tying with confidence by exploring a variety of knots suited for different needs.</p>
                     </div>
@@ -112,7 +123,7 @@ const Homepage = () => {
             </div>
 
             <section className="featured-knots">
-            <span className="title-tag redBg">FEATURED</span>
+                <span className="title-tag redBg">FEATURED</span>
                 <h2 style={{ color: 'white' }}>Must-Know Knots</h2>
                 <p style={{ color: 'white' }}>These are the essential knots that everyone should learn for
                     daily tasks, outdoor adventures, and emergency situations. </p>

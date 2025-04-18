@@ -378,15 +378,14 @@ h3 {
 .home-clear-icon {
   position: absolute;
   top: 5%;
-  right: rem;
-  transform: translateX(25%);
+  transform: translateX(45%);
   cursor: pointer;
   font-size: 1.2rem;
   color: #888;
-  width: 20px;
-  height: 20px;
+  width: 35px;
+  height: 25px;
   padding: 9px;
-  border-radius: 100%;
+  background-color: white;
 }
 
 .home-search-button {

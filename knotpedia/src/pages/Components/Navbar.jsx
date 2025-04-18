@@ -60,54 +60,48 @@ const Navbar = () => {
 
           {isMobile ? (
             <div className={`dropdown-submenu ${showDropdown ? "show" : ""}`}>
-              <Link to="/AllKnots" className={location.pathname === "/AllKnots" ? "active" : ""}>
+              <Link to="/knots/all" className={location.pathname === "/AllKnots" ? "active" : ""}>
                 All Knots
               </Link>
-              <Link to="/activity-knots" className={location.pathname === "/activity-knots" ? "active" : ""}>
+              <Link to="/knots/activity" className={location.pathname === "/activity-knots" ? "active" : ""}>
                 Knots by Activity
               </Link>
-              <Link to="/type-knots" className={location.pathname === "/type-knots" ? "active" : ""}>
+              <Link to="/knots/type" className={location.pathname === "/type-knots" ? "active" : ""}>
                 Knots by Type
-              </Link>
-              <Link to="/difficulty-knots" className={location.pathname === "/difficulty-knots" ? "active" : ""}>
-                Knots by Difficulty
               </Link>
             </div>
           ) : (
             <ul className={`dropdown-menu ${showDropdown ? "show" : ""}`}>
               <li>
-                <Link to="/AllKnots">All Knots</Link>
+                <Link to="/knots/all">All Knots</Link>
               </li>
               <li>
-                <Link to="/activity-knots">Knots by Activity</Link>
+                <Link to="/knots/activity">Knots by Activity</Link>
               </li>
               <li>
-                <Link to="/type-knots">Knots by Type</Link>
-              </li>
-              <li>
-                <Link to="/difficulty-knots">Knots by Difficulty</Link>
+                <Link to="/knots/type">Knots by Type</Link>
               </li>
             </ul>
           )}
         </li>
 
         <li>
-          <Link to="/ContactUs" className={location.pathname === "/ContactUs" ? "active" : ""}>
+          <Link to="/contact" className={location.pathname === "/ContactUs" ? "active" : ""}>
             Contact Us
           </Link>
         </li>
         <li>
-          <Link to="/AboutUs" className={location.pathname === "/AboutUs" ? "active" : ""}>
+          <Link to="/about" className={location.pathname === "/AboutUs" ? "active" : ""}>
             About Us
           </Link>
         </li>
         <li>
-          <Link to="/SiteMap" className={location.pathname === "/SiteMap" ? "active" : ""}>
+          <Link to="/sitemap" className={location.pathname === "/SiteMap" ? "active" : ""}>
             Site Map
           </Link>
         </li>
         <li>
-          <Link to="/Preferences" className={location.pathname === "/Preferences" ? "active" : ""}>
+          <Link to="/preferences" className={location.pathname === "/Preferences" ? "active" : ""}>
             Preferences
           </Link>
         </li>

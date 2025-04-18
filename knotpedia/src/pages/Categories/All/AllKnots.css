@@ -42,18 +42,26 @@
 
 .search-bar input {
     width: 100%;
-    padding: 10px 35px 10px 15px;
+    padding: 10px 40px 10px 50px;
     border-radius: 30px;
     border: 2px solid #ccc;
     font-size: 16px;
     font-family: 'Poppins';
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+.search-bar input:focus {
+    border-color: #5192A5;
+    box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6);
+    /* Brighter glow */
 }
 
 .knot-search-button {
     position: absolute;
     right: 0.5rem;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 0%;
+    transform: translateX(-658%);
     background: none;
     border: none;
     cursor: pointer;
@@ -70,16 +78,16 @@
     padding: 9px;
     border-radius: 100%;
     transform: translateX(5%);
-    background-color: #0D6287;
+    background-color: #9e9e9e;
 }
 
-.clear-icon {
+.knots-clear-icon {
     position: absolute;
     right: 40px;
     width: 18px;
     cursor: pointer;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 25%;
+    transform: translateX(130%);
 }
 
 .allknots-container {
@@ -176,26 +184,22 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    justify-content: flex-start;
     align-items: center;
-    margin: 1rem 0;
+    justify-content: center;
     color: #424242;
-    /* background-color: #eee; */
-    margin-bottom: 1px solid red;
-    padding: 1.5rem;
+    padding: 1rem;
     border-radius: 20px;
 }
 
-.horizontal-filters select {
-    font-family: 'Poppins';
-    padding: 0.5rem;
-    border-radius: 6px;
-    font-size: 1rem;
-    width: 15%;
+.horizontal-filters .dropdown {
+    flex: 1 1 auto;
+    min-width: 120px;
 }
 
 .horizontal-filters button {
     padding: 0.5rem 1rem;
-    border-radius: 25px;
+    border-radius: 10px;
     font-size: 1rem;
 }
 
@@ -207,18 +211,18 @@
 .dropbtn {
     padding: 16px;
     font-size: 16px;
-    border: 1px solid #555555; 
+    border: 1px solid #555555;
     background-color: white;
     cursor: pointer;
     display: flex;
     font-family: 'Poppins';
     align-items: center;
-    justify-content: space-between; 
-    width: 200px; 
+    justify-content: space-between;
+    width: 200px;
 }
 
 .dropbtn .chevron {
-    margin-left: 10px; 
+    margin-left: 10px;
     font-size: 12px;
     transition: transform 0.3s ease;
 }
@@ -236,7 +240,8 @@
     border-radius: 10px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    border: 1px solid #ccc; /* Add border to dropdown */
+    border: 1px solid #ccc;
+    /* Add border to dropdown */
     font-family: 'Poppins';
 }
 
@@ -244,11 +249,13 @@
     padding: 12px 16px;
     display: block;
     cursor: pointer;
-    text-decoration: none; /* Remove underline */
+    text-decoration: none;
+    /* Remove underline */
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd; /* Add hover effect */
+    background-color: #ddd;
+    /* Add hover effect */
 }
 
 .dropdown:hover .dropdown-content {
@@ -260,7 +267,8 @@
 }
 
 .dropdown:hover .dropbtn .chevron {
-    transform: rotate(180deg); /* Rotate chevron when dropdown is active */
+    transform: rotate(180deg);
+    /* Rotate chevron when dropdown is active */
 }
 
 .allknots-description {
@@ -349,6 +357,18 @@
 }
 
 @media (max-width: 768px) {
+    
+    .dropbtn {
+        width: 200px;
+    }    
+
+    .horizontal-filters {
+        display: grid;
+        /* grid-template-columns: repeat(2, 1fr); */
+        gap: 1rem;
+        align-items: center;
+    }
+    
     .search-container {
         position: relative;
         bottom: 0;
@@ -357,11 +377,12 @@
     }
 
     .search-bar {
-        max-width: 250px;
+        max-width: 350px;
     }
 
     .allknots-container {
-        grid-template-columns: repeat(2, 1fr); /* Display 2 items per row */
+        grid-template-columns: repeat(2, 1fr);
+        /* Display 2 items per row */
     }
 
     .pagination button {
@@ -370,7 +391,7 @@
     }
 
     .horizontal-filters select {
-        width: 40%;
+        width: 80%;
     }
 
     .main-container {
@@ -392,11 +413,36 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    
+
     .allknots-container.small {
         grid-template-columns: repeat(4, 1fr);
     }
+
+    .knot-search-button {
+        position: absolute;
+        right: 0.5rem;
+        top: 0%;
+        transform: translateX(-580%);
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .knot-search-button img {
+        width: 17px;
+        height: 17px;
+        padding: 9px;
+        border-radius: 100%;
+        transform: translateX(-280%);
+        background-color: #9e9e9e;
+    }
 }
+
 
 @media (max-width: 480px) {
     .search-container {
@@ -410,13 +456,14 @@
     }
 
     .allknots-container {
-        grid-template-columns: 1fr; /* Display 1 item per row */
+        grid-template-columns: 1fr;
+        /* Display 1 item per row */
     }
-    
+
     .allknots-container.large {
         grid-template-columns: repeat(1, 1fr);
     }
-    
+
     .allknots-container.small {
         grid-template-columns: repeat(2, 1fr);
 
@@ -439,5 +486,15 @@
         padding: 0.5rem 1rem;
     }
 
+    .search-bar input {
+        width: 100%;
+        padding: 10px 40px 10px 45px;
+        border-radius: 30px;
+        border: 2px solid #ccc;
+        font-size: 16px;
+        font-family: 'Poppins';
+        outline: none;
+        transition: 0.3s ease-in-out;
+    }
 
 }
