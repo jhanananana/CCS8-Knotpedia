@@ -60,21 +60,21 @@ const AboutUs = () => {
             <h3 style={{ textAlign: "center" }}>Help & Legal Information</h3>
             <div className="policy-cards">
               <div className="card" style={{ backgroundColor: "#0d6287" }}>
-                <a href="/FAQ">
+                <a href="/FAQs">
                   <h4 className="blue title-card">Frequently Asked Questions (FAQs)</h4>
                   <p>Find answers to common questions.</p>
                 </a>
               </div>
 
               <div className="card" style={{ backgroundColor: "#5192A5" }}>
-                <a href="/TermsAndConditions">
+                <a href="/termsandconditions">
                   <h4 className="blue">Terms & Conditions</h4>
                   <p>Understand our site's rules and policies.</p>
                 </a>
               </div>
 
               <div className="card" style={{ backgroundColor: "#b54d49" }}>
-                <a href="/PrivacyPolicy">
+                <a href="/privacypolicy">
                   <h4 className="red">Privacy Policy</h4>
                   <p>Learn how we handle your data securely.</p>
                 </a>

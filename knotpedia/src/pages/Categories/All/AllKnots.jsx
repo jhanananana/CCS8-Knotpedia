@@ -20,7 +20,8 @@ const AllKnots = () => {
     const [activityLabel, setActivityLabel] = useState("Activity");
     const [typeLabel, setTypeLabel] = useState("Type");
     const [sortLabel, setSortLabel] = useState("Sort");
-    const [viewLabel, setViewLabel] = useState("View");
+    const [viewLabel, setViewLabel] = useState("Small (Default)");
+    const [filterActive, setFilterActive] = useState(false);
 
     useEffect(() => {
         const fetchKnots = async () => {
@@ -70,7 +71,8 @@ const AllKnots = () => {
         setActivityLabel("Activity");
         setTypeLabel("Type");
         setSortLabel("Sort");
-        setViewLabel("View");
+        setViewLabel("Small (Default)");
+        setViewSize("small");
     };
 
     const filteredKnots = knots
@@ -97,6 +99,10 @@ const AllKnots = () => {
 
     const handleViewChange = (e) => {
         setViewSize(e.target.value); // Update view size based on selection
+    };
+
+    const toggleFilterOverlay = () => {
+        setFilterActive(!filterActive);
     };
 
     const indexOfLastKnot = currentPage * knotsPerPage;
@@ -130,93 +136,99 @@ const AllKnots = () => {
 
                 {/* FILTER SECTION */}
                 <div>
+                    {/* Filter Overlay */}
+
                     {/* Horizontal Filters */}
                     <div className="horizontal-filters">
-                        Filter By:
+                        <div>
+                            Filter By: &nbsp;
 
-                        <div className="dropdown">
-                            <button className="dropbtn">
-                                {activityLabel}
-                                <span className="chevron">▼</span> {/* Chevron icon */}
-                            </button>
-                            <div className="dropdown-content">
-                                <a onClick={() => {
-                                    setActivityFilter("Climbing");
-                                    setActivityLabel("Climbing");
-                                }}>Climbing</a>
+                            <div className="dropdown">
+                                <button className="dropbtn">
+                                    {activityLabel}
+                                    <span className="chevron">▼</span> {/* Chevron icon */}
+                                </button>
+                                <div className="dropdown-content">
+                                    <a onClick={() => {
+                                        setActivityFilter("Climbing");
+                                        setActivityLabel("Climbing");
+                                    }}>Climbing</a>
 
-                                <a onClick={() => {
-                                    setActivityFilter("Fishing");
-                                    setActivityLabel("Fishing");
-                                }}>Fishing</a>
+                                    <a onClick={() => {
+                                        setActivityFilter("Fishing");
+                                        setActivityLabel("Fishing");
+                                    }}>Fishing</a>
+                                </div>
+                            </div>
+                            &nbsp;
+
+                            <div className="dropdown">
+                                <button className="dropbtn">
+                                    {typeLabel}
+                                    <span className="chevron">▼</span> {/* Chevron icon */}
+                                </button>
+                                <div className="dropdown-content">
+                                    <a onClick={() => {
+                                        setTypeFilter("Loop");
+                                        setTypeLabel("Loop");
+                                    }}>Loop</a>
+
+                                    <a onClick={() => {
+                                        setTypeFilter("Hitch");
+                                        setTypeLabel("Hitch");
+                                    }}>Hitch</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            Sort By: &nbsp;
+                            <div className="dropdown">
+                                <button className="dropbtn">
+                                    {sortLabel}
+                                    <span className="chevron">▼</span>
+                                </button>
+                                <div className="dropdown-content">
+                                    <a onClick={() => {
+                                        setSortOrder("asc");
+                                        setSortLabel("Name (A – Z)");
+                                    }}>Name (A – Z)</a>
+
+                                    <a onClick={() => {
+                                        setSortOrder("desc");
+                                        setSortLabel("Name (Z – A)");
+                                    }}>Name (Z – A)</a>
+                                </div>
                             </div>
                         </div>
 
-                        <div className="dropdown">
-                            <button className="dropbtn">
-                                {typeLabel}
-                                <span className="chevron">▼</span> {/* Chevron icon */}
-                            </button>
-                            <div className="dropdown-content">
-                                <a onClick={() => {
-                                    setTypeFilter("Loop");
-                                    setTypeLabel("Loop");
-                                }}>Loop</a>
-
-                                <a onClick={() => {
-                                    setTypeFilter("Hitch");
-                                    setTypeLabel("Hitch");
-                                }}>Hitch</a>
+                        <div>
+                            Display Size: &nbsp;
+                            <div className="dropdown">
+                                <button className="dropbtn">
+                                    {viewLabel}
+                                    <span className="chevron">▼</span>
+                                </button>
+                                <div className="dropdown-content">
+                                    <a onClick={() => {
+                                        handleViewChange({ target: { value: "small" } });
+                                        setViewLabel("Small (Default)");
+                                    }}>Small (Default)</a>
+                                    <a onClick={() => {
+                                        handleViewChange({ target: { value: "large" } });
+                                        setViewLabel("Large");
+                                    }}>Large</a>
+                                </div>
                             </div>
                         </div>
-
-                        Sort By:
-                        <div className="dropdown">
-                            <button className="dropbtn">
-                                {sortLabel}
-                                <span className="chevron">▼</span>
-                            </button>
-                            <div className="dropdown-content">
-                                <a onClick={() => {
-                                    setSortOrder("asc");
-                                    setSortLabel("Name (A – Z)");
-                                }}>Name (A – Z)</a>
-
-                                <a onClick={() => {
-                                    setSortOrder("desc");
-                                    setSortLabel("Name (Z – A)");
-                                }}>Name (Z – A)</a>
-                            </div>
-                        </div>
-
-                        Display Size:
-                        <div className="dropdown">
-                            <button className="dropbtn">
-                                {viewLabel}
-                                <span className="chevron">▼</span>
-                            </button>
-                            <div className="dropdown-content">
-                                <a onClick={() => {
-                                    handleViewChange({ target: { value: "small" } });
-                                    setViewLabel("Small (Default)");
-                                }}>Small (Default)</a>
-                                <a onClick={() => {
-                                    handleViewChange({ target: { value: "large" } });
-                                    setViewLabel("Large");
-                                }}>Large</a>
-                            </div>
-                        </div>
-
-
                         <button className="blue button" onClick={handleClearFilters}>Clear All</button>
-
                     </div>
 
                 </div>
                 <div className="results-and-search">
                     <div className="results-info">
-                        Showing results {indexOfFirstKnot + 1}–
-                        {Math.min(indexOfLastKnot, filteredKnots.length)} of {filteredKnots.length}, Page {currentPage}
+                        Showing results <b>{indexOfFirstKnot + 1}–
+                            {Math.min(indexOfLastKnot, filteredKnots.length)}</b>  of {filteredKnots.length}, Page {currentPage}
                     </div>
                     <div className="search-bar">
                         <input
@@ -226,7 +238,7 @@ const AllKnots = () => {
                             onChange={(e) => setSearchText(e.target.value)}
                         />
                         {searchText && (
-                            <span className="home-clear-icon" onClick={() => setSearchTerm("")}>✖</span>
+                            <span className="knots-clear-icon" onClick={() => setSearchText("")}>✖</span>
 
                         )}
                         <button className="knot-search-button">
@@ -234,7 +246,7 @@ const AllKnots = () => {
                         </button>
                     </div>
                 </div>
-                <div className={`allknots-container ${viewSize}-view`}>
+                <div className={`allknots-container ${viewSize}-small`}>
 
                 </div>
                 {/* KNOT DISPLAY */}
