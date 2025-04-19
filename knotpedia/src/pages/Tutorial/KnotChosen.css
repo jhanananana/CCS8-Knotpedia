@@ -1,218 +1,272 @@
 .knot-container {
-    padding: 1.5rem;
-    max-width: 64rem;
-    margin: 0 auto;
-    font-family: 'Poppins';
-  }
-  .imgheadknot {
-    padding: 1.5rem;
-    width:100%;
-    max-width: 64rem;
-    display: block;
-    margin: 0 auto;
-  }
-  
-  .subHeader-knot {
-    padding: 3.5rem;
-    color: white;
-    text-align: center;
-    font-family: 'Poppins';
-  }
-  .redCover-knot {
-    background-color: #2A4552;
-  }
-  
-  .knot-title {
-    font-size: 1.875rem;
-    font-weight: 700;
-    text-align: center;
-    margin-bottom: 0.5rem;
-    font-family: 'Poppins';
-  }
-  
-  .knot-description {
-    text-align: center;
-    color: #4b5563;
-    margin-bottom: 1rem;
-  }
-  
-  .knot-tags {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  .knot-tag {
-    background-color: #dbeafe;
-    color: #1e40af;
-    font-size: 0.875rem;
-    font-weight: 600;
-    padding: 0.25rem 0.625rem;
-    border-radius: 0.375rem;
-  }
-  
-  .knot-video-placeholder {
-    border: 1px solid #d1d5db;
-    background-color: #f3f4f6;
-    height: 16rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  .knot-video-text {
-    color: #9ca3af;
-  }
-  
-  .knot-buttons {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  .knot-btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    border: 1px solid #e5e7eb;
-    background-color: white;
-    color: #1d4ed8;
-    cursor: pointer;
-  }
-  
-  .knot-btn.tutorial {
-    background-color: #2563eb;
-    color: white;
-    border-top-left-radius: 0.5rem;
-    border-bottom-left-radius: 0.5rem;
-  }
-  
-  .knot-btn.history {
-    border-top-right-radius: 0.5rem;
-    border-bottom-right-radius: 0.5rem;
-  }
-  
-  .knot-steps {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-  
-  @media (min-width: 640px) {
-    .knot-steps {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-  
-  .knot-step-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 0.75rem;
-    padding: 1rem;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  }
-  
-  .knot-step-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  
-  .knot-step-img {
-    margin-bottom: 0.5rem;
-    border-radius: 0.5rem;
-    width: 100%;
-    height: 10rem;
-    object-fit: cover;
-  }
-  
-  .knot-step-desc {
-    color: #374151;
-  }
-  /*END
-  *
-  *
-  *
-  */
+  padding: 1.5rem;
+  max-width: 64rem;
+  margin: 0 auto;
+  font-family: 'Poppins';
+}
+.knotfound{
+  color:#0D6287;
+  font-size:40px;
+  font-family: 'Poppins';
+}
+.imgheadknot {
+  display: block;
+  width: 70vw;
+  max-width: 1200px;
+  height: 600px; /* or try max-height: 300px if you want it to scale */
+  object-fit: cover; /* this ensures the image fills area without distortion */
+  margin: 0 auto;
+  margin-top: 2rem;
+  transform: translateY(20px);
+  border-radius: 1rem;
 
-  .tab-buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-    gap: 10px;
+
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+ 
 }
 
-.tab-buttons button {
-    padding: 10px 20px;
-    border: none;
-    background-color: #f1f1f1;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
+.subHeader-knot {
+  padding: 3.5rem;
+  color: white;
+  text-align: center;
+  font-family: 'Poppins';
+}
+.redCover-knot {
+  background-color: #2A4552;
 }
 
-.tab-buttons button.active {
-    background-color: #c5a3ff;
-    color: white;
+.knot-title {
+  font-size: 1.875rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-family: 'Poppins';
 }
 
-.tab-buttons button:hover {
-    background-color: #ddd;
+.knot-description {
+  text-align: center;
+  color: #4b5563;
+  margin-bottom: 1rem;
 }
 
-.ktab-content {
-    margin-top: 30px;
+.knot-tags {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
 }
-/* Grid style for steps */
-.ktutorial-content {
+.knot-tags-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1.5rem auto 2rem auto;
+  gap: 0.5rem;
+  text-align: left;
+  max-width: 800px; /* match your main content width */
+  padding: 0 1rem;
+}
+
+.knotfound {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #0D6287;
+}
+
+.tag-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 10px;
+}
+
+
+.tag-button {
+  background-color: #e6f0f7;
+  color: #0D6287;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.tag-button:hover {
+  background-color: #cfe9f7;
+}
+
+
+.knot-tag {
+  background-color: #dbeafe;
+  color: #1e40af;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.625rem;
+  border-radius: 0.375rem;
+}
+
+.knot-video-placeholder {
+  border: 1px solid #d1d5db;
+  background-color: #f3f4f6;
+  height: 16rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.knot-video-text {
+  color: #9ca3af;
+}
+
+.knot-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.knot-btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid #e5e7eb;
+  background-color: white;
+  color: #1d4ed8;
+  cursor: pointer;
+}
+
+.knot-btn.tutorial {
+  background-color: #2563eb;
+  color: white;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.knot-btn.history {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+.knot-steps {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 1.5rem;
 }
 
-@media (min-width: 768px) {
-  .ktutorial-content {
+@media (min-width: 640px) {
+  .knot-steps {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.kstep {
-  background-color: #f9f9f9;
-  border-radius: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  padding: 1.25rem;
-  text-align: left;
-  transition: transform 0.2s ease;
+.knot-step-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-.kstep:hover {
-  transform: translateY(-4px);
-}
-
-.kstep h3 {
-  font-size: 1.125rem;
+.knot-step-title {
+  font-size: 1.25rem;
   font-weight: 600;
-  color: #B54D49;
   margin-bottom: 0.5rem;
 }
 
+.knot-step-img {
+  margin-bottom: 0.5rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  height: 10rem;
+  object-fit: cover;
+}
+
+.knot-step-desc {
+  color: #374151;
+}
+/*END
+*
+*
+*
+*/
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.tab-buttons button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #f1f1f1;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.tab-buttons button.active {
+  background-color: #c5a3ff;
+  color: white;
+}
+
+.tab-buttons button:hover {
+  background-color: #ddd;
+}
+
+.ktab-content {
+  margin-top: 30px;
+}
+/* Grid style for steps */
+.ktutorial-content {
+display: grid;
+grid-template-columns: 1fr;
+gap: 2rem;
+margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+.ktutorial-content {
+  grid-template-columns: repeat(2, 1fr);
+}
+}
+
+.kstep {
+background-color: #f9f9f9;
+border-radius: 1rem;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+padding: 1.25rem;
+text-align: left;
+transition: transform 0.2s ease;
+}
+
+.kstep:hover {
+transform: translateY(-4px);
+}
+
+.kstep h3 {
+font-size: 1.125rem;
+font-weight: 600;
+color: #B54D49;
+margin-bottom: 0.5rem;
+}
+
 .kstep p {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 1rem;
+font-size: 0.95rem;
+color: #555;
+margin-bottom: 1rem;
 }
 
 .kstep img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 0.75rem;
-  object-fit: cover;
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+max-width: 100%;
+height: auto;
+border-radius: 0.75rem;
+object-fit: cover;
+box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
 }
-
-
-
-
