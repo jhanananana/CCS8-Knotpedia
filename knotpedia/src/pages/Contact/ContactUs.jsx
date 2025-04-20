@@ -37,6 +37,9 @@ const ContactUs = () => {
     message: "",
   });
 
+  // State for popup visibility (NEW)
+  const [isPopupVisible, setIsPopupVisible] = useState(false);
+
   // State for loading indicator
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -111,6 +114,9 @@ const ContactUs = () => {
       message: result.message,
     });
 
+    // Show popup notification (NEW)
+    setIsPopupVisible(true);
+
     // Reset form if successful
     if (result.success) {
       setFormData({
@@ -133,19 +139,16 @@ const ContactUs = () => {
     setIsSubmitting(false);
   };
 
-  // Reset status message after 5 seconds
+  // Hide popup after 5 seconds
   useEffect(() => {
-    if (submitStatus.submitted) {
+    if (isPopupVisible) {
       const timer = setTimeout(() => {
-        setSubmitStatus((prevState) => ({
-          ...prevState,
-          submitted: false,
-        }));
+        setIsPopupVisible(false);
       }, 5000);
 
       return () => clearTimeout(timer);
     }
-  }, [submitStatus.submitted]);
+  }, [isPopupVisible]);
 
   // Initialize Leaflet map
   useEffect(() => {
@@ -179,6 +182,27 @@ const ContactUs = () => {
   return (
     <div>
       <Navbar />
+      {/* Popup Notification - NEW */}
+      {isPopupVisible && (
+        <div className="popup">
+          <div className="popup-content">
+            <div className="success-icon">
+              <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="20" fill="#4CAF50"/>
+                <path d="M16 20.5L19 23.5L24 17.5" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </div>
+            <p>{submitStatus.message}</p>
+            <button
+              onClick={() => setIsPopupVisible(false)}
+              className="ok-popup"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
+      
       {/* Page Header Section */}
       <header className="subHeader blueCover">
         <div className="container">
@@ -297,8 +321,8 @@ const ContactUs = () => {
                 for new content.
               </p>
 
-              {/* Status Message */}
-              {submitStatus.submitted && (
+              {/* Status Message - REMOVED */}
+              {/* {submitStatus.submitted && (
                 <div
                   className={`status-message ${
                     submitStatus.success ? "success" : "error"
@@ -306,7 +330,7 @@ const ContactUs = () => {
                 >
                   {submitStatus.message}
                 </div>
-              )}
+              )} */}
 
               {/* Contact Form - Added noValidate attribute */}
               <form onSubmit={handleSubmit} noValidate>

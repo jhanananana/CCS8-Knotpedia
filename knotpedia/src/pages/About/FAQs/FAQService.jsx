@@ -187,12 +187,18 @@ const FAQService = {
         {isPopupVisible && (
           <div className="popup">
             <div className="popup-content">
+              <div className="success-icon">
+                <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="20" r="20" fill="#4CAF50"/>
+                  <path d="M16 20.5L19 23.5L24 17.5" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
               <p>{popupMessage}</p>
               <button
                 onClick={() => setIsPopupVisible(false)}
-                className="close-popup"
+                className="ok-popup"
               >
-                Close
+                OK
               </button>
             </div>
           </div>

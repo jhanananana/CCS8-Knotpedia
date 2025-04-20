@@ -317,3 +317,63 @@
   color: #ff0000;
   margin-right: 5px;
 }
+
+/*POP UP*/
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+  z-index: 1000; /* Make sure it's above other elements */
+}
+
+.popup-content {
+  background-color: white;
+  padding: 15px;
+  border-radius: 6px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.success-icon {
+  margin-bottom: 15px;
+}
+
+.popup p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.ok-popup {
+  background-color: #4CAF50; 
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  font-size: 14px;
+  width: 80px;
+  transition: background-color 0.3s;
+}
+
+.ok-popup:hover {
+  background-color: #388E3C; /* Darker green on hover */
+}
+
+
+@media screen and (max-width: 600px) {
+  .popup {
+    width: 90%;
+    max-width: 280px;
+  }
+}
