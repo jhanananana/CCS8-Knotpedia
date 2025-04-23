@@ -40,6 +40,14 @@ const Search = () => {
         <div>
             <Navbar />
             <div className="container">
+            <nav className="breadcrumb">
+                    <a href="/" className="breadcrumb-link">
+                        <img src="/assets/home-icon.png" alt="Home Icon" />
+                        <span>Home</span>
+                    </a>
+                    &gt;
+                    <span className="active">Search</span>
+                </nav>
                 <h1>Search Results for: <span style={{ color: "#0d6287" }}>{searchQuery}</span></h1>
                 {filteredKnots.length > 0 ? (
                     <div className="searchKnot-container">

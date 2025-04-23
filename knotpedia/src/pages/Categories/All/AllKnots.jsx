@@ -4,6 +4,7 @@ import "./AllKnots.css";
 import { db } from "../../../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
+import { useNavigate, Link } from "react-router-dom";
 
 const AllKnots = () => {
     const [knots, setKnots] = useState([]);
@@ -14,15 +15,12 @@ const AllKnots = () => {
     const [typeFilter, setTypeFilter] = useState("");
     const [difficultyFilter, setDifficultyFilter] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
-    const [selectedLetter, setSelectedLetter] = useState("All");
-    const [searchTerm, setSearchTerm] = useState("");
     const [viewSize, setViewSize] = useState("small"); // Default view size is medium
     const [activityLabel, setActivityLabel] = useState("Activity");
     const [typeLabel, setTypeLabel] = useState("Type");
     const [sortLabel, setSortLabel] = useState("Sort");
     const [viewLabel, setViewLabel] = useState("Small (Default)");
     const [filterActive, setFilterActive] = useState(false);
-
     useEffect(() => {
         const fetchKnots = async () => {
             try {
@@ -76,17 +74,6 @@ const AllKnots = () => {
     };
 
     const filteredKnots = knots
-        .filter((knot) => {
-            const matchesLetter =
-                selectedLetter === "All" || knot.name.charAt(0).toUpperCase() === selectedLetter;
-            return (
-                matchesLetter &&
-                (activityFilter === "" || knot.activity === activityFilter) &&
-                (typeFilter === "" || knot.type === typeFilter) &&
-                (difficultyFilter === "" || knot.difficulty === difficultyFilter) &&
-                (searchText === "" || knot.name.toLowerCase().includes(searchText.toLowerCase()))
-            );
-        })
         .sort((a, b) => {
             return sortOrder === "asc"
                 ? a.name.localeCompare(b.name)
@@ -140,8 +127,8 @@ const AllKnots = () => {
 
                     {/* Horizontal Filters */}
                     <div className="horizontal-filters">
-                        <div>
-                            Filter By: &nbsp;
+                        <div >
+                            <div className="filter-label">Filter By: &nbsp;</div>
 
                             <div className="dropdown">
                                 <button className="dropbtn">
@@ -180,9 +167,10 @@ const AllKnots = () => {
                                 </div>
                             </div>
                         </div>
-                        
-                        <div>
-                            Sort By: &nbsp;
+
+                        <div style={{ width: '200px'}}>
+                            <div className="filter-label">Sort By: &nbsp;</div>
+
                             <div className="dropdown">
                                 <button className="dropbtn">
                                     {sortLabel}
@@ -202,8 +190,8 @@ const AllKnots = () => {
                             </div>
                         </div>
 
-                        <div>
-                            Display Size: &nbsp;
+                        <div >
+                            <div className="filter-label">View: &nbsp;</div>
                             <div className="dropdown">
                                 <button className="dropbtn">
                                     {viewLabel}
@@ -246,9 +234,7 @@ const AllKnots = () => {
                         </button>
                     </div>
                 </div>
-                <div className={`allknots-container ${viewSize}-small`}>
 
-                </div>
                 {/* KNOT DISPLAY */}
                 {currentKnots.length === 0 ? (
                     <p className="empty-message"><b>No exact matches found</b><br />Please try again.</p>
@@ -256,16 +242,21 @@ const AllKnots = () => {
 
                     <div className={`allknots-container ${viewSize}`}>
                         {currentKnots.map((knot) => (
-                            <div key={knot.id} className="knots-card">
-                                <div className="knots-image">
-                                    <img src={knot.image} alt={knot.name} />
+                            <Link key={knot.id} to={`/KnotChosen/${knot.id}`} className="knots-card-link">
+                                <div className="knots-card">
+                                    <div className="knots-image">
+                                        <img src={knot.image} alt={knot.name} />
+                                    </div>
+                                    <h3 className="knots-name">{knot.name}</h3>
+                                    <p  className="knots-description">{knot.description}</p>
+                                    <div style={{marginTop: 'auto' }}>
+                                        <button className="button red">View Knot</button>
+                                    </div>
                                 </div>
-                                <h3 className="knots-name">{knot.name}</h3>
-                                <p className="knots-description">{knot.description}</p>
-                                <button className="button red">View Knot</button>
-                            </div>
+                            </Link>
                         ))}
                     </div>
+
                 )}
 
                 {/* PAGINATION */}
