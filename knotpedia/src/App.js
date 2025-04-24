@@ -10,6 +10,9 @@ import PrivacyPolicy from "./pages/About/PrivacyPolicy/PrivacyPolicy.jsx";
 import Sitemap from "./pages/Sitemap/Sitemap.jsx";
 import KnotChosen from "./pages/Tutorial/KnotChosen.jsx";
 import Search from "./pages/Search/Search.jsx";
+
+import FirebaseDataEntry from "./pages/FirebaseDataEntry.jsx";
+
 const App = () => {
   return (
     <BrowserRouter>
@@ -37,6 +40,8 @@ const App = () => {
             {/* <Route path="/safety" element={<Safety />} />*/}
 
             <Route path="/search" element={<Search />} />
+
+            <Route path="/FirebaseDataEntry" element={<FirebaseDataEntry />} />
           </Routes>
 
         </main>
