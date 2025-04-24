@@ -261,10 +261,14 @@
 }
 
 .dropbtn .chevron {
-    margin-left: 10px;
-    font-size: 12px;
-    transition: transform 0.3s ease;
+    transition: transform 0.2s ease;
 }
+
+.chevron {
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid rgb(8, 8, 8);
+  }
 
 .dropdown {
     position: relative;
@@ -294,6 +298,7 @@
 
 .dropdown-content a:hover {
     background-color: #ddd;
+    color: #0D6287;
     /* Add hover effect */
 }
 

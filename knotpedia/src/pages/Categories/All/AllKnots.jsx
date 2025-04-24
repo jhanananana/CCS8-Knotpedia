@@ -16,11 +16,12 @@ const AllKnots = () => {
     const [difficultyFilter, setDifficultyFilter] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
     const [viewSize, setViewSize] = useState("small"); // Default view size is medium
-    const [activityLabel, setActivityLabel] = useState("Activity");
-    const [typeLabel, setTypeLabel] = useState("Type");
+    const [activityLabel, setActivityLabel] = useState("All Activities");
+    const [typeLabel, setTypeLabel] = useState("All Types");
     const [sortLabel, setSortLabel] = useState("Sort");
     const [viewLabel, setViewLabel] = useState("Small (Default)");
     const [filterActive, setFilterActive] = useState(false);
+    
     useEffect(() => {
         const fetchKnots = async () => {
             try {
@@ -66,9 +67,9 @@ const AllKnots = () => {
         setTypeFilter("");
         setDifficultyFilter("");
         setSortOrder("asc");
-        setActivityLabel("Activity");
-        setTypeLabel("Type");
-        setSortLabel("Sort");
+        setActivityLabel("All Activities");
+        setTypeLabel("All Types");
+        setSortLabel("Name (A – Z)");
         setViewLabel("Small (Default)");
         setViewSize("small");
     };
@@ -80,16 +81,8 @@ const AllKnots = () => {
                 : b.name.localeCompare(a.name);
         });
 
-    const handleClearSearch = () => {
-        setSearchText("");
-    };
-
     const handleViewChange = (e) => {
         setViewSize(e.target.value); // Update view size based on selection
-    };
-
-    const toggleFilterOverlay = () => {
-        setFilterActive(!filterActive);
     };
 
     const indexOfLastKnot = currentPage * knotsPerPage;
@@ -133,48 +126,52 @@ const AllKnots = () => {
                             <div className="dropdown">
                                 <button className="dropbtn">
                                     {activityLabel}
-                                    <span className="chevron">▼</span> {/* Chevron icon */}
+                                    <div className="chevron"></div> {/* Chevron icon */}
                                 </button>
                                 <div className="dropdown-content">
-                                    <a onClick={() => {
-                                        setActivityFilter("Climbing");
-                                        setActivityLabel("Climbing");
-                                    }}>Climbing</a>
-
-                                    <a onClick={() => {
-                                        setActivityFilter("Fishing");
-                                        setActivityLabel("Fishing");
-                                    }}>Fishing</a>
+                                    <a onClick={() => { setActivityFilter("Arborist"); setActivityLabel("Arborist"); }}>Arborist</a>
+                                    <a onClick={() => { setActivityFilter("Boating"); setActivityLabel("Boating"); }}>Boating</a>
+                                    <a onClick={() => { setActivityFilter("Climbing"); setActivityLabel("Climbing"); }}>Climbing</a>
+                                    <a onClick={() => { setActivityFilter("Decorative"); setActivityLabel("Decorative"); }}>Decorative</a>
+                                    <a onClick={() => { setActivityFilter("Fishing"); setActivityLabel("Fishing"); }}>Fishing</a>
+                                    <a onClick={() => { setActivityFilter("Horse & Farm"); setActivityLabel("Horse & Farm"); }}>Horse & Farm</a>
+                                    <a onClick={() => { setActivityFilter("Household"); setActivityLabel("Household"); }}>Household</a>
+                                    <a onClick={() => { setActivityFilter("Neckties"); setActivityLabel("Neckties"); }}>Neckties</a>
+                                    <a onClick={() => { setActivityFilter("Rope Care"); setActivityLabel("Rope Care"); }}>Rope Care</a>
+                                    <a onClick={() => { setActivityFilter("Scouting"); setActivityLabel("Scouting"); }}>Scouting</a>
+                                    <a onClick={() => { setActivityFilter("Search & Rescue"); setActivityLabel("Search & Rescue"); }}>Search & Rescue</a>
+                                    <a onClick={() => { setActivityFilter("Surgical"); setActivityLabel("Surgical"); }}>Surgical</a>
                                 </div>
                             </div>
                             &nbsp;
 
                             <div className="dropdown">
                                 <button className="dropbtn">
-                                    {typeLabel}
-                                    <span className="chevron">▼</span> {/* Chevron icon */}
+                                    {typeLabel}<br></br>
+                                    <div className="chevron"></div> {/* Chevron icon */}
                                 </button>
                                 <div className="dropdown-content">
-                                    <a onClick={() => {
-                                        setTypeFilter("Loop");
-                                        setTypeLabel("Loop");
-                                    }}>Loop</a>
-
-                                    <a onClick={() => {
-                                        setTypeFilter("Hitch");
-                                        setTypeLabel("Hitch");
-                                    }}>Hitch</a>
+                                    <a onClick={() => { setTypeFilter("Basic"); setTypeLabel("Basic"); }}>Basic</a>
+                                    <a onClick={() => { setTypeFilter("Bends"); setTypeLabel("Bends"); }}>Bends</a>
+                                    <a onClick={() => { setTypeFilter("End Loops"); setTypeLabel("End Loops"); }}>End Loops</a>
+                                    <a onClick={() => { setTypeFilter("Hitches"); setTypeLabel("Hitches"); }}>Hitches</a>
+                                    <a onClick={() => { setTypeFilter("Mats"); setTypeLabel("Mats"); }}>Mats</a>
+                                    <a onClick={() => { setTypeFilter("Mid Loops"); setTypeLabel("Mid Loops"); }}>Mid Loops</a>
+                                    <a onClick={() => { setTypeFilter("Quick Release"); setTypeLabel("Quick Release"); }}>Quick Release</a>
+                                    <a onClick={() => { setTypeFilter("Slide & Grip"); setTypeLabel("Slide & Grip"); }}>Slide & Grip</a>
+                                    <a onClick={() => { setTypeFilter("Splicing"); setTypeLabel("Splicing"); }}>Splicing</a>
+                                    <a onClick={() => { setTypeFilter("Stoppers"); setTypeLabel("Stoppers"); }}>Stoppers</a>
                                 </div>
                             </div>
                         </div>
 
-                        <div style={{ width: '200px'}}>
+                        <div style={{ width: '200px' }}>
                             <div className="filter-label">Sort By: &nbsp;</div>
 
                             <div className="dropdown">
                                 <button className="dropbtn">
                                     {sortLabel}
-                                    <span className="chevron">▼</span>
+                                    <div className="chevron"></div> {/* Chevron icon */}
                                 </button>
                                 <div className="dropdown-content">
                                     <a onClick={() => {
@@ -195,7 +192,7 @@ const AllKnots = () => {
                             <div className="dropdown">
                                 <button className="dropbtn">
                                     {viewLabel}
-                                    <span className="chevron">▼</span>
+                                    <div className="chevron"></div> {/* Chevron icon */}
                                 </button>
                                 <div className="dropdown-content">
                                     <a onClick={() => {
@@ -248,8 +245,8 @@ const AllKnots = () => {
                                         <img src={knot.image} alt={knot.name} />
                                     </div>
                                     <h3 className="knots-name">{knot.name}</h3>
-                                    <p  className="knots-description">{knot.description}</p>
-                                    <div style={{marginTop: 'auto' }}>
+                                    <p className="knots-description">{knot.description}</p>
+                                    <div style={{ marginTop: 'auto' }}>
                                         <button className="button red">View Knot</button>
                                     </div>
                                 </div>
