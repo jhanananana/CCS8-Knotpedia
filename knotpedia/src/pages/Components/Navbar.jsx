@@ -60,13 +60,13 @@ const Navbar = () => {
 
           {isMobile ? (
             <div className={`dropdown-submenu ${showDropdown ? "show" : ""}`}>
-              <Link to="/knots/all" className={location.pathname === "/AllKnots" ? "active" : ""}>
+              <Link to="/knots/all" className={location.pathname === "/knots/all" ? "active" : ""}>
                 All Knots
               </Link>
-              <Link to="/knots/activity" className={location.pathname === "/activity-knots" ? "active" : ""}>
+              <Link to="/knots/activity" className={location.pathname === "/knots/activity" ? "active" : ""}>
                 Knots by Activity
               </Link>
-              <Link to="/knots/type" className={location.pathname === "/type-knots" ? "active" : ""}>
+              <Link to="/knots/type" className={location.pathname === "/knots/type" ? "active" : ""}>
                 Knots by Type
               </Link>
             </div>
@@ -86,22 +86,22 @@ const Navbar = () => {
         </li>
 
         <li>
-          <Link to="/contact" className={location.pathname === "/ContactUs" ? "active" : ""}>
+          <Link to="/contact" className={location.pathname === "/contact" ? "active" : ""}>
             Contact Us
           </Link>
         </li>
         <li>
-          <Link to="/about" className={location.pathname === "/AboutUs" ? "active" : ""}>
+          <Link to="/about" className={location.pathname === "/about" ? "active" : ""}>
             About Us
           </Link>
         </li>
         <li>
-          <Link to="/sitemap" className={location.pathname === "/SiteMap" ? "active" : ""}>
+          <Link to="/sitemap" className={location.pathname === "/SiteMap" ? "sitemap" : ""}>
             Site Map
           </Link>
         </li>
         <li>
-          <Link to="/preferences" className={location.pathname === "/Preferences" ? "active" : ""}>
+          <Link to="/preferences" className={location.pathname === "/preferences" ? "active" : ""}>
             Preferences
           </Link>
         </li>
