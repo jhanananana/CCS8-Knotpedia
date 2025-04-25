@@ -66,7 +66,7 @@ const KnotChosen = () => {
             <span>Home</span>
         </a>
                     &gt; 
-       <Link to="/allknots">
+       <Link to="/knots/all">
                 <span className="breadcrumb-link">All Knots</span>
        </Link>
                     <span className="active">{currentKnot.name}</span>
