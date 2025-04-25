@@ -60,7 +60,18 @@ const KnotChosen = () => {
           <p>{currentKnot.description}</p>
         </div>
       </div>
-
+      <nav className="breadcrumb">
+        <a href="/" className="breadcrumb-link">
+         <img src="/assets/home-icon.png" alt="Home Icon" />
+            <span>Home</span>
+        </a>
+                    &gt; 
+        <a href="/Categories/All/AllKnots.jsx" className="breadcrumb-link">
+       
+            <span>All Knots</span>
+        </a>
+                    <span className="active">All Knots</span>
+                </nav>
       {currentKnot.tags?.length > 0 && (
         <div className="knot-tags-container">
           <h4 className="knotfound">Also found in:</h4>
