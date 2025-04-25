@@ -230,8 +230,16 @@ const AllKnots = () => {
                 ) : (
 
                     <div className={`allknots-container ${viewSize}`}>
+
                         {currentKnots.map((knot) => (
-                            <Link key={knot.id} to={`/KnotChosen/${knot.id}`} className="knots-card-link">
+                           <Link
+                           key={knot.id}
+                           to={`/KnotChosen/${knot.id}`}
+                           state={{ knot }}
+                           className="knots-card-link"
+                         >
+                         
+
                                 <div className="knots-card">
                                     <div className="knots-image">
                                         <img src={knot.image} alt={knot.name} />
