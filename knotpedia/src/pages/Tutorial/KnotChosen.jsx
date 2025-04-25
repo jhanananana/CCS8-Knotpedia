@@ -5,7 +5,7 @@ import Footer from "../Components/Footer";
 import "./KnotChosen.css";
 import { getDocs, collection } from "firebase/firestore";
 import { db } from "../../firebase"; // Adjust to your firebase config
-
+import { Link } from 'react-router-dom';
 const KnotChosen = () => {
   const location = useLocation();
   const [fetchedKnot, setFetchedKnot] = useState(null);
@@ -66,11 +66,10 @@ const KnotChosen = () => {
             <span>Home</span>
         </a>
                     &gt; 
-        <a href="/Categories/All/AllKnots.jsx" className="breadcrumb-link">
-       
-            <span>All Knots</span>
-        </a>
-                    <span className="active">All Knots</span>
+       <Link to="/allknots">
+                <span className="breadcrumb-link">All Knots</span>
+       </Link>
+                    <span className="active">{currentKnot.name}</span>
                 </nav>
       {currentKnot.tags?.length > 0 && (
         <div className="knot-tags-container">
