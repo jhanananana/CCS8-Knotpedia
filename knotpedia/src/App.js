@@ -42,6 +42,8 @@ const App = () => {
             <Route path="/search" element={<Search />} />
 
             <Route path="/FirebaseDataEntry" element={<FirebaseDataEntry />} />
+            <Route path="/types/:type?" element={<Types />} />
+
           </Routes>
 
         </main>

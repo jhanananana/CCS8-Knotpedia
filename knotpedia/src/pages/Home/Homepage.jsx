@@ -99,7 +99,7 @@ const Homepage = () => {
                         <p>Master the art of tying with confidence by exploring a variety of knots suited for different needs.</p>
                     </div>
                     <div className="box-column">
-                        <a href="/type" className="box" style={{ backgroundColor: "#5192A5" }}>
+                        <a href="/knots/type" className="box" style={{ backgroundColor: "#5192A5" }}>
                             <div className="icon">
                                 <img src="/assets/home-type.png" alt="Type Icon" />
                             </div>
@@ -108,7 +108,7 @@ const Homepage = () => {
                             </div>
                             <div className="sub-text">Explore knots by category.</div>
                         </a>
-                        <a href="/activity" className="box" style={{ backgroundColor: "#0d6287" }}>
+                        <a href="/knots/activity" className="box" style={{ backgroundColor: "#0d6287" }}>
                             <div className="icon">
                                 <img src="/assets/home-activity.png" alt="Activity Icon" />
                             </div>
@@ -148,7 +148,7 @@ const Homepage = () => {
                         ))}
                     </div>
                 </div>
-                <a href="/AllKnots/"><button className="button blue">View All Knots</button> </a>
+                <a href="/knots/all"><button className="button blue">View All Knots</button> </a>
             </section>
             <Footer />
             <BackToTop />

@@ -5,6 +5,13 @@ import FAQService from "./FAQService";
 import "./FAQ.css";
 
 const FAQ = () => {
+  const [selectedCategory, setSelectedCategory] = useState("all");
+  const categories = [
+    { id: "all", label: "All Questions" },
+    { id: "general", label: "General" },
+    { id: "technical", label: "Technical" }
+  ];
+
   const generalQuestions = [
     {
       id: "question1",
@@ -49,7 +56,6 @@ const FAQ = () => {
     question4: false,
     question5: false,
   });
-  const [selectedCategory, setSelectedCategory] = useState("all");
   // Function to toggle answer visibility
   const toggleAnswer = (questionId) => {
     setVisibleAnswers({
@@ -81,19 +87,32 @@ const FAQ = () => {
             <span>Home</span>
           </a>
           &gt;
-          <a href="/AboutUs">About Us</a>
+          <a href="/about">About Us</a>
           &gt;
           <span className="active">Frequently Asked Questions (FAQs)</span>
         </nav>
 
         <div className="question-container">
           <aside className="faq-sidebar">
-            <button onClick={() => setSelectedCategory("all")}>All</button>
-            <button onClick={() => setSelectedCategory("general")}>General</button>
-            <button onClick={() => setSelectedCategory("technical")}>Technical</button>
+            <div className="sidebarTitle" style={{ display: 'flex' }}>
+              <div className="icon">
+                <img src="/assets/faq-icon.png" style={{ width: '2rem' }} alt="Question Mark Icon" />
+              </div>
+              <h2>Categories</h2>
+            </div>
+
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={selectedCategory === category.id ? "active" : ""}
+              >
+                {category.label}
+              </button>
+            ))}
           </aside>
 
-          <div className="faq-content">
+          <div className="faq-section">
             {(selectedCategory === "all" || selectedCategory === "general") && (
               <FAQService.QuestionList
                 title="General Questions"
@@ -112,9 +131,8 @@ const FAQ = () => {
               />
             )}
           </div>
-
           <div className="form-container">
-            <div className="right-form-container full">
+            <div className="right-form-container">
               <h3>
                 <span className="form-title">How can we </span>
                 <span className="form-title red-text">help?</span>
@@ -123,6 +141,7 @@ const FAQ = () => {
               <FAQService.FormComponent />
             </div>
           </div>
+  
         </div>
       </div>
       {/* Footer */}
