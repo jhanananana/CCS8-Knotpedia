@@ -6,6 +6,7 @@ import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useParams, useLocation } from 'react-router-dom';
+import Pagination from '../../Components/Pagination.jsx';
 
 const Types = () => {
     const [knots, setKnots] = useState([]);
@@ -15,10 +16,6 @@ const Types = () => {
     const [activityFilter, setActivityFilter] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
     const [viewSize, setViewSize] = useState("small"); // Default view size is medium
-    const [activityLabel, setActivityLabel] = useState("All Activities");
-    const [sortLabel, setSortLabel] = useState("Name (A – Z)");
-    const [viewLabel, setViewLabel] = useState("Small (Default)");
-    const [filterActive, setFilterActive] = useState(false);
     const { type } = useParams();
     const location = useLocation();
     const [typeFilter, setTypeFilter] = useState(type || "");
@@ -26,9 +23,9 @@ const Types = () => {
 
     useEffect(() => {
         if (typeFilter) {
-            window.history.pushState(null, "", `/types/${typeFilter}`);
+            window.history.pushState(null, "", `/knots/types/${typeFilter}`);
         } else {
-            window.history.pushState(null, "", `/types`);
+            window.history.pushState(null, "", `/knots/types`);
         }
     }, [typeFilter]);
 
@@ -101,10 +98,10 @@ const Types = () => {
     return (
         <div>
             <Navbar />
-            <header className="subHeader blueCover">
+            <header className="subHeader redCover">
                 <div className="container">
                     <h1>Knots by Type</h1>
-                    <p>
+                    <p>Explore knots by category.
                     </p>
                 </div>
             </header>
@@ -133,7 +130,10 @@ const Types = () => {
                     <ul className="sidebar-list">
                         <li
                             className={typeFilter === "" ? "active-sidebar" : ""}
-                            onCbuttonck={() => { setTypeFilter(" "); setTypeLabel("All Types"); }}
+                            onClick={() => {
+                                setTypeFilter("");
+                                setTypeLabel("All Types");
+                            }}
                         >
                             All Types
                         </li>
@@ -237,21 +237,12 @@ const Types = () => {
                     )}
 
                     {filteredKnots.length > 0 && (
-                        <div className="pagination">
-                            <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>&lt; Previous</button>
-                            {[...Array(totalPages)].map((_, i) => (
-                                <button
-                                    key={i}
-                                    className={currentPage === i + 1 ? "active" : ""}
-                                    onClick={() => setCurrentPage(i + 1)}
-                                >
-                                    {i + 1}
-                                </button>
-                            ))}
-                            <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>Next &gt;</button>
-                        </div>
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            onPageChange={setCurrentPage}
+                        />
                     )}
-
                 </main>
             </div>
             <Footer />

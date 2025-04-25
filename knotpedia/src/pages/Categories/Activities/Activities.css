@@ -239,6 +239,7 @@
     border-radius: 8px;
     font-family: 'Poppins';
     height: fit-content;
+    margin-right: 1rem;
 }
 
 .sidebarTitle {

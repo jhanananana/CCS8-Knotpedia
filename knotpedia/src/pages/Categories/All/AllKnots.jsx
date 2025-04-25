@@ -5,6 +5,7 @@ import { db } from "../../../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import Pagination from '../../Components/Pagination.jsx';
 
 const AllKnots = () => {
     const [knots, setKnots] = useState([]);
@@ -232,13 +233,13 @@ const AllKnots = () => {
                     <div className={`allknots-container ${viewSize}`}>
 
                         {currentKnots.map((knot) => (
-                           <Link
-                           key={knot.id}
-                           to={`/KnotChosen/${knot.id}`}
-                           state={{ knot }}
-                           className="knots-card-link"
-                         >
-                         
+                            <Link
+                                key={knot.id}
+                                to={`/KnotChosen/${knot.id}`}
+                                state={{ knot }}
+                                className="knots-card-link"
+                            >
+
 
                                 <div className="knots-card">
                                     <div className="knots-image">
@@ -256,20 +257,13 @@ const AllKnots = () => {
 
                 )}
 
-                {/* PAGINATION */}
-                <div className="pagination">
-                    <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
-                    {[...Array(totalPages)].map((_, i) => (
-                        <button
-                            key={i}
-                            className={currentPage === i + 1 ? "active" : ""}
-                            onClick={() => setCurrentPage(i + 1)}
-                        >
-                            {i + 1}
-                        </button>
-                    ))}
-                    <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>Next</button>
-                </div>
+                {filteredKnots.length > 0 && (
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={setCurrentPage}
+                    />
+                )}
             </div>
             <Footer />
         </div >

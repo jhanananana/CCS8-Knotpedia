@@ -1,8 +1,18 @@
+.site-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* At least full viewport height */
+}
+
+.content {
+  flex: 1; /* Takes all available space */
+  padding: 20px 0; /* Optional spacing */
+}
+
+/* Your existing footer styles */
 .footer {
-    background-color: #1f2937;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-  }
-  
-  
+  background-color: #1f2937;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
