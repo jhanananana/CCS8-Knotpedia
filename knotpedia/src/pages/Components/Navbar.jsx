@@ -13,7 +13,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsShrunk(window.scrollY > 50);
     };
-
+  
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 1024);
       if (window.innerWidth > 768) {
@@ -21,15 +21,17 @@ const Navbar = () => {
         setShowDropdown(false);
       }
     };
-
+  
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleResize);
-
+  
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+  
+
 
   return (
     <nav className="navbar">
@@ -48,15 +50,17 @@ const Navbar = () => {
           </Link>
         </li>
 
-        <li className={isMobile ? "" : "dropdown"}>
-          <div
-            className={`dropdown-toggle ${showDropdown ? "active" : ""}`}
-            onClick={() => setShowDropdown(!showDropdown)} // This toggles the dropdown state
-          >
-            Explore Knots
-            <i style={{marginLeft: '5px', fontSize: '10px'}} className={`fas fa-chevron-down ${showDropdown ? "active" : ""}`}></i>
-          </div>
-
+        <li className={isMobile ? "" : "dropdown"} >
+        <div
+    className={`dropdown-toggle ${showDropdown || location.pathname.startsWith("/knots/") ? "active" : ""}`}
+    onClick={() => setShowDropdown(!showDropdown)}
+  >
+    Explore Knots
+    <i
+      style={{ marginLeft: '5px', fontSize: '10px' }}
+      className={`fas fa-chevron-down ${showDropdown || location.pathname.startsWith("/knots/") ? "active" : ""}`}
+    ></i>
+  </div>
 
           {isMobile ? (
             <div className={`dropdown-submenu ${showDropdown ? "show" : ""}`}>
@@ -73,13 +77,19 @@ const Navbar = () => {
           ) : (
             <ul className={`dropdown-menu ${showDropdown ? "show" : ""}`}>
               <li>
-                <Link to="/knots/all">All Knots</Link>
+                <Link to="/knots/all" className={location.pathname === "/knots/all" ? "active" : ""}>
+                  All Knots
+                </Link>
               </li>
               <li>
-                <Link to="/knots/activity">Knots by Activity</Link>
+                <Link to="/knots/activity" className={location.pathname === "/knots/activity" ? "active" : ""}>
+                  Knots by Activity
+                </Link>
               </li>
               <li>
-                <Link to="/knots/type">Knots by Type</Link>
+                <Link to="/knots/type" className={location.pathname === "/knots/type" ? "active" : ""}>
+                  Knots by Type
+                </Link>
               </li>
             </ul>
           )}

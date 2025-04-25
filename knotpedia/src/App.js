@@ -10,7 +10,7 @@ import PrivacyPolicy from "./pages/About/PrivacyPolicy/PrivacyPolicy.jsx";
 import Sitemap from "./pages/Sitemap/Sitemap.jsx";
 import KnotChosen from "./pages/Tutorial/KnotChosen.jsx";
 import Search from "./pages/Search/Search.jsx";
-
+import Types from "./pages/Categories/Types/Types.jsx";
 import FirebaseDataEntry from "./pages/FirebaseDataEntry.jsx";
 
 const App = () => {
@@ -31,7 +31,7 @@ const App = () => {
             <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
 
             <Route path="/knots/all" element={<AllKnots />} /> 
-            {/* <Route path="/knotsbytype" element={<KnotsByType />} />  */}
+            <Route path="/knots/type" element={<Types />} /> 
             {/* <Route path="/knotsbydifficulty" element={<KnotsByDifficulty />} />  */}
             {/* <Route path="/knotsbyactivity" element={<KnotsByActivity />} /> */}
             

@@ -209,41 +209,9 @@
     margin-bottom: 1rem;
 }
 
-.horizontal-filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: flex-start;
-    align-items: center;
-    justify-content: left;
-    color: #424242;
-    padding: 1rem;
-    border-radius: 20px;
-}
-
-.horizontal-filters .button.blue {
-    margin-top: auto;
-    width: 150px;
-}
-
-.horizontal-filters .dropdown {
-    flex: 1 1 auto;
-    min-width: 120px;
-}
 
 .filter-label {
     width: 100px;
-}
-
-.horizontal-filters button {
-    padding: 0.5rem 1rem;
-    border-radius: 10px;
-    font-size: 1rem;
-}
-
-.horizontal-filters select:hover {
-    background-color: #f0f0f0;
-    cursor: pointer;
 }
 
 .dropbtn {
@@ -406,12 +374,6 @@
         margin-top: 4px;
     }
 
-    .horizontal-filters {
-        display: grid;
-        gap: 1rem;
-        align-items: center;
-    }
-
     .search-container {
         position: relative;
         bottom: 0;
@@ -430,10 +392,6 @@
     .pagination button {
         font-size: 0.9rem;
         padding: 0.5rem 1rem;
-    }
-
-    .horizontal-filters select {
-        width: 80%;
     }
 
     .main-container {
@@ -498,10 +456,6 @@
         align-self: flex-start;
     }
 
-    .horizontal-filters .button.blue {
-        width: auto;
-    }
-
     .dropbtn {
         width: 90vw;
     }
@@ -548,14 +502,6 @@
         align-self: flex-start;
     }
 
-    .horizontal-filters select {
-        width: 80%;
-    }
-
-    .horizontal-filters {
-        display: flex;
-    }
-
     .pagination button {
         font-size: 0.8rem;
         padding: 0.5rem 1rem;
@@ -576,9 +522,5 @@
         width: 80vw;
         max-width: none;
         box-sizing: border-box;
-    }
-
-    .horizontal-filters .button.blue {
-        width: 100%;
     }
 }
