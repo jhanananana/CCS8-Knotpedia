@@ -98,7 +98,7 @@ const Types = () => {
     return (
         <div>
             <Navbar />
-            <header className="subHeader redCover">
+            <header className="subHeader blueCover">
                 <div className="container">
                     <h1>Knots by Type</h1>
                     <p>Explore knots by category.

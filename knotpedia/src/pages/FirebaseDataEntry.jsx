@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { getDocs, collection } from 'firebase/firestore';
 
 const FirebaseDataEntry = () => {
   // Firebase configuration - Replace with your config
@@ -18,6 +19,8 @@ const FirebaseDataEntry = () => {
   const app = initializeApp(firebaseConfig);
   const db = getFirestore(app);
 
+  const [knotsList, setKnotsList] = useState([]);
+  const [selectedKnot, setSelectedKnot] = useState('');
   const [documentId, setDocumentId] = useState('');
   const [name, setName] = useState('');
   const [activity, setActivity] = useState('');
@@ -30,6 +33,59 @@ const FirebaseDataEntry = () => {
   const [tags, setTags] = useState(['']);
   const [status, setStatus] = useState({ message: '', type: '' });
   const [showStatus, setShowStatus] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+
+  useEffect(() => {
+    if (selectedKnot) {
+      const knot = knotsList.find(k => k.id === selectedKnot);
+      if (knot) {
+        setIsEditing(true);
+        setDocumentId(knot.id);
+        setName(knot.name || '');
+        setActivity(knot.activity || '');
+        setCategory(knot.category || '');
+        setDescription(knot.description || '');
+        setDifficulty(knot.difficulty || '');
+        setHistory(knot.history || '');
+        setImage(knot.image || '');
+        
+        // Convert steps object to array
+        if (knot.steps) {
+          const stepsArray = Object.entries(knot.steps).map(([key, value]) => ({
+            id: parseInt(key.replace('step ', '')),
+            description: value.description || '',
+            image: value.image || ''
+          }));
+          setSteps(stepsArray.sort((a, b) => a.id - b.id));
+        } else {
+          setSteps([{ id: 1, description: '', image: '' }]);
+        }
+        
+        setTags(knot.tags || ['']);
+      }
+    } else {
+      clearForm();
+    }
+  }, [selectedKnot, knotsList]);
+
+  useEffect(() => {
+    const fetchKnots = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, 'knots'));
+        const knots = [];
+        querySnapshot.forEach((doc) => {
+          knots.push({
+            id: doc.id,
+            ...doc.data()
+          });
+        });
+        setKnotsList(knots);
+      } catch (error) {
+        console.error("Error fetching knots: ", error);
+      }
+    };
+    fetchKnots();
+  }, [db]);
 
   const addStep = () => {
     const newId = steps.length > 0 ? Math.max(...steps.map(step => step.id)) + 1 : 1;
@@ -63,6 +119,7 @@ const FirebaseDataEntry = () => {
   };
 
   const clearForm = () => {
+    setSelectedKnot('');
     setDocumentId('');
     setName('');
     setActivity('');
@@ -74,6 +131,7 @@ const FirebaseDataEntry = () => {
     setSteps([{ id: 1, description: '', image: '' }]);
     setTags(['']);
     setShowStatus(false);
+    setIsEditing(false);
   };
 
   const submitToFirebase = async () => {
@@ -112,22 +170,24 @@ const FirebaseDataEntry = () => {
 
       // Show success message
       setStatus({
-        message: `Document ${documentId} successfully added to Firebase!`,
+        message: `Document ${documentId} successfully ${isEditing ? 'updated' : 'added'} to Firebase!`,
         type: 'success'
       });
       setShowStatus(true);
-      console.log("Document successfully written!");
       
-      // Automatically clear form on success
-      clearForm();
-      
-      // Keep the success message visible
-      setShowStatus(true);
+      // Refresh knots list
+      const querySnapshot = await getDocs(collection(db, 'knots'));
+      const knots = [];
+      querySnapshot.forEach((doc) => {
+        knots.push({
+          id: doc.id,
+          ...doc.data()
+        });
+      });
+      setKnotsList(knots);
       
     } catch (error) {
-      console.error("Error adding document: ", error);
-      
-      // Show error message
+      console.error("Error writing document: ", error);
       setStatus({
         message: `Error: ${error.message}`,
         type: 'error'
@@ -136,15 +196,40 @@ const FirebaseDataEntry = () => {
     }
   };
 
+
   return (
     <div style={{ 
-      fontFamily: 'Arial, sans-serif', 
+      fontFamily: 'Poppins', 
       maxWidth: '800px', 
       margin: '0 auto', 
-      padding: '20px' 
+      padding: '20px'
     }}>
-      <h1>Firebase Data Entry Form</h1>
+      <h1>Knot Data Management</h1>
       
+      <div style={{ marginBottom: '20px', padding: '15px', backgroundColor: '#f5f5f5', borderRadius: '5px' }}>
+        <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
+          Select Knot to Edit:
+        </label>
+        <select
+          value={selectedKnot}
+          onChange={(e) => setSelectedKnot(e.target.value)}
+          style={{ 
+            width: '100%', 
+            padding: '8px', 
+            boxSizing: 'border-box',
+            marginBottom: '10px',
+            fontFamily: 'Poppins'
+          }}
+        >
+          <option value="">-- Create New Knot --</option>
+          {knotsList.map((knot) => (
+            <option key={knot.id} value={knot.id}>
+              {knot.name} ({knot.id})
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div style={{ marginBottom: '15px' }}>
         <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
           Document ID:
@@ -153,13 +238,15 @@ const FirebaseDataEntry = () => {
           type="text" 
           value={documentId}
           onChange={(e) => setDocumentId(e.target.value)}
-          placeholder="Enter document ID ex: adjustablesling (no space between/smallleters) "
+          placeholder="Enter document ID (no spaces, lowercase)"
           style={{ 
             width: '100%', 
+            fontFamily: 'Poppins',
             padding: '8px', 
             boxSizing: 'border-box', 
             marginBottom: '10px' 
           }}
+          disabled={isEditing}
         />
       </div>
       
@@ -171,45 +258,10 @@ const FirebaseDataEntry = () => {
           type="text" 
           value={name}
           onChange={(e) => setName(e.target.value)}
-          placeholder="Enter name ex: Adjustable Sling (space between/start with big letter every word)"
+          placeholder="Enter knot name"
           style={{ 
             width: '100%', 
-            padding: '8px', 
-            boxSizing: 'border-box', 
-            marginBottom: '10px' 
-          }}
-        />
-      </div>
-      
-      <div style={{ marginBottom: '15px' }}>
-        <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-          Activity:
-        </label>
-        <input 
-          type="text" 
-          value={activity}
-          onChange={(e) => setActivity(e.target.value)}
-          placeholder="Enter activity"
-          style={{ 
-            width: '100%', 
-            padding: '8px', 
-            boxSizing: 'border-box', 
-            marginBottom: '10px' 
-          }}
-        />
-      </div>
-      
-      <div style={{ marginBottom: '15px' }}>
-        <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-          Category:
-        </label>
-        <input 
-          type="text" 
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          placeholder="Enter category"
-          style={{ 
-            width: '100%', 
+            fontFamily: 'Poppins',
             padding: '8px', 
             boxSizing: 'border-box', 
             marginBottom: '10px' 
@@ -228,6 +280,7 @@ const FirebaseDataEntry = () => {
           placeholder="Enter description"
           style={{ 
             width: '100%', 
+            fontFamily: 'Poppins',
             padding: '8px', 
             boxSizing: 'border-box', 
             marginBottom: '10px' 
@@ -237,51 +290,16 @@ const FirebaseDataEntry = () => {
       
       <div style={{ marginBottom: '15px' }}>
         <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-          Difficulty:
-        </label>
-        <input 
-          type="text" 
-          value={difficulty}
-          onChange={(e) => setDifficulty(e.target.value)}
-          placeholder="Enter difficulty"
-          style={{ 
-            width: '100%', 
-            padding: '8px', 
-            boxSizing: 'border-box', 
-            marginBottom: '10px' 
-          }}
-        />
-      </div>
-      
-      <div style={{ marginBottom: '15px' }}>
-        <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-          History:
-        </label>
-        <textarea 
-          value={history}
-          onChange={(e) => setHistory(e.target.value)}
-          rows="3" 
-          placeholder="Enter history"
-          style={{ 
-            width: '100%', 
-            padding: '8px', 
-            boxSizing: 'border-box', 
-            marginBottom: '10px' 
-          }}
-        />
-      </div>
-      
-      <div style={{ marginBottom: '15px' }}>
-        <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>
-          Image:
+          Image URL:
         </label>
         <input 
           type="text" 
           value={image}
           onChange={(e) => setImage(e.target.value)}
-          placeholder="Enter image path"
+          placeholder="Enter image URL"
           style={{ 
             width: '100%', 
+            fontFamily: 'Poppins',
             padding: '8px', 
             boxSizing: 'border-box', 
             marginBottom: '10px' 
@@ -297,13 +315,15 @@ const FirebaseDataEntry = () => {
           <div 
             key={step.id}
             style={{ 
-              border: '1px solid #ccc', 
-              padding: '10px', 
-              marginBottom: '10px', 
-              backgroundColor: '#f9f9f9' 
+              border: '1px solid #ddd',
+              fontFamily: 'Poppins', 
+              padding: '15px', 
+              marginBottom: '15px', 
+              backgroundColor: '#fff',
+              borderRadius: '5px'
             }}
           >
-            <h3>Step {step.id}</h3>
+            <h3 style={{ marginTop: 0 }}>Step {step.id}</h3>
             <div style={{ marginBottom: '15px' }}>
               <label style={{ display: 'block', marginBottom: '5px' }}>
                 Description:
@@ -311,9 +331,10 @@ const FirebaseDataEntry = () => {
               <textarea 
                 value={step.description}
                 onChange={(e) => updateStep(step.id, 'description', e.target.value)}
-                rows="2" 
+                rows="3" 
                 placeholder="Enter step description"
                 style={{ 
+                  fontFamily: 'Poppins',
                   width: '100%', 
                   padding: '8px', 
                   boxSizing: 'border-box', 
@@ -323,15 +344,16 @@ const FirebaseDataEntry = () => {
             </div>
             <div style={{ marginBottom: '15px' }}>
               <label style={{ display: 'block', marginBottom: '5px' }}>
-                Image:
+                Image URL:
               </label>
               <input 
                 type="text" 
                 value={step.image}
                 onChange={(e) => updateStep(step.id, 'image', e.target.value)}
-                placeholder="Enter step image path"
+                placeholder="Enter step image URL"
                 style={{ 
                   width: '100%', 
+                  fontFamily: 'Poppins',
                   padding: '8px', 
                   boxSizing: 'border-box', 
                   marginBottom: '10px' 
@@ -342,11 +364,13 @@ const FirebaseDataEntry = () => {
               type="button" 
               onClick={() => removeStep(step.id)}
               style={{ 
-                padding: '10px 15px', 
+                padding: '8px 15px', 
                 backgroundColor: '#f44336', 
                 color: 'white', 
+                fontFamily: 'Poppins',
                 border: 'none', 
-                cursor: 'pointer' 
+                cursor: 'pointer',
+                borderRadius: '4px'
               }}
             >
               Remove Step
@@ -361,7 +385,10 @@ const FirebaseDataEntry = () => {
             backgroundColor: '#4CAF50', 
             color: 'white', 
             border: 'none', 
-            cursor: 'pointer' 
+            cursor: 'pointer',
+            fontFamily: 'Poppins',
+            borderRadius: '4px',
+            marginRight: '10px'
           }}
         >
           Add Step
@@ -378,7 +405,8 @@ const FirebaseDataEntry = () => {
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
-              marginBottom: '5px' 
+              marginBottom: '10px',
+              fontFamily: 'Poppins'
             }}
           >
             <input 
@@ -390,7 +418,10 @@ const FirebaseDataEntry = () => {
                 flex: 1, 
                 padding: '8px', 
                 boxSizing: 'border-box', 
-                marginRight: '10px' 
+                marginRight: '10px',
+                borderRadius: '4px',
+                fontFamily: 'Poppins',
+                border: '1px solid #ddd'
               }}
             />
             <button 
@@ -401,10 +432,11 @@ const FirebaseDataEntry = () => {
                 backgroundColor: '#f44336', 
                 color: 'white', 
                 border: 'none', 
-                cursor: 'pointer' 
+                cursor: 'pointer',
+                borderRadius: '4px'
               }}
             >
-              X
+              Remove
             </button>
           </div>
         ))}
@@ -416,37 +448,45 @@ const FirebaseDataEntry = () => {
             backgroundColor: '#4CAF50', 
             color: 'white', 
             border: 'none', 
-            cursor: 'pointer' 
+            cursor: 'pointer',
+            borderRadius: '4px'
           }}
         >
           Add Tag
         </button>
       </div>
       
-      <div style={{ marginBottom: '15px' }}>
+      <div style={{ marginBottom: '15px', display: 'flex', gap: '10px' }}>
         <button 
           type="button" 
           onClick={submitToFirebase}
           style={{ 
-            padding: '10px 15px', 
+            padding: '12px 20px', 
             backgroundColor: '#4CAF50', 
             color: 'white', 
+            fontFamily: 'Poppins',
             border: 'none', 
-            cursor: 'pointer', 
-            marginRight: '10px' 
+            cursor: 'pointer',
+            borderRadius: '4px',
+            fontSize: '16px',
+            flex: 1
           }}
         >
-          Submit to Firebase
+          {isEditing ? 'Update Knot' : 'Create Knot'}
         </button>
         <button 
           type="button" 
           onClick={clearForm}
           style={{ 
-            padding: '10px 15px', 
+            padding: '12px 20px', 
             backgroundColor: '#2196F3', 
             color: 'white', 
             border: 'none', 
-            cursor: 'pointer' 
+            cursor: 'pointer',
+            borderRadius: '4px',
+            fontFamily: 'Poppins',
+            fontSize: '16px',
+            flex: 1
           }}
         >
           Clear Form
@@ -457,10 +497,11 @@ const FirebaseDataEntry = () => {
         <div 
           style={{ 
             marginTop: '20px', 
-            padding: '10px', 
+            padding: '15px', 
             borderRadius: '4px', 
             backgroundColor: status.type === 'success' ? '#dff0d8' : '#f2dede',
-            color: status.type === 'success' ? '#3c763d' : '#a94442'
+            color: status.type === 'success' ? '#3c763d' : '#a94442',
+            border: `1px solid ${status.type === 'success' ? '#d6e9c6' : '#ebccd1'}`
           }}
         >
           {status.message}

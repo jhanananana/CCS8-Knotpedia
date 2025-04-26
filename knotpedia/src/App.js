@@ -44,6 +44,7 @@ const App = () => {
 
             <Route path="/FirebaseDataEntry" element={<FirebaseDataEntry />} />
             <Route path="/knots/types/:type?" element={<Types />} />
+            <Route path="/knots/activities/:activity?" element={<Activities />} />
 
           </Routes>
           <BackToTop />

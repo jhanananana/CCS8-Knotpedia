@@ -4,7 +4,7 @@ import "./Activities.css";
 import { db } from "../../../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useParams, useLocation } from 'react-router-dom';
 import Pagination from '../../Components/Pagination.jsx';
 
@@ -13,19 +13,12 @@ const Activities = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const knotsPerPage = 12;
     const [searchText, setSearchText] = useState("");
-    const [activityFilter, setActivityFilter] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
     const [viewSize, setViewSize] = useState("small");
     const { activity } = useParams();
     const location = useLocation();
-    const [activityLabel, setActivityLabel] = useState(activity ? formatActivityLabel(activity) : "All Activities");
-
-    // Helper function to format activity labels
-    const formatActivityLabel = (str) => {
-        return str.split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
-    };
+    const [activityFilter, setActivityFilter] = useState(activity || "");
+    const [activityLabel, setActivityLabel] = useState(activity ? activity.charAt(0).toUpperCase() + activity.slice(1) : "All Activities");
 
     useEffect(() => {
         if (activityFilter) {
@@ -38,7 +31,7 @@ const Activities = () => {
     useEffect(() => {
         if (activity) {
             setActivityFilter(activity);
-            setActivityLabel(formatActivityLabel(activity));
+            setActivityLabel(activity.charAt(0).toUpperCase() + activity.slice(1));
         } else {
             setActivityFilter("");
             setActivityLabel("All Activities");
@@ -199,10 +192,12 @@ const Activities = () => {
                     </ul>
                 </aside>
 
+
                 <main className="content-area">
                     <div className="category-title">
                         <h2>{activityLabel}</h2>
                     </div>
+
 
                     <div className="results-and-search">
                         <div className="results-info">
