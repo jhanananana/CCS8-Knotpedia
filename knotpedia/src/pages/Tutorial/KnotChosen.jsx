@@ -60,33 +60,26 @@ const KnotChosen = () => {
           <p>{currentKnot.description}</p>
         </div>
       </div>
+  <div className="knot-container">
+
       <nav className="breadcrumb">
-        <a href="/" className="breadcrumb-link">
-         <img src="/assets/home-icon.png" alt="Home Icon" />
-            <span>Home</span>
-        </a>
-                    &gt; 
-       <Link to="/knots/all">
-                <span className="breadcrumb-link">All Knots</span>
-       </Link>
-                    <span className="active">{currentKnot.name}</span>
-                </nav>
-      {currentKnot.tags?.length > 0 && (
-        <div className="knot-tags-container">
-          <h4 className="knotfound">Also found in:</h4>
-          <div className="tag-buttons">
-            {currentKnot.tags.map((tag, index) => (
-              <button key={index} className="tag-button">
-                {tag}
-              </button>
-            ))}
-          </div>
-        </div>
-      )}
+    <Link to="/">
+      <img src="/assets/home-icon.png" alt="Home" />
+      <span>Home</span>
+    </Link>
+    &gt;
+    <Link to="/knots/all">
+      <span>All Knots</span>
+    </Link> &gt;
+    <span className="active">{currentKnot.name}</span>
+  </nav>
+  <img className="imgheadknot" src={currentKnot.image} />
 
-      <img className="imgheadknot" src={currentKnot.image} />
+  {/* Knot Image */}
+  
+    
 
-      <div className="knot-container">
+     
         <h1 className="knot-title"></h1>
         <p className="knot-description"></p>
 
