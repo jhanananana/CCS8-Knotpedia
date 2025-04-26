@@ -89,8 +89,9 @@ const FirebaseDataEntry = () => {
 
   const addStep = () => {
     const newId = steps.length > 0 ? Math.max(...steps.map(step => step.id)) + 1 : 1;
-    setSteps([...steps, { id: newId, description: '', image: '' }]);
+    setSteps([...steps, { id: newId, description: '', image: '\\knots\\1\\' }]); // New step gets same initial path
   };
+  
 
   const removeStep = (id) => {
     setSteps(steps.filter(step => step.id !== id));
@@ -127,9 +128,8 @@ const FirebaseDataEntry = () => {
     setDescription('');
     setDifficulty('');
     setHistory('');
-    setImage('');
-    setSteps([{ id: 1, description: '', image: '' }]);
-    setTags(['']);
+    setImage('\\knots\\1\\');
+    setSteps([{ id: 1, description: '', image: '\\knots\\1\\' }]);     setTags(['']);
     setShowStatus(false);
     setIsEditing(false);
   };
