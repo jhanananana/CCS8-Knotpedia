@@ -1,26 +1,8 @@
-.search-container {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin: 5px auto;
-    max-width: 100%;
-    background-color: #0d6287;
-    padding: 0.5rem 1.5rem;
-    border-radius: 100px;
-    color: white;
-    font-size: 1.3rem;
-    font-family: 'Poppins Bold';
-    position: absolute;
-    bottom: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 .results-and-search {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem 0;
+    margin: 0rem 0;
     flex-wrap: wrap;
     gap: 1rem;
     padding: 1rem 0;
@@ -31,54 +13,6 @@
     font-size: 1.1rem;
     font-family: 'Poppins';
     color: #202020;
-}
-
-.search-bar {
-    position: relative;
-    display: flex;
-    align-items: center;
-    max-width: 300px;
-    width: 100%;
-}
-
-.search-bar input {
-    width: 100%;
-    padding: 10px 40px 10px 50px;
-    border-radius: 30px;
-    border: 2px solid #ccc;
-    font-size: 16px;
-    font-family: 'Poppins';
-    outline: none;
-    transition: 0.3s ease-in-out;
-}
-
-.search-bar input:focus {
-    border-color: #5192A5;
-    box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6);
-}
-
-.knot-search-button {
-    position: absolute;
-    right: 0.5rem;
-    top: 0%;
-    transform: translateX(-658%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.knot-search-button img {
-    width: 20px;
-    height: 20px;
-    padding: 9px;
-    border-radius: 100%;
-    transform: translateX(5%);
-    background-color: #9e9e9e;
 }
 
 .knots-clear-icon {
@@ -92,45 +26,11 @@
 
 .allknots-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
     gap: 15px;
     margin-bottom: 1.5rem;
     margin-top: 2rem;
     justify-content: left;
-}
-
-.allknots-container.large {
-    grid-template-columns: repeat(4, 1fr);
-}
-
-.allknots-container.large .knots-name {
-    font-size: 1.6rem;
-}
-
-.allknots-container.large .knots-description {
-    font-size: 1.3rem;
-    padding-top: 1rem;
-}
-
-.allknots-container.large .knots-card .button.red {
-    font-size: 1.5rem;
-}
-
-.allknots-container.small {
-    grid-template-columns: repeat(5, 1fr);
-}
-
-.allknots-container.small .knots-description {
-    height: 90px;
-}
-
-.allknots-container.small .knots-name {
-    height: 40px;
-}
-
-.allknots-container.small .button.red {
-    font-size: 1rem;
-    padding: 0.5rem 0.8rem;
 }
 
 .knots-card:hover {
@@ -146,7 +46,6 @@
     overflow: hidden;
     justify-content: space-between;
     height: 100%;
-    /* width: 400px; */
     transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
@@ -188,7 +87,7 @@
     height: 100px;
     overflow: hidden;
     margin: 0.4rem 0.7rem;
-    padding: 0.5rem 0;
+    padding: 1rem 0 1rem;
     text-align: left;
 }
 
@@ -198,17 +97,14 @@
 
 .knots-card:focus-within {
     outline: 3px solid #0D6287;
-    /* Focus indicator for accessibility */
 }
 
 .knots-card .button.red {
     margin-top: auto;
-    /* Pushes the button to the bottom */
     align-self: flex-start;
     padding: 0.5rem 1rem;
     margin-bottom: 1rem;
 }
-
 
 .filter-label {
     width: 100px;
@@ -227,7 +123,6 @@
     width: 200px;
     box-sizing: border-box;
 }
-
 
 .dropbtn .chevron {
     transition: transform 0.2s ease;
@@ -253,7 +148,6 @@
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
     border: 1px solid #ccc;
-    /* Add border to dropdown */
     font-family: 'Poppins';
 }
 
@@ -262,13 +156,11 @@
     display: block;
     cursor: pointer;
     text-decoration: none;
-    /* Remove underline */
 }
 
 .dropdown-content a:hover {
     background-color: #ddd;
     color: #0D6287;
-    /* Add hover effect */
 }
 
 .dropdown:hover .dropdown-content {
@@ -288,39 +180,6 @@
     color: #353535;
     margin: 0 1rem;
     height: 20%;
-}
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    margin: 10px auto;
-}
-
-.pagination button {
-    border: 2px solid #B54D49;
-    color: #B54D49;
-    padding: 0.6rem 1.3rem;
-    font-family: 'Poppins Bold';
-    background-color: transparent;
-    border-radius: 10px;
-    margin: 0.2rem;
-    font-size: 1rem;
-    transition: 0.3s;
-    cursor: pointer;
-}
-
-.pagination button:hover,
-.pagination button.active {
-    background-color: #B54D49;
-    color: white;
-    border-color: #B54D49;
-}
-
-.pagination button.active:hover {
-    background-color: #922b2b;
-    border-color: #922b2b;
 }
 
 .filter-container {
@@ -367,160 +226,166 @@
     text-align: center;
 }
 
-@media (max-width: 768px) {
+.types-layout {
+    display: flex;
+    gap: 1rem;
+    /* margin-top: 0.5rem; */
+}
 
-    .dropbtn {
-        width: 300px;
-        margin-top: 4px;
-    }
+.sidebar {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    font-family: 'Poppins';
+    height: fit-content;
+}
 
-    .search-container {
-        position: relative;
-        bottom: 0;
-        transform: none;
-        padding: 0.5rem 1rem;
-    }
+.sidebarTitle {
+    background-color: #0D6287;
+    align-content: center;
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-radius: 8px;
+}
 
-    .search-bar {
-        max-width: 350px;
-    }
+.sidebar h2 {
+    font-size: 1.2rem;
+    color: white;
+    margin: 0;
+}
 
-    .allknots-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
+.sidebar-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins Bold';
+    color: #333333;
+    /* background-color: #f1f1f1; */
+}
 
-    .pagination button {
-        font-size: 0.9rem;
-        padding: 0.5rem 1rem;
-    }
+.sidebar-list li {
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: #f1f1f1;
+    margin-top: 10px;
+    transition: all 0.2s ease;
+}
 
-    .main-container {
+.sidebar-list li:hover {
+    color: #f1f1f1;
+    background-color: #0D6287;
+}
+
+.active-sidebar {
+    color: #a64452;
+    margin-left: 15px;
+}
+
+.content-area {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.category-title h2 {
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'Poppins Bold';
+    border-bottom: 1px solid #ddd;
+    padding: 1rem;
+    margin: 0px;
+    border-radius: 8px;
+    background-color: #a64452;
+}
+
+@media (max-width: 992px) {
+    .types-layout {
         flex-direction: column;
     }
-
-    .allknots-left-column {
-        flex: none;
+    
+    .sidebar {
         width: 100%;
         margin-bottom: 1rem;
     }
 
-    .allknots-right-column {
-        flex: none;
-        width: 100%;
-    }
-
-    .allknots-container.large {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-
-    .allknots-container.small {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
-    .allknots-container.small .knots-description {
-        display: none;
-    }
-
-    .knot-search-button {
-        position: absolute;
-        right: 0.5rem;
-        top: 0%;
-        transform: translateX(-580%);
-        background: none;
-        border: none;
-        cursor: pointer;
-        padding: 0;
-        height: 100%;
+    .sidebar-list {
         display: flex;
-        align-items: center;
-        justify-content: center;
+        flex-wrap: wrap;
+        gap: 10px;
     }
-
-    .knot-search-button img {
-        width: 17px;
-        height: 17px;
-        padding: 9px;
-        border-radius: 100%;
-        transform: translateX(-280%);
-        background-color: #9e9e9e;
-    }
-
-    .allknots-container.small .knots-name {
-        font-size: 1rem;
-    }
-
-    .knots-card .button.red {
-        margin-top: auto;
-        padding: 0.4rem 0.7rem;
-        align-self: flex-start;
-    }
-
-    .dropbtn {
-        width: 90vw;
-    }
-
-    .dropdown-content {
-        width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .search-container {
-        flex-direction: column;
+    
+    .sidebar-list li {
         padding: 0.5rem 1rem;
-        bottom: 10px;
-    }
-
-    .search-bar input {
-        padding: 8px 20px;
-    }
-
-    .allknots-container {
-        grid-template-columns: 1fr;
-    }
-
-    .allknots-container.large {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .allknots-container.small {
-        grid-template-columns: repeat(2, 1fr);
-
+        margin: 0;
     }
 
     .allknots-container .knots-description {
-        display: none;
+        font-size: 0.9rem;
+        padding: 0 0 1.5rem;
     }
+}
 
-    .allknots-container .knots-name {
-        font-size: 1.1rem;
-    }
-
-    .knots-card .button.red {
-        margin-top: auto;
-        align-self: flex-start;
-    }
-
-    .pagination button {
-        font-size: 0.8rem;
-        padding: 0.5rem 1rem;
-    }
-
-    .search-bar input {
-        width: 100%;
-        padding: 10px 40px 10px 45px;
-        border-radius: 30px;
-        border: 2px solid #ccc;
-        font-size: 16px;
-        font-family: 'Poppins';
-        outline: none;
-        transition: 0.3s ease-in-out;
-    }
-
+@media (max-width: 768px) {    
     .dropbtn {
-        width: 80vw;
-        max-width: none;
-        box-sizing: border-box;
+        width: 100%;
+        margin-top: 4px;
+    }
+    
+    .sidebar-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .sidebar-list li {
+        padding: 0.5rem 1rem;
+        margin: 0;
+    }
+    
+    .allknots-container {
+        grid-template-columns: repeat(2, 2fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .allknots-container {
+        grid-template-columns: 2fr;
+    }
+    
+    .results-and-search {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .sidebar-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .sidebar-list li {
+        padding: 0.5rem 1rem;
+        margin: 0;
+    }
+
+    .knots-name {
+        height: auto;
+    }
+    
+    .knots-description {
+        height: auto;
+    }
+}
+
+/* Additional mobile-specific adjustments */
+@media (max-width: 480px) {
+    .knots-card {
+        max-width: 100%;
     }
 }

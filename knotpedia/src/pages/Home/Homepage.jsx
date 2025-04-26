@@ -1,7 +1,6 @@
 import Navbar from "../Components/Navbar.jsx";
 import Footer from "../Components/Footer.jsx";
 import "./Homepage.css";
-import BackToTop from '../Components/BackToTop.jsx';
 import { db } from "../../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
@@ -32,6 +31,15 @@ const Homepage = () => {
         fetchKnots();
     }, []);
 
+    const shuffleArray = (array) => {
+        const shuffled = [...array];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+        return shuffled;
+      };
+      
     const handleSearch = () => {
         if (searchTerm) {
             navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
@@ -99,7 +107,7 @@ const Homepage = () => {
                         <p>Master the art of tying with confidence by exploring a variety of knots suited for different needs.</p>
                     </div>
                     <div className="box-column">
-                        <a href="/type" className="box" style={{ backgroundColor: "#5192A5" }}>
+                        <a href="/knots/types" className="box" style={{ backgroundColor: "#5192A5" }}>
                             <div className="icon">
                                 <img src="/assets/home-type.png" alt="Type Icon" />
                             </div>
@@ -108,7 +116,7 @@ const Homepage = () => {
                             </div>
                             <div className="sub-text">Explore knots by category.</div>
                         </a>
-                        <a href="/activity" className="box" style={{ backgroundColor: "#0d6287" }}>
+                        <a href="/knots/activities" className="box" style={{ backgroundColor: "#0d6287" }}>
                             <div className="icon">
                                 <img src="/assets/home-activity.png" alt="Activity Icon" />
                             </div>
@@ -125,33 +133,41 @@ const Homepage = () => {
             <section className="featured-knots">
                 <span className="title-tag redBg">FEATURED</span>
                 <h2 style={{ color: 'white' }}>Must-Know Knots</h2>
-                <p style={{ color: 'white' }}>These are the essential knots that everyone should learn for
-                    daily tasks, outdoor adventures, and emergency situations. </p>
+                <p style={{ color: 'white' }}>
+                    These are the essential knots that everyone should learn for
+                    daily tasks, outdoor adventures, and emergency situations.
+                </p>
                 <div className="container">
                     <div className="knots-container">
-                        {knots.map((knot) => (
-                            <Link
-                                to={`/KnotChosen/${knot.id}`}
-                                state={{ knot }} // Pass knot data via state
-                                className="knot-card"
-                                key={knot.id}
-                            >
-                                <div className="knot-image">
-                                    <img src={knot.image} alt={knot.name} />
-                                </div>
-                                <h3 className="knot-name">{knot.name}</h3>
-                                <p className="featured-knot-description">{knot.description}</p>
-                                <div className="button-container">
-                                    <button className="button red">View Knot</button>
-                                </div>
-                            </Link>
-                        ))}
+                        {knots.length > 0 && (
+                            shuffleArray([...knots]) // Create a copy and shuffle
+                                .slice(0, 8) // Take first 8 after shuffling
+                                .map((knot) => (
+                                    <Link
+                                        to={`/knot/${knot.name}`}
+                                        state={{ knot }}
+                                        className="knot-card"
+                                        key={knot.id}
+                                    >
+                                        <div className="knot-image">
+                                            <img src={knot.image} alt={knot.name} />
+                                        </div>
+                                        <h3 className="knot-name">{knot.name}</h3>
+                                        <p className="featured-knot-description">{knot.description}</p>
+                                        <div className="button-container">
+                                            <button className="button red">View Knot</button>
+                                        </div>
+                                    </Link>
+                                ))
+                        )}
                     </div>
                 </div>
-                <a href="/AllKnots/"><button className="button blue">View All Knots</button> </a>
+                <a href="/knots/all">
+                    <button className="button blue">View All Knots</button>
+                </a>
             </section>
+
             <Footer />
-            <BackToTop />
         </div>
     );
 };

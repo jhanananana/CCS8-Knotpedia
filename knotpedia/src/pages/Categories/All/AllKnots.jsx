@@ -5,11 +5,12 @@ import { db } from "../../../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import Pagination from '../../Components/Pagination.jsx';
 
 const AllKnots = () => {
     const [knots, setKnots] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const knotsPerPage = 12;
+    const [knotsPerPage, setKnotsPerPage] = useState(15);
     const [searchText, setSearchText] = useState("");
     const [activityFilter, setActivityFilter] = useState("");
     const [typeFilter, setTypeFilter] = useState("");
@@ -19,7 +20,6 @@ const AllKnots = () => {
     const [typeLabel, setTypeLabel] = useState("All Types");
     const [sortLabel, setSortLabel] = useState("Name (A – Z)");
     const [viewLabel, setViewLabel] = useState("Small (Default)");
-    const [filterActive, setFilterActive] = useState(false);
 
     useEffect(() => {
         const fetchKnots = async () => {
@@ -33,7 +33,7 @@ const AllKnots = () => {
                 setKnots(knotsData);
             } catch (error) {
                 console.error("Error fetching knots:", error);
-            }
+            } 
         };
         fetchKnots();
     }, []);
@@ -86,9 +86,13 @@ const AllKnots = () => {
         });
 
 
-    const handleViewChange = (e) => {
-        setViewSize(e.target.value); // Update view size based on selection
+    const handleViewChange = (value) => {
+        setViewSize(value);
+        setKnotsPerPage(value === "small" ? 15 : 12); // 15 for small, 12 for large
+        setViewLabel(value === "small" ? "Small (Default)" : "Large");
+        setCurrentPage(1); // Reset to first page when changing view
     };
+
 
     const indexOfLastKnot = currentPage * knotsPerPage;
     const indexOfFirstKnot = indexOfLastKnot - knotsPerPage;
@@ -203,14 +207,13 @@ const AllKnots = () => {
                                 </button>
                                 <div className="dropdown-content">
                                     <a onClick={() => {
-                                        handleViewChange({ target: { value: "small" } });
-                                        setViewLabel("Small (Default)");
+                                        handleViewChange("small");
                                     }}>Small (Default)</a>
                                     <a onClick={() => {
-                                        handleViewChange({ target: { value: "large" } });
-                                        setViewLabel("Large");
+                                        handleViewChange("large");
                                     }}>Large</a>
                                 </div>
+
                             </div>
                         </div>
                         <button className="blue button" onClick={handleClearFilters}>Clear All</button>
@@ -232,14 +235,12 @@ const AllKnots = () => {
                     <div className={`allknots-container ${viewSize}`}>
 
                         {currentKnots.map((knot) => (
-                           <Link
-                           key={knot.id}
-                           to={`/KnotChosen/${knot.id}`}
-                           state={{ knot }}
-                           className="knots-card-link"
-                         >
-                         
-
+                            <Link
+                                key={knot.id}
+                                to={`/knot/${knot.name}`}
+                                state={{ knot }}
+                                className="knots-card-link"
+                            >
                                 <div className="knots-card">
                                     <div className="knots-image">
                                         <img src={knot.image} alt={knot.name} />
@@ -256,20 +257,13 @@ const AllKnots = () => {
 
                 )}
 
-                {/* PAGINATION */}
-                <div className="pagination">
-                    <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
-                    {[...Array(totalPages)].map((_, i) => (
-                        <button
-                            key={i}
-                            className={currentPage === i + 1 ? "active" : ""}
-                            onClick={() => setCurrentPage(i + 1)}
-                        >
-                            {i + 1}
-                        </button>
-                    ))}
-                    <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>Next</button>
-                </div>
+                {filteredKnots.length > 0 && (
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        onPageChange={setCurrentPage}
+                    />
+                )}
             </div>
             <Footer />
         </div >

@@ -5,6 +5,8 @@ import { db } from "../../../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useParams, useLocation } from 'react-router-dom';
+import Pagination from '../../Components/Pagination.jsx';
 
 const Types = () => {
     const [knots, setKnots] = useState([]);
@@ -12,14 +14,30 @@ const Types = () => {
     const knotsPerPage = 12;
     const [searchText, setSearchText] = useState("");
     const [activityFilter, setActivityFilter] = useState("");
-    const [typeFilter, setTypeFilter] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
     const [viewSize, setViewSize] = useState("small"); // Default view size is medium
-    const [activityLabel, setActivityLabel] = useState("All Activities");
-    const [typeLabel, setTypeLabel] = useState("All Types");
-    const [sortLabel, setSortLabel] = useState("Name (A – Z)");
-    const [viewLabel, setViewLabel] = useState("Small (Default)");
-    const [filterActive, setFilterActive] = useState(false);
+    const { type } = useParams();
+    const location = useLocation();
+    const [typeFilter, setTypeFilter] = useState(type || "");
+    const [typeLabel, setTypeLabel] = useState(type ? type.charAt(0).toUpperCase() + type.slice(1) : "All Types");
+
+    useEffect(() => {
+        if (typeFilter) {
+            window.history.pushState(null, "", `/knots/types/${typeFilter}`);
+        } else {
+            window.history.pushState(null, "", `/knots/types`);
+        }
+    }, [typeFilter]);
+
+    useEffect(() => {
+        if (type) {
+            setTypeFilter(type);
+            setTypeLabel(type.charAt(0).toUpperCase() + type.slice(1));
+        } else {
+            setTypeFilter("");
+            setTypeLabel("All Types");
+        }
+    }, [location]);
 
     useEffect(() => {
         const fetchKnots = async () => {
@@ -83,7 +101,7 @@ const Types = () => {
             <header className="subHeader blueCover">
                 <div className="container">
                     <h1>Knots by Type</h1>
-                    <p>
+                    <p>Explore knots by category.
                     </p>
                 </div>
             </header>
@@ -98,57 +116,134 @@ const Types = () => {
                     &gt;
                     <span className="active">All Knots</span>
                 </nav>
+            </div>
+
+            <div className="container types-layout">
+                <aside className="sidebar horizontal-sidebar">
+                    <div className="sidebarTitle" style={{ display: 'flex' }}>
+                        <div className="icon">
+                            <img src="/assets/home-type.png" alt="Type Icon" />
+                        </div>
+                        <h2>Types</h2>
+                    </div>
+
+                    <ul className="sidebar-list">
+                        <li
+                            className={typeFilter === "" ? "active-sidebar" : ""}
+                            onClick={() => {
+                                setTypeFilter("");
+                                setTypeLabel("All Types");
+                            }}
+                        >
+                            All Types
+                        </li>
+                        <li
+                            className={typeFilter === "basic" ? "active-sidebar" : ""}
+                            onClick={() => { setTypeFilter("basic"); setTypeLabel("Basic"); }}
+                        >
+                            Basic
+                        </li>
+                        <li
+                            className={typeFilter === "bends" ? "active-sidebar" : ""}
+                            onClick={() => { setTypeFilter("bends"); setTypeLabel("Bends"); }}
+                        >
+                            Bends
+                        </li>
+                        <li
+                            className={typeFilter === "end loops" ? "active-sidebar" : ""}
+                            onClick={() => { setTypeFilter("end loops"); setTypeLabel("End Loops"); }}
+                        >
+                            End Loops
+                        </li>
+                        <li
+                            className={typeFilter === "hitches" ? "active-sidebar" : ""}
+                            onClick={() => { setTypeFilter("hitches"); setTypeLabel("Hitches"); }}
+                        >
+                            Hitches
+                        </li>
+                        <li
+                            className={typeFilter === "mats" ? "active-sidebar" : ""}
+                            onClick={() => { setTypeFilter("mats"); setTypeLabel("Mats"); }}
+                        >
+                            Mats
+                        </li>
+                        <li
+                            className={typeFilter === "mid loops" ? "active-sidebar" : ""}
+                            onClick={() => { setTypeFilter("mid loops"); setTypeLabel("Mid Loops"); }}
+                        >
+                            Mid Loops
+                        </li>
+                        <li
+                            className={typeFilter === "quick release" ? "active-sidebar" : ""}
+                            onClick={() => { setTypeFilter("quick release"); setTypeLabel("Quick Release"); }}
+                        >
+                            Quick Release
+                        </li>
+                        <li
+                            className={typeFilter === "slide and grip" ? "active-sidebar" : ""}
+                            onClick={() => { setTypeFilter("slide and grip"); setTypeLabel("Slide & Grip"); }}
+                        >
+                            Slide & Grip
+                        </li>
+                        <li
+                            className={typeFilter === "splicing" ? "active-sidebar" : ""}
+                            onClick={() => { setTypeFilter("splicing"); setTypeLabel("Splicing"); }}
+                        >
+                            Splicing
+                        </li>
+                        <li
+                            className={typeFilter === "stoppers" ? "active-sidebar" : ""}
+                            onClick={() => { setTypeFilter("stoppers"); setTypeLabel("Stoppers"); }}
+                        >
+                            Stoppers
+                        </li>
+                    </ul>
+                </aside>
 
                 {/* FILTER SECTION */}
                 <div>
-                   
-
                 </div>
-                <div className="results-and-search">
-                    <div className="results-info">
-                        Showing results <b>{indexOfFirstKnot + 1}–
-                            {Math.min(indexOfLastKnot, filteredKnots.length)}</b>  of {filteredKnots.length}, Page {currentPage}
-                    </div>
-                </div>
-
-                {/* KNOT DISPLAY */}
-                {currentKnots.length === 0 ? (
-                    <p className="empty-message"><b>No exact matches found</b><br />Please try again.</p>
-                ) : (
-
-                    <div className={`allknots-container ${viewSize}`}>
-                        {currentKnots.map((knot) => (
-                            <Link key={knot.id} to={`/KnotChosen/${knot.id}`} className="knots-card-link">
-                                <div className="knots-card">
-                                    <div className="knots-image">
-                                        <img src={knot.image} alt={knot.name} />
-                                    </div>
-                                    <h3 className="knots-name">{knot.name}</h3>
-                                    <p className="knots-description">{knot.description}</p>
-                                    <div style={{ marginTop: 'auto' }}>
-                                        <button className="button red">View Knot</button>
-                                    </div>
-                                </div>
-                            </Link>
-                        ))}
+                {/* Main Content Area */}
+                <main className="content-area">
+                    <div className="category-title">
+                        <h2>{typeLabel}</h2>
                     </div>
 
-                )}
+                    <div className="results-and-search">
+                        <div className="results-info">
+                            Showing results <b>{indexOfFirstKnot + 1}–{Math.min(indexOfLastKnot, filteredKnots.length)}</b> of {filteredKnots.length}, Page {currentPage}
+                        </div>
+                    </div>
 
-                {/* PAGINATION */}
-                <div className="pagination">
-                    <button onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 1}>Previous</button>
-                    {[...Array(totalPages)].map((_, i) => (
-                        <button
-                            key={i}
-                            className={currentPage === i + 1 ? "active" : ""}
-                            onClick={() => setCurrentPage(i + 1)}
-                        >
-                            {i + 1}
-                        </button>
-                    ))}
-                    <button onClick={() => setCurrentPage(currentPage + 1)} disabled={currentPage === totalPages}>Next</button>
-                </div>
+                    {currentKnots.length === 0 ? (
+                        <p className="empty-message"><b>No exact matches found</b><br />Please try again.</p>
+                    ) : (
+                        <div className={`allknots-container ${viewSize}`}>
+                            {currentKnots.map((knot) => (
+                                <Link key={knot.id} to={`/KnotChosen/${knot.id}`} className="knots-card-link">
+                                    <div className="knots-card">
+                                        <div className="knots-image">
+                                            <img src={knot.image} alt={knot.name} />
+                                        </div>
+                                        <h3 className="knots-name">{knot.name}</h3>
+                                        <p className="knots-description">{knot.description}</p>
+                                        <div style={{ marginTop: 'auto' }}>
+                                            <button className="button red">View Knot</button>
+                                        </div>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    )}
+
+                    {filteredKnots.length > 0 && (
+                        <Pagination
+                            currentPage={currentPage}
+                            totalPages={totalPages}
+                            onPageChange={setCurrentPage}
+                        />
+                    )}
+                </main>
             </div>
             <Footer />
         </div >

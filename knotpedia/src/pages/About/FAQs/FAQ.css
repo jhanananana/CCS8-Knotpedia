@@ -1,31 +1,40 @@
 .faq-sidebar {
+  width: 250px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 400px;
-  padding: 2rem 1rem;
-  margin-right: 2rem;
-  /* height: 70vh */
-  background-color: #ffffff;
+  border-radius: 8px;
+  font-family: 'Poppins';
+  height: fit-content;
+  margin: 0;
 }
 
 .faq-sidebar button {
   font-size: 1rem;
   font-family: "Poppins Bold";
-  padding: 10px 15px;
+  padding: 1rem;
   background-color: #f1f1f1;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   color: #333;
-  width: 100%;
-  transition: background-color 0.3s;
+  width: 250px;
+  text-align: left;
+  margin: 0.3rem 0;
+  transition: all 0.2s ease;
+  
 }
 
-.faq-sidebar button:hover,
 .faq-sidebar button.active {
+  color: #a64452;
+  margin-left: 15px;
+  width: 235px;
+
+}
+
+.faq-sidebar button:hover {
   background-color: #a64452;
   color: white;
+
 }
 
 .faq-content {
@@ -42,28 +51,36 @@
 }
 
 .form-container {
-  width: 40%;
+  /* width: 500px; Fixed wid th */
   margin: 0 1.5rem;
-  /* display: flex; */
   justify-content: space-between;
   align-items: center;
   gap: 10px;
   padding: 20px;
+  box-sizing: border-box; /* Important to include padding in width calculation */
 }
 
 /* FAQ Section */
-
 .faq-section {
   margin-bottom: 30px;
+  margin-left: 0.5rem;
+  box-sizing: border-box; /* Important to include padding in width calculation */
 }
 
+
 .faq-section h2 {
-  color: #a64452;
-  font-size: 1.5rem;
-  font-family: 'Poppins Bold';
-  margin-bottom: 20px;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 10px;
+    color: #a64452;
+    font-size: 1.5rem;
+    font-family: 'Poppins Bold';
+    border-bottom: 1px solid #ddd;
+    padding: 0 0 1rem 0;
+    margin: 1rem 0;
+}
+
+.sidebarTitle h2 {
+  font-size: 1.2rem;
+  color: white;
+  margin: 0;
 }
 
 .faq-questions {
@@ -173,12 +190,12 @@
 }
 
 .right-form-container {
-  width: 100%;
+  width: 300px;
   background: white;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
-  padding: 15px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
   margin-bottom: 1rem;
-  border-radius: 12px;
+  border-radius: 8px;
 }
 
 .contact-form {
@@ -313,25 +330,22 @@
 
 /* UPDATED RESPONSIVE STYLES */
 /* When the screen size is smaller than 900px */
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 768px) {
   .question-container {
     flex-direction: column; /* Stack elements vertically */
-    width: 100%;
   }
 
   .faq-sidebar {
-    flex-direction: row; /* Make sidebar buttons horizontal */
+    display: flex;
+
     width: 100%;
-    margin-right: 0;
-    padding: 1rem 0.5rem;
-    overflow-x: auto; /* Allow horizontal scrolling if needed */
-    gap: 5px;
+    margin-bottom: 1rem;
   }
 
+
   .faq-sidebar button {
-    width: auto; /* Allow buttons to size based on content */
-    min-width: 100px;
-    white-space: nowrap;
+    padding: 0.5rem 1rem;
+    margin: 0;
   }
 
   .faq-content {
@@ -342,7 +356,7 @@
 
   .form-container {
     width: 100%;
-    margin: 1.5rem auto; /* Changed to center it */
+    margin: 1.5rem auto; 
     padding: 10px 15px; /* Added horizontal padding */
     order: 3; /* Show form after content */
     max-width: 500px; /* Limit the maximum width */
@@ -381,20 +395,16 @@
   .left-content-container h1 {
     font-size: 20px;
   }
+  .faq-sidebar button,
+  .faq-sidebar button.active {
+    margin: 0.5rem 0;
+    display: flex;
+    width: 100%;
+  }
 }
 
 /* When the screen size is smaller than 600px */
 @media screen and (max-width: 600px) {
-  .faq-sidebar {
-    flex-wrap: wrap; /* Allow buttons to wrap if needed */
-    justify-content: center;
-  }
-  
-  .faq-sidebar button {
-    min-width: 80px;
-    font-size: 0.85rem;
-    padding: 8px 10px;
-  }
 
   .faq-question {
     padding: 12px 15px;
@@ -438,6 +448,16 @@
   }
   
   .form-container {
-    max-width: 95%; /* Make it take up most of the width but still have some margin */
+    /* width: 100%; */
+    margin: 0rem auto; 
+    /* padding: 10px 15px; Added horizontal padding */
+    order: 3; /* Show form after content */
+  }
+
+  .left-content-container,
+  .right-form-container {
+    width: 90%; 
+    margin: 0 auto; 
+    margin-bottom: 20px;
   }
 }

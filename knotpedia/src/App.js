@@ -12,7 +12,8 @@ import KnotChosen from "./pages/Tutorial/KnotChosen.jsx";
 import Search from "./pages/Search/Search.jsx";
 import Types from "./pages/Categories/Types/Types.jsx";
 import FirebaseDataEntry from "./pages/FirebaseDataEntry.jsx";
-
+import BackToTop from "./pages/Components/BackToTop.jsx";
+import Activities from "./pages/Categories/Activities/Activities.jsx";
 const App = () => {
   return (
     <BrowserRouter>
@@ -31,18 +32,21 @@ const App = () => {
             <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
 
             <Route path="/knots/all" element={<AllKnots />} /> 
-            <Route path="/knots/type" element={<Types />} /> 
-            {/* <Route path="/knotsbydifficulty" element={<KnotsByDifficulty />} />  */}
-            {/* <Route path="/knotsbyactivity" element={<KnotsByActivity />} /> */}
+            <Route path="/knots/types" element={<Types />} /> 
+            <Route path="/knots/activities" element={<Activities />} />
             
-            <Route path="/KnotChosen/:id" element={<KnotChosen />} />
+            <Route path="/knot/:id" element={<KnotChosen />} />
             {/* <Route path="/history" element={<History />} /> */}
             {/* <Route path="/safety" element={<Safety />} />*/}
 
             <Route path="/search" element={<Search />} />
 
             <Route path="/FirebaseDataEntry" element={<FirebaseDataEntry />} />
+            <Route path="/knots/types/:type?" element={<Types />} />
+            <Route path="/knots/activities/:activity?" element={<Activities />} />
+
           </Routes>
+          <BackToTop />
 
         </main>
       </div>
