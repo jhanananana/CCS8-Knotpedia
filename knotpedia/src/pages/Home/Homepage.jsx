@@ -1,7 +1,6 @@
 import Navbar from "../Components/Navbar.jsx";
 import Footer from "../Components/Footer.jsx";
 import "./Homepage.css";
-import BackToTop from '../Components/BackToTop.jsx';
 import { db } from "../../firebase.js";
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
@@ -145,7 +144,7 @@ const Homepage = () => {
                                 .slice(0, 8) // Take first 8 after shuffling
                                 .map((knot) => (
                                     <Link
-                                        to={`/KnotChosen/${knot.id}`}
+                                        to={`/knot/${knot.name}`}
                                         state={{ knot }}
                                         className="knot-card"
                                         key={knot.id}
