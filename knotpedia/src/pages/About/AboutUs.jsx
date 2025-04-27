@@ -27,35 +27,57 @@ const AboutUs = () => {
             &gt; <span className="active">About Us</span>
           </nav>
 
+          <div className="benefits-container">
+            <h2>How <span className="blue">Knot</span><span className="red">pedia</span> Helps You</h2>
+            <div className="help-container">
+              <div className="help-item">
+                <img src="/assets/home-type.png" className="help-icon blueBg" alt="Type Icon" />
+                <h3 style={{color: '#0d6287'}}>Efficiency</h3>
+                <p>Our tutorials save you time by teaching knots quickly, without the confusion.</p>
+              </div>
+              <div className="help-item">
+                <img src="/assets/home-type.png" className="help-icon lightblueBg" alt="Type Icon" />
+                <h3 style={{color: '#5192a5'}} className="">Practicality</h3>
+                <p>Gain real-world skills you can use for camping, crafting, work, and everyday life.</p>
+              </div>
+              <div className="help-item">
+                <img src="/assets/home-type.png" className="help-icon redBg" alt="Type Icon" />
+                <h3 style={{color: '#b54d49'}} >Clarity</h3>
+                <p>Knotpedia offers easy-to-follow guides that make learning knots clear and stress-free for everyone.</p>
+              </div>
+            </div>
+          </div>
+
           {/* Mission & Vision Section */}
           <div className="about-container">
             <div className="mission">
-              <img src="/assets/knot-activity.png" alt="Knot activity" />
+              <img src="/assets/about.jpeg" alt="Knot activity" />
               <div className="box-desc">
                 <h2 className="box-title">
-                  Our <span className="blue-text">&nbsp;Mission</span>
+                  <span className="blue-text">Our Mission: <br></br> </span>
+                  Empower Through Every Knot
+
                 </h2>
-                At <strong>Knotpedia</strong>, we’re dedicated to making knot-tying accessible for everyone.
-                Our platform offers easy-to-follow guides and tutorials for all skill levels, from beginners to experts.
+                At <strong>Knotpedia</strong>, we’re here to make knot-tying easy and fun for everyone.
+                With simple guides and step-by-step tutorials, we help beginners learn the basics and give experts new ideas to explore.
               </div>
             </div>
           </div>
-
           <div className="about-container">
             <div className="mission">
               <div className="box-desc">
                 <h2 className="box-title">
-                  <h2 className="box-title">Our<span className="red-text">&nbsp;Vision</span></h2>
+                  <h2 className="box-title"><span className="red-text">Our Vision: <br></br></span>
+                    A World Connected by Skill and Simplicity
+                  </h2>
                 </h2>
-                We envision a world where knot-tying is second nature for everyone.
-                Through clear tutorials and visual guides, Knotpedia makes learning knots fun, fast, and frustration-free.
+                We dream of a world where tying knots feels easy and natural for everyone.
+                By sharing clear lessons and friendly visuals, Knotpedia makes learning fast, fun, and frustration-free.
               </div>
               <img src="/assets/knot-activity.png" alt="Knot activity" />
 
             </div>
           </div>
-
-          <hr />
           <div className="card-container">
             <h3 style={{ textAlign: "center" }}>Help & Legal Information</h3>
             <div className="policy-cards">

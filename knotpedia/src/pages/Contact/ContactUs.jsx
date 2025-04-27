@@ -50,7 +50,7 @@ const ContactUs = () => {
       ...prevState,
       [id]: value,
     }));
-    
+
     // Clear error for this field when user starts typing
     if (formSubmitted) {
       validateField(id, value);
@@ -60,33 +60,33 @@ const ContactUs = () => {
   // Validate a single field
   const validateField = (id, value) => {
     let error = "";
-    
+
     if (!value.trim()) {
       error = "Required";
     } else if (id === "email" && !/\S+@\S+\.\S+/.test(value)) {
       error = "Invalid email";
     }
-    
+
     setFormErrors(prev => ({
       ...prev,
       [id]: error
     }));
-    
+
     return !error;
   };
-  
+
   // Validate all form fields
   const validateForm = () => {
     const errors = {};
     let isValid = true;
-    
+
     // Validate each field
     Object.keys(formData).forEach(key => {
       const value = formData[key];
       const fieldIsValid = validateField(key, value);
       if (!fieldIsValid) isValid = false;
     });
-    
+
     return isValid;
   };
 
@@ -94,14 +94,14 @@ const ContactUs = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormSubmitted(true);
-    
+
     // Validate all fields before submission
     const isValid = validateForm();
-    
+
     if (!isValid) {
       return;
     }
-    
+
     setIsSubmitting(true);
 
     // Use the service to submit the form
@@ -188,8 +188,8 @@ const ContactUs = () => {
           <div className="popup-content">
             <div className="success-icon">
               <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="20" fill="#4CAF50"/>
-                <path d="M16 20.5L19 23.5L24 17.5" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="20" cy="20" r="20" fill="#4CAF50" />
+                <path d="M16 20.5L19 23.5L24 17.5" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             </div>
             <p>{submitStatus.message}</p>
@@ -202,7 +202,7 @@ const ContactUs = () => {
           </div>
         </div>
       )}
-      
+
       {/* Page Header Section */}
       <header className="subHeader blueCover">
         <div className="container">
@@ -295,19 +295,23 @@ const ContactUs = () => {
                 <hr />
               </h2>
               <div className="social-icons">
-                {/* TODO:kulang pa icons */}
-                <div className="social-icon">
+                <a href="/fb.com">
+                  <div className="social-icon">
+                    <img src="/assets/twitter.png" alt="Twitter Icon" />
+                  </div>
+                </a>
+                {/* Twitter */}
+
+                <a href="/fb.com"><div className="social-icon">
                   <img src="/assets/facebook.png" alt="Facebook" />
-                </div>{" "}
+                </div></a>
                 {/* Facebook */}
+
+
                 <div className="social-icon">
                   <img src="/assets/instagram.png" alt="instagram" />
                 </div>{" "}
                 {/* Instagram */}
-                <div className="social-icon">
-                  <img src="/assets/twitter.png" alt="twitter" />
-                </div>{" "}
-                {/* Twitter */}
               </div>
             </div>
           </div>
@@ -338,7 +342,7 @@ const ContactUs = () => {
                 <div className="name-fields">
                   <div className="form-group">
                     <label htmlFor="firstname">
-                      First Name <span className="required">*</span>
+                      First Name &nbsp;<span className="required">*</span>
                       {formErrors.firstname && <span className="error-text">{formErrors.firstname}</span>}
                     </label>
                     <input
@@ -346,14 +350,15 @@ const ContactUs = () => {
                       id="firstname"
                       value={formData.firstname}
                       onChange={handleChange}
+                      placeholder="Enter your first name"
                       className={formErrors.firstname ? "input-error" : ""}
-                      // required attribute removed
+                    // required attribute removed
                     />
                   </div>
 
                   <div className="form-group">
                     <label htmlFor="lastname">
-                      Last Name <span className="required">*</span>
+                      Last Name &nbsp;<span className="required">*</span>
                       {formErrors.lastname && <span className="error-text">{formErrors.lastname}</span>}
                     </label>
                     <input
@@ -361,8 +366,8 @@ const ContactUs = () => {
                       id="lastname"
                       value={formData.lastname}
                       onChange={handleChange}
+                      placeholder="Enter your last name"
                       className={formErrors.lastname ? "input-error" : ""}
-                      // required attribute removed
                     />
                   </div>
                 </div>
@@ -370,7 +375,7 @@ const ContactUs = () => {
                 {/* Email Field */}
                 <div className="form-group">
                   <label htmlFor="email">
-                    Email Address <span className="required">*</span>
+                    Email Address &nbsp;<span className="required">*</span>
                     {formErrors.email && <span className="error-text">{formErrors.email}</span>}
                   </label>
                   <input
@@ -380,14 +385,14 @@ const ContactUs = () => {
                     onChange={handleChange}
                     className={formErrors.email ? "input-error" : ""}
                     // required attribute removed
-                    placeholder="sample@gmail.com"
+                    placeholder="Enter your email address"
                   />
                 </div>
 
                 {/* Subject Field */}
                 <div className="form-group">
                   <label htmlFor="subject">
-                    Subject <span className="required">*</span>
+                    Subject &nbsp;<span className="required">*</span>
                     {formErrors.subject && <span className="error-text">{formErrors.subject}</span>}
                   </label>
                   <input
@@ -397,14 +402,14 @@ const ContactUs = () => {
                     onChange={handleChange}
                     className={formErrors.subject ? "input-error" : ""}
                     // required attribute removed
-                    placeholder="purpose of your message"
+                    placeholder="Your subject here"
                   />
                 </div>
 
                 {/* Message Field */}
                 <div className="form-group">
                   <label htmlFor="message">
-                    Message <span className="required">*</span>
+                    Message &nbsp;<span className="required">*</span>
                     {formErrors.message && <span className="error-text">{formErrors.message}</span>}
                   </label>
                   <textarea

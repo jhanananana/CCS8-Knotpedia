@@ -23,6 +23,15 @@
     margin-bottom: 40px;
 }
   
+.social-icon {
+  opacity: 0.8;
+  transition: all 0.2s;
+}
+
+.social-icon:hover {
+  opacity: 1;
+}
+
   @media (max-width: 768px) {
     .two-column-layout {
       flex-direction: column;
@@ -143,8 +152,8 @@
 /* Name fields layout */
 .name-fields {
   display: flex;
-  gap: 30px; /* Increased space between first name and last name */
-  width: 100%;
+  gap: 30px;
+  width: 94%;
   margin-right: 0; /* Remove right margin to align with form borders */
   padding-right: 30px; /* Add padding instead to match other form elements */
 }
@@ -163,7 +172,8 @@
 @media (max-width: 768px) {
   .name-fields {
     flex-direction: column;
-    gap: 20px;
+    gap: 0px;
+    margin: 0;
     padding-right: 0;
   }
 }
@@ -197,6 +207,15 @@
   font-family: 'Poppins';
   background-color: #eee;
 }
+
+.form-group input:focus,
+.form-group textarea:focus {
+  transition: all 0.3s;
+  border-color: #0d6287;
+  background-color: #fff; 
+  outline: none; /* Removes the default outline */
+}
+
 
   /*=========================================*/
   /* Right column */
@@ -292,15 +311,14 @@
 
 /* Error message styling - NEW ADDITIONS */
 .error-text {
-  color: #ff0000;
-  font-style: italic;
+  color: #e04545;
   font-size: 14px;
   margin-left: 8px;
   display: inline-block;
 }
 
 .input-error {
-  border-color: #ff0000 !important;
+  border-color: #e04545 !important;
   background-color: #fff2f2 !important;
 }
 
