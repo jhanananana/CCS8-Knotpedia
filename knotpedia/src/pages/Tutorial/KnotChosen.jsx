@@ -10,7 +10,7 @@ const KnotChosen = () => {
   const location = useLocation();
   const [fetchedKnot, setFetchedKnot] = useState(null);
 
-  const { knot } = location.state || {};
+  const { knot, origin } = location.state || {};
   const [activeTab, setActiveTab] = useState("tutorial");
 
   useEffect(() => {
@@ -61,18 +61,25 @@ const KnotChosen = () => {
         </div>
       </div>
   <div className="knot-container">
-
-      <nav className="breadcrumb">
-    <Link to="/">
-      <img src="/assets/home-icon.png" alt="Home" />
-      <span>Home</span>
+  <nav className="breadcrumb">
+  <Link to="/">
+    <img src="/assets/home-icon.png" alt="Home" />
+    <span>Home</span>
+  </Link>
+  &gt;
+  {origin === "AllActivities" ? (
+    <Link to="/knots/activities">
+      <span>All Activities</span>
     </Link>
-    &gt;
+  ) : (
     <Link to="/knots/all">
       <span>All Knots</span>
-    </Link> &gt;
-    <span className="active">{currentKnot.name}</span>
-  </nav>
+    </Link>
+  )}
+  &gt;
+  <span className="active">{currentKnot.name}</span>
+</nav>
+
   <img className="imgheadknot" src={currentKnot.image} />
 
   {/* Knot Image */}
