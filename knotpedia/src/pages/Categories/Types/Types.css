@@ -1,3 +1,93 @@
+[data-theme="dark"] .results-info {
+    color: #dddddd;
+}
+
+[data-theme="dark"] .knots-clear-icon {
+    filter: brightness(0) invert(1);
+}
+
+
+[data-theme="dark"] .knots-card {
+    background: #1e1e1e;
+    border: 2px solid #333333;
+}
+
+[data-theme="dark"] .knots-card:hover {
+    box-shadow: 0 6px 18px rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .knots-name {
+    color: #76c4db;
+}
+
+[data-theme="dark"] .knots-card:hover .knots-name {
+    color: #ff7f7f;
+}
+
+[data-theme="dark"] .knots-description {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .knots-card:hover .knots-description {
+    color: #bbbbbb;
+}
+
+[data-theme="dark"] .dropbtn {
+    background-color: #2a2a2a;
+    border: 1px solid #777777;
+    color: #dddddd;
+}
+
+[data-theme="dark"] .dropdown-content {
+    background-color: #2a2a2a;
+    border: 1px solid #555555;
+}
+
+[data-theme="dark"] .dropdown-content a:hover {
+    background-color: #555555;
+    color: #76c4db;
+}
+
+[data-theme="dark"] .sidebar {
+    background-color: #2a2a2a;
+}
+
+[data-theme="dark"] .sidebar h2 {
+    color: white;
+}
+
+[data-theme="dark"] .sidebar-list li {
+    background-color: #333333;
+    color: #dddddd;
+}
+
+[data-theme="dark"] .sidebar-list li:hover {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .sidebar-list .active-sidebar {
+    color: #ff7f7f;
+}
+
+[data-theme="dark"] .allknots-left-column {
+    background-color: #2a2a2a;
+}
+
+[data-theme="dark"] .allknots-description {
+    color: #cccccc;
+}
+
+[data-theme="dark"] .filter-container select {
+    background-color: #2a2a2a;
+    color: #dddddd;
+    border: 2px solid #555555;
+}
+
+[data-theme="dark"] .category-title h2 {
+    color: white;
+}
+
+/* DEFAULT CSS */
 .results-and-search {
     display: flex;
     justify-content: space-between;
@@ -297,7 +387,6 @@
     color: white;
     font-size: 1.2rem;
     font-family: 'Poppins Bold';
-    border-bottom: 1px solid #ddd;
     padding: 1rem;
     margin: 0px;
     border-radius: 8px;

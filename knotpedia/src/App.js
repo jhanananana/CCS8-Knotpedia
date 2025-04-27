@@ -14,9 +14,15 @@ import Types from "./pages/Categories/Types/Types.jsx";
 import FirebaseDataEntry from "./pages/FirebaseDataEntry.jsx";
 import BackToTop from "./pages/Components/BackToTop.jsx";
 import Activities from "./pages/Categories/Activities/Activities.jsx";
+import React, { useState, useEffect } from "react";
+import { PreferencesProvider } from './pages/Preferences/PreferencesContext';
+import Preferences from './pages/Preferences/Preferences.jsx';
+
 const App = () => {
   return (
-    <BrowserRouter>
+    <PreferencesProvider>
+      <BrowserRouter>
+
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow p-4">
           {/* Main content goes here */}
@@ -28,7 +34,6 @@ const App = () => {
              <Route path="/sitemap" element={<Sitemap />} /> 
             <Route path="/FAQs" element={<FAQ />} /> 
             <Route path="/termsandconditions" element={<TermsAndConditions />} />
-            {/* <Route path="/termsandconditions" element={<TermsConditions />} /> */}
             <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
 
             <Route path="/knots/all" element={<AllKnots />} /> 
@@ -36,21 +41,18 @@ const App = () => {
             <Route path="/knots/activities" element={<Activities />} />
             
             <Route path="/knot/:name" element={<KnotChosen />} />
-            {/* <Route path="/history" element={<History />} /> */}
-            {/* <Route path="/safety" element={<Safety />} />*/}
 
             <Route path="/search" element={<Search />} />
+            <Route path="/preferences" element={<Preferences />} /> 
 
             <Route path="/FirebaseDataEntry" element={<FirebaseDataEntry />} />
             <Route path="/knots/types/:type?" element={<Types />} />
             <Route path="/knots/activities/:activity?" element={<Activities />} />
-
-          </Routes>
-          <BackToTop />
-
-        </main>
-      </div>
-    </BrowserRouter>
+            </Routes>
+          </main>
+        </div>
+      </BrowserRouter>
+    </PreferencesProvider>
   );
 };
 
