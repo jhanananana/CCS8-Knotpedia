@@ -62,7 +62,7 @@ const Activities = () => {
     const filteredKnots = knots
         .filter(knot => {
             const matchesSearch = knot.name.toLowerCase().includes(searchText.toLowerCase());
-            const matchesActivity = activityFilter ? 
+            const matchesActivity = activityFilter ?
                 knot.tags?.includes(activityFilter) : true;
             return matchesSearch && matchesActivity;
         })
@@ -110,9 +110,9 @@ const Activities = () => {
                     <ul className="sidebar-list">
                         <li
                             className={activityFilter === "" ? "active-sidebar" : ""}
-                            onClick={() => { 
-                                setActivityFilter(""); 
-                                setActivityLabel("All Activities"); 
+                            onClick={() => {
+                                setActivityFilter("");
+                                setActivityLabel("All Activities");
                             }}
                         >
                             All Activities
@@ -210,8 +210,12 @@ const Activities = () => {
                     ) : (
                         <div className={`allknots-container ${viewSize}`}>
                             {currentKnots.map((knot) => (
-                                <Link key={knot.id} to={`/KnotChosen/${knot.id}`} className="knots-card-link">
-                                    <div className="knots-card">
+                                <Link
+                                    to={`/knot/${knot.name}`}
+                                    state={{ knot }}
+                                    className="knots-card-link"
+                                    key={knot.id}
+                                >                                    <div className="knots-card">
                                         <div className="knots-image">
                                             <img src={knot.image} alt={knot.name} />
                                         </div>

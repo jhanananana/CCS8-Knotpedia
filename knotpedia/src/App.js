@@ -35,7 +35,7 @@ const App = () => {
             <Route path="/knots/types" element={<Types />} /> 
             <Route path="/knots/activities" element={<Activities />} />
             
-            <Route path="/knot/:id" element={<KnotChosen />} />
+            <Route path="/knot/:name" element={<KnotChosen />} />
             {/* <Route path="/history" element={<History />} /> */}
             {/* <Route path="/safety" element={<Safety />} />*/}
 

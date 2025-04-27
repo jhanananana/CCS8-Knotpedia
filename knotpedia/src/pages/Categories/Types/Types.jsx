@@ -220,7 +220,12 @@ const Types = () => {
                     ) : (
                         <div className={`allknots-container ${viewSize}`}>
                             {currentKnots.map((knot) => (
-                                <Link key={knot.id} to={`/KnotChosen/${knot.id}`} className="knots-card-link">
+                                <Link
+                                    to={`/knot/${knot.name}`}
+                                    state={{ knot }}
+                                    className="knots-card-link"
+                                    key={knot.id}
+                                >
                                     <div className="knots-card">
                                         <div className="knots-image">
                                             <img src={knot.image} alt={knot.name} />
