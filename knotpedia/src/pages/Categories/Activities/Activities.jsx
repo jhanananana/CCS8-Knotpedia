@@ -212,7 +212,7 @@ const Activities = () => {
                             {currentKnots.map((knot) => (
                                 <Link
                                     to={`/knot/${knot.name}`}
-                                    state={{ knot }}
+                                    state={{ knot, origin: "AllActivities" }}
                                     className="knots-card-link"
                                     key={knot.id}
                                 >                                    <div className="knots-card">
