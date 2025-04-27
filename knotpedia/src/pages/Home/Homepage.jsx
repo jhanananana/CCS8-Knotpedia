@@ -132,8 +132,8 @@ const Homepage = () => {
 
             <section className="featured-knots">
                 <span className="title-tag redBg">FEATURED</span>
-                <h2 style={{ color: 'white' }}>Must-Know Knots</h2>
-                <p style={{ color: 'white' }}>
+                <h2>Must-Know Knots</h2>
+                <p>
                     These are the essential knots that everyone should learn for
                     daily tasks, outdoor adventures, and emergency situations.
                 </p>
