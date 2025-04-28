@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Footer from "../Components/Footer.jsx";
 import Navbar from "../Components/Navbar.jsx";
 import "./ContactUs.css";
+import "../Components/DarkMode.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import ContactFormService from "./ContactFormService.jsx"; // Import the form service

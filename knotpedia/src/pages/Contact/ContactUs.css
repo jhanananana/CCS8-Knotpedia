@@ -1,5 +1,3 @@
-/* Main container */
-  
 .container {
   max-width: 1400px;
   margin: 0 auto;
@@ -15,8 +13,6 @@
     margin: 10px auto;
 }
 
-
-/*=========================================*/
   /* Two-column layout */
 .two-column-layout {
     display: flex;

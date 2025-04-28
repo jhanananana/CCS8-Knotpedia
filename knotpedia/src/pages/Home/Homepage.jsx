@@ -34,12 +34,12 @@ const Homepage = () => {
     const shuffleArray = (array) => {
         const shuffled = [...array];
         for (let i = shuffled.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
         }
         return shuffled;
-      };
-      
+    };
+
     const handleSearch = () => {
         if (searchTerm) {
             navigate(`/search?query=${encodeURIComponent(searchTerm)}`);
@@ -105,6 +105,9 @@ const Homepage = () => {
                         <span className="title-tag blueBg">Categories</span>
                         <h2>Begin Your <span className="blue-text">Knot</span> <span className="red-text">Journey</span></h2>
                         <p>Master the art of tying with confidence by exploring a variety of knots suited for different needs.</p>
+                        <a href="/knots/all">
+                            <button className="button red" style={{margin: '0px'}}>View All Knots</button>
+                        </a>
                     </div>
                     <div className="box-column">
                         <a href="/knots/types" className="box" style={{ backgroundColor: "#5192A5" }}>
