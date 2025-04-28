@@ -36,29 +36,6 @@
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-/* Breadcrumb */
-.Kbreadcrumb a {
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-  color: #0D6287;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.Kbreadcrumb a:hover {
-  text-decoration: underline;
-}
-
-.Kbreadcrumb .active {
-  color: #374151;
-  font-weight: 600;
-}
-
-.Kbreadcrumb img {
-  width: 16px;
-  height: 16px;
-}
 
 /* Header */
 .subHeader-knot {

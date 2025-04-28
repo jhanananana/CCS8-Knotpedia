@@ -13,6 +13,7 @@ const Terminology = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const knotsPerPage = 4; // Show 4 knots per page
 
+  // Fetch knots from Firestore
   useEffect(() => {
     const fetchKnots = async () => {
       try {
@@ -21,9 +22,9 @@ const Terminology = () => {
         const knotList = knotSnapshot.docs.map((doc) => ({
           id: doc.id,
           name: doc.id, // Using the document ID as the name
-          ...doc.data(), // Spreading all fields including description
+          ...doc.data(),
         }));
-        setKnots(knotList);
+        setKnots(knotList); // Update state with fetched knots
         setLoading(false);
       } catch (error) {
         console.error("Error fetching knots:", error);
@@ -35,18 +36,22 @@ const Terminology = () => {
   }, []);
 
   // Filter knots based on selected letter
-  const filteredKnots =
-    filter === "All"
-      ? knots
-      : knots.filter((knot) => knot.name.toUpperCase().startsWith(filter));
+  const filteredKnots = knots.filter((knot) => {
+    const matchesFilter =
+      filter === "All" || knot.name.toUpperCase().startsWith(filter);
+    const matchesSearch =
+      searchTerm === "" ||
+      knot.name.toLowerCase().includes(searchTerm.toLowerCase());
+    return matchesFilter && matchesSearch;
+  });
 
-  // Calculate pagination
+  // Calculate pagination indices
   const indexOfLastKnot = currentPage * knotsPerPage;
   const indexOfFirstKnot = indexOfLastKnot - knotsPerPage;
   const currentKnots = filteredKnots.slice(indexOfFirstKnot, indexOfLastKnot);
   const totalPages = Math.ceil(filteredKnots.length / knotsPerPage);
 
-  // Change page
+  // Change to a specific page
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   // Previous page
@@ -63,16 +68,10 @@ const Terminology = () => {
     }
   };
 
-  // Reset to page 1 when filter changes
+  // Reset to page 1 when filter or search term changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [filter]);
-
-  // For now, just a placeholder function
-  const handleSearch = () => {
-    console.log("Search for:", searchTerm);
-    // We'll implement the actual search functionality later
-  };
+  }, [filter, searchTerm]);
 
   return (
     <div>
@@ -90,6 +89,7 @@ const Terminology = () => {
 
       {/* Main content container */}
       <div className="content-container">
+        {/* Breadcrumb */}
         <nav className="breadcrumb">
           <a href="/" className="breadcrumb-link">
             <img src="/assets/home-icon.png" alt="Home Icon" />
@@ -99,7 +99,7 @@ const Terminology = () => {
           <span className="active">Glossary</span>
         </nav>
 
-        {/* Updated search bar with proper centering */}
+        {/* Search bar */}
         <div className="search-wrapper">
           <div className="search-bar">
             <input
@@ -107,21 +107,21 @@ const Terminology = () => {
               id="search-input"
               placeholder="Search for a knot..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              onKeyPress={(e) => e.key === "Enter" && handleSearch()}
+              onChange={(e) => setSearchTerm(e.target.value)} // Update search term on input change
+              onKeyPress={(e) => e.key === "Enter" && setSearchTerm(e.target.value)} // Trigger search on Enter key press
             />
             {searchTerm && (
-              <button 
-                className="clear-search-icon" 
-                onClick={() => setSearchTerm("")}
+              <button
+                className="clear-search-icon"
+                onClick={() => setSearchTerm("")} // Clear search term
                 aria-label="Clear search"
               >
                 ✖
               </button>
             )}
-            <button 
-              className="search-btn" 
-              onClick={handleSearch}
+            <button
+              className="search-btn"
+              onClick={() => console.log("Search triggered")} // Optional: Add additional logic here
               aria-label="Search"
             >
               <img src="/assets/search.png" alt="Search" />
@@ -129,6 +129,7 @@ const Terminology = () => {
           </div>
         </div>
 
+        {/* Alphabetical Filter */}
         <div className="alphabetical-filter">
           <span>Alphabetical Filter: </span>
           {[
@@ -170,14 +171,17 @@ const Terminology = () => {
           ))}
         </div>
 
+        {/* Display loading message or knots */}
         {loading ? (
           <div className="loading">Loading knots...</div>
         ) : (
           <>
+            {/* Display the number of results */}
             <div className="results-count">
               {filteredKnots.length} Results Found
             </div>
 
+            {/* Display knots in a grid */}
             <div className="knots-grid">
               {currentKnots.map((knot) => (
                 <div key={knot.id} className="glossaryknot-card">
@@ -187,6 +191,7 @@ const Terminology = () => {
               ))}
             </div>
 
+            {/* Pagination Controls */}
             {filteredKnots.length > 0 && (
               <div className="glossary-pagination">
                 <button
@@ -199,7 +204,6 @@ const Terminology = () => {
 
                 {/* Generate page buttons */}
                 {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
-                  // If we have more than 5 pages, show current page and surrounding pages
                   let pageNum = i + 1;
                   if (totalPages > 5) {
                     if (currentPage <= 3) {

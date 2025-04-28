@@ -94,7 +94,7 @@ const Activities = () => {
                         <span>Home</span>
                     </a>
                     &gt;
-                    <span className="active">All Activities</span>
+                    <span className="active">Knots by Activity</span>
                 </nav>
             </div>
 

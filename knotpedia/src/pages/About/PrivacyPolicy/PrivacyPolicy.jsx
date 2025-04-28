@@ -25,7 +25,7 @@ const PrivacyPolicy = () => {
               <span>Home</span>
             </a>
             &gt;
-            <a href="/AboutUs">About Us</a>
+            <a href="/about">About Us</a>
             &gt;
             <span className="active">Privacy Policy</span>
           </nav>

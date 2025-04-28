@@ -22,7 +22,7 @@ const App = () => {
   return (
     <PreferencesProvider>
       <BrowserRouter>
-
+      <BackToTop/>
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow p-4">
           {/* Main content goes here */}
@@ -31,7 +31,7 @@ const App = () => {
             <Route path="/contact" element={<ContactUs />} /> {/* */}
             <Route path="/about" element={<AboutUs />} /> {/* */}
             <Route path="/terminology" element={<Terminology/>} /> 
-             <Route path="/sitemap" element={<Sitemap />} /> 
+            <Route path="/sitemap" element={<Sitemap />} /> 
             <Route path="/FAQs" element={<FAQ />} /> 
             <Route path="/termsandconditions" element={<TermsAndConditions />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
@@ -51,6 +51,7 @@ const App = () => {
             </Routes>
           </main>
         </div>
+
       </BrowserRouter>
     </PreferencesProvider>
   );

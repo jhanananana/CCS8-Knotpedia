@@ -28,7 +28,7 @@ const TermsAndConditions = () => {
               <span>Home</span>
             </a>
             &gt;
-            <a href="/AboutUs">About Us</a>
+            <a href="/about">About Us</a>
             &gt;
             <span className="active">Terms & Conditions</span>
           </nav>
