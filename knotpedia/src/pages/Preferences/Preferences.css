@@ -237,14 +237,14 @@ input:checked+.slider:before {
     background: #4da6ff;
 }
 
-[data-theme="dark"] body {
+/* [data-theme="dark"] body {
     background: #1c1c1c;
     color: #e0e0e0;
-}
+} */
 
 
 /* General CSS Styling */
-/* Dark Background */
+/* Dark Background
 [data-theme="dark"] .sidebar {
     background-color: #1d1d1d;
 }
@@ -266,7 +266,21 @@ input:checked+.slider:before {
     border: none;
 }
 
-/* Dark Text */
+Light Blue
+[data-theme="dark"] .blue-text  {
+    color: #76c4db;
+}
+
+[data-theme="dark"] .blue-text  {
+    color: #76c4db;
+}
+
+[data-theme="dark"] .redCover  {
+    background-color:#B54D49;
+}
+
+/* 
+ Dark Text
 [data-theme="dark"] h1,
 [data-theme="dark"] .big-text,
 [data-theme="dark"] .featured-knots p,
@@ -311,7 +325,7 @@ input:checked+.slider:before {
     background-color: #d17773;
 }
 
-/* Light Header Texts */
+/* Light Header Texts 
 [data-theme="dark"] .breadcrumb .active,
 [data-theme="dark"] .knot-card .knot-name,
 [data-theme="dark"] .search-wrapper input,
@@ -328,7 +342,7 @@ input:checked+.slider:before {
     color: #dfdfdf;
 }
 
-/* Light Header Sub-texts */
+/* Light Header Sub-texts 
 [data-theme="dark"] .knot-card .featured-knot-description,
 [data-theme="dark"] .breadcrumb,
 [data-theme="dark"] .header.home p,
@@ -341,13 +355,12 @@ input:checked+.slider:before {
 [data-theme="dark"] .breadcrumb a,
 [data-theme="dark"] .breadcrumb img {
     color: #5192A5;
-}
+} 
 
-/* Dark Photo Versions */
 [data-theme="dark"] .header.home.header {
     background-image: url('/public/assets/home-header-dark.png');
 }
-
+*/
 html,
 body {
     transition: filter 0.3s ease;

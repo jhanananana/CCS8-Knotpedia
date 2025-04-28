@@ -271,14 +271,28 @@ h3 {
   transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
+.knot-card h3 {
+  color: #0D6287;
+  margin: 1rem 0;
+  font-size: 1.2rem;
+}
+
+.knot-image img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+  display: block;
+  /* margin-bottom: 1.5rem; */
+}
+
 .knot-card:hover {
-  transform: scale(1.05);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
 
 .knot-card:hover .knot-image img {
-  transform: scale(1.1);
+  transform: scale(1.5);
 }
+
 
 .knot-card:hover .knot-name {
   color: #0D6287;
@@ -324,7 +338,7 @@ h3 {
 
 .featured-knot-description {
   color: #353535;
-  margin: 1.5rem 1rem;
+  margin: 1rem 1rem;
   padding: 0px;
   font-size: 1rem;
   height: 70px;

@@ -22,7 +22,7 @@ const App = () => {
   return (
     <PreferencesProvider>
       <BrowserRouter>
-
+      <BackToTop/>
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow p-4">
           {/* Main content goes here */}
@@ -51,6 +51,7 @@ const App = () => {
             </Routes>
           </main>
         </div>
+
       </BrowserRouter>
     </PreferencesProvider>
   );
