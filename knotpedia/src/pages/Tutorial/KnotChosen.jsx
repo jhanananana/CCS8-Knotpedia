@@ -212,14 +212,18 @@ const KnotChosen = () => {
           </Link>
           &gt;
           {origin === "AllActivities" ? (
-            <Link to="/knots/activities">
-              <span>All Activities</span>
-            </Link>
-          ) : (
-            <Link to="/knots/all">
-              <span>All Knots</span>
-            </Link>
-          )}
+  <Link to="/knots/activities">
+    <span>All Activities</span>
+  </Link>
+) : origin === "AllTypes" ? (
+  <Link to="/knots/types">
+    <span>All Types</span>
+  </Link>
+) : (
+  <Link to="/knots/all">
+    <span>All Knots</span>
+  </Link>
+)}
           &gt;
           <span className="active">{currentKnot.name}</span>
         </nav>
@@ -229,29 +233,10 @@ const KnotChosen = () => {
           <div className="knot-left">
             <img className="imgheadknot" src={currentKnot.image} alt={currentKnot.name} />
 
-            <div className="tab-buttons">
-              <button
-                className={activeTab === "tutorial" ? "active" : ""}
-                onClick={() => setActiveTab("tutorial")}
-              >
-                Tutorial
-              </button>
-              <button
-                className={activeTab === "safety" ? "active" : ""}
-                onClick={() => setActiveTab("safety")}
-              >
-                Safety
-              </button>
-              <button
-                className={activeTab === "history" ? "active" : ""}
-                onClick={() => setActiveTab("history")}
-              >
-                History
-              </button>
-            </div>
+          
 
             <div className="ktab-content">
-              {activeTab === "tutorial" && (
+              
                 <div className="ktutorial-content">
                   {steps.length > 0 ? (
                     steps.map(([stepKey, step], index) => (
@@ -274,17 +259,8 @@ const KnotChosen = () => {
                     <p>No tutorial steps available.</p>
                   )}
                 </div>
-              )}
-              {activeTab === "safety" && (
-                <div className="safety-content">
-                  <p>{currentKnot.safety || "No safety information available."}</p>
-                </div>
-              )}
-              {activeTab === "history" && (
-                <div className="history-content">
-                  <p>{currentKnot.history || "No history available."}</p>
-                </div>
-              )}
+              
+            
             </div>
           </div>
 
