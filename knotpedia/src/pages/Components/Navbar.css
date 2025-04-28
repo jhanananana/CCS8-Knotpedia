@@ -107,6 +107,7 @@
   list-style: none;
   padding: 0px;
   position: relative; 
+  margin: 1rem;
 }
 
 .navbar-links.mobile {
@@ -121,18 +122,17 @@
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
   text-align: left;
   height: 100vh;
-  margin-top: 0px;
+  margin: 0rem;
   border-top: 1px solid #ddd;
   
 }
 
 .navbar-links.mobile.show {
   display: flex;
-  
 }
 
 .navbar-links.mobile li {
-  padding: 0.8rem 0;
+  padding: 1rem 0;
   border-bottom: 1px solid #ddd;
 }
 
@@ -144,7 +144,6 @@
   display: block;
   padding-left: 1rem;
   font-size: 1rem;
-  
 }
 
 /* Style for expandable sublinks */
@@ -161,6 +160,19 @@
 .dropdown-toggle.active {
   color: #2A4552;
   font-weight: bold;
+  /* margin-right: 1.5rem; */
+}
+
+.dropdown-toggle.active i {
+  color: #2A4552;
+  font-weight: bold;
+  /* margin-right: 1.5rem; */
+}
+
+.dropdown-toggle i {
+  color: #6F1D1B;
+  font-weight: bold;
+  /* margin-right: 1.5rem; */
 }
 
 .dropdown-submenu {
@@ -211,10 +223,10 @@
   border-radius: 10px;
   font-weight: bold;
 }
+
 .navbar-links a.active {
   color: #2A4552;
   font-weight: bold;
-  width: 100%;
   
 }
 
@@ -293,6 +305,11 @@
     margin: 0 0px;
   }
 
+  .dropdown-toggle i {
+    font-weight: bold;
+    margin-right: 1.5rem;
+  }
+  
   .menu-icon {
       display: block;
       margin-right: 1rem;
@@ -318,6 +335,7 @@
 
   .dropdown-toggle i {
     visibility: visible;
+    margin-right: 1.5rem;
     transform: rotate(0deg);  /* Ensure the icon starts without rotating */
   }
 
@@ -374,11 +392,17 @@
     font-size: 0.95rem;
     color: #6F1D1B;
   }
+
+  .dropdown-toggle i {
+    visibility: visible;
+    margin-right: 3rem;
+    transform: rotate(0deg);  /* Ensure the icon starts without rotating */
+  }
 }
 
 /* Breadcrumbs */
   .breadcrumb {
-    color: #202;
+    color: rgb(255, 255, 255);
     padding: 1.5rem 0;
     font-size: 1.1rem;
     display: inline-flex;

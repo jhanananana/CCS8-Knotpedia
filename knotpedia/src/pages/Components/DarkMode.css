@@ -16,11 +16,13 @@
     color: #5a8d9c;
 }
 
-[data-theme="dark"] .info-value1 {
+[data-theme="dark"] .info-value1,
+[data-theme="dark"] .question-text {
     color: #7a9ca9;
 }
 
-[data-theme="dark"] .location-text {
+[data-theme="dark"] .location-text,
+[data-theme="dark"] .text-Container h3 {
     color: #d47a7a;
 }
 
@@ -29,7 +31,9 @@
     border: 1px solid #444;
 }
 
-[data-theme="dark"] .message-form {
+[data-theme="dark"] .message-form,
+[data-theme="dark"] .right-form-container,
+[data-theme="dark"] .faq-answer {
     background-color: #1e1e1e;
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
 }
@@ -43,7 +47,8 @@
 }
 
 [data-theme="dark"] .form-group input,
-[data-theme="dark"] .form-group textarea {
+[data-theme="dark"] .form-group textarea,
+[data-theme="dark"] .text-Container {
     background-color: #2d2d2d;
     border-color: #444;
     color: #e0e0e0;
@@ -51,7 +56,7 @@
 
 [data-theme="dark"] .form-group input:focus,
 [data-theme="dark"] .form-group textarea:focus {
-    background-color: #333;
+    background-color: #424242;
     border-color: #5a8d9c;
 }
 
@@ -64,20 +69,25 @@
 }
 
 [data-theme="dark"] .social-icon {
-    background-color: #2d2d2d;
-    border: 1px solid #444;
+    background-color: #181818;
 }
 
 [data-theme="dark"] .social-icon:hover {
     background-color: #3a3a3a;
 }
 
-[data-theme="dark"] .breadcrumb {
-    color: #d0d0d0;
+[data-theme="dark"] .breadcrumb,
+[data-theme="dark"] .text-Container .list{
+    color: #ddd;
 }
 
-[data-theme="dark"] .breadcrumb a {
+[data-theme="dark"] .breadcrumb a,
+[data-theme="dark"] .sitemap-card li {
     color: #7a9ca9;
+}
+
+[data-theme="dark"] .breadcrumb .active {
+    color: #eee;
 }
 
 /* Error states in dark mode */
@@ -130,7 +140,8 @@
 
 [data-theme="dark"] .header,
 [data-theme="dark"] .benefits-container,
-[data-theme="dark"] .card-container {
+[data-theme="dark"] .card-container,
+[data-theme="dark"] .sitemap-card {
     background-color: #1a1a1a;
     color: #ffffff;
 }
@@ -160,11 +171,13 @@
     background-color: #1e1e1e;
 }
 
-[data-theme="dark"] .title-tag {
+[data-theme="dark"] .title-tag,
+[data-theme="dark"] .dropdown-toggle i {
     color: #ffffff;
 }
 
-[data-theme="dark"] .blueBg {
+[data-theme="dark"] .blueBg,
+[data-theme="dark"] .back-to-top {
     background-color: #5a8d9c;
 }
 
@@ -199,15 +212,6 @@
 
 [data-theme="dark"] .featured-knots {
     background-color: #8a3a37;
-}
-
-[data-theme="dark"] .knot-card {
-    background: #2d2d2d;
-    border: 1px solid #444;
-}
-
-[data-theme="dark"] .knot-card h3 {
-    color: #5a8d9c;
 }
 
 [data-theme="dark"] .knot-name {
@@ -255,8 +259,9 @@
     filter: brightness(0) invert(1);
 }
 
-
-[data-theme="dark"] .knots-card {
+[data-theme="dark"] .knots-card,
+[data-theme="dark"] .knot-card,
+[data-theme="dark"] .search-card {
     background: #1e1e1e;
     border: 2px solid #333333;
 }
@@ -265,20 +270,27 @@
     box-shadow: 0 6px 18px rgba(255, 255, 255, 0.1);
 }
 
-[data-theme="dark"] .knots-name {
+[data-theme="dark"] .knots-name,
+[data-theme="dark"] .knot-name,
+[data-theme="dark"] .search-name {
     color: #76c4db;
 }
 
-[data-theme="dark"] .knots-card:hover .knots-name {
+[data-theme="dark"] .knots-card:hover .knots-name,
+[data-theme="dark"] .knot-card:hover .knot-name,
+[data-theme="dark"] .search-card:hover .search-name  {
     color: #ff7f7f;
 }
 
-[data-theme="dark"] .knots-description {
+[data-theme="dark"] .knots-description,
+[data-theme="dark"] .search-description {
     color: #cccccc;
 }
 
-[data-theme="dark"] .knots-card:hover .knots-description, 
-[data-theme="dark"] .filter-label {
+[data-theme="dark"] .knots-card:hover .knots-description,
+[data-theme="dark"] .search-card:hover .search-description, 
+[data-theme="dark"] .filter-label, 
+[data-theme="dark"] .form-group label {
     color: #bbbbbb;
 }
 
@@ -309,20 +321,25 @@
     color: white;
 }
 
-[data-theme="dark"] .sidebar-list li {
+[data-theme="dark"] .sidebar-list li,
+[data-theme="dark"] .faq-sidebar button,
+[data-theme="dark"] .faq-answer {
     background-color: #333333;
     color: #dddddd;
 }
 
-[data-theme="dark"] .sidebar-list li:hover {
+[data-theme="dark"] .sidebar-list li:hover,
+[data-theme="dark"] .faq-sidebar button{
     color: #ffffff;
 }
 
-[data-theme="dark"] .sidebar-list .active-sidebar {
+[data-theme="dark"] .sidebar-list .active-sidebar,
+[data-theme="dark"] .faq-sidebar .active  {
     color: #ff7f7f;
 }
 
-[data-theme="dark"] .allknots-left-column {
+[data-theme="dark"] .allknots-left-column,
+[data-theme="dark"] .faq-question {
     background-color: #2a2a2a;
 }
 

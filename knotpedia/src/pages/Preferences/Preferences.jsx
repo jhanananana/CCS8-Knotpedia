@@ -83,49 +83,12 @@ const Preferences = () => {
                 </nav>
             </div>
 
-            {/* SVG filters for color blindness simulations */}
-            {/* <svg style={{ position: 'absolute', height: 0, width: 0 }}>
-                <defs>
-                    <filter id="protanopia">
-                        <feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0" />
-                    </filter>
-                    <filter id="deuteranopia">
-                        <feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0" />
-                    </filter>
-                    <filter id="tritanopia">
-                        <feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0" />
-                    </filter>
-                </defs>
-            </svg> */}
 
             <div className="container types-layout">
-                <aside className="sidebar horizontal-sidebar">
-                    <div className="sidebarTitle" style={{ display: 'flex' }}>
-                        <div className="icon">
-                            <img src="/assets/settings-icon.png" alt="Settings Icon" />
-                        </div>
-                        <h2>Preferences</h2>
-                    </div>
-
-                    <ul className="sidebar-list">
-                        <li className="active-sidebar">
-                            Display & Accessibility
-                        </li>
-                        <li>
-                            Language & Region
-                        </li>
-                        <li>
-                            Notifications
-                        </li>
-                        <li>
-                            Account Settings
-                        </li>
-                    </ul>
-                </aside>
 
                 <main className="content-area">
                     <div className="category-title">
-                        <h2>Display & Accessibility</h2>
+                        <h2>Display Settings</h2>
                     </div>
 
                     <div className="preferences-container">
@@ -146,13 +109,6 @@ const Preferences = () => {
                                 >
                                     <div className="theme-preview dark"></div>
                                     <span>Dark</span>
-                                </div>
-                                <div
-                                    className={`theme-option ${theme === 'auto' ? 'active' : ''}`}
-                                    onClick={() => setTheme('auto')}
-                                >
-                                    <div className="theme-preview auto"></div>
-                                    <span>System</span>
                                 </div>
                             </div>
                         </div>
@@ -178,7 +134,7 @@ const Preferences = () => {
                         </div>
 
                         {/* Night Shift */}
-                        <div className="preference-section">
+                        {/* <div className="preference-section">
                             <h3>Night Shift</h3>
                             <p>Reduce blue light for nighttime viewing</p>
 
@@ -193,7 +149,7 @@ const Preferences = () => {
                                 </label>
                                 <span>{nightShift ? 'Enabled' : 'Disabled'}</span>
                             </div>
-                        </div>
+                        </div> */}
 
                         {/* Reset Button */}
                         <div className="preference-actions">

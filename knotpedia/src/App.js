@@ -31,7 +31,7 @@ const App = () => {
             <Route path="/contact" element={<ContactUs />} /> {/* */}
             <Route path="/about" element={<AboutUs />} /> {/* */}
             <Route path="/terminology" element={<Terminology/>} /> 
-             <Route path="/sitemap" element={<Sitemap />} /> 
+            <Route path="/sitemap" element={<Sitemap />} /> 
             <Route path="/FAQs" element={<FAQ />} /> 
             <Route path="/termsandconditions" element={<TermsAndConditions />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 

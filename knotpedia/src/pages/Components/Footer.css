@@ -1,11 +1,11 @@
 .footer {
   background-color: #1f2937;
   color: white;
-  /* padding: 2rem 1rem; */
-  margin: 0;
+  padding: 2rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 3rem;
 }
 
 .footer-container {
@@ -19,7 +19,7 @@
 }
 
 .footer-section {
-  margin: 0.5rem;
+  margin: 0 0.5rem;
   flex: 1 1 200px;
   text-align: left;
   min-width: 150px;
@@ -131,12 +131,14 @@
     /* Move brand to top */
     flex-basis: 100%;
     /* width: 100vw; */
+    padding: 0rem 2.5rem;
   }
 
   .footer-description {
     margin-bottom: 1rem;
     color: #cbd5e1;
     max-width: 100%;
+    margin-top: 0;
   }
 
   .social-icon {
@@ -163,7 +165,7 @@
 
   .footer-section {
     text-align: left;
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
     flex-basis: 100%;
   }
 
@@ -191,7 +193,8 @@
 /* Small mobile devices */
 @media (max-width: 480px) {
   .footer-logo {
-    width: 120px;
+    width: 220px;
+    margin: 0 1rem;
   }
 
   .footer-section h4 {
@@ -200,5 +203,10 @@
 
   .footer-section ul li a {
     font-size: 0.9rem;
+  }
+
+  .footer-section {
+    padding: 0 1rem;
+    border-top: 1px solid rgb(62, 73, 73);
   }
 }

@@ -37,8 +37,9 @@
   text-align: left;
   height: auto;
   padding: 1rem;
+  background-color: #eee;
+  border-radius: 15px;
   box-shadow: none;
-  background-color: none;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -50,9 +51,9 @@
   font-size: 1.5rem;
   font-weight: bold;
   font-family: 'Poppins Bold';
-  margin: 0px 0 -5px 0;
+  margin: 0;
   color: #B54D49;
-  padding-bottom: 0.5rem;
+  padding: 0.5rem;
 }
 
 .sitemap-card p {

@@ -114,7 +114,7 @@ const Types = () => {
                         <span>Home</span>
                     </a>
                     &gt;
-                    <span className="active">All Knots</span>
+                    <span className="active">Knots by Type</span>
                 </nav>
             </div>
 
