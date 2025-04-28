@@ -53,7 +53,7 @@ const Search = () => {
                     <div className="searchKnot-container">
                         {filteredKnots.map((knot) => (
                             <Link
-                                to={`/KnotChosen/${knot.id}`}
+                                to={`/knot/${knot.name}`}
                                 state={{ knot }}
                                 className="search-card"
                                 key={knot.id}
