@@ -222,7 +222,7 @@ const Types = () => {
                             {currentKnots.map((knot) => (
                                 <Link
                                     to={`/knot/${knot.name}`}
-                                    state={{ knot }}
+                                    state={{ knot,origin: "AllTypes" }}
                                     className="knots-card-link"
                                     key={knot.id}
                                 >
