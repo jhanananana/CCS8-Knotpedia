@@ -6,6 +6,8 @@ import "./KnotChosen.css";
 import { getDoc, doc, collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 import { Link } from 'react-router-dom';
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 
 const KnotChosen = () => {
   const { knotName } = useParams();
@@ -19,6 +21,52 @@ const KnotChosen = () => {
   // Get knot data either from location state or fetch from Firestore
   const { knot: locationKnot, origin } = location.state || {};
 
+  const saveToPDF = async () => {
+    const input = document.getElementById('pdf-content');
+    
+    if (!input) return;
+  
+    // Temporarily show the content
+    input.style.display = 'block';
+  
+    const canvas = await html2canvas(input, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: "#ffffff"
+    });
+  
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('p', 'mm', 'a4');
+  
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = pdf.internal.pageSize.getHeight(); // full page height
+  
+    const imgWidth = pdfWidth;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+  
+    let heightLeft = imgHeight;
+    let position = 0;
+  
+    // Add the first page
+    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    heightLeft -= pdfHeight;
+  
+    // While content still exceeds one page, add new pages
+    while (heightLeft > 0) {
+      position -= pdfHeight;
+      pdf.addPage();
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pdfHeight;
+    }
+  
+    pdf.save(`${currentKnot.name || "knot"}.pdf`);
+  
+    // Hide content again
+    input.style.display = 'none';
+  };
+  
+  
+  
   useEffect(() => {
     let isMounted = true;
 
@@ -232,7 +280,9 @@ const KnotChosen = () => {
           {/* LEFT: Main knot content */}
           <div className="knot-left">
             <img className="imgheadknot" src={currentKnot.image} alt={currentKnot.name} />
-
+              <button className="save-pdf-btn" onClick={saveToPDF}>
+                   Save as PDF
+              </button>
           
 
             <div className="ktab-content">
@@ -310,7 +360,31 @@ const KnotChosen = () => {
           </div>
         </div>
       </div>
+      <div id="pdf-content" style={{ display: 'none', padding: '20px', width: '600px' }}>
+  <h1>{currentKnot?.name}</h1>
 
+  {steps.length > 0 ? (
+    steps.map(([stepKey, step], index) => (
+      <div key={stepKey} style={{ marginBottom: '20px' }}>
+        <h3>{stepKey}</h3>
+        <p>{step.description}</p>
+        {step.image && (
+          <img
+            src={step.image}
+            alt={step.description || `Step ${index + 1}`}
+            style={{ width: '100%', maxWidth: '400px', height: 'auto', marginTop: '10px' }}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src = '/assets/placeholder-knot.jpg';
+            }}
+          />
+        )}
+      </div>
+    ))
+  ) : (
+    <p>No steps available.</p>
+  )}
+</div>
       <Footer />
     </>
   );
