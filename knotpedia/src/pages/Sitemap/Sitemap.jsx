@@ -56,7 +56,7 @@ const Sitemap = () => {
               <div className="sitemap-card">
                 <h4 className="sitemap-red">Social Media</h4>
                 <ul className="sitemap-links">
-                  <a href="/"><li>Facebook</li></a>
+                  <a href="https://www.facebook.com/daone.datloveyou"><li>Facebook</li></a>
                   <a href="/"><li>Instagram</li></a>
                   <a href="/"><li>Youtube</li></a>
                 </ul>
