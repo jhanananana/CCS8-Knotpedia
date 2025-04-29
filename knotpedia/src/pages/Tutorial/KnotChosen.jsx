@@ -16,56 +16,85 @@ const KnotChosen = () => {
   const [tagGroups, setTagGroups] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const [activeTab, setActiveTab] = useState("tutorial");
   
   // Get knot data either from location state or fetch from Firestore
   const { knot: locationKnot, origin } = location.state || {};
-
   const saveToPDF = async () => {
     const input = document.getElementById('pdf-content');
-    
     if (!input) return;
   
-    // Temporarily show the content
+    setIsGeneratingPDF(true); // Show loading modal
     input.style.display = 'block';
   
-    const canvas = await html2canvas(input, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: "#ffffff"
-    });
+    try {
+      // Wait a frame to ensure layout is complete
+      await new Promise(resolve => setTimeout(resolve, 100));
   
-    const imgData = canvas.toDataURL('image/png');
-    const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdf = new jsPDF('p', 'mm', 'a4');
+      const pdfWidth = pdf.internal.pageSize.getWidth();
+      const pdfHeight = pdf.internal.pageSize.getHeight();
+      const margin = 10; // 10mm margin
+      const contentWidth = pdfWidth - margin * 2;
   
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = pdf.internal.pageSize.getHeight(); // full page height
+      // Create a canvas for each step to control page breaks
+      const steps = input.querySelectorAll('.pdf-step');
+      
+      let currentY = margin;
+      
+      // Add title
+      pdf.setFontSize(30);
+      pdf.text(currentKnot?.name || 'Knot Guide', margin, currentY);
+      currentY += 10;
   
-    const imgWidth = pdfWidth;
-    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+      for (const step of steps) {
+        const canvas = await html2canvas(step, {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#ffffff",
+          logging: false // Disable console logging for better performance
+        });
   
-    let heightLeft = imgHeight;
-    let position = 0;
+        const imgData = canvas.toDataURL('image/png');
+        const imgProps = pdf.getImageProperties(imgData);
+        
+        // Calculate image dimensions to fit content width
+        const imgWidth = contentWidth / 1.5;
+        const imgHeight = (imgProps.height * imgWidth) / imgProps.width;
+        
+        // Check if we need a new page
+        if (currentY + imgHeight > pdfHeight - margin) {
+          pdf.addPage();
+          currentY = margin;
+        }
+        
+        // Add the step to the PDF
+        pdf.addImage(imgData, 'PNG', margin, currentY, imgWidth, imgHeight);
+        currentY += imgHeight + 10; // Add some spacing between steps
+      }
   
-    // Add the first page
-    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-    heightLeft -= pdfHeight;
-  
-    // While content still exceeds one page, add new pages
-    while (heightLeft > 0) {
-      position -= pdfHeight;
-      pdf.addPage();
-      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pdfHeight;
+      pdf.save(`${currentKnot.name || "knot"}.pdf`);
+    } catch (error) {
+      console.error("Error generating PDF:", error);
+      // You could add error handling here if needed
+    } finally {
+      setIsGeneratingPDF(false); // Hide loading modal
+      input.style.display = 'none';
+    }
+  };
+  useEffect(() => {
+    if (isGeneratingPDF) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
     }
   
-    pdf.save(`${currentKnot.name || "knot"}.pdf`);
-  
-    // Hide content again
-    input.style.display = 'none';
-  };
-  
-  
+    // Cleanup function
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isGeneratingPDF]);
   
   useEffect(() => {
     let isMounted = true;
@@ -291,7 +320,7 @@ const KnotChosen = () => {
                   {steps.length > 0 ? (
                     steps.map(([stepKey, step], index) => (
                       <div key={stepKey} className="kstep">
-                        <h3>{stepKey}</h3>
+                        <h3>{stepKey.replace(/\b\w/g, c => c.toUpperCase())}</h3>
                         <p>{step.description}</p>
                         {step.image && (
                           <img
@@ -360,19 +389,24 @@ const KnotChosen = () => {
           </div>
         </div>
       </div>
-      <div id="pdf-content" style={{ display: 'none', padding: '20px', width: '600px' }}>
-  <h1>{currentKnot?.name}</h1>
 
+      {/* PDF DOWNLOADABLE CONTENT */}
+      <div id="pdf-content" style={{ display: 'none', width: '210mm', padding: '20px' }}>
   {steps.length > 0 ? (
     steps.map(([stepKey, step], index) => (
-      <div key={stepKey} style={{ marginBottom: '20px' }}>
-        <h3>{stepKey}</h3>
-        <p>{step.description}</p>
+      <div key={stepKey} className="pdf-step" style={{ marginBottom: '20px', pageBreakInside: 'avoid' }}>
+        <h3 style={{ fontSize: '26px', marginBottom: '8px' }}>{stepKey.replace(/\b\w/g, c => c.toUpperCase())}</h3>
+        <p style={{ fontSize: '24px', marginBottom: '8px' }}>{step.description}</p>
         {step.image && (
           <img
             src={step.image}
             alt={step.description || `Step ${index + 1}`}
-            style={{ width: '100%', maxWidth: '400px', height: 'auto', marginTop: '10px' }}
+            style={{
+              maxWidth: '100%',
+              height: 'auto',
+              display: 'block',
+              margin: '0 auto'
+            }}
             onError={(e) => {
               e.target.onerror = null;
               e.target.src = '/assets/placeholder-knot.jpg';
@@ -385,6 +419,15 @@ const KnotChosen = () => {
     <p>No steps available.</p>
   )}
 </div>
+{/* Loading Modal */}
+{isGeneratingPDF && (
+  <div className="pdf-loading-modal">
+    <div className="pdf-loading-content">
+      <div className="pdf-loading-spinner"></div>
+      <p>Generating PDF...</p>
+    </div>
+  </div>
+)}
       <Footer />
     </>
   );
