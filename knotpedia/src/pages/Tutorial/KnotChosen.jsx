@@ -18,9 +18,29 @@ const KnotChosen = () => {
   const [error, setError] = useState(null);
   const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
   const [activeTab, setActiveTab] = useState("tutorial");
-  
+  const [currentPage, setCurrentPage] = useState(1);
+  const stepsPerPage = 4;
+
   // Get knot data either from location state or fetch from Firestore
   const { knot: locationKnot, origin } = location.state || {};
+  
+  // Pagination functions
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const goToPage = (page) => {
+    setCurrentPage(page);
+  };
+
   const saveToPDF = async () => {
     const input = document.getElementById('pdf-content');
     if (!input) return;
@@ -83,6 +103,7 @@ const KnotChosen = () => {
       input.style.display = 'none';
     }
   };
+
   useEffect(() => {
     if (isGeneratingPDF) {
       document.body.classList.add('no-scroll');
@@ -203,6 +224,7 @@ const KnotChosen = () => {
       isMounted = false;
     };
   }, [currentKnot]);
+
   const toggleTagGroup = (tagName) => {
     setTagGroups(prevGroups =>
       prevGroups.map(group =>
@@ -235,6 +257,11 @@ const KnotChosen = () => {
   };
 
   const steps = getSortedSteps();
+  const totalPages = Math.ceil(steps.length / stepsPerPage);
+  const currentSteps = steps.slice(
+    (currentPage - 1) * stepsPerPage,
+    currentPage * stepsPerPage
+  );
 
   if (loading) {
     return (
@@ -273,7 +300,7 @@ const KnotChosen = () => {
 
   return (
     <>
-     <Navbar />
+      <Navbar />
       <div className="subHeader-knot redCover-knot">
         <div className="container">
           <h1>{currentKnot?.name || 'Knot Details'}</h1>
@@ -289,18 +316,18 @@ const KnotChosen = () => {
           </Link>
           &gt;
           {origin === "AllActivities" ? (
-  <Link to="/knots/activities">
-    <span>All Activities</span>
-  </Link>
-) : origin === "AllTypes" ? (
-  <Link to="/knots/types">
-    <span>All Types</span>
-  </Link>
-) : (
-  <Link to="/knots/all">
-    <span>All Knots</span>
-  </Link>
-)}
+            <Link to="/knots/activities">
+              <span>All Activities</span>
+            </Link>
+          ) : origin === "AllTypes" ? (
+            <Link to="/knots/types">
+              <span>All Types</span>
+            </Link>
+          ) : (
+            <Link to="/knots/all">
+              <span>All Knots</span>
+            </Link>
+          )}
           &gt;
           <span className="active">{currentKnot.name}</span>
         </nav>
@@ -309,37 +336,66 @@ const KnotChosen = () => {
           {/* LEFT: Main knot content */}
           <div className="knot-left">
             <img className="imgheadknot" src={currentKnot.image} alt={currentKnot.name} />
-              <button className="save-pdf-btn" onClick={saveToPDF}>
-                   Save as PDF
-              </button>
-          
+            <button className="save-pdf-btn" onClick={saveToPDF}>
+              Save as PDF
+            </button>
 
             <div className="ktab-content">
-              
-                <div className="ktutorial-content">
-                  {steps.length > 0 ? (
-                    steps.map(([stepKey, step], index) => (
-                      <div key={stepKey} className="kstep">
-                        <h3>{stepKey.replace(/\b\w/g, c => c.toUpperCase())}</h3>
-                        <p>{step.description}</p>
-                        {step.image && (
-                          <img
-                            src={step.image}
-                            alt={step.description || `Step ${index + 1}`}
-                            onError={(e) => {
-                              e.target.onerror = null; 
-                              e.target.src = '/assets/placeholder-knot.jpg';
-                            }}
-                          />
-                        )}
-                      </div>
-                    ))
-                  ) : (
-                    <p>No tutorial steps available.</p>
-                  )}
-                </div>
-              
-            
+              <div className="ktutorial-content">
+                {currentSteps.length > 0 ? (
+                  currentSteps.map(([stepKey, step], index) => (
+                    <div key={stepKey} className="kstep">
+                      <h3>{stepKey.replace(/\b\w/g, c => c.toUpperCase())}</h3>
+                      <p>{step.description}</p>
+                      {step.image && (
+                        <img
+                          src={step.image}
+                          alt={step.description || `Step ${index + 1}`}
+                          onError={(e) => {
+                            e.target.onerror = null; 
+                            e.target.src = '/assets/placeholder-knot.jpg';
+                          }}
+                        />
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <p>No tutorial steps available.</p>
+                )}
+
+                {/* Pagination controls */}
+                {totalPages > 1 && (
+                  <div className="pagination-controls">
+                    <button 
+                      onClick={prevPage} 
+                      disabled={currentPage === 1}
+                      className="pagination-button"
+                    >
+                      Previous
+                    </button>
+                    
+                    <div className="page-numbers">
+                      {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                        <button
+                          key={page}
+                          onClick={() => goToPage(page)}
+                          className={`page-number ${currentPage === page ? 'active' : ''}`}
+                        >
+                          {page}
+                        </button>
+                      ))}
+                    </div>
+                    
+                    <button 
+                      onClick={nextPage} 
+                      disabled={currentPage === totalPages}
+                      className="pagination-button"
+                    >
+                      Next
+                    </button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 
@@ -392,42 +448,44 @@ const KnotChosen = () => {
 
       {/* PDF DOWNLOADABLE CONTENT */}
       <div id="pdf-content" style={{ display: 'none', width: '210mm', padding: '20px' }}>
-  {steps.length > 0 ? (
-    steps.map(([stepKey, step], index) => (
-      <div key={stepKey} className="pdf-step" style={{ marginBottom: '20px', pageBreakInside: 'avoid' }}>
-        <h3 style={{ fontSize: '26px', marginBottom: '8px' }}>{stepKey.replace(/\b\w/g, c => c.toUpperCase())}</h3>
-        <p style={{ fontSize: '24px', marginBottom: '8px' }}>{step.description}</p>
-        {step.image && (
-          <img
-            src={step.image}
-            alt={step.description || `Step ${index + 1}`}
-            style={{
-              maxWidth: '100%',
-              height: 'auto',
-              display: 'block',
-              margin: '0 auto'
-            }}
-            onError={(e) => {
-              e.target.onerror = null;
-              e.target.src = '/assets/placeholder-knot.jpg';
-            }}
-          />
+        {steps.length > 0 ? (
+          steps.map(([stepKey, step], index) => (
+            <div key={stepKey} className="pdf-step" style={{ marginBottom: '20px', pageBreakInside: 'avoid' }}>
+              <h3 style={{ fontSize: '26px', marginBottom: '8px' }}>{stepKey.replace(/\b\w/g, c => c.toUpperCase())}</h3>
+              <p style={{ fontSize: '24px', marginBottom: '8px' }}>{step.description}</p>
+              {step.image && (
+                <img
+                  src={step.image}
+                  alt={step.description || `Step ${index + 1}`}
+                  style={{
+                    maxWidth: '100%',
+                    height: 'auto',
+                    display: 'block',
+                    margin: '0 auto'
+                  }}
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/assets/placeholder-knot.jpg';
+                  }}
+                />
+              )}
+            </div>
+          ))
+        ) : (
+          <p>No steps available.</p>
         )}
       </div>
-    ))
-  ) : (
-    <p>No steps available.</p>
-  )}
-</div>
-{/* Loading Modal */}
-{isGeneratingPDF && (
-  <div className="pdf-loading-modal">
-    <div className="pdf-loading-content">
-      <div className="pdf-loading-spinner"></div>
-      <p>Generating PDF...</p>
-    </div>
-  </div>
-)}
+      
+      {/* Loading Modal */}
+      {isGeneratingPDF && (
+        <div className="pdf-loading-modal">
+          <div className="pdf-loading-content">
+            <div className="pdf-loading-spinner"></div>
+            <p>Generating PDF...</p>
+          </div>
+        </div>
+      )}
+      
       <Footer />
     </>
   );
