@@ -364,6 +364,9 @@
     background-color: #2d3748;
 }
 
+[data-theme="dark"] .faq-item {
+    border: 1px solid #444444;
+}
 [data-theme="dark"] .pagination button:hover:not(.disabled),
 [data-theme="dark"] .pagination button.active {
     background-color: #b54d49;

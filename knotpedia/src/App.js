@@ -25,13 +25,14 @@ const App = () => {
       <BackToTop/>
       <div className="flex flex-col min-h-screen">
         <main className="flex-grow p-4">
-          {/* Main content goes here */}
+
           <Routes>
             <Route path="/" element={<Homepage />} />          
             <Route path="/contact" element={<ContactUs />} /> {/* */}
             <Route path="/about" element={<AboutUs />} /> {/* */}
             <Route path="/terminology" element={<Terminology/>} /> 
             <Route path="/sitemap" element={<Sitemap />} /> 
+
             <Route path="/FAQs" element={<FAQ />} /> 
             <Route path="/termsandconditions" element={<TermsAndConditions />} />
             <Route path="/privacypolicy" element={<PrivacyPolicy />} /> 
@@ -39,15 +40,15 @@ const App = () => {
             <Route path="/knots/all" element={<AllKnots />} /> 
             <Route path="/knots/types" element={<Types />} /> 
             <Route path="/knots/activities" element={<Activities />} />
-            
-            <Route path="/knot/:name" element={<KnotChosen />} />
 
             <Route path="/search" element={<Search />} />
             <Route path="/preferences" element={<Preferences />} /> 
 
-            <Route path="/FirebaseDataEntry" element={<FirebaseDataEntry />} />
             <Route path="/knots/types/:type?" element={<Types />} />
             <Route path="/knots/activities/:activity?" element={<Activities />} />
+            <Route path="/knot/:name" element={<KnotChosen />} />
+
+            <Route path="/FirebaseDataEntry" element={<FirebaseDataEntry />} />
             </Routes>
           </main>
         </div>
