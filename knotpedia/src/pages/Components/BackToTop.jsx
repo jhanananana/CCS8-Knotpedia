@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import "./BackToTop.css";
-
+import { Tooltip } from 'react-tooltip'// Tooltip Import
 function BackToTop() {
   const [visible, setVisible] = useState(false);
 
@@ -21,13 +21,22 @@ function BackToTop() {
   };
 
   return (
-    <button
-      className={`back-to-top ${visible ? 'show' : ''}`}
-      onClick={scrollToTop}
-    >
-      <img src="/assets/backtotop.png"></img>
+    <>
+      <button
+        className={`back-to-top ${visible ? 'show' : ''}`}
+        onClick={scrollToTop}
+        data-tooltip-id="my-tooltip"// Tooltip ID
+        data-tooltip-content="Back To Top"// Tooltip text
+        data-tooltip-place="left"// Tooltip orientation
+      >
+        <img src="/assets/backtotop.png" alt='back-to-top'></img>
 
-    </button>
+      </button>   
+      <Tooltip id="my-tooltip" />
+    </>
+    
+   
+    
   );
 }
 
