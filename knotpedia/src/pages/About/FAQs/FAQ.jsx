@@ -134,8 +134,7 @@ const FAQ = () => {
           <div className="form-container">
             <div className="right-form-container">
               <h3>
-                <span className="form-title">How can we </span>
-                <span className="form-title red-text">help?</span>
+                <span className="form-title">How can we help?</span>
               </h3>
               <p className="form-subtitle">Feel free to reach us with your inquiries!</p>
               <FAQService.FormComponent />

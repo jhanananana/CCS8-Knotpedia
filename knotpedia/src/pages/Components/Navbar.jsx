@@ -8,6 +8,8 @@ const Navbar = () => {
   const [isShrunk, setIsShrunk] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const location = useLocation();
+  const [searchQuery, setSearchQuery] = useState("");
+  const [showSearch, setShowSearch] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,11 +33,10 @@ const Navbar = () => {
     };
   }, []);
 
-
-
   return (
     <nav className="navbar">
       <div className="navbar-left">
+
         <Link to="/">
           <img src="/assets/logo.png" className="navbar-logo" alt="Knotpedia Logo" />
         </Link>
@@ -123,8 +124,17 @@ const Navbar = () => {
             Preferences
           </Link>
         </li>
+
+        <div className="navbar-right">
+          <a href="/search">
+            <button className="search-button" onClick={() => setShowSearch(!showSearch)}>
+              <img src="/assets/search red.png" alt="Search" />
+            </button>
+          </a>
+        </div>
       </ul>
     </nav>
+
   );
 };
 

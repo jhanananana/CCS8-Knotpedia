@@ -48,9 +48,28 @@
 
 [data-theme="dark"] .form-group input,
 [data-theme="dark"] .form-group textarea,
-[data-theme="dark"] .text-Container {
+[data-theme="dark"] .text-Container,
+[data-theme="dark"] .knot-sidebar
+{
     background-color: #2d2d2d;
     border-color: #444;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .kstep {
+    background-color: #333333;
+    border: 2px solid #444444;
+}
+
+[data-theme="dark"] .glossaryknot-card
+{
+    background-color: #2d2d2d;
+    border-color: #444;
+    color: #e0e0e0;
+}
+
+[data-theme="dark"] .glossaryknot-card .knot-description
+{
     color: #e0e0e0;
 }
 
@@ -70,14 +89,17 @@
 
 [data-theme="dark"] .social-icon {
     background-color: #181818;
+    border: 1px solid #181818;
+    border-radius: 100%;
 }
 
 [data-theme="dark"] .social-icon:hover {
-    background-color: #3a3a3a;
+    background-color: #ffffff;
+    border: 1px solid #ffffff;
 }
 
 [data-theme="dark"] .breadcrumb,
-[data-theme="dark"] .text-Container .list{
+[data-theme="dark"] .text-Container .list {
     color: #ddd;
 }
 
@@ -86,7 +108,8 @@
     color: #7a9ca9;
 }
 
-[data-theme="dark"] .breadcrumb .active {
+[data-theme="dark"] .breadcrumb .active,
+[data-theme="dark"] .kstep p {
     color: #eee;
 }
 
@@ -98,6 +121,13 @@
 
 [data-theme="dark"] .error-text {
     color: #ff7a7a;
+}
+
+[data-theme="dark"] .chevron {
+    margin-left: 1rem;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid #241b1b;
 }
 
 /* Popup styles in dark mode */
@@ -185,11 +215,13 @@
     background-color: #8a3a37;
 }
 
-[data-theme="dark"] .blue-text {
-    color: #5a8d9c;
+[data-theme="dark"] .blue-text,
+[data-theme="dark"] .sidebar-title {
+    color: #65b0c7;
 }
 
-[data-theme="dark"] .red-text {
+[data-theme="dark"] .red-text,
+[data-theme="dark"] .kstep h3 {
     color: #c45a57;
 }
 
@@ -230,7 +262,8 @@
     background-color: #6a2a27;
 }
 
-[data-theme="dark"] .home-search-bar input {
+[data-theme="dark"] .home-search-bar input,
+[data-theme="dark"] .search-page-bar input {
     background-color: #2d2d2d;
     color: #f0f0f0;
     border-color: #444;
@@ -278,7 +311,7 @@
 
 [data-theme="dark"] .knots-card:hover .knots-name,
 [data-theme="dark"] .knot-card:hover .knot-name,
-[data-theme="dark"] .search-card:hover .search-name  {
+[data-theme="dark"] .search-card:hover .search-name {
     color: #ff7f7f;
 }
 
@@ -288,22 +321,22 @@
 }
 
 [data-theme="dark"] .knots-card:hover .knots-description,
-[data-theme="dark"] .search-card:hover .search-description, 
-[data-theme="dark"] .filter-label, 
+[data-theme="dark"] .search-card:hover .search-description,
+[data-theme="dark"] .filter-label,
 [data-theme="dark"] .form-group label {
     color: #bbbbbb;
 }
 
-[data-theme="dark"] .dropbtn {
-    background-color: #2a2a2a;
-    border: 1px solid #777777;
-    color: #dddddd;
+[data-theme="dark"] .dropdown button {
+    background-color: #adadad;
+    border: 1px solid #241b1b;
+    color: #241b1b;
 }
 
 [data-theme="dark"] .dropdown button:hover {
-    background-color: #494949;
+    background-color: #eee;
     border: 1px solid #777777;
-    color: #dddddd;
+    color: #241b1b;
 }
 
 [data-theme="dark"] .dropdown-content {
@@ -329,13 +362,18 @@
 }
 
 [data-theme="dark"] .sidebar-list li:hover,
-[data-theme="dark"] .faq-sidebar button{
+[data-theme="dark"] .faq-sidebar button {
     color: #ffffff;
 }
 
 [data-theme="dark"] .sidebar-list .active-sidebar,
-[data-theme="dark"] .faq-sidebar .active  {
+[data-theme="dark"] .faq-sidebar .active {
     color: #ff7f7f;
+}
+
+[data-theme="dark"] .sidebar-tag-header {
+    color: white;
+    background-color: #3a5d69;
 }
 
 [data-theme="dark"] .allknots-left-column,
@@ -343,8 +381,13 @@
     background-color: #2a2a2a;
 }
 
-[data-theme="dark"] .allknots-description {
+[data-theme="dark"] .allknots-description,
+[data-theme="dark"] .sidebar-knot-list a {
     color: #cccccc;
+}
+
+[data-theme="dark"] .sidebar-knot-list a:hover {
+    color: white;
 }
 
 [data-theme="dark"] .filter-container select {
@@ -367,6 +410,7 @@
 [data-theme="dark"] .faq-item {
     border: 1px solid #444444;
 }
+
 [data-theme="dark"] .pagination button:hover:not(.disabled),
 [data-theme="dark"] .pagination button.active {
     background-color: #b54d49;

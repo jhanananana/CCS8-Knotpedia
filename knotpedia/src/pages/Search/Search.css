@@ -1,6 +1,6 @@
 .searchKnot-container {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); 
+    grid-template-columns: repeat(4, 1fr);
     gap: 15px;
     margin-bottom: 1.5rem;
     margin-top: 2rem;
@@ -66,12 +66,75 @@
 
 .search-card:focus-within {
     outline: 3px solid #0D6287;
-    /* Focus indicator for accessibility */
 }
 
 .search-card .button.red {
     margin-top: auto;
-    /* Pushes to the bottom */
     align-self: flex-start;
-    /* optional: left-aligned */
+}
+
+.search-page-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    width: 100%;
+}
+
+.search-page-bar input {
+    width: 100%;
+    padding: 12px 0px 12px 15px;
+    border: 2px solid #ccc;
+    border-radius: 50px;
+    font-size: 16px;
+    font-family: 'Poppins';
+    outline: none;
+    transition: 0.3s ease-in-out;
+}
+
+.search-page-bar input:focus {
+    border-color: #5192A5;
+    box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6);
+}
+
+.searchTerm {
+    color: #65b0c7;
+}
+
+.search-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    justify-items: center;
+}
+
+@media (max-width: 768px) {
+    .searchKnot-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .search-description {
+        display: none;
+    }
+    .search-name {
+        font-size: 1.1rem;
+        border: 1px solid red;
+    }
+    .search-card .button.red {
+        border: 1px solid red;
+    }
+}
+
+@media (max-width: 576px) {
+    .searchKnot-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .search-description {
+        display: none;
+    }
+    .search-card .button.red {
+        margin-top: auto;
+        padding: 0.4rem 0.7rem;
+        align-self: flex-start;
+    }
+
 }

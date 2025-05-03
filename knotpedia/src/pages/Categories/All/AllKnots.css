@@ -105,15 +105,18 @@
 
 .allknots-container.large .knots-name {
     font-size: 1.6rem;
+    margin-top: 1rem;
+    margin-bottom: -1rem;
 }
 
 .allknots-container.large .knots-description {
     font-size: 1.3rem;
-    padding-top: 1rem;
+    padding-top: 0rem;
 }
 
 .allknots-container.large .knots-card .button.red {
     font-size: 1.5rem;
+    margin-top: -1rem;
 }
 
 .allknots-container.small {
@@ -238,7 +241,7 @@
     padding: 16px;
     font-size: 16px;
     border: 1px solid #555555;
-    background-color: white;
+    background-color: none;
     cursor: pointer;
     display: flex;
     font-family: 'Poppins';
@@ -272,8 +275,7 @@
     border-radius: 10px;
     box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
     z-index: 1;
-    border: 1px solid #ccc;
-    /* Add border to dropdown */
+    border: 1px solid #a87c7c;
     font-family: 'Poppins';
 }
 
@@ -282,13 +284,10 @@
     display: block;
     cursor: pointer;
     text-decoration: none;
-    /* Remove underline */
 }
 
 .dropdown-content a:hover {
-    background-color: #ddd;
     color: #0D6287;
-    /* Add hover effect */
 }
 
 .dropdown:hover .dropdown-content {

@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import Pagination from "../Components/Pagination";
 import "./Terminology.css";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase"; 
+import { db } from "../../firebase";
 
 const Terminology = () => {
   const [knots, setKnots] = useState([]);
@@ -11,7 +12,7 @@ const Terminology = () => {
   const [filter, setFilter] = useState("All");
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const knotsPerPage = 4; // Show 4 knots per page
+  const knotsPerPage = 12;
 
   // Fetch knots from Firestore
   useEffect(() => {
@@ -100,8 +101,8 @@ const Terminology = () => {
         </nav>
 
         {/* Search bar */}
-        <div className="search-wrapper">
-          <div className="search-bar">
+        <div className="search-page-bar">
+          <div className="search-wrapper">
             <input
               type="text"
               id="search-input"
@@ -190,53 +191,11 @@ const Terminology = () => {
                 </div>
               ))}
             </div>
-
-            {/* Pagination Controls */}
-            {filteredKnots.length > 0 && (
-              <div className="glossary-pagination">
-                <button
-                  className="glossary-pagination-btn"
-                  onClick={goToPreviousPage}
-                  disabled={currentPage === 1}
-                >
-                  &lt; Previous
-                </button>
-
-                {/* Generate page buttons */}
-                {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
-                  let pageNum = i + 1;
-                  if (totalPages > 5) {
-                    if (currentPage <= 3) {
-                      pageNum = i + 1;
-                    } else if (currentPage >= totalPages - 2) {
-                      pageNum = totalPages - 4 + i;
-                    } else {
-                      pageNum = currentPage - 2 + i;
-                    }
-                  }
-
-                  return (
-                    <button
-                      key={pageNum}
-                      className={`glossary-pagination-btn ${
-                        currentPage === pageNum ? "active" : ""
-                      }`}
-                      onClick={() => paginate(pageNum)}
-                    >
-                      {pageNum}
-                    </button>
-                  );
-                })}
-
-                <button
-                  className="glossary-pagination-btn"
-                  onClick={goToNextPage}
-                  disabled={currentPage === totalPages}
-                >
-                  Next &gt;
-                </button>
-              </div>
-            )}
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
           </>
         )}
       </div>

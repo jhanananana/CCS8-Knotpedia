@@ -2,6 +2,7 @@ import { useLocation, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
+import Pagination from '../Components/Pagination';
 import "./KnotChosen.css";
 import { getDoc, doc, collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -23,7 +24,17 @@ const KnotChosen = () => {
 
   // Get knot data either from location state or fetch from Firestore
   const { knot: locationKnot, origin } = location.state || {};
-  
+
+  const [fullscreenImage, setFullscreenImage] = useState(null);
+
+  const openImageModal = (imgSrc) => {
+    setFullscreenImage(imgSrc);
+  };
+
+  const closeImageModal = () => {
+    setFullscreenImage(null);
+  };
+
   // Pagination functions
   const nextPage = () => {
     if (currentPage < totalPages) {
@@ -44,56 +55,56 @@ const KnotChosen = () => {
   const saveToPDF = async () => {
     const input = document.getElementById('pdf-content');
     if (!input) return;
-  
+
     setIsGeneratingPDF(true); // Show loading modal
     input.style.display = 'block';
-  
+
     try {
       // Wait a frame to ensure layout is complete
       await new Promise(resolve => setTimeout(resolve, 100));
-  
+
       const pdf = new jsPDF('p', 'mm', 'a4');
       const pdfWidth = pdf.internal.pageSize.getWidth();
       const pdfHeight = pdf.internal.pageSize.getHeight();
       const margin = 10; // 10mm margin
       const contentWidth = pdfWidth - margin * 2;
-  
+
       // Create a canvas for each step to control page breaks
       const steps = input.querySelectorAll('.pdf-step');
-      
+
       let currentY = margin;
-      
+
       // Add title
-      pdf.setFontSize(30);
+      pdf.setFontSize(24);
       pdf.text(currentKnot?.name || 'Knot Guide', margin, currentY);
       currentY += 10;
-  
+
       for (const step of steps) {
         const canvas = await html2canvas(step, {
-          scale: 2,
+          scale: 3,
           useCORS: true,
           backgroundColor: "#ffffff",
           logging: false // Disable console logging for better performance
         });
-  
+
         const imgData = canvas.toDataURL('image/png');
         const imgProps = pdf.getImageProperties(imgData);
-        
+
         // Calculate image dimensions to fit content width
         const imgWidth = contentWidth / 1.5;
         const imgHeight = (imgProps.height * imgWidth) / imgProps.width;
-        
+
         // Check if we need a new page
         if (currentY + imgHeight > pdfHeight - margin) {
           pdf.addPage();
           currentY = margin;
         }
-        
+
         // Add the step to the PDF
         pdf.addImage(imgData, 'PNG', margin, currentY, imgWidth, imgHeight);
         currentY += imgHeight + 10; // Add some spacing between steps
       }
-  
+
       pdf.save(`${currentKnot.name || "knot"}.pdf`);
     } catch (error) {
       console.error("Error generating PDF:", error);
@@ -110,13 +121,13 @@ const KnotChosen = () => {
     } else {
       document.body.classList.remove('no-scroll');
     }
-  
+
     // Cleanup function
     return () => {
       document.body.classList.remove('no-scroll');
     };
   }, [isGeneratingPDF]);
-  
+
   useEffect(() => {
     let isMounted = true;
 
@@ -145,9 +156,9 @@ const KnotChosen = () => {
           collection(db, "knots"),
           where("name", "==", knotName)
         );
-        
+
         const querySnapshot = await getDocs(knotsQuery);
-        
+
         if (querySnapshot.empty) {
           if (isMounted) {
             setLoading(false);
@@ -157,9 +168,9 @@ const KnotChosen = () => {
         }
 
         // Get the first matching knot (should be only one)
-        const foundKnot = { 
-          id: querySnapshot.docs[0].id, 
-          ...querySnapshot.docs[0].data() 
+        const foundKnot = {
+          id: querySnapshot.docs[0].id,
+          ...querySnapshot.docs[0].data()
         };
 
         if (isMounted) {
@@ -196,11 +207,11 @@ const KnotChosen = () => {
           where("tags", "array-contains-any", currentKnot.tags),
           where("__name__", "!=", currentKnot.id)
         );
-        
+
         const querySnapshot = await getDocs(tagsQuery);
-        const allKnots = querySnapshot.docs.map(doc => ({ 
-          id: doc.id, 
-          ...doc.data() 
+        const allKnots = querySnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
         }));
 
         // Organize by tag
@@ -237,13 +248,13 @@ const KnotChosen = () => {
 
   const getSortedSteps = () => {
     if (!currentKnot?.steps) return [];
-    
+
     try {
       // Handle both array and object formats
-      const stepsData = Array.isArray(currentKnot.steps) 
+      const stepsData = Array.isArray(currentKnot.steps)
         ? currentKnot.steps.map((step, i) => [`Step ${i + 1}`, step])
         : Object.entries(currentKnot.steps);
-      
+
       return stepsData.sort(([a], [b]) => {
         // Extract numbers for numeric comparison
         const numA = parseInt((a.match(/\d+/) || [0])[0]);
@@ -308,6 +319,13 @@ const KnotChosen = () => {
         </div>
       </div>
 
+      {fullscreenImage && (
+        <div className="fullscreen-modal" onClick={closeImageModal}>
+          <img src={fullscreenImage} alt="Full screen view" />
+          <button className="close-btn" onClick={closeImageModal}>✖</button>
+        </div>
+      )}
+
       <div className="knot-container">
         <nav className="breadcrumb">
           <Link to="/">
@@ -317,11 +335,11 @@ const KnotChosen = () => {
           &gt;
           {origin === "AllActivities" ? (
             <Link to="/knots/activities">
-              <span>All Activities</span>
+              <span>Knots by Activities</span>
             </Link>
           ) : origin === "AllTypes" ? (
             <Link to="/knots/types">
-              <span>All Types</span>
+              <span>Knots by Type</span>
             </Link>
           ) : (
             <Link to="/knots/all">
@@ -335,8 +353,22 @@ const KnotChosen = () => {
         <div className="knot-main-content">
           {/* LEFT: Main knot content */}
           <div className="knot-left">
-            <img className="imgheadknot" src={currentKnot.image} alt={currentKnot.name} />
-            <button className="save-pdf-btn" onClick={saveToPDF}>
+            <div className="main-image-wrapper">
+              <img
+                className="imgheadknot"
+                src={currentKnot.image}
+                alt={currentKnot.name}
+                onClick={() => openImageModal(currentKnot.image)} // Optional: allow image click
+              />
+              <button
+                className="fullscreen-btn"
+                onClick={() => openImageModal(currentKnot.image)}
+                aria-label="View full screen"
+              >
+                ⛶
+              </button>
+            </div>
+            <button style={{ marginLeft: '0rem' }} className="button red" onClick={saveToPDF}>
               Save as PDF
             </button>
 
@@ -348,62 +380,47 @@ const KnotChosen = () => {
                       <h3>{stepKey.replace(/\b\w/g, c => c.toUpperCase())}</h3>
                       <p>{step.description}</p>
                       {step.image && (
-                        <img
-                          src={step.image}
-                          alt={step.description || `Step ${index + 1}`}
-                          onError={(e) => {
-                            e.target.onerror = null; 
-                            e.target.src = '/assets/placeholder-knot.jpg';
-                          }}
-                        />
+                        <div className="image-wrapper">
+                          <img
+                            src={step.image}
+                            alt={step.description || `Step ${index + 1}`}
+                            onError={(e) => {
+                              e.target.onerror = null;
+                              e.target.src = '/assets/placeholder-knot.jpg';
+                            }}
+                            className="step-image"
+                            onClick={() => openImageModal(step.image)}
+                          />
+                          <button
+                            className="fullscreen-btn"
+                            onClick={() => openImageModal(step.image)}
+                            aria-label="View full screen"
+                          >
+                            ⛶
+                          </button>
+                        </div>
                       )}
                     </div>
                   ))
                 ) : (
                   <p>No tutorial steps available.</p>
                 )}
-
-                {/* Pagination controls */}
-                {totalPages > 1 && (
-                  <div className="pagination-controls">
-                    <button 
-                      onClick={prevPage} 
-                      disabled={currentPage === 1}
-                      className="pagination-button"
-                    >
-                      Previous
-                    </button>
-                    
-                    <div className="page-numbers">
-                      {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                        <button
-                          key={page}
-                          onClick={() => goToPage(page)}
-                          className={`page-number ${currentPage === page ? 'active' : ''}`}
-                        >
-                          {page}
-                        </button>
-                      ))}
-                    </div>
-                    
-                    <button 
-                      onClick={nextPage} 
-                      disabled={currentPage === totalPages}
-                      className="pagination-button"
-                    >
-                      Next
-                    </button>
-                  </div>
-                )}
               </div>
             </div>
+
+
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
           </div>
 
           {/* RIGHT: Dynamic Tag-Based Sidebar */}
           <div className="knot-sidebar">
             <div className="ksidebar-menu">
               <h3 className="sidebar-title">Related Knots by Tag</h3>
-              
+
               {tagGroups.length > 0 ? (
                 tagGroups.map((group) => (
                   <div key={group.tagName} className="sidebar-tag-group">
@@ -420,7 +437,7 @@ const KnotChosen = () => {
                         {group.isExpanded ? '−' : '+'}
                       </span>
                     </button>
-                    
+
                     {group.knots.length > 0 && (
                       <ul className={`sidebar-knot-list ${group.isExpanded ? 'expanded' : ''}`}>
                         {group.knots.map((knotItem) => (
@@ -447,35 +464,92 @@ const KnotChosen = () => {
       </div>
 
       {/* PDF DOWNLOADABLE CONTENT */}
-      <div id="pdf-content" style={{ display: 'none', width: '210mm', padding: '20px' }}>
+      <div
+        id="pdf-content"
+        style={{
+          display: 'none',
+          width: '210mm',
+          padding: '20mm',
+          fontFamily: 'Poppins, sans-serif',
+          color: '#333',
+        }}
+      >
         {steps.length > 0 ? (
-          steps.map(([stepKey, step], index) => (
-            <div key={stepKey} className="pdf-step" style={{ marginBottom: '20px', pageBreakInside: 'avoid' }}>
-              <h3 style={{ fontSize: '26px', marginBottom: '8px' }}>{stepKey.replace(/\b\w/g, c => c.toUpperCase())}</h3>
-              <p style={{ fontSize: '24px', marginBottom: '8px' }}>{step.description}</p>
-              {step.image && (
-                <img
-                  src={step.image}
-                  alt={step.description || `Step ${index + 1}`}
-                  style={{
-                    maxWidth: '100%',
-                    height: 'auto',
-                    display: 'block',
-                    margin: '0 auto'
-                  }}
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = '/assets/placeholder-knot.jpg';
-                  }}
-                />
-              )}
-            </div>
-          ))
+          Array.from({ length: Math.ceil(steps.length / 2) }, (_, rowIndex) => {
+            const start = rowIndex * 2;
+            const rowSteps = steps.slice(start, start + 2);
+
+            return (
+              <div
+                key={rowIndex}
+                style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  gap: '10mm',
+                  marginBottom: '20mm',
+                  pageBreakInside: 'avoid',
+                }}
+              >
+                {rowSteps.map(([stepKey, step], index) => (
+                  <div
+                    key={stepKey}
+                    className="pdf-step"
+                    style={{
+                      flex: 1,
+                      border: '1px solid #ccc',
+                      borderRadius: '6px',
+                      padding: '10mm',
+                      boxSizing: 'border-box',
+                    }}
+                  >
+                    <h3
+                      style={{
+                        fontSize: '16pt',
+                        margin: '0 0 6px',
+                        fontWeight: 'bold',
+                        textTransform: 'capitalize',
+                      }}
+                    >
+                      {stepKey}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: '12pt',
+                        margin: '0 0 10px',
+                        lineHeight: '1.4',
+                      }}
+                    >
+                      {step.description}
+                    </p>
+                    {step.image && (
+                      <img
+                        src={step.image}
+                        alt={step.description || `Step ${index + 1}`}
+                        style={{
+                          width: '100%',
+                          height: 'auto',
+                          display: 'block',
+                          marginTop: '10px',
+                          borderRadius: '6px',
+                          border: '1px solid #ddd',
+                        }}
+                        onError={(e) => {
+                          e.target.onerror = null;
+                          e.target.src = '/assets/placeholder-knot.jpg';
+                        }}
+                      />
+                    )}
+                  </div>
+                ))}
+              </div>
+            );
+          })
         ) : (
-          <p>No steps available.</p>
+          <p style={{ fontSize: '14pt', textAlign: 'center' }}>No steps available.</p>
         )}
       </div>
-      
+
+
       {/* Loading Modal */}
       {isGeneratingPDF && (
         <div className="pdf-loading-modal">
@@ -485,7 +559,7 @@ const KnotChosen = () => {
           </div>
         </div>
       )}
-      
+
       <Footer />
     </>
   );
