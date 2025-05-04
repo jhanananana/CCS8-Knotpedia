@@ -5,7 +5,7 @@ import Pagination from "../Components/Pagination";
 import "./Terminology.css";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
-import { db } from "../../firebase";
+
 
 const Terminology = () => {
   const [knots, setKnots] = useState([]);
