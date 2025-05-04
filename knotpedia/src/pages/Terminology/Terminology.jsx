@@ -3,7 +3,7 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import "./Terminology.css";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../../firebase"; 
+import { db } from "../../firebase";
 
 const Terminology = () => {
   const [knots, setKnots] = useState([]);
@@ -195,7 +195,9 @@ const Terminology = () => {
             {filteredKnots.length > 0 && (
               <div className="glossary-pagination">
                 <button
-                  className="glossary-pagination-btn"
+                  className={`glossary-pagination-btn previous ${
+                    currentPage === 1 ? "disabled" : ""
+                  }`}
                   onClick={goToPreviousPage}
                   disabled={currentPage === 1}
                 >
@@ -203,18 +205,8 @@ const Terminology = () => {
                 </button>
 
                 {/* Generate page buttons */}
-                {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
-                  let pageNum = i + 1;
-                  if (totalPages > 5) {
-                    if (currentPage <= 3) {
-                      pageNum = i + 1;
-                    } else if (currentPage >= totalPages - 2) {
-                      pageNum = totalPages - 4 + i;
-                    } else {
-                      pageNum = currentPage - 2 + i;
-                    }
-                  }
-
+                {Array.from({ length: totalPages }, (_, i) => {
+                  const pageNum = i + 1;
                   return (
                     <button
                       key={pageNum}
@@ -229,7 +221,9 @@ const Terminology = () => {
                 })}
 
                 <button
-                  className="glossary-pagination-btn"
+                  className={`glossary-pagination-btn next ${
+                    currentPage === totalPages ? "disabled" : ""
+                  }`}
                   onClick={goToNextPage}
                   disabled={currentPage === totalPages}
                 >

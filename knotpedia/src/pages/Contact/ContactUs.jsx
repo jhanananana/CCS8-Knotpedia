@@ -5,12 +5,12 @@ import "./ContactUs.css";
 import "../Components/DarkMode.css";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import ContactFormService from "./ContactFormService.jsx"; // Import the form service
+import ContactFormService from "./ContactFormService.jsx"; 
 import icon from "leaflet/dist/images/marker-icon.png";
 import iconShadow from "leaflet/dist/images/marker-shadow.png";
 
 const ContactUs = () => {
-  // State for form fields
+  // State and tracks the values entered in the form fields
   const [formData, setFormData] = useState({
     firstname: "",
     lastname: "",
@@ -19,7 +19,7 @@ const ContactUs = () => {
     message: "",
   });
 
-  // State for form errors - new addition
+  // stores validation error messeges for each field
   const [formErrors, setFormErrors] = useState({
     firstname: "",
     lastname: "",
@@ -31,14 +31,14 @@ const ContactUs = () => {
   // Track if form has been submitted at least once
   const [formSubmitted, setFormSubmitted] = useState(false);
 
-  // State for form submission status
+  // State if the form submission was successful and display a message
   const [submitStatus, setSubmitStatus] = useState({
     submitted: false,
     success: false,
     message: "",
   });
 
-  // State for popup visibility (NEW)
+  // State for popup visibility 
   const [isPopupVisible, setIsPopupVisible] = useState(false);
 
   // State for loading indicator
@@ -115,7 +115,7 @@ const ContactUs = () => {
       message: result.message,
     });
 
-    // Show popup notification (NEW)
+    // Show popup notification 
     setIsPopupVisible(true);
 
     // Reset form if successful
@@ -183,7 +183,7 @@ const ContactUs = () => {
   return (
     <div>
       <Navbar />
-      {/* Popup Notification - NEW */}
+      {/* Popup Notification  */}
       {isPopupVisible && (
         <div className="popup">
           <div className="popup-content">
@@ -326,17 +326,6 @@ const ContactUs = () => {
                 for new content.
               </p>
 
-              {/* Status Message - REMOVED */}
-              {/* {submitStatus.submitted && (
-                <div
-                  className={`status-message ${
-                    submitStatus.success ? "success" : "error"
-                  }`}
-                >
-                  {submitStatus.message}
-                </div>
-              )} */}
-
               {/* Contact Form - Added noValidate attribute */}
               <form onSubmit={handleSubmit} noValidate>
                 {/* Name Fields - Wrapped in a container */}
@@ -353,7 +342,6 @@ const ContactUs = () => {
                       onChange={handleChange}
                       placeholder="Enter your first name"
                       className={formErrors.firstname ? "input-error" : ""}
-                    // required attribute removed
                     />
                   </div>
 
@@ -385,7 +373,6 @@ const ContactUs = () => {
                     value={formData.email}
                     onChange={handleChange}
                     className={formErrors.email ? "input-error" : ""}
-                    // required attribute removed
                     placeholder="Enter your email address"
                   />
                 </div>
@@ -402,7 +389,6 @@ const ContactUs = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     className={formErrors.subject ? "input-error" : ""}
-                    // required attribute removed
                     placeholder="Your subject here"
                   />
                 </div>
@@ -419,7 +405,6 @@ const ContactUs = () => {
                     value={formData.message}
                     onChange={handleChange}
                     className={formErrors.message ? "input-error" : ""}
-                    // required attribute removed
                     placeholder="Your message here"
                   ></textarea>
                 </div>
