@@ -14,13 +14,13 @@ const Footer = () => {
             Knotpedia — your trusted guide for exploring and mastering knots for every need and adventure.
           </p>
           <div className="social-links">
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/jjahnia" target="_blank" rel="noopener noreferrer">
               <img src="/assets/twitter.png" alt="Twitter" className="social-icon" />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.instagram.com/vyn_tiq/" target="_blank" rel="noopener noreferrer">
               <img src="/assets/instagram.png" alt="Instagram" className="social-icon" />
             </a>
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/daone.datloveyou" target="_blank" rel="noopener noreferrer">
               <img src="/assets/facebook.png" alt="Facebook" className="social-icon" />
             </a>
           </div>

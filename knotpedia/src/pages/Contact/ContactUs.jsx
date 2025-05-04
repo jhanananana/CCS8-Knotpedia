@@ -296,22 +296,23 @@ const ContactUs = () => {
                 <hr />
               </h2>
               <div className="social-icons">
-                <a href="/fb.com">
+                <a href="https://x.com/jjahnia" target="_blank" >
                   <div className="social-icon">
                     <img src="/assets/twitter.png" alt="Twitter Icon" />
                   </div>
                 </a>
                 {/* Twitter */}
 
-                <a href="/fb.com"><div className="social-icon">
+                <a href="https://www.facebook.com/daone.datloveyou" target="_blank" >
+                  <div className="social-icon">
                   <img src="/assets/facebook.png" alt="Facebook" />
                 </div></a>
                 {/* Facebook */}
 
-
-                <div className="social-icon">
+                <a href="https://www.instagram.com/vyn_tiq/" target="_blank" >
+                <div className="social-icon "target="_blank" >
                   <img src="/assets/instagram.png" alt="instagram" />
-                </div>{" "}
+                </div></a>
                 {/* Instagram */}
               </div>
             </div>

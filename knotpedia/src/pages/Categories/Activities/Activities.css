@@ -325,7 +325,7 @@
         margin: 0;
     }
 
-    .allknots-container .knots-description {
+    .allknots-container .knots-description, .searchKnots-container{
         font-size: 0.9rem;
         padding: 0 0 1.5rem;
     }
@@ -378,8 +378,8 @@
         height: auto;
     }
     
-    .knots-description {
-        height: auto;
+    .allknots-container .knots-description {
+        display: none;
     }
 }
 

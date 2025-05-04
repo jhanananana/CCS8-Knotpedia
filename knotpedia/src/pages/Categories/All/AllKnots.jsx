@@ -33,7 +33,7 @@ const AllKnots = () => {
                 setKnots(knotsData);
             } catch (error) {
                 console.error("Error fetching knots:", error);
-            } 
+            }
         };
         fetchKnots();
     }, []);
@@ -146,7 +146,6 @@ const AllKnots = () => {
                                     <a onClick={() => { setActivityFilter("fishing"); setActivityLabel("Fishing"); }}>Fishing</a>
                                     <a onClick={() => { setActivityFilter("horse and farm"); setActivityLabel("Horse & Farm"); }}>Horse & Farm</a>
                                     <a onClick={() => { setActivityFilter("household"); setActivityLabel("Household"); }}>Household</a>
-                                    <a onClick={() => { setActivityFilter("neckties"); setActivityLabel("Neckties"); }}>Neckties</a>
                                     <a onClick={() => { setActivityFilter("rope care"); setActivityLabel("Rope Care"); }}>Rope Care</a>
                                     <a onClick={() => { setActivityFilter("scouting"); setActivityLabel("Scouting"); }}>Scouting</a>
                                     <a onClick={() => { setActivityFilter("search and rescue"); setActivityLabel("Search & Rescue"); }}>Search & Rescue</a>

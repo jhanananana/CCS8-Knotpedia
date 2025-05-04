@@ -1,6 +1,6 @@
 /* Main Container */
 .knot-container {
-  padding: 1.5rem;
+  padding: 0.5rem;
   max-width: 64rem;
   margin: 0 auto;
   font-family: 'Poppins';
@@ -27,13 +27,12 @@
 .imgheadknot {
   width: 100%;
   max-width: 1300px;
-  height: 600px;
+  height: 400px;
   object-fit: cover;
   border-radius: 1rem;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 
@@ -83,7 +82,6 @@
 .sidebar-title {
   color: #0D6287;
   font-size: 1.25rem;
-  font-weight: 600;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #e6f0f7;
@@ -102,14 +100,16 @@
   background-color: #2A4552;
   color: white;
   border: none;
+  font-family: 'Poppins Bold';
   border-radius: 0.5rem;
-  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 1rem;
+  text-transform: capitalize;
 }
 
 .sidebar-tag-header:hover:not(:disabled) {
-  background-color: #1a3440;
+  background-color: #0a4d6b;
 }
 
 .sidebar-tag-header:disabled {
@@ -126,6 +126,7 @@
 }
 
 .toggle-icon {
+  color: white;
   font-weight: bold;
 }
 
@@ -150,19 +151,19 @@
 
 .sidebar-knot-list a {
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
   color: #0D6287;
   text-decoration: none;
   border-radius: 0.5rem;
   transition: all 0.2s ease;
 }
 
-.sidebar-knot-list a:hover {
-  background-color: #e6f0f7;
+.sidebar-knot-list a:hover { 
+  background-color: #383838;
 }
 
 .sidebar-knot-list a.active-knot {
-  background-color: #c5a3ff;
+  background-color: #202020;
   color: white;
   font-weight: 600;
 }
@@ -364,21 +365,6 @@
   color: #9e9e9e;
   cursor: not-allowed;
 }
-.save-pdf-btn {
-  background-color: #e63946;
-  color: white;
-  padding: 10px 20px;
-  margin-bottom: 20px;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s ease;
-}
-
-.save-pdf-btn:hover {
-  background-color: #d62828;
-}
 
 
 /* PDF Loading Modal Styles */
@@ -469,73 +455,65 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+} 
+
+.image-wrapper {
+  position: relative;
+  display: inline-block;
 }
 
+.main-image-wrapper {
+  width: 100%;
+  position: relative;
+  display: inline-block;
+}
 
+.fullscreen-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #202020;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+  opacity: 0.7;
+  transition: 0.2s;
+}
 
-/* Pagination Controls */
-.pagination-controls {
+.fullscreen-btn:hover {
+  opacity: 1;
+}
+
+.fullscreen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2rem 0;
-  gap: 0.5rem;
-  transform: translateX(190px); /* Moves it 20px to the right */
+  z-index: 1000;
 }
 
-
-.pagination-button {
-  padding: 0.5rem 1rem;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.fullscreen-modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
 }
 
-.pagination-button:hover:not(:disabled) {
-  background-color: #e0e0e0;
-}
-
-.pagination-button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.page-numbers {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.page-number {
-  padding: 0.5rem 0.8rem;
-  background-color: #f0f0f0;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.page-number:hover {
-  background-color: #e0e0e0;
-}
-
-.page-number.active {
-  background-color: #d32f2f; /* Or your primary color */
+.close-btn {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  font-size: 30px;
   color: white;
-  border-color: #d32f2f;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .pagination-controls {
-    flex-wrap: wrap;
-  }
-  
-  .page-numbers {
-    order: 1;
-    width: 100%;
-    justify-content: center;
-    margin: 0.5rem 0;
-  }
-}

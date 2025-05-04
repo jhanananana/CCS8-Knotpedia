@@ -208,7 +208,7 @@ const FAQService = {
         <form onSubmit={handleSubmit} className="contact-form" noValidate>
           <div className="form-group">
             <label htmlFor="firstname">
-              First Name <span className="required">*</span>
+              First Name &nbsp;<span className="required">*</span>
               {errors.firstname && <span className="inline-error">{errors.firstname}</span>}
             </label>
             <input
@@ -223,7 +223,7 @@ const FAQService = {
 
           <div className="form-group">
             <label htmlFor="lastname">
-              Last Name <span className="required">*</span>
+              Last Name &nbsp;<span className="required">*</span>
               {errors.lastname && <span className="inline-error">{errors.lastname}</span>}
             </label>
             <input
@@ -238,7 +238,7 @@ const FAQService = {
 
           <div className="form-group">
             <label htmlFor="email">
-              Email Address <span className="required">*</span>
+              Email Address &nbsp;<span className="required">*</span>
               {errors.email && <span className="inline-error">{errors.email}</span>}
             </label>
             <input
@@ -253,7 +253,7 @@ const FAQService = {
 
           <div className="form-group">
             <label htmlFor="message">
-              Write your question <span className="required">*</span>
+              Write your question &nbsp;<span className="required">*</span>
               {errors.message && <span className="inline-error">{errors.message}</span>}
             </label>
             <textarea

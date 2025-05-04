@@ -68,7 +68,8 @@ const Sitemap = () => {
                 <ul className="sitemap-links">
                 <Link to="/knots/activities"><li>Knots by Activity</li></Link>
                 <Link to="/knots/types"><li>Knots by Type</li></Link>
-                  
+                <Link to="/terminology"><li>Terminology</li></Link>
+
                 </ul>
               </div>
 

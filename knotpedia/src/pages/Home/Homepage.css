@@ -255,7 +255,7 @@ h3 {
 
 .knots-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
   gap: 15px;
   margin-bottom: 1.5rem;
   margin-top: 2rem;
@@ -371,15 +371,6 @@ h3 {
   width: 22px;
 }
 
-.home-search-bar {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-right: 1rem;
-  width: 100%;
-  max-width: 500px;
-}
-
 .search-wrapper {
   position: relative;
   width: 100%;
@@ -388,6 +379,7 @@ h3 {
 .search-wrapper input {
   width: 100%;
   font-size: 1rem;
+  font-family: 'Poppins';
   border-radius: 100px;
   border: 2px solid #ccc;
 }
@@ -417,6 +409,15 @@ h3 {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.home-search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+  width: 100%;
+  max-width: 500px;
 }
 
 .home-search-bar input {
@@ -564,9 +565,5 @@ h3 {
 
   .home-search-icon img {
     width: 25px;
-  }
-
-  .knot-image {
-    border: 1px solid red;
   }
 }
