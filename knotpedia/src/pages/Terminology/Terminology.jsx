@@ -53,23 +53,6 @@ const Terminology = () => {
   const currentKnots = filteredKnots.slice(indexOfFirstKnot, indexOfLastKnot);
   const totalPages = Math.ceil(filteredKnots.length / knotsPerPage);
 
-  // Change to a specific page
-  const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
-  // Previous page
-  const goToPreviousPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  // Next page
-  const goToNextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
   // Reset to page 1 when filter or search term changes
   useEffect(() => {
     setCurrentPage(1);
@@ -110,7 +93,9 @@ const Terminology = () => {
               placeholder="Search for a knot..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)} // Update search term on input change
-              onKeyPress={(e) => e.key === "Enter" && setSearchTerm(e.target.value)} // Trigger search on Enter key press
+              onKeyPress={(e) =>
+                e.key === "Enter" && setSearchTerm(e.target.value)
+              } // Trigger search on Enter key press
             />
             {searchTerm && (
               <button
@@ -200,43 +185,7 @@ const Terminology = () => {
 
             {/* Pagination Controls */}
             {filteredKnots.length > 0 && (
-              <div className="glossary-pagination">
-                <button
-                  className={`glossary-pagination-btn previous ${
-                    currentPage === 1 ? "disabled" : ""
-                  }`}
-                  onClick={goToPreviousPage}
-                  disabled={currentPage === 1}
-                >
-                  &lt; Previous
-                </button>
-
-                {/* Generate page buttons */}
-                {Array.from({ length: totalPages }, (_, i) => {
-                  const pageNum = i + 1;
-                  return (
-                    <button
-                      key={pageNum}
-                      className={`glossary-pagination-btn ${
-                        currentPage === pageNum ? "active" : ""
-                      }`}
-                      onClick={() => paginate(pageNum)}
-                    >
-                      {pageNum}
-                    </button>
-                  );
-                })}
-
-                <button
-                  className={`glossary-pagination-btn next ${
-                    currentPage === totalPages ? "disabled" : ""
-                  }`}
-                  onClick={goToNextPage}
-                  disabled={currentPage === totalPages}
-                >
-                  Next &gt;
-                </button>
-              </div>
+              <div className="glossary-pagination"></div>
             )}
           </>
         )}

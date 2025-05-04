@@ -18,7 +18,7 @@ const FAQService = {
             <div className="faq-item" key={q.id}>
               <div className="faq-question" onClick={() => toggleAnswer(q.id)}>
                 <div className="question-text">{q.question}</div>
-                <div className="toggle-icon">
+                <div className="toggle-iconfaq">
                   {visibleAnswers[q.id] ? "▲" : "▼"}
                 </div>
               </div>
