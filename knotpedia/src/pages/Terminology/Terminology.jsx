@@ -6,6 +6,7 @@ import "./Terminology.css";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase";
 
+
 const Terminology = () => {
   const [knots, setKnots] = useState([]);
   const [loading, setLoading] = useState(true);

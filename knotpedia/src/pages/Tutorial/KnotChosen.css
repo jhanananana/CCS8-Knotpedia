@@ -159,11 +159,11 @@
 }
 
 .sidebar-knot-list a:hover { 
-  background-color: #383838;
+  background-color: #92d7f5;
 }
 
 .sidebar-knot-list a.active-knot {
-  background-color: #202020;
+  background-color: #1b9ed6;
   color: white;
   font-weight: 600;
 }
