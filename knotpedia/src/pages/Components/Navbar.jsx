@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="navbar-left">
 
         <Link to="/">
-          <img src="/assets/logo.png" className="navbar-logo" alt="Knotpedia Logo" />
+          <img src="/assets/logo.png" className="navbar-logo" alt="Knotpedia Logo"  title="Home"/>
         </Link>
         <button className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
           <b>☰</b>
@@ -105,22 +105,22 @@ const Navbar = () => {
         </li>
 
         <li>
-          <Link to="/contact" className={location.pathname === "/contact" ? "active" : ""}>
+          <Link to="/contact" className={location.pathname === "/contact" ? "active" : ""} title="Contact Us">
             Contact Us
           </Link>
         </li>
         <li>
-          <Link to="/about" className={location.pathname === "/about" ? "active" : ""}>
+          <Link to="/about" className={location.pathname === "/about" ? "active" : ""} title="About Us">
             About Us
           </Link>
         </li>
         <li>
-          <Link to="/sitemap" className={location.pathname === "/sitemap" ? "active" : ""}>
+          <Link to="/sitemap" className={location.pathname === "/sitemap" ? "active" : ""} title="Site Map">
             Site Map
           </Link>
         </li>
         <li>
-          <Link to="/preferences" className={location.pathname === "/preferences" ? "active" : ""}>
+          <Link to="/preferences" className={location.pathname === "/preferences" ? "active" : ""} title="Preferences">
             Preferences
           </Link>
         </li>

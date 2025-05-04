@@ -358,6 +358,7 @@ const KnotChosen = () => {
                 className="imgheadknot"
                 src={currentKnot.image}
                 alt={currentKnot.name}
+                title={currentKnot.name}
                 onClick={() => openImageModal(currentKnot.image)} // Optional: allow image click
               />
               <button
