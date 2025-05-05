@@ -38,9 +38,9 @@ const Navbar = () => {
       <div className="navbar-left">
 
         <Link to="/">
-          <img src="/assets/logo.png" className="navbar-logo" alt="Knotpedia Logo"  title="Home"/>
+          <img src="/assets/logo.png" className="navbar-logo" alt="Knotpedia Logo"  title="Knotpedia Home"/>
         </Link>
-        <button className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
+        <button className="menu-icon" title="Menu" onClick={() => setMenuOpen(!menuOpen)}>
           <b>☰</b>
         </button>
       </div>
@@ -59,6 +59,7 @@ const Navbar = () => {
             Explore Knots
             <i
               style={{ marginLeft: '5px', fontSize: '10px' }}
+              title="Expand"
               className={`fas fa-chevron-down ${showDropdown || location.pathname.startsWith("/knots/") ? "active" : ""}`}
             ></i>
           </div>
@@ -128,7 +129,7 @@ const Navbar = () => {
         <div className="navbar-right">
           <a href="/search">
             <button className="search-button" onClick={() => setShowSearch(!showSearch)}>
-              <img src="/assets/search red.png" alt="Search" />
+              <img src="/assets/search red.png" alt="Search" title="Search" />
             </button>
           </a>
         </div>

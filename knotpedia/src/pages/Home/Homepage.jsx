@@ -78,13 +78,13 @@ const Homepage = () => {
                                         onKeyPress={handleKeyPress} // Add the key press handler here
                                     />
                                     {searchTerm && (
-                                        <span className="home-clear-icon" onClick={() => setSearchTerm("")}>✖</span>
+                                        <span className="home-clear-icon" title="Clear" onClick={() => setSearchTerm("")}>✖</span>
                                     )}
                                     <button
                                         className="home-search-button"
                                         onClick={handleSearch} // Use the search handler here
                                     >
-                                        <img src="/assets/search.png" alt="Search" />
+                                        <img src="/assets/search.png" alt="Search" title="Search"/>
                                     </button>
                                 </div>
                             </div>
@@ -112,7 +112,7 @@ const Homepage = () => {
                     <div className="box-column">
                         <a href="/knots/types" className="box" style={{ backgroundColor: "#5192A5" }}>
                             <div className="icon">
-                                <img src="/assets/home-type.png" alt="Type Icon" />
+                                <img src="/assets/home-type.png" title="Knots by Type" alt="Knots by Type" />
                             </div>
                             <div className="main-text">
                                 <span className="big-text">Knots by Type</span>
@@ -121,7 +121,7 @@ const Homepage = () => {
                         </a>
                         <a href="/knots/activities" className="box" style={{ backgroundColor: "#0d6287" }}>
                             <div className="icon">
-                                <img src="/assets/home-activity.png" alt="Activity Icon" />
+                                <img src="/assets/home-activity.png" title="Knots by Activity" alt="Knots by Activity" />
                             </div>
                             <div className="main-text">
                                 <span className="big-text">Knots by Activity</span>

@@ -220,7 +220,7 @@ const ContactUs = () => {
         {/* Breadcrumb */}
         <nav className="breadcrumb">
           <a href="/" className="breadcrumb-link">
-            <img src="/assets/home-icon.png" alt="Home Icon" />
+            <img src="/assets/home-icon.png" alt="Home Icon" title="Home" />
             <span>Home</span>
           </a>
           &gt;
@@ -238,7 +238,7 @@ const ContactUs = () => {
             <div className="info-item">
               <div className="icon-box">
                 <span className="icon">
-                  <img src="/assets/call.png" alt="call" />
+                  <img src="/assets/call.png" alt="Phone" title="Phone" />
                 </span>
               </div>
               <div className="info-content">
@@ -251,7 +251,7 @@ const ContactUs = () => {
             <div className="info-item">
               <div className="icon-box">
                 <span className="icon">
-                  <img src="/assets/address.png" alt="address" />
+                  <img src="/assets/address.png" alt="Email Address" title="Email Address" />
                 </span>
               </div>
               <div className="info-content">
@@ -264,7 +264,7 @@ const ContactUs = () => {
             <div className="info-item">
               <div className="icon-box">
                 <span className="icon">
-                  <img src="/assets/location.png" alt="location" />
+                  <img src="/assets/location.png" alt="Location" title="Location" />
                 </span>{" "}
                 {/* location icon */}
               </div>
@@ -298,20 +298,20 @@ const ContactUs = () => {
               <div className="social-icons">
                 <a href="https://x.com/jjahnia" target="_blank" >
                   <div className="social-icon">
-                    <img src="/assets/twitter.png" alt="Twitter Icon" />
+                    <img src="/assets/twitter.png" alt="Twitter/X" title="Twitter/X" />
                   </div>
                 </a>
                 {/* Twitter */}
 
                 <a href="https://www.facebook.com/daone.datloveyou" target="_blank" >
                   <div className="social-icon">
-                  <img src="/assets/facebook.png" alt="Facebook" />
+                  <img src="/assets/facebook.png" alt="Facebook" title="Facebook" />
                 </div></a>
                 {/* Facebook */}
 
                 <a href="https://www.instagram.com/vyn_tiq/" target="_blank" >
                 <div className="social-icon "target="_blank" >
-                  <img src="/assets/instagram.png" alt="instagram" />
+                  <img src="/assets/instagram.png" alt="Instagram" title="Instagram" />
                 </div></a>
                 {/* Instagram */}
               </div>

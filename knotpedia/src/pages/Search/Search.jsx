@@ -64,7 +64,7 @@ const Search = () => {
                 {/* Breadcrumb and Search Bar */}
                 <nav className="breadcrumb">
                     <a href="/" className="breadcrumb-link">
-                        <img src="/assets/home-icon.png" alt="Home Icon" />
+                        <img src="/assets/home-icon.png" alt="Home Icon" title="Home" />
                         <span>Home</span>
                     </a>
                     &gt;
@@ -81,10 +81,10 @@ const Search = () => {
                             onKeyPress={handleKeyPress}
                         />
                         {searchTerm && (
-                            <span className="home-clear-icon" onClick={() => setSearchTerm("")}>✖</span>
+                            <span className="home-clear-icon" title="Clear" onClick={() => setSearchTerm("")}>✖</span>
                         )}
                         <button className="home-search-button" onClick={handleSearch}>
-                            <img src="/assets/search.png" alt="Search" />
+                            <img src="/assets/search.png" alt="Search" title="Search" />
                         </button>
                     </div>
                 </div>

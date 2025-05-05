@@ -21,7 +21,7 @@ const AboutUs = () => {
           {/* Breadcrumb */}
           <nav className="breadcrumb">
             <a href="/" className="breadcrumb-link">
-              <img src="/assets/home-icon.png" alt="Home Icon" />
+              <img src="/assets/home-icon.png" alt="Home Icon" title="Home"/>
               <span>Home</span>
             </a>
             &gt; <span className="active">About Us</span>

@@ -62,9 +62,10 @@ const Activities = () => {
     const filteredKnots = knots
         .filter(knot => {
             const matchesSearch = knot.name.toLowerCase().includes(searchText.toLowerCase());
-            const matchesActivity = activityFilter ?
-                knot.tags?.includes(activityFilter) : true;
-            return matchesSearch && matchesActivity;
+            const matchesActivity = activityFilter
+            ? knot.tags?.includes(activityFilter)
+            : Array.isArray(knot.tags) && knot.tags.length > 0;
+                    return matchesSearch && matchesActivity;
         })
         .sort((a, b) => {
             return sortOrder === "asc"
@@ -90,7 +91,7 @@ const Activities = () => {
             <div className="container">
                 <nav className="breadcrumb">
                     <a href="/" className="breadcrumb-link">
-                        <img src="/assets/home-icon.png" alt="Home Icon" />
+                        <img src="/assets/home-icon.png" alt="Home Icon" title="Home"/>
                         <span>Home</span>
                     </a>
                     &gt;
@@ -102,7 +103,7 @@ const Activities = () => {
                 <aside className="sidebar horizontal-sidebar">
                     <div className="sidebarTitle" style={{ display: 'flex' }}>
                         <div className="icon">
-                            <img src="/assets/home-activity.png" alt="Activity Icon" />
+                            <img src="/assets/home-activity.png" alt="Activity Icon" title="Activity"/>
                         </div>
                         <h2>Activities</h2>
                     </div>
@@ -158,12 +159,6 @@ const Activities = () => {
                             onClick={() => { setActivityFilter("household"); setActivityLabel("Household"); }}
                         >
                             Household
-                        </li>
-                        <li
-                            className={activityFilter === "neckties" ? "active-sidebar" : ""}
-                            onClick={() => { setActivityFilter("neckties"); setActivityLabel("Neckties"); }}
-                        >
-                            Neckties
                         </li>
                         <li
                             className={activityFilter === "rope care" ? "active-sidebar" : ""}

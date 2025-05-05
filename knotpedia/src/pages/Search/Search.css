@@ -117,10 +117,6 @@
     }
     .search-name {
         font-size: 1.1rem;
-        border: 1px solid red;
-    }
-    .search-card .button.red {
-        border: 1px solid red;
     }
 }
 

@@ -77,7 +77,7 @@ const Terminology = () => {
         {/* Breadcrumb */}
         <nav className="breadcrumb">
           <a href="/" className="breadcrumb-link">
-            <img src="/assets/home-icon.png" alt="Home Icon" />
+            <img src="/assets/home-icon.png" alt="Home Icon" title="Home" />
             <span>Home</span>
           </a>
           &gt;
@@ -100,6 +100,8 @@ const Terminology = () => {
             {searchTerm && (
               <button
                 className="clear-search-icon"
+                title="Clear"
+                alt="Clear"
                 onClick={() => setSearchTerm("")} // Clear search term
                 aria-label="Clear search"
               >
@@ -111,7 +113,7 @@ const Terminology = () => {
               onClick={() => console.log("Search triggered")} // Optional: Add additional logic here
               aria-label="Search"
             >
-              <img src="/assets/search.png" alt="Search" />
+              <img src="/assets/search.png" alt="Search" title="Search"/>
             </button>
           </div>
         </div>

@@ -81,8 +81,10 @@ const Types = () => {
     const filteredKnots = knots
         .filter(knot => {
             const matchesSearch = knot.name.toLowerCase().includes(searchText.toLowerCase());
-            const matchesType = typeFilter ? knot.tags?.includes(typeFilter) : true;
-            return matchesSearch && matchesType;
+            const matchesType = typeFilter
+            ? knot.tags?.includes(typeFilter)
+            : Array.isArray(knot.tags) && knot.tags.length > 0;
+                    return matchesSearch && matchesType;
         })
         .sort((a, b) => {
             return sortOrder === "asc"
@@ -110,7 +112,7 @@ const Types = () => {
                 {/* Breadcrumb */}
                 <nav className="breadcrumb">
                     <a href="/" className="breadcrumb-link">
-                        <img src="/assets/home-icon.png" alt="Home Icon" />
+                        <img src="/assets/home-icon.png" alt="Home Icon" title="Home" />
                         <span>Home</span>
                     </a>
                     &gt;
@@ -122,7 +124,7 @@ const Types = () => {
                 <aside className="sidebar horizontal-sidebar">
                     <div className="sidebarTitle" style={{ display: 'flex' }}>
                         <div className="icon">
-                            <img src="/assets/home-type.png" alt="Type Icon" />
+                            <img src="/assets/home-type.png" alt="Type Icon" title="Type"/>
                         </div>
                         <h2>Types</h2>
                     </div>

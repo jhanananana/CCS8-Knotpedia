@@ -8,20 +8,20 @@ const Footer = () => {
         {/* Logo and description */}
         <div className="footer-brand">
           <a href="/">
-            <img src="/assets/logo.png" alt="Knotpedia Logo" className="footer-logo" />
+            <img src="/assets/logo.png" alt="Knotpedia Logo" title="Knotpedia" className="footer-logo" />
           </a>
           <p className="footer-description">
             Knotpedia — your trusted guide for exploring and mastering knots for every need and adventure.
           </p>
           <div className="social-links">
             <a href="https://x.com/jjahnia" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/twitter.png" alt="Twitter" className="social-icon" />
+              <img src="/assets/twitter.png" alt="Twitter/X" title="Twitter/X" className="social-icon" />
             </a>
             <a href="https://www.instagram.com/vyn_tiq/" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/instagram.png" alt="Instagram" className="social-icon" />
+              <img src="/assets/instagram.png" alt="Instagram" title="Instagram" className="social-icon" />
             </a>
             <a href="https://www.facebook.com/daone.datloveyou" target="_blank" rel="noopener noreferrer">
-              <img src="/assets/facebook.png" alt="Facebook" className="social-icon" />
+              <img src="/assets/facebook.png" alt="Facebook" title="Facebook" className="social-icon" />
             </a>
           </div>
         </div>
