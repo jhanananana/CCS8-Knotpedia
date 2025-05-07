@@ -26,14 +26,18 @@
 
 .imgheadknot {
   width: 100%;
-  max-width: 1300px;
-  height: 400px;
+  height: auto;
+  max-height: 800px;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
   border-radius: 1rem;
+  background-color: #f3f4f6;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(20px);
 }
+
+
 
 
 /* Header */
@@ -245,21 +249,51 @@
 .ktutorial-content {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
   margin-top: 2rem;
+  gap: 1.25rem;
+  
+}
+@media (max-width: 768px) {
+  .knot-main-content {
+    flex-direction: column;
+    align-items: center; /* Ensures child elements (like sidebar) are centered */
+  }
+
+  .knot-sidebar {
+    position: relative;
+    top: 0;
+    width: 100%;
+    max-width: 500px; /* or any preferred max width */
+    margin: 2rem auto 0 auto; /* center horizontally with top margin */
+    padding: 1.5rem;
+  }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 414px) {
   .ktutorial-content {
     grid-template-columns: repeat(2, 1fr);
   }
+  .imgheadknot {
+    max-height: 250px;
+    border-radius: 0.75rem;
+  }
 }
+@media (min-width: 1024px) {
+  .imgheadknot {
+    height: 400px;           /* Increase height */
+    max-height: 900px;       /* Prevent it from becoming too tall */
+    border-radius: 1rem;
+  }
+}
+
+
 
 .kstep {
   background-color: #f9f9f9;
   border-radius: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-  padding: 1.25rem;
+  padding: 1rem;
+  margin: 0 auto;
   text-align: left;
   transition: transform 0.2s ease;
 }
