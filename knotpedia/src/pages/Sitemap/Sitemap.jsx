@@ -2,112 +2,113 @@ import React from "react";
 import "./Sitemap.css";
 import Navbar from "../Components/Navbar.jsx";
 import Footer from "../Components/Footer.jsx";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+
 const Sitemap = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
+
       <div className="POPPINS-sitemap">
-        {/* About Section */}
-        <div className="subHeader blueCover">
+        <section className="subHeader blueCover">
           <div className="container">
-            <h1><b>Site Map</b></h1>
+            <h1><strong>Site Map</strong></h1>
             <p className="p-width">
               Looking for something specific? Explore our sitemap to easily navigate all our pages.
             </p>
           </div>
-        </div>
+        </section>
 
         <div className="container">
-        {/* Breadcrumb */}
-        <nav className="breadcrumb">
-          <a href="/" className="breadcrumb-link">
-            <img src="/assets/home-icon.png" alt="Home Icon" title="Home" />
-            <span>Home</span>
-          </a>
-          &gt;
-          <span className="active">Site Map</span>
-        </nav>
+          <nav className="breadcrumb" aria-label="breadcrumb">
+            <Link to="/" className="breadcrumb-link">
+              <img src="/assets/home-icon.png" alt="Home Icon" />
+              <span>Home</span>
+            </Link>
+            &gt; <span className="active">Site Map</span>
+          </nav>
 
           <main className="sitemap-content-container">
-            {/* KNOTPEDIA */}
             <div className="sitemap-policy-cards">
+              
+              {/* Knotpedia Section */}
               <div className="sitemap-card">
-                <h4 className="sitemap-title-card">Knotpedia</h4>
+                <h3 className="sitemap-title-card">Knotpedia</h3>
                 <ul className="sitemap-links">
-                  <a href="/"><li className="siteColor">Home</li></a>
-                  <Link to="/about"><li>About Us</li></Link>
-                  <Link to="/contact"><li>Contact Us</li></Link>
-                  <a href="/"><li>Explore Knots</li></a>
+                  <li><Link to="/">Home</Link></li>
+                  <li><Link to="/about">About Us</Link></li>
+                  <li><Link to="/contact">Contact Us</Link></li>
+                  <li><Link to="/knots/all">Explore Knots</Link></li>
                 </ul>
               </div>
 
-              {/* LEGAL */}
-              <div className="sitemap-card">
-                <h4 className="sitemap-blue">Legal</h4>
+              {/* Legal Section */}
+              <div className="sitemap-card sitemap-blue">
+                <h3>Legal</h3>
                 <ul className="sitemap-links">
-                  <a href="/FAQs"><li>FAQ</li></a>
-                  <a href="/termsandconditions"><li>Terms And Conditions</li></a>
-                  <a href="/privacypolicy"><li>Privacy Policy</li></a>
+                  <li><Link to="/FAQs">FAQ</Link></li>
+                  <li><Link to="/termsandconditions">Terms and Conditions</Link></li>
+                  <li><Link to="/privacypolicy">Privacy Policy</Link></li>
                 </ul>
               </div>
 
-              {/* SOCIAL MEDIA */}
-              <div className="sitemap-card">
-                <h4 className="sitemap-red">Social Media</h4>
+              {/* Social Media Section */}
+              <div className="sitemap-card sitemap-red">
+                <h3>Social Media</h3>
                 <ul className="sitemap-links">
-                  <a href="https://www.facebook.com/daone.datloveyou"><li>Facebook</li></a>
-                  <a href="/"><li>Instagram</li></a>
-                  <a href="/"><li>Youtube</li></a>
+                  <li><a href="https://www.facebook.com/daone.datloveyou" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+                  <li><a href="/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                  <li><a href="/" target="_blank" rel="noopener noreferrer">YouTube</a></li>
                 </ul>
               </div>
 
-              {/* EXPLORE KNOTS */}
-              <div className="sitemap-card">
-                <h4 className="sitemap-red">Explore Knots</h4>
+              {/* Explore Section */}
+              <div className="sitemap-card sitemap-red">
+                <h3>Explore Knots</h3>
                 <ul className="sitemap-links">
-                <Link to="/knots/activities"><li>Knots by Activity</li></Link>
-                <Link to="/knots/types"><li>Knots by Type</li></Link>
-                <Link to="/terminology"><li>Terminology</li></Link>
-
+                  <li><Link to="/knots/activities">Knots by Activity</Link></li>
+                  <li><Link to="/knots/types">Knots by Type</Link></li>
+                  <li><Link to="/terminology">Terminology</Link></li>
                 </ul>
               </div>
 
-              {/* KNOTS BY ACTIVITY */}
-              <div className="sitemap-card">
-                <h4 className="sitemap-red">Knots by Activity</h4>
+              {/* Knots by Activity Section */}
+              <div className="sitemap-card sitemap-red">
+                <h3>Knots by Activity</h3>
                 <ul className="sitemap-links">
-                <Link to="/knots/activities/arborist"><li>Arborist</li></Link>
-                <Link to="/knots/activities/boating"><li>Boating</li></Link>
-                <Link to="/knots/activities/climbing"><li>Climbing</li></Link>
-                <Link to="/knots/activities/fishing"><li>Fishing</li></Link>
-                <Link to="/knots/activities/horse%20and%20farm"><li>Horse and Farm</li></Link>
-                <Link to="/knots/activities/rope%20care"><li>Rope Care</li></Link>
-                <Link to="/knots/activities/scouting"><li>Scouting</li></Link>
-                <Link to="/knots/activities/search%20and%20rescue"><li>Search and Rescue</li></Link>
-                <Link to="/knots/activities/surgical"><li>Surgical</li></Link>
+                  <li><Link to="/knots/activities/arborist">Arborist</Link></li>
+                  <li><Link to="/knots/activities/boating">Boating</Link></li>
+                  <li><Link to="/knots/activities/climbing">Climbing</Link></li>
+                  <li><Link to="/knots/activities/fishing">Fishing</Link></li>
+                  <li><Link to="/knots/activities/horse%20and%20farm">Horse and Farm</Link></li>
+                  <li><Link to="/knots/activities/rope%20care">Rope Care</Link></li>
+                  <li><Link to="/knots/activities/scouting">Scouting</Link></li>
+                  <li><Link to="/knots/activities/search%20and%20rescue">Search and Rescue</Link></li>
+                  <li><Link to="/knots/activities/surgical">Surgical</Link></li>
                 </ul>
               </div>
 
-              {/* KNOTS BY TYPE */}
-              <div className="sitemap-card">
-                <h4 className="sitemap-red">Knots by Type</h4>
+              {/* Knots by Type Section */}
+              <div className="sitemap-card sitemap-red">
+                <h3>Knots by Type</h3>
                 <ul className="sitemap-links">
-                <Link to="/knots/types/basic"><li>Basic</li></Link>
-                <Link to="/knots/types/bends"><li>Bends</li></Link>
-                <Link to="/knots/types/end%20loops"><li>End Loop</li></Link>
-                <Link to="/knots/types/hitches"><li>Hitches</li></Link>
-                <Link to="/knots/types/mats"><li>Mats</li></Link>
-                <Link to="/knots/types/mid%20loops"><li>Mid Loop</li></Link>
-                <Link to="/knots/types/quick%20release"><li>Quick Release</li></Link>
-                <Link to="/knots/types/slide%20and%20grip"><li>Slide and Grip</li></Link>
-                <Link to="/knots/types/splicing"><li>Splicing</li></Link>
-                <Link to="/knots/types/stoppers"><li>Stoppers</li></Link>
+                  <li><Link to="/knots/types/basic">Basic</Link></li>
+                  <li><Link to="/knots/types/bends">Bends</Link></li>
+                  <li><Link to="/knots/types/end%20loops">End Loop</Link></li>
+                  <li><Link to="/knots/types/hitches">Hitches</Link></li>
+                  <li><Link to="/knots/types/mats">Mats</Link></li>
+                  <li><Link to="/knots/types/mid%20loops">Mid Loop</Link></li>
+                  <li><Link to="/knots/types/quick%20release">Quick Release</Link></li>
+                  <li><Link to="/knots/types/slide%20and%20grip">Slide and Grip</Link></li>
+                  <li><Link to="/knots/types/splicing">Splicing</Link></li>
+                  <li><Link to="/knots/types/stoppers">Stoppers</Link></li>
                 </ul>
               </div>
+
             </div>
           </main>
         </div>
+
         <Footer />
       </div>
     </div>

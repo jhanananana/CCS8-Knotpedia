@@ -38,11 +38,17 @@ const Navbar = () => {
       <div className="navbar-left">
 
         <Link to="/">
-          <img src="/assets/logo.png" className="navbar-logo" alt="Knotpedia Logo"  title="Knotpedia Home"/>
+          <img src="/assets/logo.png" className="navbar-logo" alt="Knotpedia Logo" title="Knotpedia Home" />
         </Link>
-        <button className="menu-icon" title="Menu" onClick={() => setMenuOpen(!menuOpen)}>
-          <b>☰</b>
-        </button>
+        <div className="navbar-actions">
+          <button className="menu-icon" title="Menu" onClick={() => setMenuOpen(!menuOpen)}>
+            <b>☰</b>
+          </button>
+          <a href="/search"><button className="search-button mobile-only" onClick={() => setShowSearch(!showSearch)} title="Search">
+            <img src="/assets/search red.png" alt="Search" />
+          </button></a>
+        </div>
+
       </div>
       <ul className={`navbar-links ${menuOpen ? "mobile show" : ""}`}>
         <li>
@@ -126,13 +132,17 @@ const Navbar = () => {
           </Link>
         </li>
 
-        <div className="navbar-right">
-          <a href="/search">
-            <button className="search-button" onClick={() => setShowSearch(!showSearch)}>
-              <img src="/assets/search red.png" alt="Search" title="Search" />
-            </button>
-          </a>
-        </div>
+        <li>
+          {!menuOpen && (
+            <div className="navbar-right">
+              <a href="/search">
+                <button className="search-button" onClick={() => setShowSearch(!showSearch)}>
+                  <img src="/assets/search red.png" alt="Search" title="Search" />
+                </button>
+              </a>
+            </div>
+          )}
+        </li>
       </ul>
     </nav>
 

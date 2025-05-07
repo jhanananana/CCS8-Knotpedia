@@ -1,80 +1,77 @@
 .POPPINS-sitemap {
-  font-family: 'Poppins';
+  font-family: 'Poppins', sans-serif;
 }
 
-.sitemap {
-  background-image: url('/public/assets/home-header.png');
+.subHeader .container h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.sitemap-highlight {
-  color: #0D6287;
-}
-
-.sitemap-highlight-pedia {
-  color: #B54D49;
+.sitemap-content-container {
+  padding: 2rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .sitemap-policy-cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* or center */
   gap: 2rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-@media (max-width: 600px) {
-  .sitemap-card {
-    width: 100%;
-  }
+  justify-content: space-between;
 }
 
 .sitemap-card {
-  flex: 0 1 calc(30.333% - 2rem); /* 3 cards per row with spacing */
-  max-width: calc(30.333% - 2rem);
-  min-width: 280px;
-  text-align: left;
-  height: auto;
-  padding: 1rem;
-  background-color: #eee;
-  border-radius: 15px;
-  box-shadow: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 calc(30% - 2rem);
+  min-width: 260px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
 }
 
-.sitemap-card li{
-  font-size: 1.2rem;
-}
-
-.sitemap-card h4 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  font-family: 'Poppins Bold';
-  margin: 0;
+.sitemap-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.4rem;
   color: #B54D49;
-  padding: 0.5rem;
+  border-bottom: 2px solid #B54D49;
+  padding-bottom: 0.25rem;
 }
 
-.sitemap-card p {
-  color: white;
-  margin: 1rem;
+.sitemap-card.sitemap-red h3 {
+  color: #B54D49;
+  border-color: #B54D49;
+}
+
+.sitemap-links {
+  list-style: disc;
   padding: 0;
-  font-size: 1rem;
 }
 
-.sitemap-blue {
-  color: #2A4552;
+.sitemap-links li {
+  margin: 0.5rem 2rem;
+  color: #0D6287;
 }
 
 .sitemap-links a {
+  text-decoration: none;
   color: #0D6287;
+  font-size: 1rem;
+  transition: color 0.2s ease;
 }
 
 .sitemap-links a:hover {
   text-decoration: underline;
+  color: #B54D49;
 }
 
-.sitemap-links li {
-  margin: 0.5rem 1rem;
+@media (max-width: 768px) {
+  .sitemap-policy-cards {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .sitemap-card {
+    width: 100
+  }
 }

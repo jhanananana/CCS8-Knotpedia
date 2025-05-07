@@ -84,7 +84,7 @@ const Homepage = () => {
                                         className="home-search-button"
                                         onClick={handleSearch} // Use the search handler here
                                     >
-                                        <img src="/assets/search.png" alt="Search" title="Search"/>
+                                        <img src="/assets/search red.png" alt="Search" title="Search"/>
                                     </button>
                                 </div>
                             </div>
@@ -102,7 +102,6 @@ const Homepage = () => {
             <div className="container">
                 <section className="section-features flex-align-start">
                     <div className="text-column">
-                        <span className="title-tag blueBg">Categories</span>
                         <h2>Begin Your <span className="blue-text">Knot</span> <span className="red-text">Journey</span></h2>
                         <p>Master the art of tying with confidence by exploring a variety of knots suited for different needs.</p>
                         <a href="/knots/all">
@@ -134,29 +133,27 @@ const Homepage = () => {
             </div>
 
             <section className="featured-knots">
-                <span className="title-tag redBg">FEATURED</span>
                 <h2>Must-Know Knots</h2>
-                <p>
-                    These are the essential knots that everyone should learn for
-                    daily tasks, outdoor adventures, and emergency situations.
-                </p>
                 <div className="container">
-                    <div className="knots-container">
+                <a href="/knots/all">
+                    <button className="button blue">View All Knots</button>
+                </a>
+                    <div className="allknots-container">
                         {knots.length > 0 && (
-                            shuffleArray([...knots]) // Create a copy and shuffle
-                                .slice(0, 8) // Take first 8 after shuffling
+                            shuffleArray([...knots]) 
+                                .slice(0, 8)
                                 .map((knot) => (
                                     <Link
                                         to={`/knot/${knot.name}`}
                                         state={{ knot }}
-                                        className="knot-card"
+                                        className="knots-card"
                                         key={knot.id}
                                     >
-                                        <div className="knot-image">
+                                        <div className="knots-image">
                                             <img src={knot.image} alt={knot.name} />
                                         </div>
-                                        <h3 className="knot-name">{knot.name}</h3>
-                                        <p className="featured-knot-description">{knot.description}</p>
+                                        <h3 className="knots-name">{knot.name}</h3>
+                                        <p style={{fontSize: '1.1rem'}} className="knots-description">{knot.description}</p>
                                         <div className="button-container">
                                             <button className="button red">View Knot</button>
                                         </div>
@@ -165,9 +162,6 @@ const Homepage = () => {
                         )}
                     </div>
                 </div>
-                <a href="/knots/all">
-                    <button className="button blue">View All Knots</button>
-                </a>
             </section>
 
             <Footer />

@@ -1,69 +1,120 @@
 .terms-h {
-    background-color: #F2F2F2;
-    background-size: cover;
-    background-position: center;
-    color: black;
-    padding: 9rem 5rem;
-    text-align: left;
+  background-color: #F2F2F2;
+  background-size: cover;
+  background-position: center;
+  color: black;
+  padding: 9rem 5rem;
+  text-align: left;
+}
+
+.breadcrumb-terms {
+  margin-top: 5.5%;
+}
+
+.Header-terms {
+  width: 100vw;
+  background-color: #f2f2f2;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.terms-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px;
+  background: white;
+}
+
+.text-Container {
+  max-width: 100%;
+  margin: 0rem auto 3rem auto;
+  padding: 2rem 7rem 2rem 7rem;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.sectionText {
+  margin-bottom: 3rem;
+}
+
+.sectionText h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1.4rem;
+  border-bottom: 2px solid;
+  padding-bottom: 0.25rem;
+}
+
+.red {
+  color: #b54d49;
+
+}
+
+.blue {
+  color: #0d6287;
+}
+
+.list {
+  list-style-type: disc;
+  padding-left: 10px;
+  margin-left: 3rem;
+  line-height: 2;
+  color: #202020;
+}
+
+.list a {
+  color: #2563eb;
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 1024px) {
+  .terms-h {
+    padding: 6rem 3rem;
   }
-  
-  .breadcrumb-terms {
-    margin-top: 5.5%;
-  }
-  
-  .Header-terms {
-    width: 100vw;
-    /* Ensure it takes the full viewport width */
-    background-color: #f2f2f2;
-    /* Light gray background */
-    padding: 40px 0;
-    /* Padding only top and bottom */
-    text-align: center;
-  
-  }
-  
-  .terms-container {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 10px;
-    background: white;
-  }
-  
+
   .text-Container {
-    max-width: 100%;
-    margin: 0rem auto 3rem auto;
-    padding: 2rem 7rem 2rem 7rem;
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 2rem 3rem;
   }
-  
-  .sectionText {
-    margin-bottom: 3rem;
-  }
-  
-  .sectionText h3 {
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .red {
-    color: #b54d49;
-  
-  }
-  .blue {
-    color: #0d6287;
-  }
-  
+
   .list {
-    list-style-type: disc;
-    padding-left: 10px;
-    margin-left: 3rem;
-    color: black;
-    /* Gray-700 */
+    margin-left: 2rem;
   }
-  
-  .list a {
-    color: #2563eb;
-    text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .terms-h {
+    padding: 4rem 2rem;
+    text-align: center;
   }
+
+  .text-Container {
+    padding: 1.5rem 2rem;
+  }
+
+  .sectionText h3 {
+    font-size: 1.3rem;
+  }
+
+  .list {
+    margin-left: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .terms-h {
+    padding: 3rem 1rem;
+  }
+
+  .text-Container {
+    padding: 1.5rem 2rem;
+  }
+
+  .sectionText h3 {
+    font-size: 1.2rem;
+  }
+
+  .list {
+    margin-left: 1rem;
+    padding-left: 1rem;
+  }
+}

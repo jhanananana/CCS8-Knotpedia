@@ -28,22 +28,20 @@ const AboutUs = () => {
           </nav>
 
           <div className="benefits-container">
-            <h2>How <span className="blue">Knot</span><span className="red">pedia</span> Helps You</h2>
+            <h3 style={{textAlign: 'left'}}>How <span className="blue">Knot</span><span className="red">pedia</span> Helps You</h3>
+            <hr></hr>
             <div className="help-container">
               <div className="help-item">
-                <img src="/assets/home-type.png" className="help-icon blueBg" alt="Type Icon" />
                 <h3 style={{color: '#0d6287'}}>Efficiency</h3>
                 <p>Our tutorials save you time by teaching knots quickly, without the confusion.</p>
               </div>
               <div className="help-item">
-                <img src="/assets/home-type.png" className="help-icon lightblueBg" alt="Type Icon" />
-                <h3 style={{color: '#5192a5'}} className="">Practicality</h3>
+                <h3 style={{color: '#5192a5'}}>Practicality</h3>
                 <p>Gain real-world skills you can use for camping, crafting, work, and everyday life.</p>
               </div>
               <div className="help-item">
-                <img src="/assets/home-type.png" className="help-icon redBg" alt="Type Icon" />
-                <h3 style={{color: '#b54d49'}} >Clarity</h3>
-                <p>Knotpedia offers easy-to-follow guides that make learning knots clear and stress-free for everyone.</p>
+                <h3 style={{color: '#b54d49'}}>Clarity</h3>
+                <p>Gain real-world skills you can use for camping, crafting, work, and everyday life.</p>
               </div>
             </div>
           </div>
@@ -59,7 +57,7 @@ const AboutUs = () => {
 
                 </h2>
                 At <strong>Knotpedia</strong>, we’re here to make knot-tying easy and fun for everyone.
-                With simple guides and step-by-step tutorials, we help beginners learn the basics and give experts new ideas to explore.
+                With simpla guides and step-by-step tutorials, we help beginners learn the basics and give experts new ideas to explore.
               </div>
             </div>
           </div>
@@ -72,7 +70,7 @@ const AboutUs = () => {
                   </h2>
                 </h2>
                 We dream of a world where tying knots feels easy and natural for everyone.
-                By sharing clear lessons and friendly visuals, Knotpedia makes learning fast, fun, and frustration-free.
+                By sharing clear lessons and friendly visuals, <b>Knotpedia</b> makes learning fast, fun, and frustration-free.
               </div>
               <img src="/assets/knot-activity.png" alt="Knot activity" />
 
@@ -80,6 +78,7 @@ const AboutUs = () => {
           </div>
           <div className="card-container">
             <h3 style={{ textAlign: "center" }}>Help & Legal Information</h3>
+            <hr></hr>
             <div className="policy-cards">
               <div className="card" style={{ backgroundColor: "#0d6287" }}>
                 <a href="/FAQs" title="Frequently Asked Questions">

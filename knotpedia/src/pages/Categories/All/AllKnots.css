@@ -28,7 +28,7 @@
 }
 
 .results-info {
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: 'Poppins';
     color: #202020;
 }
@@ -100,40 +100,11 @@
 }
 
 .allknots-container.large {
-    grid-template-columns: repeat(3, 1fr);
-}
-
-.allknots-container.large .knots-name {
-    font-size: 1.6rem;
-    margin-top: 1rem;
-    margin-bottom: -1rem;
-}
-
-.allknots-container.large .knots-description {
-    font-size: 1.3rem;
-    padding-top: 0rem;
-}
-
-.allknots-container.large .knots-card .button.red {
-    font-size: 1.5rem;
-    margin-top: -1rem;
+    grid-template-columns: repeat(4, 1fr);
 }
 
 .allknots-container.small {
     grid-template-columns: repeat(5, 1fr);
-}
-
-.allknots-container.small .knots-description {
-    height: 90px;
-}
-
-.allknots-container.small .knots-name {
-    height: 40px;
-}
-
-.allknots-container.small .button.red {
-    font-size: 1rem;
-    padding: 0.5rem 0.8rem;
 }
 
 .knots-card:hover {
@@ -183,21 +154,9 @@
     color: #B54D49;
 }
 
-.knots-card:hover .knots-description {
-    color: #555;
-}
-
 .knots-card:focus-within {
     outline: 3px solid #0D6287;
     /* Focus indicator for accessibility */
-}
-
-.knots-card .button.red {
-    margin-top: auto;
-    /* Pushes the button to the bottom */
-    align-self: flex-start;
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
 }
 
 .horizontal-filters {
@@ -214,7 +173,8 @@
 
 .horizontal-filters .button.blue {
     margin-top: auto;
-    width: 150px;
+    width: 200px;
+    border-radius: 30px;
 }
 
 .horizontal-filters .dropdown {
@@ -302,12 +262,12 @@
     transform: rotate(180deg);
 }
 
-.allknots-description {
+/* .allknots-description {
     text-align: left;
     color: #353535;
     margin: 0 1rem;
     height: 20%;
-}
+} */
 
 .filter-container {
     display: flex;
@@ -354,6 +314,11 @@
 }
 
 @media (max-width: 768px) {
+    .knots-description {
+        padding: 0px;
+        font-size: 1px;
+        visibility: hidden;
+    }
 
     .dropbtn {
         width: 300px;
@@ -409,10 +374,6 @@
         grid-template-columns: repeat(4, 1fr);
     }
 
-    .allknots-container.small .knots-description {
-        display: none;
-    }
-
     .knot-search-button {
         position: absolute;
         right: 0.5rem;
@@ -447,8 +408,12 @@
         align-self: flex-start;
     }
 
+    .horizontal-filters {
+        display: flex;
+    }
+
     .horizontal-filters .button.blue {
-        width: auto;
+        width: 40%;
     }
 
     .dropbtn {
@@ -484,10 +449,6 @@
 
     }
 
-    .allknots-container .knots-description {
-        display: none;
-    }
-
     .allknots-container .knots-name {
         font-size: 1.1rem;
     }
@@ -499,10 +460,6 @@
 
     .horizontal-filters select {
         width: 80%;
-    }
-
-    .horizontal-filters {
-        display: flex;
     }
 
     .search-bar input {

@@ -8,30 +8,44 @@
     font-size: 1rem;
     cursor: pointer;
     z-index: 9999;
-    height: 60px;
-    width: 60px;
+    height: 50px;
+    width: 50px;
     opacity: 0;
     visibility: hidden;
     border: none;
     transition: border 0.1s, opacity 0.3s ease, background-color 0.2s, visibility 0.3s ease;
     display: flex;
-    justify-content: center; /* Centers the image horizontally */
-    align-items: center; /* Centers the image vertically */
-    box-shadow: 0 6px 18px rgba(216, 216, 216, 0.3);
-
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 6px 18px rgba(233, 233, 233, 0.5);
 }
 
 .back-to-top img {
-    width: 25px;  /* You can adjust this size */
-    height: auto; /* Maintains the aspect ratio */
+    width: 20px;
+    height: auto;
 }
 
 .back-to-top.show {
-    opacity: 0.9;
+    opacity: 0.6;
     visibility: visible;
 }
 
 .back-to-top:hover {
     background-color: #0D6287;
+    opacity: 1;
     box-shadow: 0 6px 18px rgba(216, 216, 216, 0.3);
+}
+
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        height: 50px;
+        width: 50px;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .back-to-top img {
+        width: 18px;
+    }
 }

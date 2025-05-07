@@ -55,7 +55,7 @@ const TermsAndConditions = () => {
                 <h3>3. Suggestions, Not Submissions</h3>
                 <ul className="list">
                   <li>Knotpedia does not accept user-submitted content, including tutorials, images, or videos.</li>
-                  <li>However, we welcome suggestions for new knots or improvements. If you have an idea, you can submit it through our <a href="/FAQ">FAQs</a> page.</li>
+                  <li>However, we welcome suggestions for new knots or improvements. If you have an idea, you can submit it through our <a href="/FAQs">FAQs</a> page.</li>
                 </ul>
               </section>
 

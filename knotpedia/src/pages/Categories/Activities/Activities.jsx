@@ -216,7 +216,7 @@ const Activities = () => {
                                         </div>
                                         <h3 className="knots-name">{knot.name}</h3>
                                         <p className="knots-description">{knot.description}</p>
-                                        <div style={{ marginTop: 'auto' }}>
+                                        <div style={{ marginTop: 'auto'}}>
                                             <button className="button red">View Knot</button>
                                         </div>
                                     </div>

@@ -35,9 +35,8 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
-  flex-direction: row; /* Ensure items are aligned horizontally */
+  flex-direction: row;
   flex-wrap: wrap;
-  /* border-radius: 3rem 3rem 0rem 0rem; */
 }
 
 .subHeader {
@@ -54,7 +53,6 @@
 .blueCover {
   background-color: #0D6287;
 }
-
 
 .home {
   background-image: url('/public/assets/home-header.png');
@@ -262,21 +260,14 @@ h3 {
   justify-content: left;
 }
 
-.knot-card {
-  background: white;
-  border-radius: 20px;
-  text-align: left;
-  border: 2px solid #eee;
-  overflow: hidden;
-  justify-content: space-between;
-  height: 100%; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
-}
-
 .knot-card h3 {
   color: #0D6287;
   margin: 1rem 0;
   font-size: 1.2rem;
+}
+
+.knot-image {
+  overflow: hidden;
 }
 
 .knot-image img {
@@ -295,22 +286,13 @@ h3 {
   transform: scale(1.2);
 }
 
-
-.knot-card:hover .knot-name {
-  color: #B54D49;
-}
-
-.knot-card:hover .knot-description {
-  color: #555;
-}
-
 .knot-card:focus-within {
-  outline: 3px solid #0D6287; /* Focus indicator for accessibility */
+  outline: 3px solid #0D6287; 
 }
 
 .knot-card .button.red {
-  margin-top: auto; /* Pushes to the bottom */
-  align-self: flex-start; /* optional: left-aligned */
+  margin-top: auto; 
+  align-self: flex-start;
 }
 
 .knot-image img {
@@ -329,22 +311,49 @@ h3 {
 
 
 .knot-name {
-  font-size: 1.2rem;
-  font-weight: bold;
+  padding: 1rem 1rem 0;
+  margin: 0;
   font-family: 'Poppins Bold';
-  margin: 10px 0px -5px 0px;
-  color: rgb(36, 36, 36);
-  padding: 0 1rem;
-  height: 40px;
+  color: #0D6287;
+  background-color: white;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+  position: relative;
+  z-index: 2;
 }
 
 .featured-knot-description {
-  color: #353535;
-  margin: 1rem 1rem;
-  padding: 0px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  padding: 1rem;
+  background: #0D6287;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  box-sizing: border-box;
+  overflow-y: auto;
+  margin: 0;
+  color: white;
   font-size: 1rem;
-  height: 70px;
-  text-align: left;
+  line-height: 1.5;
+}
+
+.knot-card:hover .knots-image {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.knot-card:hover .knots-description {
+  opacity: 1;
+  visibility: visible;
+}
+
+.knot-card:hover .button.red {
+  position: relative;
+  z-index: 3;
 }
 
 .button.red {
@@ -442,7 +451,11 @@ h3 {
   padding: 9px;
   border-radius: 100%;
   transform: translateX(0%);
-  background-color: #0D6287;
+  transition: all 0.2s ease-in-out;
+}
+
+.home-search-bar img:hover {
+  background-color: #ddd;
 }
 
 @media (max-width: 480px) {
@@ -450,14 +463,12 @@ h3 {
     width: 87%;
     margin: 0;
     padding: 0;
-    border: 1px solid yellow;
   }
 }
-/* Mobile: 1 knot per row */
+
 @media (max-width: 768px) {
   .knots-container {
     display: grid;
-    /* grid-template-columns: repeat(1, 1fr);  */
     padding: 0;
     box-sizing: border-box;
   }
@@ -515,7 +526,7 @@ h3 {
   }
 
   .section-features {
-    padding: 1.5rem 1rem;
+    padding: 0rem 1rem;
   }
   
   .box .main-text {
