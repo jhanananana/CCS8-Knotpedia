@@ -20,9 +20,11 @@ const AllKnots = () => {
     const [typeLabel, setTypeLabel] = useState("All Types");
     const [sortLabel, setSortLabel] = useState("Name (A – Z)");
     const [viewLabel, setViewLabel] = useState("Small (Default)");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchKnots = async () => {
+            setLoading(true); // <-- Start loading
             try {
                 const q = query(collection(db, "knots"), orderBy("name"));
                 const querySnapshot = await getDocs(q);
@@ -33,10 +35,13 @@ const AllKnots = () => {
                 setKnots(knotsData);
             } catch (error) {
                 console.error("Error fetching knots:", error);
+            } finally {
+                setLoading(false)
             }
         };
         fetchKnots();
     }, []);
+
 
     useEffect(() => {
         const dropdowns = document.querySelectorAll('.horizontal-filters select');
@@ -86,6 +91,10 @@ const AllKnots = () => {
         });
 
 
+    const capitalizeWords = (str) => {
+        return str.replace(/\b\w/g, (char) => char.toUpperCase());
+    };
+
     const handleViewChange = (value) => {
         setViewSize(value);
         setKnotsPerPage(value === "small" ? 15 : 12); // 15 for small, 12 for large
@@ -129,107 +138,120 @@ const AllKnots = () => {
 
                     {/* Horizontal Filters */}
                     <div className="horizontal-filters">
-                        <div >
-                            <div className="filter-label">Filter By: &nbsp;</div>
-
-                            <div className="dropdown">
-                                <button className="dropbtn">
-                                    {activityLabel}
-                                    <div className="chevron"></div> {/* Chevron icon */}
-                                </button>
-                                <div className="dropdown-content">
-                                    <a onClick={() => { setActivityFilter(""); setActivityLabel("All Activities"); }}>All Activities</a>
-                                    <a onClick={() => { setActivityFilter("arborist"); setActivityLabel("Arborist"); }}>Arborist</a>
-                                    <a onClick={() => { setActivityFilter("boating"); setActivityLabel("Boating"); }}>Boating</a>
-                                    <a onClick={() => { setActivityFilter("climbing"); setActivityLabel("Climbing"); }}>Climbing</a>
-                                    <a onClick={() => { setActivityFilter("decorative"); setActivityLabel("Decorative"); }}>Decorative</a>
-                                    <a onClick={() => { setActivityFilter("fishing"); setActivityLabel("Fishing"); }}>Fishing</a>
-                                    <a onClick={() => { setActivityFilter("horse and farm"); setActivityLabel("Horse & Farm"); }}>Horse & Farm</a>
-                                    <a onClick={() => { setActivityFilter("household"); setActivityLabel("Household"); }}>Household</a>
-                                    <a onClick={() => { setActivityFilter("rope care"); setActivityLabel("Rope Care"); }}>Rope Care</a>
-                                    <a onClick={() => { setActivityFilter("scouting"); setActivityLabel("Scouting"); }}>Scouting</a>
-                                    <a onClick={() => { setActivityFilter("search and rescue"); setActivityLabel("Search & Rescue"); }}>Search & Rescue</a>
-                                    <a onClick={() => { setActivityFilter("surgical"); setActivityLabel("Surgical"); }}>Surgical</a>
-                                </div>
-                            </div>
-                            &nbsp;
-
-                            <div className="dropdown">
-                                <button className="dropbtn">
-                                    {typeLabel}<br></br>
-                                    <div className="chevron"></div> {/* Chevron icon */}
-                                </button>
-                                <div className="dropdown-content">
-                                    <a onClick={() => { setTypeFilter(""); setTypeLabel("All Types"); }}>All Types</a>
-                                    <a onClick={() => { setTypeFilter("basic"); setTypeLabel("Basic"); }}>Basic</a>
-                                    <a onClick={() => { setTypeFilter("bends"); setTypeLabel("Bends"); }}>Bends</a>
-                                    <a onClick={() => { setTypeFilter("end loops"); setTypeLabel("End Loops"); }}>End Loops</a>
-                                    <a onClick={() => { setTypeFilter("hitches"); setTypeLabel("Hitches"); }}>Hitches</a>
-                                    <a onClick={() => { setTypeFilter("mats"); setTypeLabel("Mats"); }}>Mats</a>
-                                    <a onClick={() => { setTypeFilter("mid loops"); setTypeLabel("Mid Loops"); }}>Mid Loops</a>
-                                    <a onClick={() => { setTypeFilter("quick release"); setTypeLabel("Quick Release"); }}>Quick Release</a>
-                                    <a onClick={() => { setTypeFilter("slide and grip"); setTypeLabel("Slide & Grip"); }}>Slide & Grip</a>
-                                    <a onClick={() => { setTypeFilter("splicing"); setTypeLabel("Splicing"); }}>Splicing</a>
-                                    <a onClick={() => { setTypeFilter("stoppers"); setTypeLabel("Stoppers"); }}>Stoppers</a>
-                                </div>
-                            </div>
-                        </div>
-
+                        {/* Activity Filter */}
                         <div>
-                            <div className="filter-label">Sort By: &nbsp;</div>
-
-                            <div className="dropdown">
-                                <button className="dropbtn">
-                                    {sortLabel}
-                                    <div className="chevron"></div> {/* Chevron icon */}
-                                </button>
-                                <div className="dropdown-content">
-                                    <a onClick={() => {
-                                        setSortOrder("asc");
-                                        setSortLabel("Name (A – Z)");
-                                    }}>Name (A – Z)</a>
-
-                                    <a onClick={() => {
-                                        setSortOrder("desc");
-                                        setSortLabel("Name (Z – A)");
-                                    }}>Name (Z – A)</a>
-                                </div>
-                            </div>
+                            <label className="filter-label">
+                                Filter By: &nbsp;
+                                <select
+                                    className="dropdown"
+                                    value={activityFilter}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        setActivityFilter(value);
+                                        setActivityLabel(value ? capitalizeWords(value) : "All Activities");
+                                    }}
+                                >
+                                    <option value="">All Activities</option>
+                                    <option value="arborist">Arborist</option>
+                                    <option value="boating">Boating</option>
+                                    <option value="climbing">Climbing</option>
+                                    <option value="decorative">Decorative</option>
+                                    <option value="fishing">Fishing</option>
+                                    <option value="horse and farm">Horse & Farm</option>
+                                    <option value="household">Household</option>
+                                    <option value="rope care">Rope Care</option>
+                                    <option value="scouting">Scouting</option>
+                                    <option value="search and rescue">Search & Rescue</option>
+                                    <option value="surgical">Surgical</option>
+                                </select>
+                            </label>
                         </div>
 
+                        {/* Type Filter */}
                         <div>
-                            <div className="filter-label">View: &nbsp;</div>
-                            <div className="dropdown">
-                                <button className="dropbtn">
-                                    {viewLabel}
-                                    <div className="chevron"></div> {/* Chevron icon */}
-                                </button>
-                                <div className="dropdown-content">
-                                    <a onClick={() => {
-                                        handleViewChange("small");
-                                    }}>Small (Default)</a>
-                                    <a onClick={() => {
-                                        handleViewChange("large");
-                                    }}>Large</a>
-                                </div>
-
-                            </div>
+                            <label className="filter-label">
+                                <select
+                                    className="dropdown"
+                                    value={typeFilter}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        setTypeFilter(value);
+                                        setTypeLabel(value ? capitalizeWords(value) : "All Types");
+                                    }}
+                                >
+                                    <option value="">All Types</option>
+                                    <option value="basic">Basic</option>
+                                    <option value="bends">Bends</option>
+                                    <option value="end loops">End Loops</option>
+                                    <option value="hitches">Hitches</option>
+                                    <option value="mats">Mats</option>
+                                    <option value="mid loops">Mid Loops</option>
+                                    <option value="quick release">Quick Release</option>
+                                    <option value="slide and grip">Slide & Grip</option>
+                                    <option value="splicing">Splicing</option>
+                                    <option value="stoppers">Stoppers</option>
+                                </select>
+                            </label>
                         </div>
-                        <button className="blue button" onClick={handleClearFilters}>Clear All</button>
+
+                        {/* Sort Order */}
+                        <div>
+                            <label className="filter-label">
+                                Sort By:&nbsp;
+                                <select
+                                    className="dropdown"
+                                    value={sortOrder}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        setSortOrder(value);
+                                        setSortLabel(value === "asc" ? "Name (A – Z)" : "Name (Z – A)");
+                                    }}
+                                >
+                                    <option value="asc">Name (A – Z)</option>
+                                    <option value="desc">Name (Z – A)</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        {/* View Size */}
+                        <div>
+                            <label className="filter-label">
+                                View:&nbsp;
+                                <select
+                                    className="dropdown"
+                                    value={viewSize}
+                                    onChange={(e) => {
+                                        const value = e.target.value;
+                                        handleViewChange(value);
+                                    }}
+                                >
+                                    <option value="small">Small (Default)</option>
+                                    <option value="large">Large</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        {/* Clear Filters */}
+                        <button className="blue button" onClick={handleClearFilters}>
+                            Clear All
+                        </button>
                     </div>
+
 
                 </div>
                 <div className="results-and-search">
                     <div className="results-info">
-                        Showing results <b>{indexOfFirstKnot + 1}–
-                            {Math.min(indexOfLastKnot, filteredKnots.length)}</b>  of {filteredKnots.length}, Page {currentPage}
+                    <b>{filteredKnots.length}</b> Result{filteredKnots.length !== 1 ? 's' : ''} Found
                     </div>
                 </div>
 
                 {/* KNOT DISPLAY */}
-                {currentKnots.length === 0 ? (
+                {loading ? (
+                    <p className="loading"><b>Loading knots...</b></p>
+                ) : currentKnots.length === 0 ? (
                     <p className="empty-message"><b>No exact matches found</b><br />Please try again.</p>
                 ) : (
+
 
                     <div className={`allknots-container ${viewSize}`}>
 
@@ -246,14 +268,13 @@ const AllKnots = () => {
                                     </div>
                                     <h3 className="knots-name">{knot.name}</h3>
                                     <p className="knots-description">{knot.description}</p>
-                                    <div style={{ marginTop: 'auto'}}>
+                                    <div style={{ marginTop: 'auto' }}>
                                         <button className="button red">View Knot</button>
                                     </div>
                                 </div>
                             </Link>
                         ))}
                     </div>
-
                 )}
 
                 {filteredKnots.length > 0 && (

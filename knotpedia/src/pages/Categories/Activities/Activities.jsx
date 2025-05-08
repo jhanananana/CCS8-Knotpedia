@@ -19,6 +19,7 @@ const Activities = () => {
     const location = useLocation();
     const [activityFilter, setActivityFilter] = useState(activity || "");
     const [activityLabel, setActivityLabel] = useState(activity ? activity.charAt(0).toUpperCase() + activity.slice(1) : "All Activities");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (activityFilter) {
@@ -40,6 +41,7 @@ const Activities = () => {
 
     useEffect(() => {
         const fetchKnots = async () => {
+            setLoading(true); // <-- Start loading
             try {
                 const q = query(collection(db, "knots"), orderBy("name"));
                 const querySnapshot = await getDocs(q);
@@ -50,6 +52,8 @@ const Activities = () => {
                 setKnots(knotsData);
             } catch (error) {
                 console.error("Error fetching knots:", error);
+            } finally {
+                setLoading(false)
             }
         };
         fetchKnots();
@@ -59,13 +63,19 @@ const Activities = () => {
         setCurrentPage(1);
     }, [activityFilter, searchText]);
 
+    const activityTags = [
+        "arborist", "boating", "climbing", "decorative", "fishing",
+        "horse and farm", "household", "rope care", "scouting",
+        "search and rescue", "surgical"
+    ];
+
     const filteredKnots = knots
         .filter(knot => {
             const matchesSearch = knot.name.toLowerCase().includes(searchText.toLowerCase());
             const matchesActivity = activityFilter
-            ? knot.tags?.includes(activityFilter)
-            : Array.isArray(knot.tags) && knot.tags.length > 0;
-                    return matchesSearch && matchesActivity;
+                ? knot.tags?.includes(activityFilter)
+                : knot.tags?.some(tag => activityTags.includes(tag));
+            return matchesSearch && matchesActivity;
         })
         .sort((a, b) => {
             return sortOrder === "asc"
@@ -91,7 +101,7 @@ const Activities = () => {
             <div className="container">
                 <nav className="breadcrumb">
                     <a href="/" className="breadcrumb-link">
-                        <img src="/assets/home-icon.png" alt="Home Icon" title="Home"/>
+                        <img src="/assets/home-icon.png" alt="Home Icon" title="Home" />
                         <span>Home</span>
                     </a>
                     &gt;
@@ -103,7 +113,7 @@ const Activities = () => {
                 <aside className="sidebar horizontal-sidebar">
                     <div className="sidebarTitle" style={{ display: 'flex' }}>
                         <div className="icon">
-                            <img src="/assets/home-activity.png" alt="Activity Icon" title="Activity"/>
+                            <img src="/assets/home-activity.png" alt="Activity Icon" title="Activity" />
                         </div>
                         <h2>Activities</h2>
                     </div>
@@ -196,13 +206,16 @@ const Activities = () => {
 
                     <div className="results-and-search">
                         <div className="results-info">
-                            Showing results <b>{indexOfFirstKnot + 1}–{Math.min(indexOfLastKnot, filteredKnots.length)}</b> of {filteredKnots.length}, Page {currentPage}
+                        <b>{filteredKnots.length}</b> Result{filteredKnots.length !== 1 ? 's' : ''} Found
                         </div>
                     </div>
 
-                    {currentKnots.length === 0 ? (
+                    {loading ? (
+                        <p className="loading"><b>Loading knots...</b></p>
+                    ) : currentKnots.length === 0 ? (
                         <p className="empty-message"><b>No exact matches found</b><br />Please try again.</p>
                     ) : (
+
                         <div className={`allknots-container ${viewSize}`}>
                             {currentKnots.map((knot) => (
                                 <Link
@@ -216,7 +229,7 @@ const Activities = () => {
                                         </div>
                                         <h3 className="knots-name">{knot.name}</h3>
                                         <p className="knots-description">{knot.description}</p>
-                                        <div style={{ marginTop: 'auto'}}>
+                                        <div style={{ marginTop: 'auto' }}>
                                             <button className="button red">View Knot</button>
                                         </div>
                                     </div>

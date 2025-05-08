@@ -113,7 +113,7 @@ const Terminology = () => {
               onClick={() => console.log("Search triggered")} // Optional: Add additional logic here
               aria-label="Search"
             >
-              <img src="/assets/search.png" alt="Search" title="Search"/>
+              <img src="/assets/search red.png" alt="Search" title="Search" />
             </button>
           </div>
         </div>
@@ -162,12 +162,14 @@ const Terminology = () => {
 
         {/* Display loading message or knots */}
         {loading ? (
-          <div className="loading">Loading knots...</div>
+          <p className="loading"><b>Loading knots...</b></p>
+        ) : currentKnots.length === 0 ? (
+          <p className="empty-message"><b>No exact matches found</b><br />Please try again.</p>
         ) : (
           <>
             {/* Display the number of results */}
             <div className="results-count">
-              {filteredKnots.length} Results Found
+              <b>{filteredKnots.length}</b> Results Found
             </div>
 
             {/* Display knots in a grid */}

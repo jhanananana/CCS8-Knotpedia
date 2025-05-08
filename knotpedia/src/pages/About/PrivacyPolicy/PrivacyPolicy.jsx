@@ -43,7 +43,6 @@ const PrivacyPolicy = () => {
                 <h3>2. How We Use Your Information</h3>
                 <ul className="list">
                   <li>To respond to your suggestions or questions.</li>
-                  <li>To analyze website traffic and improve our content.</li>
                   <li>We do not sell, rent, or share your personal information with third parties.</li>
                 </ul>
               </section>

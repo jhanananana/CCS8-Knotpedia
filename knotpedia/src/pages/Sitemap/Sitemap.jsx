@@ -30,7 +30,7 @@ const Sitemap = () => {
 
           <main className="sitemap-content-container">
             <div className="sitemap-policy-cards">
-              
+
               {/* Knotpedia Section */}
               <div className="sitemap-card">
                 <h3 className="sitemap-title-card">Knotpedia</h3>
@@ -46,7 +46,7 @@ const Sitemap = () => {
               <div className="sitemap-card sitemap-blue">
                 <h3>Legal</h3>
                 <ul className="sitemap-links">
-                  <li><Link to="/FAQs">FAQ</Link></li>
+                  <li><Link to="/FAQs">Frequently Asked Questions (FAQs)</Link></li>
                   <li><Link to="/termsandconditions">Terms and Conditions</Link></li>
                   <li><Link to="/privacypolicy">Privacy Policy</Link></li>
                 </ul>
@@ -66,6 +66,7 @@ const Sitemap = () => {
               <div className="sitemap-card sitemap-red">
                 <h3>Explore Knots</h3>
                 <ul className="sitemap-links">
+                  <li><Link to="/knots/all">All Knots</Link></li>
                   <li><Link to="/knots/activities">Knots by Activity</Link></li>
                   <li><Link to="/knots/types">Knots by Type</Link></li>
                   <li><Link to="/terminology">Terminology</Link></li>

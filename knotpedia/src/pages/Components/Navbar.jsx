@@ -81,8 +81,8 @@ const Navbar = () => {
               <Link to="/knots/types" className={location.pathname === "/knots/type" ? "active" : ""}>
                 Knots by Type
               </Link>
-              <Link to="/terminology" className={location.pathname === "/terminology" ? "active" : ""}>
-                Terminology
+              <Link to="/glossary" className={location.pathname === "/glossary" ? "active" : ""}>
+                Glossary
               </Link>
             </div>
           ) : (
@@ -103,8 +103,8 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/terminology" className={location.pathname === "/terminology" ? "active" : ""}>
-                  Terminology
+                <Link to="/glossary" className={location.pathname === "/glossary" ? "active" : ""}>
+                  Knots Glossary
                 </Link>
               </li>
             </ul>

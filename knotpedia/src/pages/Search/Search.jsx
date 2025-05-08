@@ -17,20 +17,29 @@ const Search = () => {
     const [knots, setKnots] = useState([]);
     const [filteredKnots, setFilteredKnots] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 8;
+    const itemsPerPage = 15;
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchKnots = async () => {
-            const q = query(collection(db, "knots"), orderBy("name"));
-            const querySnapshot = await getDocs(q);
-            const knotsData = querySnapshot.docs.map((doc, index) => ({
-                id: `knotID-${index + 1}`,
-                ...doc.data(),
-            }));
-            setKnots(knotsData);
+            setLoading(true); // Start loading
+            try {
+                const q = query(collection(db, "knots"), orderBy("name"));
+                const querySnapshot = await getDocs(q);
+                const knotsData = querySnapshot.docs.map((doc, index) => ({
+                    id: `knotID-${index + 1}`,
+                    ...doc.data(),
+                }));
+                setKnots(knotsData);
+            } catch (error) {
+                console.error("Error fetching knots:", error);
+            } finally {
+                setLoading(false); // Stop loading
+            }
         };
         fetchKnots();
     }, []);
+
 
     const handleSearch = () => {
         setCurrentPage(1);
@@ -84,28 +93,32 @@ const Search = () => {
                             <span className="home-clear-icon" title="Clear" onClick={() => setSearchTerm("")}>✖</span>
                         )}
                         <button className="home-search-button" onClick={handleSearch}>
-                            <img src="/assets/search.png" alt="Search" title="Search" />
+                            <img src="/assets/search red.png" alt="Search" title="Search" />
                         </button>
                     </div>
                 </div>
 
-                <h2>Search Results for: <span className="searchTerm">{searchTerm}</span></h2>
-
-                {currentItems.length > 0 ? (
+                <h3>Search Results for: <span className="searchTerm">{searchTerm}</span></h3>
+                <hr></hr>
+                {loading ? (
+                    <p className="loading"><b>Loading knots...</b></p>
+                ) : filteredKnots.length === 0 ? (
+                    <p className="empty-message"><b>No exact matches found</b><br />Please try again.</p>
+                ) : (
                     <>
                         <div className="searchKnot-container">
                             {currentItems.map((knot) => (
                                 <Link
                                     to={`/knot/${knot.name}`}
                                     state={{ knot }}
-                                    className="search-card"
+                                    className="knots-card"
                                     key={knot.id}
                                 >
-                                    <div className="search-image">
+                                    <div className="knots-image">
                                         <img src={knot.image} alt={knot.name} />
                                     </div>
-                                    <h3 className="search-name">{knot.name}</h3>
-                                    <p className="search-description">{knot.description}</p>
+                                    <h3 className="knots-name">{knot.name}</h3>
+                                    <p className="knots-description">{knot.description}</p>
                                     <div className="button-container">
                                         <button className="button red">View Knot</button>
                                     </div>
@@ -118,8 +131,6 @@ const Search = () => {
                             onPageChange={setCurrentPage}
                         />
                     </>
-                ) : (
-                    <p>No knots found for "{searchTerm}"</p>
                 )}
             </div>
             <Footer />

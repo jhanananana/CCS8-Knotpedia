@@ -20,6 +20,7 @@ const Types = () => {
     const location = useLocation();
     const [typeFilter, setTypeFilter] = useState(type || "");
     const [typeLabel, setTypeLabel] = useState(type ? type.charAt(0).toUpperCase() + type.slice(1) : "All Types");
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (typeFilter) {
@@ -39,8 +40,13 @@ const Types = () => {
         }
     }, [location]);
 
+    const typeTags = [
+        "basic", "bends", "end loops", "hitches", "mats",
+        "mid loops", "quick release", "slide and grip", "splicing", "stoppers"
+    ];
     useEffect(() => {
         const fetchKnots = async () => {
+            setLoading(true); // <-- Start loading
             try {
                 const q = query(collection(db, "knots"), orderBy("name"));
                 const querySnapshot = await getDocs(q);
@@ -51,10 +57,13 @@ const Types = () => {
                 setKnots(knotsData);
             } catch (error) {
                 console.error("Error fetching knots:", error);
+            } finally {
+                setLoading(false)
             }
         };
         fetchKnots();
     }, []);
+
 
     useEffect(() => {
         const dropdowns = document.querySelectorAll('.horizontal-filters select');
@@ -82,9 +91,9 @@ const Types = () => {
         .filter(knot => {
             const matchesSearch = knot.name.toLowerCase().includes(searchText.toLowerCase());
             const matchesType = typeFilter
-            ? knot.tags?.includes(typeFilter)
-            : Array.isArray(knot.tags) && knot.tags.length > 0;
-                    return matchesSearch && matchesType;
+                ? knot.tags?.includes(typeFilter)
+                : knot.tags?.some(tag => typeTags.includes(tag));
+            return matchesSearch && matchesType;
         })
         .sort((a, b) => {
             return sortOrder === "asc"
@@ -124,7 +133,7 @@ const Types = () => {
                 <aside className="sidebar horizontal-sidebar">
                     <div className="sidebarTitle" style={{ display: 'flex' }}>
                         <div className="icon">
-                            <img src="/assets/home-type.png" alt="Type Icon" title="Type"/>
+                            <img src="/assets/home-type.png" alt="Type Icon" title="Type" />
                         </div>
                         <h2>Types</h2>
                     </div>
@@ -213,18 +222,21 @@ const Types = () => {
 
                     <div className="results-and-search">
                         <div className="results-info">
-                            Showing results <b>{indexOfFirstKnot + 1}–{Math.min(indexOfLastKnot, filteredKnots.length)}</b> of {filteredKnots.length}, Page {currentPage}
+                        <b>{filteredKnots.length}</b> Result{filteredKnots.length !== 1 ? 's' : ''} Found
                         </div>
                     </div>
 
-                    {currentKnots.length === 0 ? (
+                    {loading ? (
+                        <p className="loading"><b>Loading knots...</b></p>
+                    ) : currentKnots.length === 0 ? (
                         <p className="empty-message"><b>No exact matches found</b><br />Please try again.</p>
                     ) : (
+
                         <div className={`allknots-container ${viewSize}`}>
                             {currentKnots.map((knot) => (
                                 <Link
                                     to={`/knot/${knot.name}`}
-                                    state={{ knot,origin: "AllTypes" }}
+                                    state={{ knot, origin: "AllTypes" }}
                                     className="knots-card-link"
                                     key={knot.id}
                                 >

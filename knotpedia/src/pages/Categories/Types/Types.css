@@ -62,24 +62,6 @@
     width: 100px;
 }
 
-.dropbtn {
-    padding: 16px;
-    font-size: 16px;
-    border: 1px solid #555555;
-    background-color: white;
-    cursor: pointer;
-    display: flex;
-    font-family: 'Poppins';
-    align-items: center;
-    justify-content: space-between;
-    width: 200px;
-    box-sizing: border-box;
-}
-
-.dropbtn .chevron {
-    transition: transform 0.2s ease;
-}
-
 .chevron {
     margin-left: 1rem;
     border-left: 8px solid transparent;
@@ -117,10 +99,6 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
-}
-
-.dropdown:hover .dropbtn {
-    background-color: #eee;
 }
 
 .dropdown:hover .dropbtn .chevron {
@@ -281,10 +259,6 @@
 }
 
 @media (max-width: 768px) {    
-    .dropbtn {
-        width: 100%;
-        margin-top: 4px;
-    }
     
     .sidebar-list {
         display: flex;

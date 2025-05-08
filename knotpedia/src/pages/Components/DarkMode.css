@@ -104,8 +104,9 @@
 }
 
 [data-theme="dark"] .breadcrumb a,
-[data-theme="dark"] .sitemap-card li {
-    color: #7a9ca9;
+[data-theme="dark"] .sitemap-links li,
+[data-theme="dark"] .sitemap-links a  {
+    color: #b1b1b1;
 }
 
 [data-theme="dark"] .breadcrumb .active,
@@ -180,7 +181,7 @@
     background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/public/assets/home-header.png');
 }
 
-[data-theme="dark"] .subHeader {
+[data-theme="dark"] .subHeader{
     background-color: #2d2d2d;
 }
 
@@ -197,7 +198,8 @@
 }
 
 [data-theme="dark"] .section-features,
-[data-theme="dark"] footer {
+[data-theme="dark"] footer,
+[data-theme="dark"] .knots-name {
     background-color: #1e1e1e;
 }
 
@@ -279,10 +281,6 @@
     color: #aaa;
 }
 
-[data-theme="dark"] .home-search-button img {
-    background-color: #0a4d6b;
-}
-
 /* Types */
 [data-theme="dark"] .results-info {
     color: #dddddd;
@@ -316,21 +314,22 @@
 }
 
 [data-theme="dark"] .knots-description,
-[data-theme="dark"] .search-description {
-    color: #cccccc;
+[data-theme="dark"] .search-description,
+[data-theme="dark"] .results-count {
+    color: #e9e9e9;
 }
 
 [data-theme="dark"] .knots-card:hover .knots-description,
 [data-theme="dark"] .search-card:hover .search-description,
 [data-theme="dark"] .filter-label,
 [data-theme="dark"] .form-group label {
-    color: #bbbbbb;
+    color: #eeeeee;
 }
 
-[data-theme="dark"] .dropdown button {
-    background-color: #adadad;
-    border: 1px solid #241b1b;
-    color: #241b1b;
+[data-theme="dark"] .filter-label .dropdown {
+    background-color: #333333;
+    border: 1px solid #333333;
+    color: #eee;
 }
 
 [data-theme="dark"] .dropdown button:hover {
@@ -386,6 +385,11 @@
     color: #cccccc;
 }
 
+[data-theme="dark"] .glossaryknot-card .knot-name
+{
+    color: #68a8bb;
+    background-color: #2d2d2d;
+}
 [data-theme="dark"] .sidebar-knot-list a:hover {
     color: white;
 }
@@ -402,9 +406,9 @@
 
 /* Pagination */
 [data-theme="dark"] .pagination button {
-    border: 2px solid #4a5568;
+    border: 2px solid #2b6986;
     color: #dddddd;
-    background-color: #2d3748;
+    background-color: #0a4d6b;
 }
 
 [data-theme="dark"] .faq-item {
@@ -426,5 +430,5 @@
 [data-theme="dark"] .pagination button.disabled {
     border-color: #4a5568;
     color: #a0aec0;
-    background-color: #2d3748;
+    background-color: #272727;
 }
