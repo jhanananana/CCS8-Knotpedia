@@ -278,7 +278,7 @@ const ContactUs = () => {
               </div>
               <div className="info-content">
                 <p className="info-label">Phone Number</p>
-                <p className="info-value1">1234567890</p>
+                <p className="info-value1">09292413967</p>
               </div>
             </div>
 

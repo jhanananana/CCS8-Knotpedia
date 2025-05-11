@@ -81,7 +81,7 @@ const Terminology = () => {
             <span>Home</span>
           </a>
           &gt;
-          <span className="active">Glossary</span>
+          <span className="active">Knots Glossary</span>
         </nav>
 
         {/* Search bar */}

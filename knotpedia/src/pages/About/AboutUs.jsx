@@ -41,7 +41,7 @@ const AboutUs = () => {
               </div>
               <div className="help-item">
                 <h3 style={{color: '#b54d49'}}>Clarity</h3>
-                <p>Gain real-world skills you can use for camping, crafting, work, and everyday life.</p>
+                <p>Enter your last name.</p>
               </div>
             </div>
           </div>
@@ -57,7 +57,7 @@ const AboutUs = () => {
 
                 </h2>
                 At <strong>Knotpedia</strong>, we’re here to make knot-tying easy and fun for everyone.
-                With simpla guides and step-by-step tutorials, we help beginners learn the basics and give experts new ideas to explore.
+                With simple guides and step-by-step tutorials, we help beginners learn the basics and give experts new ideas to explore.
               </div>
             </div>
           </div>
