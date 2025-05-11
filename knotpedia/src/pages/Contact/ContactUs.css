@@ -389,6 +389,37 @@
   background-color: #388E3C; /* Darker green on hover */
 }
 
+/* Error Popup Styles */
+.popup-content.error {
+  border: 2px solid #e04545;
+}
+
+.error-icon {
+  margin-bottom: 15px;
+}
+
+.error-popup {
+  background-color: #e04545; 
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  font-size: 14px;
+  width: 80px;
+  transition: background-color 0.3s;
+}
+
+.error-popup:hover {
+  background-color: #c13333; /* Darker red on hover */
+}
+
+/* This can be added to your existing popup content */
+.popup-content.error p {
+  color: #721c24;
+}
+
 
 @media screen and (max-width: 600px) {
   .popup {
