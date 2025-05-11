@@ -51,6 +51,7 @@
 
 .footer-section ul li a:hover {
   color: white;
+  text-decoration: underline;
 }
 
 .footer-bottom {
@@ -93,6 +94,7 @@
 }
 
 .social-links a {
+  background-color: none;
   font-size: 1.5rem;
   color: #cbd5e1;
   transition: color 0.3s;
@@ -194,7 +196,12 @@
 @media (max-width: 480px) {
   .footer-logo {
     width: 220px;
-    margin: 0 1rem;
+    padding: 0 0.5rem;
+  }
+
+  .footer-brand, .footer-description{
+    margin: 0;
+    padding: 0 1rem;
   }
 
   .footer-section h4 {
@@ -203,6 +210,7 @@
 
   .footer-section ul li a {
     font-size: 0.9rem;
+    padding: 0.2rem;
   }
 
   .footer-section {

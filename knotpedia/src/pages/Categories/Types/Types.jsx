@@ -11,7 +11,7 @@ import Pagination from '../../Components/Pagination.jsx';
 const Types = () => {
     const [knots, setKnots] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const knotsPerPage = 12;
+    const knotsPerPage = 15;
     const [searchText, setSearchText] = useState("");
     const [activityFilter, setActivityFilter] = useState("");
     const [sortOrder, setSortOrder] = useState("asc");
