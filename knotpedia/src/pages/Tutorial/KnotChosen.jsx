@@ -426,7 +426,8 @@ const KnotChosen = () => {
               </div>)}
               {activeTab === 'uses' && (
                  <div className="kuses-content">
-                    <p>{currentKnot.uses || "No uses information available."}</p>
+                    <p><b>USES:  </b>{currentKnot.uses || "No uses information available."}</p>
+                    <p><b>CAUTION:  </b>{currentKnot.caution || "No uses information available."}</p>
                  </div>
                )}
             </div>
