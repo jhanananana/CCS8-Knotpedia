@@ -66,12 +66,12 @@
 }
 
 .text-space {
-  width: 50%; 
+  width: 50%;
   padding-left: 20px;
 }
 
 .video-container {
-  width: 50%; 
+  width: 50%;
   padding-left: 20px;
 }
 
@@ -101,7 +101,9 @@ a {
   border-radius: 20px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: 'Poppins Bold';
   margin-bottom: 16px;
   line-height: 1.1;
@@ -287,11 +289,12 @@ h3 {
 }
 
 .knot-card:focus-within {
-  outline: 3px solid #0D6287; 
+  outline: 3px solid #0D6287;
 }
 
 .knot-card .button.red {
-  margin-top: auto; 
+  margin-top: auto;
+  font-family: 'Poppins Bold';
   align-self: flex-start;
 }
 
@@ -364,8 +367,9 @@ h3 {
   cursor: pointer;
   margin: 0px 1rem;
   transition: 0.2s;
+  font-family: 'Poppins Bold';
   margin-top: auto;
-  align-self: stretch; 
+  align-self: stretch;
 }
 
 .button.red:hover {
@@ -391,7 +395,8 @@ h3 {
 
 .home-clear-icon {
   position: absolute;
-  right: 40px; /* Adjust to keep space from search icon */
+  right: 40px;
+  /* Adjust to keep space from search icon */
   cursor: pointer;
   transform: translateY(-165%);
   width: 22px;
@@ -450,7 +455,8 @@ h3 {
   width: 100%;
   padding: 12px 0px 12px 15px;
   border: 2px solid #ccc;
-  border-radius: 50px; /* Rounded */
+  border-radius: 50px;
+  /* Rounded */
   font-size: 16px;
   font-family: 'Poppins';
   outline: none;
@@ -459,7 +465,8 @@ h3 {
 
 .home-search-bar input:focus {
   border-color: #5192A5;
-  box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6); /* Brighter glow */
+  box-shadow: 0px 0px 12px rgba(255, 255, 255, 0.6);
+  /* Brighter glow */
 }
 
 .home-search-button img {
@@ -481,6 +488,10 @@ h3 {
     margin: 0;
     padding: 0;
   }
+
+  .button {
+    font-family: 'Poppins Bold';
+  }
 }
 
 @media (max-width: 768px) {
@@ -490,10 +501,15 @@ h3 {
     box-sizing: border-box;
   }
 
+  .button {
+    font-family: 'Poppins Bold';
+  }
+
   .featured-knots {
     padding: 2rem 1rem;
     margin: 1rem;
   }
+
   .featured-knot-description {
     display: none;
   }
@@ -518,8 +534,9 @@ h3 {
   .p-width {
     width: 100%;
   }
-  
-  .text-space, .video-container {
+
+  .text-space,
+  .video-container {
     width: 100%;
   }
 
@@ -545,7 +562,7 @@ h3 {
   .section-features {
     padding: 0rem 1rem;
   }
-  
+
   .box .main-text {
     font-size: 1.2rem;
   }

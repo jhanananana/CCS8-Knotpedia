@@ -661,7 +661,7 @@
   font-weight: 500;
   cursor: pointer;
   transition: background 0.3s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins Bold';
 }
 
 .button.red:hover {
