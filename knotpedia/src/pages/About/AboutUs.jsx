@@ -41,7 +41,7 @@ const AboutUs = () => {
               </div>
               <div className="help-item">
                 <h3 style={{color: '#b54d49'}}>Clarity</h3>
-                <p>Enter your last name.</p>
+                <p>Knotpedia cuts through confusion to make even the most complex knots clear and easy to learn.</p>
               </div>
             </div>
           </div>
