@@ -372,6 +372,23 @@ h3 {
   background-color: #6F1D1B;
 }
 
+.button-darkred {
+  background-color: #6F1D1B;
+  color: #eee;
+  border: none;
+  padding: 0.7rem 2rem;
+  border-radius: 100px;
+  font-family: 'Poppins Bold';
+  letter-spacing: 0.5px;
+  font-size: 1.125rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.button-darkred:hover {
+  background-color: #b54d49;
+}
+
 .home-clear-icon {
   position: absolute;
   right: 40px; /* Adjust to keep space from search icon */
