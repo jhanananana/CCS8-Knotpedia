@@ -105,36 +105,64 @@ const ContactUs = () => {
 
     setIsSubmitting(true);
 
-    // Use the service to submit the form
-    const result = await ContactFormService.submitContactForm(formData);
-
-    // Handle the result
-    setSubmitStatus({
-      submitted: true,
-      success: result.success,
-      message: result.message,
-    });
-
-    // Show popup notification 
-    setIsPopupVisible(true);
-
-    // Reset form if successful
-    if (result.success) {
-      setFormData({
-        firstname: "",
-        lastname: "",
-        email: "",
-        subject: "",
-        message: "",
+    try {
+      // Set a timeout to detect if request takes too long
+      const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => reject(new Error('timeout')), 10000); // 10 seconds timeout
       });
-      setFormErrors({
-        firstname: "",
-        lastname: "",
-        email: "",
-        subject: "",
-        message: "",
+      
+      // Race the form submission against the timeout
+      const result = await Promise.race([
+        ContactFormService.submitContactForm(formData),
+        timeoutPromise
+      ]);
+
+      // Handle the result
+      setSubmitStatus({
+        submitted: true,
+        success: result.success,
+        message: result.message,
       });
-      setFormSubmitted(false);
+
+      // Show popup notification 
+      setIsPopupVisible(true);
+
+      // Reset form if successful
+      if (result.success) {
+        setFormData({
+          firstname: "",
+          lastname: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        setFormErrors({
+          firstname: "",
+          lastname: "",
+          email: "",
+          subject: "",
+          message: "",
+        });
+        setFormSubmitted(false);
+      }
+    } catch (error) {
+      // Handle specific error cases
+      let errorMessage = "Sorry, there was an error sending your message. Please try again.";
+      
+      if (error.message === 'timeout') {
+        errorMessage = "Request timed out. Please try again later.";
+      } else if (error.message && error.message.includes('network')) {
+        errorMessage = "Network error. Please check your internet connection and try again.";
+      } else if (error.message && error.message.includes('database')) {
+        errorMessage = "Database connection error. Our team has been notified of this issue.";
+      }
+      
+      setSubmitStatus({
+        submitted: true,
+        success: false,
+        message: errorMessage,
+      });
+      setIsPopupVisible(true);
     }
 
     setIsSubmitting(false);
@@ -183,20 +211,27 @@ const ContactUs = () => {
   return (
     <div>
       <Navbar />
-      {/* Popup Notification  */}
+      {/* Popup Notification */}
       {isPopupVisible && (
         <div className="popup">
-          <div className="popup-content">
-            <div className="success-icon">
-              <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="20" cy="20" r="20" fill="#4CAF50" />
-                <path d="M16 20.5L19 23.5L24 17.5" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
+          <div className={`popup-content ${!submitStatus.success ? "error" : ""}`}>
+            <div className={submitStatus.success ? "success-icon" : "error-icon"}>
+              {submitStatus.success ? (
+                <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="20" r="20" fill="#4CAF50" />
+                  <path d="M16 20.5L19 23.5L24 17.5" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              ) : (
+                <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="20" cy="20" r="20" fill="#e04545" />
+                  <path d="M15 15L25 25M15 25L25 15" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              )}
             </div>
             <p>{submitStatus.message}</p>
             <button
               onClick={() => setIsPopupVisible(false)}
-              className="ok-popup"
+              className={submitStatus.success ? "ok-popup" : "error-popup"}
             >
               OK
             </button>
@@ -243,7 +278,7 @@ const ContactUs = () => {
               </div>
               <div className="info-content">
                 <p className="info-label">Phone Number</p>
-                <p className="info-value1">1234567890</p>
+                <p className="info-value1">09292413967</p>
               </div>
             </div>
 

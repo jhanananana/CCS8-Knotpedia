@@ -44,7 +44,7 @@ const FAQ = () => {
       id: "question5",
       question: "How do I contact Knotpedia?",
       answer:
-        "You can contact us using the form at the bottom of this page. Alternatively, you can reach us via email at support@knotpedia.com.",
+        "You can contact us using the form at the bottom of this page. Alternatively, you can reach us via email at knotpedia@gmail.com.",
     },
   ];
 

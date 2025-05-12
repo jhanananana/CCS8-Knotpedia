@@ -69,7 +69,7 @@ const Sitemap = () => {
                   <li><Link to="/knots/all">All Knots</Link></li>
                   <li><Link to="/knots/activities">Knots by Activity</Link></li>
                   <li><Link to="/knots/types">Knots by Type</Link></li>
-                  <li><Link to="/terminology">Terminology</Link></li>
+                  <li><Link to="/glossary">Knots Glossary</Link></li>
                 </ul>
               </div>
 

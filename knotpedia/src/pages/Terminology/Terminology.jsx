@@ -65,7 +65,7 @@ const Terminology = () => {
 
       {/* Page Header Section */}
       <header className="subHeader blueCover">
-        <h1 className="p-width">Knotpedia Glossary</h1>
+        <h1 className="p-width">Knots Glossary</h1>
         <p className="p-width">
           Find the definitions for essential knot-related terms to help you
           understand different types of knots, their uses, and techniques.
@@ -81,7 +81,7 @@ const Terminology = () => {
             <span>Home</span>
           </a>
           &gt;
-          <span className="active">Glossary</span>
+          <span className="active">Knots Glossary</span>
         </nav>
 
         {/* Search bar */}

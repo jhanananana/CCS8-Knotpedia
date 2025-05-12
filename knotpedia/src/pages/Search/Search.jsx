@@ -12,7 +12,7 @@ function useQuery() {
 }
 
 const Search = () => {
-    const initialQuery = useQuery().get("query") || "";
+    const initialQuery = useQuery().get("query") || "All";
     const [searchTerm, setSearchTerm] = useState(initialQuery);
     const [knots, setKnots] = useState([]);
     const [filteredKnots, setFilteredKnots] = useState([]);
@@ -43,9 +43,11 @@ const Search = () => {
 
     const handleSearch = () => {
         setCurrentPage(1);
-        const results = knots.filter(knot =>
-            knot.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+        const results = searchTerm === "All"
+            ? knots
+            : knots.filter(knot =>
+                knot.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
         setFilteredKnots(results);
     };
 
@@ -54,9 +56,11 @@ const Search = () => {
     };
 
     useEffect(() => {
-        const results = knots.filter(knot =>
-            knot.name.toLowerCase().includes(searchTerm.toLowerCase())
-        );
+        const results = searchTerm === "All"
+            ? knots
+            : knots.filter(knot =>
+                knot.name.toLowerCase().includes(searchTerm.toLowerCase())
+            );
         setFilteredKnots(results);
     }, [knots, searchTerm]);
 
@@ -99,7 +103,12 @@ const Search = () => {
                 </div>
 
                 <h3>Search Results for: <span className="searchTerm">{searchTerm}</span></h3>
-                <hr></hr>
+
+                <div className="results-and-search">
+                    <div className="results-info">
+                        <b>{filteredKnots.length}</b> Result{filteredKnots.length !== 1 ? 's' : ''} Found
+                    </div>
+                </div>
                 {loading ? (
                     <p className="loading"><b>Loading knots...</b></p>
                 ) : filteredKnots.length === 0 ? (

@@ -82,7 +82,7 @@ const Navbar = () => {
                 Knots by Type
               </Link>
               <Link to="/glossary" className={location.pathname === "/glossary" ? "active" : ""}>
-                Glossary
+                Knots Glossary
               </Link>
             </div>
           ) : (

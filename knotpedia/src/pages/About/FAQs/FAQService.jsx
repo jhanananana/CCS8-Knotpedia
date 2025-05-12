@@ -246,7 +246,7 @@ const FAQService = {
               id="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Enter your email"
+              placeholder="Enter your email address"
               className={errors.email ? "input-error" : ""}
             />
           </div>
@@ -260,7 +260,7 @@ const FAQService = {
               id="message"
               value={formData.message}
               onChange={handleChange}
-              placeholder="Type your message here"
+              placeholder="Write your question here"
               className={errors.message ? "input-error" : ""}
             ></textarea>
           </div>

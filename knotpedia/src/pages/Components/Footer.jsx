@@ -44,7 +44,7 @@ const Footer = () => {
             <li><a href="/knots/all">All Knots</a></li>
             <li><a href="/knots/activities">Knots by Activity</a></li>
             <li><a href="/knots/types">Knots by Type</a></li>
-            <li><a href="/terminology">Terminology</a></li>
+            <li><a href="/glossary">Glossary</a></li>
           </ul>
         </div>
 
