@@ -426,11 +426,9 @@ const KnotChosen = () => {
                     <p>No tutorial steps available.</p>
                   )}
                   <br></br>
-                  <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={setCurrentPage}
-                  />
+                
+                      
+                
                 </div>
               )}
               {activeTab === 'uses' && (
@@ -440,6 +438,11 @@ const KnotChosen = () => {
                 </div>
               )}
             </div>
+            {activeTab === 'tutorial' && (   <Pagination
+                             currentPage={currentPage}
+                              totalPages={totalPages}
+                             onPageChange={setCurrentPage}
+                        />)}
 
 
 
