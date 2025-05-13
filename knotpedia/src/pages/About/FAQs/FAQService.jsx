@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { app } from "../../../firebase.js";
-// Removed the tooltip import since we're replacing that functionality
-// import "../../Components/Tooltips.css";
 
 // Initialize Firestore
 const db = getFirestore(app);
@@ -34,8 +32,9 @@ const FAQService = {
     );
   },
 
-  // Form submission service with improved error handling including timeout detection
+  // Form submission service with only network and timeout error handling
   submitFAQForm: async (formData) => {
+    //await new Promise(resolve => setTimeout(resolve, 11000)); USE THIS FOR TIMEOUT ERROR TESTING
     try {
       const docRef = await addDoc(collection(db, "faq_inquiries"), {
         firstname: formData.firstname,
@@ -52,19 +51,22 @@ const FAQService = {
       };
     } catch (error) {
       console.error("Error submitting FAQ form:", error);
-      
-      // Different error messages based on error type
+
+      // Only handle network and timeout errors
       let errorMessage = "Sorry, there was an error sending your message. Please try again.";
-      
-      // Check for specific error types - similar to ContactFormService
-      if (error.code === 'unavailable' || error.message?.includes('network')) {
+
+      if (
+        error.code === 'unavailable' ||
+        (typeof error.message === "string" && error.message.toLowerCase().includes('network'))
+      ) {
         errorMessage = "Network error. Please check your internet connection and try again.";
-      } else if (error.code === 'resource-exhausted' || error.message?.includes('timeout')) {
+      } else if (
+        error.code === 'resource-exhausted' ||
+        (typeof error.message === "string" && error.message.toLowerCase().includes('timeout'))
+      ) {
         errorMessage = "Request timed out. Please try again later.";
-      } else if (error.code === 'internal' || error.message?.includes('database')) {
-        errorMessage = "Database connection error. Our team has been notified of this issue.";
       }
-      
+
       return {
         success: false,
         error: error,
@@ -73,7 +75,7 @@ const FAQService = {
     }
   },
 
-  // Modified FormComponent with timeout detection
+  // Modified FormComponent with timeout detection and only network/timeout error handling
   FormComponent: () => {
     const [formData, setFormData] = useState({
       firstname: "",
@@ -105,7 +107,7 @@ const FAQService = {
         ...prevState,
         [id]: value,
       }));
-      
+
       // Clear error when user starts typing
       if (errors[id]) {
         setErrors(prev => ({
@@ -118,18 +120,18 @@ const FAQService = {
     const validateForm = () => {
       let valid = true;
       const newErrors = { ...errors };
-      
+
       // Field validation
       if (!formData.firstname.trim()) {
         newErrors.firstname = "Required";
         valid = false;
       }
-      
+
       if (!formData.lastname.trim()) {
         newErrors.lastname = "Required";
         valid = false;
       }
-      
+
       if (!formData.email.trim()) {
         newErrors.email = "Required";
         valid = false;
@@ -137,25 +139,25 @@ const FAQService = {
         newErrors.email = "Invalid email";
         valid = false;
       }
-      
+
       if (!formData.message.trim()) {
         newErrors.message = "Required";
         valid = false;
       }
-      
+
       setErrors(newErrors);
       return valid;
     };
 
-    // Modified form submission handler with timeout detection
+    // Modified form submission handler with timeout detection and only network/timeout error handling
     const handleSubmit = async (e) => {
       e.preventDefault();
-      
+
       // Validate form before submission
       if (!validateForm()) {
         return false;
       }
-      
+
       setIsSubmitting(true);
 
       try {
@@ -163,7 +165,7 @@ const FAQService = {
         const timeoutPromise = new Promise((_, reject) => {
           setTimeout(() => reject(new Error('timeout')), 10000); // 10 seconds timeout
         });
-        
+
         // Race the form submission against the timeout
         const result = await Promise.race([
           FAQService.submitFAQForm(formData),
@@ -177,7 +179,6 @@ const FAQService = {
           message: result.message,
         });
 
-        // Show popup notification
         setIsPopupVisible(true);
 
         // Reset form if successful
@@ -196,17 +197,15 @@ const FAQService = {
           });
         }
       } catch (error) {
-        // Handle specific error cases
+        // Only handle network and timeout errors
         let errorMessage = "Sorry, there was an error sending your message. Please try again.";
-        
+
         if (error.message === 'timeout') {
           errorMessage = "Request timed out. Please try again later.";
-        } else if (error.message && error.message.includes('network')) {
+        } else if (typeof error.message === "string" && error.message.toLowerCase().includes('network')) {
           errorMessage = "Network error. Please check your internet connection and try again.";
-        } else if (error.message && error.message.includes('database')) {
-          errorMessage = "Database connection error. Our team has been notified of this issue.";
         }
-        
+
         setSubmitStatus({
           submitted: true,
           success: false,

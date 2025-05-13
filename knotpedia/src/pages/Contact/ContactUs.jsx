@@ -146,15 +146,13 @@ const ContactUs = () => {
         setFormSubmitted(false);
       }
     } catch (error) {
-      // Handle specific error cases
+      // Only handle timeout and network errors
       let errorMessage = "Sorry, there was an error sending your message. Please try again.";
       
       if (error.message === 'timeout') {
         errorMessage = "Request timed out. Please try again later.";
-      } else if (error.message && error.message.includes('network')) {
+      } else if (error.message && error.message.toLowerCase().includes('network')) {
         errorMessage = "Network error. Please check your internet connection and try again.";
-      } else if (error.message && error.message.includes('database')) {
-        errorMessage = "Database connection error. Our team has been notified of this issue.";
       }
       
       setSubmitStatus({

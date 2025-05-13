@@ -7,7 +7,10 @@ const db = getFirestore(app);
 const ContactFormService = {
   submitContactForm: async (formData) => {
     try {
-      /*Automatically adds document to the firestore firebase collection */
+      // Simulate delay
+      await new Promise(resolve => setTimeout(resolve, 11000)); // 11 seconds
+
+      // Automatically adds document to the firestore firebase collection
       const docRef = await addDoc(collection(db, "contacts"), {
         firstname: formData.firstname,
         lastname: formData.lastname,
@@ -16,7 +19,7 @@ const ContactFormService = {
         message: formData.message,
         createdAt: new Date()
       });
-      
+
       return {
         success: true,
         docRef: docRef,
@@ -24,19 +27,22 @@ const ContactFormService = {
       };
     } catch (error) {
       console.error("Error submitting contact form:", error);
-      
-      // Different error messages based on error type
+
+      // Only handle network and timeout errors
       let errorMessage = "Sorry, there was an error sending your message. Please try again.";
-      
-      // Check for specific error types - limited to the three main scenarios
-      if (error.code === 'unavailable' || error.message?.includes('network')) {
+
+      if (
+        error.code === 'unavailable' ||
+        (typeof error.message === "string" && error.message.toLowerCase().includes('network'))
+      ) {
         errorMessage = "Network error. Please check your internet connection and try again.";
-      } else if (error.code === 'resource-exhausted' || error.message?.includes('timeout')) {
+      } else if (
+        error.code === 'resource-exhausted' ||
+        (typeof error.message === "string" && error.message.toLowerCase().includes('timeout'))
+      ) {
         errorMessage = "Request timed out. Please try again later.";
-      } else if (error.code === 'internal' || error.message?.includes('database')) {
-        errorMessage = "Database connection error. Our team has been notified of this issue.";
       }
-      
+
       return {
         success: false,
         error: error,
