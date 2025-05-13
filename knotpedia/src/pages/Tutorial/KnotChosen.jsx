@@ -390,7 +390,7 @@ const KnotChosen = () => {
               </div>
             </div>
 
-            <hr></hr>
+<hr></hr>
             <div className="ktab-content">
               {activeTab === 'tutorial' && (
                 <div className="ktutorial-content">
@@ -425,12 +425,14 @@ const KnotChosen = () => {
                   ) : (
                     <p>No tutorial steps available.</p>
                   )}
+                  <br></br>
                   <Pagination
                     currentPage={currentPage}
                     totalPages={totalPages}
                     onPageChange={setCurrentPage}
                   />
-                </div>)}
+                </div>
+              )}
               {activeTab === 'uses' && (
                 <div className="kuses-content">
                   <p><div className="info-title">USES </div><br></br>{currentKnot.uses || "No uses information available."}</p>

@@ -287,7 +287,7 @@
     top: 0;
     width: 100%;
     max-width: 500px; /* or any preferred max width */
-    margin: 2rem auto 0 auto; /* center horizontally with top margin */
+    margin: 0rem auto 0 auto; /* center horizontally with top margin */
     padding: 1.5rem;
     justify-content: center; /* Optional: center on smaller screens */
     padding-right: 0;
@@ -304,8 +304,8 @@
     border-radius: 0.75rem;
   }
 
-  .pill-tab button {
-      font-size: 1rem;
+  .kuses-content p {
+      font-size: 0.9rem;
   }
 }
 @media (min-width: 1024px) {
@@ -319,8 +319,6 @@
       font-size: 0.6rem;
   }
 }
-
-
 
 .kstep {
   background-color: #f9f9f9;
@@ -696,6 +694,10 @@
 .kuses-content p {
   color: #313131;
 }
+
+.kuses-content {
+  margin: 0 1rem;
+}
 .info-title {
   color: #9a3f3b;
   font-family: 'Poppins Bold';
@@ -728,13 +730,15 @@
     align-items: flex-start;
   }
 
-  
   .pill-tabs {
     flex: 3;
     text-align: center;
     width: auto;
     font-size: 1rem;
-  
+  }
+
+    .kuses-content p {
+      font-size: 0.9rem;
   }
 }
 
