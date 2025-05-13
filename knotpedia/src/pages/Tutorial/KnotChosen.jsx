@@ -370,75 +370,77 @@ const KnotChosen = () => {
               </button>
             </div>
             <div className="tab-buttons-container">
-  <button className="button red" onClick={saveToPDF}>
-    Save as PDF
-  </button>
-  <div className="pill-tabs">
-    <button
-      className={`pill-tab ${activeTab === 'tutorial' ? 'active' : ''}`}
-      onClick={() => setActiveTab('tutorial')}
-    >
-      Tutorial
-    </button>
-    <button
-      className={`pill-tab1 ${activeTab === 'uses' ? 'active' : ''}`}
-      onClick={() => setActiveTab('uses')}
-    >
-      Uses
-    </button>
-  </div>
-</div>
+              <button className="button red" style={{ fontSize: '1rem' }} onClick={saveToPDF}>
+                Save as PDF
+              </button>
+              <hr></hr>
+              <div className="pill-tabs">
+                <button
+                  className={`pill-tab ${activeTab === 'tutorial' ? 'active' : ''}`}
+                  onClick={() => setActiveTab('tutorial')}
+                >
+                  Step-by-Step Tutorial
+                </button>
+                <button
+                  className={`pill-tab1 ${activeTab === 'uses' ? 'active' : ''}`}
+                  onClick={() => setActiveTab('uses')}
+                >
+                  Uses & Caution
+                </button>
+              </div>
+            </div>
 
+            <hr></hr>
             <div className="ktab-content">
-            {activeTab === 'tutorial' &&(
-              <div className="ktutorial-content">
-                {currentSteps.length > 0 ? (
-                  currentSteps.map(([stepKey, step], index) => (
-                    <div key={stepKey} className="kstep">
-                      <h3>{stepKey.replace(/\b\w/g, c => c.toUpperCase())}</h3>
-                      <p>{step.description}</p>
-                      {step.image && (
-                        <div className="image-wrapper">
-                          <img
-                            src={step.image}
-                            alt={step.description || `Step ${index + 1}`}
-                            onError={(e) => {
-                              e.target.onerror = null;
-                              e.target.src = '/assets/placeholder-knot.jpg';
-                            }}
-                            className="step-image"
-                            onClick={() => openImageModal(step.image)}
-                          />
-                          <button
-                            className="fullscreen-btn"
-                            onClick={() => openImageModal(step.image)}
-                            aria-label="View full screen"
-                          >
-                            ⛶
-                          </button>
-                        </div>
-                      )}
-                    </div>
-                  ))
-                ) : (
-                  <p>No tutorial steps available.</p>
-                )}
-                 <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
-              </div>)}
+              {activeTab === 'tutorial' && (
+                <div className="ktutorial-content">
+                  {currentSteps.length > 0 ? (
+                    currentSteps.map(([stepKey, step], index) => (
+                      <div key={stepKey} className="kstep">
+                        <h3>{stepKey.replace(/\b\w/g, c => c.toUpperCase())}</h3>
+                        <p>{step.description}</p>
+                        {step.image && (
+                          <div className="image-wrapper">
+                            <img
+                              src={step.image}
+                              alt={step.description || `Step ${index + 1}`}
+                              onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = '/assets/placeholder-knot.jpg';
+                              }}
+                              className="step-image"
+                              onClick={() => openImageModal(step.image)}
+                            />
+                            <button
+                              className="fullscreen-btn"
+                              onClick={() => openImageModal(step.image)}
+                              aria-label="View full screen"
+                            >
+                              ⛶
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                    ))
+                  ) : (
+                    <p>No tutorial steps available.</p>
+                  )}
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={setCurrentPage}
+                  />
+                </div>)}
               {activeTab === 'uses' && (
-                 <div className="kuses-content">
-                    <p><b>USES:  </b>{currentKnot.uses || "No uses information available."}</p>
-                    <p><b>CAUTION:  </b>{currentKnot.caution || "No uses information available."}</p>
-                 </div>
-               )}
+                <div className="kuses-content">
+                  <p><div className="info-title">USES </div><br></br>{currentKnot.uses || "No uses information available."}</p>
+                  <p ><div className="info-title">CAUTION  </div><br></br>{currentKnot.caution || "No uses information available."}</p>
+                </div>
+              )}
             </div>
 
 
-           
+
           </div>
 
           {/* RIGHT: Dynamic Tag-Based Sidebar */}
