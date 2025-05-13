@@ -369,11 +369,28 @@ const KnotChosen = () => {
                 ⛶
               </button>
             </div>
-            <button style={{ marginLeft: '0rem' }} className="button red" onClick={saveToPDF}>
-              Save as PDF
-            </button>
+            <div className="tab-buttons-container">
+  <button className="button red" onClick={saveToPDF}>
+    Save as PDF
+  </button>
+  <div className="pill-tabs">
+    <button
+      className={`pill-tab ${activeTab === 'tutorial' ? 'active' : ''}`}
+      onClick={() => setActiveTab('tutorial')}
+    >
+      Tutorial
+    </button>
+    <button
+      className={`pill-tab1 ${activeTab === 'uses' ? 'active' : ''}`}
+      onClick={() => setActiveTab('uses')}
+    >
+      Uses
+    </button>
+  </div>
+</div>
 
             <div className="ktab-content">
+            {activeTab === 'tutorial' &&(
               <div className="ktutorial-content">
                 {currentSteps.length > 0 ? (
                   currentSteps.map(([stepKey, step], index) => (
@@ -406,7 +423,13 @@ const KnotChosen = () => {
                 ) : (
                   <p>No tutorial steps available.</p>
                 )}
-              </div>
+              </div>)}
+              {activeTab === 'uses' && (
+                 <div className="kuses-content">
+                    <p><b>USES:  </b>{currentKnot.uses || "No uses information available."}</p>
+                    <p><b>CAUTION:  </b>{currentKnot.caution || "No uses information available."}</p>
+                 </div>
+               )}
             </div>
 
 

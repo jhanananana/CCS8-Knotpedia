@@ -551,3 +551,137 @@
   cursor: pointer;
 }
 
+
+/*
+*
+*
+*
+*
+*/
+
+
+
+.sidebar-knot-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+/* Add this scroll behavior when expanded */
+.sidebar-knot-list.expanded {
+  max-height: 300px; /* Adjust as needed */
+  overflow-y: auto;
+  padding: 0.5rem 0;
+}
+
+/* Optional: Custom scrollbar for WebKit browsers */
+.sidebar-knot-list.expanded::-webkit-scrollbar {
+  width: 6px;
+}
+
+.sidebar-knot-list.expanded::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+.sidebar-knot-list.expanded::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* Tab buttons container */
+.tab-buttons-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap;
+}
+
+/* Pill-shaped tabs */
+.pill-tabs {
+  display: flex-start;
+  background: #f1f1f1;
+  border-radius: 50px;
+  padding: 4px;
+}
+
+.pill-tab {
+  padding: 8px 20px;
+  border: none;
+  background-color: #B54D49;
+  color: whitesmoke;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 50px 0 0 50px;
+  font-family: 'Poppins';
+}
+
+.pill-tab1 {
+  padding: 8px 20px;
+  border: none;               /* Remove all borders */
+  border-left: 2px solid black; /* Add only left border */
+  background-color: #B54D49;
+  color: whitesmoke;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 0px 50px 50px 0px;
+  font-family: 'Poppins';
+}
+
+.pill-tab.active {
+  background: #B54D49;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pill-tab:not(.active):hover {
+  background: #0D6287;
+}
+.pill-tab1.active {
+  background: #B54D49;
+  color: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pill-tab1:not(.active):hover {
+  background: #0D6287;
+}
+
+/* Adjust the PDF button to match */
+.button.red {
+  border-radius: 50px;
+  padding: 8px 20px;
+  background: #B54D49;
+  color: white;
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  font-family: 'Poppins Bold';
+}
+
+.button.red:hover {
+  background: #9a3f3b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .tab-buttons-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .pill-tabs {
+    width: 100%;
+  }
+  
+  .pill-tab {
+    flex: 1;
+    text-align: center;
+  }
+}
+

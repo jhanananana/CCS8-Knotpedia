@@ -136,7 +136,7 @@ const Homepage = () => {
                 <h2>Must-Know Knots</h2>
                 <div className="container">
                 <a href="/knots/all">
-                    <button className="button blue">View All Knots</button>
+                    <button className="button-darkred">View All Knots</button>
                 </a>
                     <div className="allknots-container">
                         {knots.length > 0 && (

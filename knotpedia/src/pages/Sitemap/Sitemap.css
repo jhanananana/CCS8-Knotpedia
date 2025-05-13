@@ -16,13 +16,12 @@
 .sitemap-policy-cards {
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: space-between;
 }
 
 .sitemap-card {
-  flex: 1 1 calc(30% - 2rem);
-  min-width: 260px;
+  flex: 1 1 calc(33.333% - 1rem); /* Default: 3 per row */
   background-color: #f9f9f9;
   border-radius: 12px;
   padding: 1rem 1.5rem;
@@ -30,6 +29,7 @@
   transition: transform 0.2s ease;
 }
 
+/* Headings */
 .sitemap-card h3 {
   font-size: 1.3rem;
   margin-bottom: 1.4rem;
@@ -43,6 +43,7 @@
   border-color: #B54D49;
 }
 
+/* Links */
 .sitemap-links {
   list-style: disc;
   padding: 0;
@@ -65,13 +66,16 @@
   color: #B54D49;
 }
 
-@media (max-width: 768px) {
-  .sitemap-policy-cards {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
+/* ↓ 2 per row at <= 767px */
+@media (max-width: 767px) {
   .sitemap-card {
-    width: 100
+    flex: 1 1 calc(50% - 1rem);
+  }
+}
+
+/* ↓ 1 per row at <= 449px */
+@media (max-width: 449px) {
+  .sitemap-card {
+    flex: 1 1 100%;
   }
 }
