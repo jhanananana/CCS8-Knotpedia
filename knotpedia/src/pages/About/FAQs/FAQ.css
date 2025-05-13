@@ -303,6 +303,36 @@
   background-color: #388E3C; /* Darker green on hover */
 }
 
+/*ERROR POP-UP*/
+.error-popup {
+  background-color: #e04545; 
+  color: white;
+  padding: 10px 20px;
+  border-radius: 25px;
+  cursor: pointer;
+  border: none;
+  margin-top: 10px;
+  font-size: 14px;
+  width: 80px;
+  transition: background-color 0.3s;
+}
+
+.error-popup:hover {
+  background-color: #c13333; /* Darker red on hover */
+}
+
+/* Error icon styling */
+.error-icon {
+  margin-bottom: 15px;
+}
+
+/* This can be added to your existing popup content */
+.popup-content.error {
+  border: 2px solid #e04545;
+}
+
+
+
 /* Inline error message styling */
 .inline-error {
   color: #d32f2f;
@@ -328,7 +358,7 @@
   visibility: hidden !important;
 }
 
-/* UPDATED RESPONSIVE STYLES */
+
 /* When the screen size is smaller than 900px */
 @media screen and (max-width: 768px) {
   .question-container {

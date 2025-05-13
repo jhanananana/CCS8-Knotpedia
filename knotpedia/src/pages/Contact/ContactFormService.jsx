@@ -7,13 +7,6 @@ const db = getFirestore(app);
 const ContactFormService = {
   submitContactForm: async (formData) => {
     try {
-      // Simulate specific errors for testing - Remove these in production
-      /* Uncomment any of these lines to test specific error scenarios:
-      if (Math.random() > 0.7) throw new Error("network error: Failed to connect");
-      if (Math.random() > 0.7) throw new Error("database connection refused");
-      if (Math.random() > 0.7) throw new Error("timeout exceeded");
-      */
-      
       /*Automatically adds document to the firestore firebase collection */
       const docRef = await addDoc(collection(db, "contacts"), {
         firstname: formData.firstname,

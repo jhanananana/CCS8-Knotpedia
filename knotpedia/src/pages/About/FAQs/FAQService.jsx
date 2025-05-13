@@ -34,7 +34,7 @@ const FAQService = {
     );
   },
 
-  // Form submission service
+  // Form submission service with improved error handling including timeout detection
   submitFAQForm: async (formData) => {
     try {
       const docRef = await addDoc(collection(db, "faq_inquiries"), {
@@ -48,20 +48,32 @@ const FAQService = {
       return {
         success: true,
         docRef: docRef,
-        message: "Thank you! Your inquiry has been submitted successfully.",
+        message: "Thank you! Your inquiry has been submitted successfully."
       };
     } catch (error) {
       console.error("Error submitting FAQ form:", error);
+      
+      // Different error messages based on error type
+      let errorMessage = "Sorry, there was an error sending your message. Please try again.";
+      
+      // Check for specific error types - similar to ContactFormService
+      if (error.code === 'unavailable' || error.message?.includes('network')) {
+        errorMessage = "Network error. Please check your internet connection and try again.";
+      } else if (error.code === 'resource-exhausted' || error.message?.includes('timeout')) {
+        errorMessage = "Request timed out. Please try again later.";
+      } else if (error.code === 'internal' || error.message?.includes('database')) {
+        errorMessage = "Database connection error. Our team has been notified of this issue.";
+      }
+      
       return {
         success: false,
         error: error,
-        message:
-          "Sorry, there was an error sending your message. Please try again.",
+        message: errorMessage
       };
     }
   },
 
-  // Modified FormComponent with directly handled validation
+  // Modified FormComponent with timeout detection
   FormComponent: () => {
     const [formData, setFormData] = useState({
       firstname: "",
@@ -86,7 +98,6 @@ const FAQService = {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isPopupVisible, setIsPopupVisible] = useState(false);
-    const [popupMessage, setPopupMessage] = useState('');
 
     const handleChange = (e) => {
       const { id, value } = e.target;
@@ -136,67 +147,111 @@ const FAQService = {
       return valid;
     };
 
-    // Modified form submission handler
+    // Modified form submission handler with timeout detection
     const handleSubmit = async (e) => {
       e.preventDefault();
       
       // Validate form before submission
       if (!validateForm()) {
-        // Prevent default form validation tooltips
         return false;
       }
       
       setIsSubmitting(true);
 
-      const result = await FAQService.submitFAQForm(formData);
-
-      setSubmitStatus({
-        submitted: true,
-        success: result.success,
-        message: result.message,
-      });
-
-      if (result.success) {
-        setPopupMessage("Your inquiry has been submitted successfully!");
-        setFormData({
-          firstname: "",
-          lastname: "",
-          email: "",
-          message: "",
+      try {
+        // Set a timeout to detect if request takes too long
+        const timeoutPromise = new Promise((_, reject) => {
+          setTimeout(() => reject(new Error('timeout')), 10000); // 10 seconds timeout
         });
-      } else {
-        setPopupMessage("There was an error. Please try again!");
+        
+        // Race the form submission against the timeout
+        const result = await Promise.race([
+          FAQService.submitFAQForm(formData),
+          timeoutPromise
+        ]);
+
+        // Handle the result
+        setSubmitStatus({
+          submitted: true,
+          success: result.success,
+          message: result.message,
+        });
+
+        // Show popup notification
+        setIsPopupVisible(true);
+
+        // Reset form if successful
+        if (result.success) {
+          setFormData({
+            firstname: "",
+            lastname: "",
+            email: "",
+            message: "",
+          });
+          setErrors({
+            firstname: "",
+            lastname: "",
+            email: "",
+            message: "",
+          });
+        }
+      } catch (error) {
+        // Handle specific error cases
+        let errorMessage = "Sorry, there was an error sending your message. Please try again.";
+        
+        if (error.message === 'timeout') {
+          errorMessage = "Request timed out. Please try again later.";
+        } else if (error.message && error.message.includes('network')) {
+          errorMessage = "Network error. Please check your internet connection and try again.";
+        } else if (error.message && error.message.includes('database')) {
+          errorMessage = "Database connection error. Our team has been notified of this issue.";
+        }
+        
+        setSubmitStatus({
+          submitted: true,
+          success: false,
+          message: errorMessage,
+        });
+        setIsPopupVisible(true);
       }
 
-      setIsPopupVisible(true);
       setIsSubmitting(false);
     };
 
+    // Auto-hide popup after 5 seconds
     React.useEffect(() => {
-      if (submitStatus.submitted) {
+      if (isPopupVisible) {
         const timer = setTimeout(() => {
           setIsPopupVisible(false);
         }, 5000);
 
         return () => clearTimeout(timer);
       }
-    }, [submitStatus.submitted]);
+    }, [isPopupVisible]);
 
     return (
       <>
+        {/* Popup Notification */}
         {isPopupVisible && (
           <div className="popup">
-            <div className="popup-content">
-              <div className="success-icon">
-                <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="20" cy="20" r="20" fill="#4CAF50"/>
-                  <path d="M16 20.5L19 23.5L24 17.5" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
+            <div className={`popup-content ${!submitStatus.success ? "error" : ""}`}>
+              <div className={submitStatus.success ? "success-icon" : "error-icon"}>
+                {submitStatus.success ? (
+                  <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="20" fill="#4CAF50" />
+                    <path d="M16 20.5L19 23.5L24 17.5" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                ) : (
+                  <svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="20" fill="#e04545" />
+                    <path d="M15 15L25 25M15 25L25 15" stroke="white" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                )}
               </div>
-              <p>{popupMessage}</p>
+              <p>{submitStatus.message}</p>
               <button
                 onClick={() => setIsPopupVisible(false)}
-                className="ok-popup"
+                className={submitStatus.success ? "ok-popup" : "error-popup"}
               >
                 OK
               </button>
@@ -204,7 +259,7 @@ const FAQService = {
           </div>
         )}
 
-        {/* Important: removed the default HTML5 validation by removing the 'required' attribute */}
+        {/* Form with validation */}
         <form onSubmit={handleSubmit} className="contact-form" noValidate>
           <div className="form-group">
             <label htmlFor="firstname">
