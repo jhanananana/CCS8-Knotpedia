@@ -248,11 +248,13 @@
 /* Tutorial Steps */
 .ktutorial-content {
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr;
   margin-top: 2rem;
   gap: 1.25rem;
   
 }
+
 @media (max-width: 768px) {
   .knot-main-content {
     flex-direction: column;
@@ -268,16 +270,27 @@
     padding: 1.5rem;
   }
 }
-@media (max-width: 478px) {
+
+@media (max-width: 768px) {
+  .pill-tab {
+    flex-direction: column;
+    align-items: center; /* Ensures child elements (like sidebar) are centered */
+  }
+  .pill-tab1 {
+    flex-direction: column;
+    align-items: center; /* Ensures child elements (like sidebar) are centered */
+    
+  }
 
   .pill-tabs {
     position: relative;
-    align-items:center;
     top: 0;
     width: 100%;
     max-width: 500px; /* or any preferred max width */
     margin: 2rem auto 0 auto; /* center horizontally with top margin */
     padding: 1.5rem;
+    justify-content: center; /* Optional: center on smaller screens */
+    padding-right: 0;
   }
 }
 
@@ -614,8 +627,7 @@
 
 /* Pill-shaped tabs */
 .pill-tabs {
-  display: flex-end;
- 
+  display: flex-start;
   border-radius: 50px;
   padding: 4px;
 }
@@ -675,6 +687,7 @@
   cursor: pointer;
   transition: background 0.3s ease;
   font-family: 'Poppins Bold';
+  font-family: 'Poppins';
 }
 
 .button.red:hover {
@@ -688,6 +701,13 @@
     align-items: flex-start;
   }
 
+  
+  
+  .pill-tabs {
+    flex: 3;
+    text-align: center;
+    width: auto;
+  }
 }
 
 

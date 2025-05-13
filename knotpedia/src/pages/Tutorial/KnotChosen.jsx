@@ -423,6 +423,11 @@ const KnotChosen = () => {
                 ) : (
                   <p>No tutorial steps available.</p>
                 )}
+                 <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />
               </div>)}
               {activeTab === 'uses' && (
                  <div className="kuses-content">
@@ -433,11 +438,7 @@ const KnotChosen = () => {
             </div>
 
 
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              onPageChange={setCurrentPage}
-            />
+           
           </div>
 
           {/* RIGHT: Dynamic Tag-Based Sidebar */}
