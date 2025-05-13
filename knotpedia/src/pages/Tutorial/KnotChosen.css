@@ -687,7 +687,6 @@
   cursor: pointer;
   transition: background 0.3s ease;
   font-family: 'Poppins Bold';
-  font-family: 'Poppins';
 }
 
 .button.red:hover {
