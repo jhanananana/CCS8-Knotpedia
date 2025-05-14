@@ -64,7 +64,7 @@ const FAQService = {
         error.code === 'resource-exhausted' ||
         (typeof error.message === "string" && error.message.toLowerCase().includes('timeout'))
       ) {
-        errorMessage = "Request timed out. Please try again later.";
+        errorMessage = "No internet connection. Please check your network and try again.";
       }
 
       return {
@@ -201,7 +201,7 @@ const FAQService = {
         let errorMessage = "Sorry, there was an error sending your message. Please try again.";
 
         if (error.message === 'timeout') {
-          errorMessage = "Request timed out. Please try again later.";
+          errorMessage = "No internet connection. Please check your network and try again.";
         } else if (typeof error.message === "string" && error.message.toLowerCase().includes('network')) {
           errorMessage = "Network error. Please check your internet connection and try again.";
         }
