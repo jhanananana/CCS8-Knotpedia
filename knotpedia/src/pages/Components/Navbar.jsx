@@ -44,7 +44,7 @@ const Navbar = () => {
           <button className="menu-icon" title="Menu" onClick={() => setMenuOpen(!menuOpen)}>
             <b>☰</b>
           </button>
-          <a href="/search"><button className="search-button mobile-only" onClick={() => setShowSearch(!showSearch)} title="Search">
+          <a href="/search"><button className="search-button mobile-only" onClick={() => setShowSearch(!showSearch)} title="Search for a specific knot">
             <img src="/assets/search red.png" alt="Search" />
           </button></a>
         </div>
@@ -137,7 +137,7 @@ const Navbar = () => {
             <div className="navbar-right">
               <a href="/search">
                 <button className="search-button" onClick={() => setShowSearch(!showSearch)}>
-                  <img src="/assets/search red.png" alt="Search" title="Search" />
+                  <img src="/assets/search red.png" alt="Search" title="Search for a specific knot" />
                 </button>
               </a>
             </div>

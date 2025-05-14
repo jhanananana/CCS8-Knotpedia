@@ -59,6 +59,7 @@ const Preferences = () => {
         setTheme('light');
         setColorFilter('none');
         setNightShift(false);
+        window.location.reload();
     };
 
     return (

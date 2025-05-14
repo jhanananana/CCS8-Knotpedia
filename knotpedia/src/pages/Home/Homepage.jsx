@@ -75,23 +75,23 @@ const Homepage = () => {
                                         placeholder="Search for a knot..."
                                         value={searchTerm}
                                         onChange={(e) => setSearchTerm(e.target.value)}
-                                        onKeyPress={handleKeyPress} // Add the key press handler here
+                                        onKeyPress={handleKeyPress}
                                     />
                                     {searchTerm && (
                                         <span className="home-clear-icon" title="Clear" onClick={() => setSearchTerm("")}>✖</span>
                                     )}
                                     <button
                                         className="home-search-button"
-                                        onClick={handleSearch} // Use the search handler here
+                                        onClick={handleSearch}
                                     >
                                         <img src="/assets/search red.png" alt="Search" title="Search"/>
                                     </button>
                                 </div>
                             </div>
                         </div>
-                        <div className="video-container">
+                        <div className="video-container"  alt="Knotpedia Video">
                             <video controls>
-                                <source src="path-to-your-video.mp4" type="video/mp4" />
+                                <source src="assets/Knotpedia Video.mp4" type="video/mp4"/>
                                 Your browser does not support the video tag.
                             </video>
                         </div>
@@ -109,7 +109,7 @@ const Homepage = () => {
                         </a>
                     </div>
                     <div className="box-column">
-                        <a href="/knots/types" className="box" style={{ backgroundColor: "#5192A5" }}>
+                        <a href="/knots/types" className="box" title="Knots by Type" style={{ backgroundColor: "#5192A5" }}>
                             <div className="icon">
                                 <img src="/assets/home-type.png" title="Knots by Type" alt="Knots by Type" />
                             </div>
@@ -118,7 +118,7 @@ const Homepage = () => {
                             </div>
                             <div className="sub-text">Explore knots by category.</div>
                         </a>
-                        <a href="/knots/activities" className="box" style={{ backgroundColor: "#0d6287" }}>
+                        <a href="/knots/activities" className="box" title="Knots by Activity" style={{ backgroundColor: "#0d6287" }}>
                             <div className="icon">
                                 <img src="/assets/home-activity.png" title="Knots by Activity" alt="Knots by Activity" />
                             </div>
