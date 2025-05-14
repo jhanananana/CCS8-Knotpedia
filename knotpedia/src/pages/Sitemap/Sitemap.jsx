@@ -57,8 +57,8 @@ const Sitemap = () => {
                 <h3>Social Media</h3>
                 <ul className="sitemap-links">
                   <li><a href="https://www.facebook.com/daone.datloveyou" target="_blank" rel="noopener noreferrer">Facebook</a></li>
-                  <li><a href="/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
-                  <li><a href="/" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                  <li><a href="https://www.instagram.com/vyn_tiq/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                  <li><a href="https://x.com/jjahnia" target="_blank" rel="noopener noreferrer">Twitter/X</a></li>
                 </ul>
               </div>
 

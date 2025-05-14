@@ -287,7 +287,7 @@
     top: 0;
     width: 100%;
     max-width: 500px; /* or any preferred max width */
-    margin: 2rem auto 0 auto; /* center horizontally with top margin */
+    margin: 0rem auto 0 auto; /* center horizontally with top margin */
     padding: 1.5rem;
     justify-content: center; /* Optional: center on smaller screens */
     padding-right: 0;
@@ -303,6 +303,10 @@
     max-height: 250px;
     border-radius: 0.75rem;
   }
+
+  .kuses-content p {
+      font-size: 0.9rem;
+  }
 }
 @media (min-width: 1024px) {
   .imgheadknot {
@@ -310,9 +314,11 @@
     max-height: 900px;       /* Prevent it from becoming too tall */
     border-radius: 1rem;
   }
+
+    .pill-tab .active {
+      font-size: 0.6rem;
+  }
 }
-
-
 
 .kstep {
   background-color: #f9f9f9;
@@ -367,6 +373,9 @@
   .knot-sidebar {
     max-width: 250px;
   }
+    .pill-tab button {
+      font-size: 0.6rem;
+  }
 }
 
 /* Loading Spinner */
@@ -378,6 +387,7 @@
   height: 200px;
   gap: 1rem;
 }
+
 
 .spinner {
   width: 40px;
@@ -635,45 +645,65 @@
 .pill-tab {
   padding: 8px 20px;
   border: none;
-  background-color: #B54D49;
+  background-color: #0a4d6b;
   color: whitesmoke;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-radius: 50px 0 0 50px;
-  font-family: 'Poppins';
 }
 
 .pill-tab1 {
   padding: 8px 20px;
   border: none;               /* Remove all borders */
-  border-left: 2px solid black; /* Add only left border */
-  background-color: #B54D49;
+  border-left: 2px solid rgb(255, 255, 255); /* Add only left border */
+  background-color: #0a4d6b;
   color: whitesmoke;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
-  border-radius: 0px 50px 50px 0px;
   font-family: 'Poppins';
 }
 
 .pill-tab.active {
   background: #B54D49;
   color: white;
+  font-family: "Poppins Bold";
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .pill-tab:not(.active):hover {
-  background: #0D6287;
+  background: #525a5e;
 }
 .pill-tab1.active {
   background: #B54D49;
   color: white;
+  font-family: "Poppins Bold";
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .pill-tab1:not(.active):hover {
-  background: #0D6287;
+  background: #7a7a7a;
+}
+
+.pill-tabs button {
+    font-family: "Poppins";
+    font-size: 1rem;
+    /* height: 2.8rem; */
+}
+
+.kuses-content p {
+  color: #313131;
+}
+
+.kuses-content {
+  margin: 0 1rem;
+}
+.info-title {
+  color: #9a3f3b;
+  font-family: 'Poppins Bold';
+  border-left: 4px solid #9a3f3b;
+  font-size: 1.2rem;
+  padding-left: 0.5rem;
 }
 
 /* Adjust the PDF button to match */
@@ -700,12 +730,15 @@
     align-items: flex-start;
   }
 
-  
-  
   .pill-tabs {
     flex: 3;
     text-align: center;
     width: auto;
+    font-size: 1rem;
+  }
+
+    .kuses-content p {
+      font-size: 0.9rem;
   }
 }
 
