@@ -38,7 +38,8 @@ const Sitemap = () => {
                   <li><Link to="/">Home</Link></li>
                   <li><Link to="/about">About Us</Link></li>
                   <li><Link to="/contact">Contact Us</Link></li>
-                  <li><Link to="/knots/all">Explore Knots</Link></li>
+                  <li><Link to="/preferences">Preferences</Link></li>
+                  <li><Link to="/search">Search a Knot</Link></li>
                 </ul>
               </div>
 
