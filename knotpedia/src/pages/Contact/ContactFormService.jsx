@@ -40,7 +40,7 @@ const ContactFormService = {
         error.code === 'resource-exhausted' ||
         (typeof error.message === "string" && error.message.toLowerCase().includes('timeout'))
       ) {
-        errorMessage = "Request timed out. Please try again later.";
+        errorMessage = "No internet connection. Please check your network and try again.";
       }
 
       return {
