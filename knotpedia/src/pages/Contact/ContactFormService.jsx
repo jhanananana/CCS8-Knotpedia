@@ -8,7 +8,7 @@ const ContactFormService = {
   submitContactForm: async (formData) => {
     try {
       // Simulate delay
-      await new Promise(resolve => setTimeout(resolve, 11000)); // 11 seconds
+      //await new Promise(resolve => setTimeout(resolve, 11000)); // 11 seconds USE TESTING ONLY
 
       // Automatically adds document to the firestore firebase collection
       const docRef = await addDoc(collection(db, "contacts"), {
