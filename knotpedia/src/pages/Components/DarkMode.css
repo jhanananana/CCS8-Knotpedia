@@ -42,7 +42,8 @@
     color: #5a8d9c;
 }
 
-[data-theme="dark"] .form-subtitle {
+[data-theme="dark"] .form-subtitle,
+[data-theme="dark"] .kuses-content p {
     color: #b0b0b0;
 }
 

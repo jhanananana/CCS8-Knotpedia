@@ -49,7 +49,7 @@ const AboutUs = () => {
           {/* Mission & Vision Section */}
           <div className="about-container">
             <div className="mission">
-              <img src="/assets/about.jpeg" alt="Knot activity" />
+              <img src="/assets/about.jpeg" alt="Knot Activity" />
               <div className="box-desc">
                 <h2 className="box-title">
                   <span className="blue-text">Our Mission: <br></br> </span>
@@ -72,7 +72,7 @@ const AboutUs = () => {
                 We dream of a world where tying knots feels easy and natural for everyone.
                 By sharing clear lessons and friendly visuals, <b>Knotpedia</b> makes learning fast, fun, and frustration-free.
               </div>
-              <img src="/assets/knot-activity.png" alt="Knot activity" />
+              <img src="/assets/knot-activity.png" alt="Knot Activity" />
 
             </div>
           </div>

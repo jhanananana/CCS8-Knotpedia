@@ -4,12 +4,13 @@ import './Pagination.css';
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const handlePageChange = (page) => {
     onPageChange(page);
-    // Scroll to top after changing page
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  };
+  const centerY = window.innerHeight / 2;
+  window.scrollTo({
+    top: window.scrollY - centerY,
+    behavior: "smooth"
+  });
+};
+
 
   return (
     <div className="pagination">

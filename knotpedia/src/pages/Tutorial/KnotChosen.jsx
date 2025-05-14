@@ -335,7 +335,7 @@ const KnotChosen = () => {
           &gt;
           {origin === "AllActivities" ? (
             <Link to="/knots/activities">
-              <span>Knots by Activities</span>
+              <span>Knots by Activity</span>
             </Link>
           ) : origin === "AllTypes" ? (
             <Link to="/knots/types">
@@ -365,6 +365,7 @@ const KnotChosen = () => {
                 className="fullscreen-btn"
                 onClick={() => openImageModal(currentKnot.image)}
                 aria-label="View full screen"
+                title="View in full screen"
               >
                 ⛶
               </button>
@@ -390,7 +391,7 @@ const KnotChosen = () => {
               </div>
             </div>
 
-<hr></hr>
+            <hr></hr>
             <div className="ktab-content">
               {activeTab === 'tutorial' && (
                 <div className="ktutorial-content">
@@ -410,11 +411,13 @@ const KnotChosen = () => {
                               }}
                               className="step-image"
                               onClick={() => openImageModal(step.image)}
+                              title={step.description}
                             />
                             <button
                               className="fullscreen-btn"
                               onClick={() => openImageModal(step.image)}
                               aria-label="View full screen"
+                              title="View in full screen"
                             >
                               ⛶
                             </button>
@@ -426,9 +429,9 @@ const KnotChosen = () => {
                     <p>No tutorial steps available.</p>
                   )}
                   <br></br>
-                
-                      
-                
+
+
+
                 </div>
               )}
               {activeTab === 'uses' && (
@@ -438,11 +441,11 @@ const KnotChosen = () => {
                 </div>
               )}
             </div>
-            {activeTab === 'tutorial' && (   <Pagination
-                             currentPage={currentPage}
-                              totalPages={totalPages}
-                             onPageChange={setCurrentPage}
-                        />)}
+            {activeTab === 'tutorial' && (<Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              onPageChange={setCurrentPage}
+            />)}
 
 
 

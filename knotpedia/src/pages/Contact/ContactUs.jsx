@@ -288,7 +288,7 @@ const ContactUs = () => {
                 </span>
               </div>
               <div className="info-content">
-                <p className="info-label">EMAIL ADDRESS</p>
+                <p className="info-label">Email Address</p>
                 <p className="info-value">knotpedia@gmail.com</p>
               </div>
             </div>
